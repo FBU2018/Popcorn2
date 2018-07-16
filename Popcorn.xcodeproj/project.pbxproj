@@ -15,6 +15,9 @@
 		951A791F20FD0A8B003D3901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791E20FD0A8B003D3901 /* main.m */; };
 		951A792920FD0A8B003D3901 /* PopcornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A792820FD0A8B003D3901 /* PopcornTests.m */; };
 		951A793420FD0A8B003D3901 /* PopcornUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A793320FD0A8B003D3901 /* PopcornUITests.m */; };
+		951A794520FD0CB5003D3901 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794420FD0CB5003D3901 /* Library.storyboard */; };
+		951A794720FD0CC1003D3901 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794620FD0CC1003D3901 /* Search.storyboard */; };
+		951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794820FD0CCC003D3901 /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		951A792F20FD0A8B003D3901 /* PopcornUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A793320FD0A8B003D3901 /* PopcornUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopcornUITests.m; sourceTree = "<group>"; };
 		951A793520FD0A8B003D3901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951A794420FD0CB5003D3901 /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
+		951A794620FD0CC1003D3901 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		951A794820FD0CCC003D3901 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +107,15 @@
 		951A790E20FD0A89003D3901 /* Popcorn */ = {
 			isa = PBXGroup;
 			children = (
+				951A794320FD0BA0003D3901 /* Models */,
+				951A794220FD0B9A003D3901 /* Views */,
+				951A794120FD0B93003D3901 /* View Controllers */,
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
-				951A791220FD0A89003D3901 /* ViewController.h */,
-				951A791320FD0A89003D3901 /* ViewController.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				951A794420FD0CB5003D3901 /* Library.storyboard */,
+				951A794620FD0CC1003D3901 /* Search.storyboard */,
+				951A794820FD0CCC003D3901 /* Detail.storyboard */,
 				951A791820FD0A8B003D3901 /* Assets.xcassets */,
 				951A791A20FD0A8B003D3901 /* LaunchScreen.storyboard */,
 				951A791D20FD0A8B003D3901 /* Info.plist */,
@@ -130,6 +140,29 @@
 				951A793520FD0A8B003D3901 /* Info.plist */,
 			);
 			path = PopcornUITests;
+			sourceTree = "<group>";
+		};
+		951A794120FD0B93003D3901 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				951A791220FD0A89003D3901 /* ViewController.h */,
+				951A791320FD0A89003D3901 /* ViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		951A794220FD0B9A003D3901 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		951A794320FD0BA0003D3901 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +270,10 @@
 			files = (
 				951A791C20FD0A8B003D3901 /* LaunchScreen.storyboard in Resources */,
 				951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */,
+				951A794520FD0CB5003D3901 /* Library.storyboard in Resources */,
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
+				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
+				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
