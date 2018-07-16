@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
+		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		951A791120FD0A89003D3901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791020FD0A89003D3901 /* AppDelegate.m */; };
 		951A791420FD0A89003D3901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791320FD0A89003D3901 /* ViewController.m */; };
 		951A791720FD0A89003D3901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A791520FD0A89003D3901 /* Main.storyboard */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CastCollectionViewCell.m; path = Popcorn/CastCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
+		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
 		951A790C20FD0A89003D3901 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A790F20FD0A89003D3901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		951A791020FD0A89003D3901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 			children = (
 				951A791220FD0A89003D3901 /* ViewController.h */,
 				951A791320FD0A89003D3901 /* ViewController.m */,
+				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
+				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +162,8 @@
 		951A794220FD0B9A003D3901 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */,
+				71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,8 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				951A791420FD0A89003D3901 /* ViewController.m in Sources */,
+				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
+				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
