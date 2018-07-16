@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
+		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
 		951A791120FD0A89003D3901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791020FD0A89003D3901 /* AppDelegate.m */; };
-		951A791420FD0A89003D3901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791320FD0A89003D3901 /* ViewController.m */; };
 		951A791720FD0A89003D3901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A791520FD0A89003D3901 /* Main.storyboard */; };
 		951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951A791820FD0A8B003D3901 /* Assets.xcassets */; };
 		951A791C20FD0A8B003D3901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A791A20FD0A8B003D3901 /* LaunchScreen.storyboard */; };
@@ -38,11 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSearchViewController.h; sourceTree = "<group>"; };
+		2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSearchViewController.m; sourceTree = "<group>"; };
+		2684D0BD20FD159000FBB985 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = SOURCE_ROOT; };
+		2684D0BE20FD159000FBB985 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = SOURCE_ROOT; };
 		951A790C20FD0A89003D3901 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A790F20FD0A89003D3901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		951A791020FD0A89003D3901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		951A791220FD0A89003D3901 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		951A791320FD0A89003D3901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		951A791620FD0A89003D3901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		951A791820FD0A8B003D3901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		951A791B20FD0A8B003D3901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -145,8 +148,8 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				951A791220FD0A89003D3901 /* ViewController.h */,
-				951A791320FD0A89003D3901 /* ViewController.m */,
+				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
+				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +157,8 @@
 		951A794220FD0B9A003D3901 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2684D0BD20FD159000FBB985 /* SearchCell.h */,
+				2684D0BE20FD159000FBB985 /* SearchCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,7 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951A791420FD0A89003D3901 /* ViewController.m in Sources */,
+				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
+				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 			);
