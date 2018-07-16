@@ -6,6 +6,7 @@ target 'Popcorn' do
   # use_frameworks!
 
   # Pods for Popcorn
+  pod 'AFNetworking'
 
   target 'PopcornTests' do
     inherit! :search_paths
