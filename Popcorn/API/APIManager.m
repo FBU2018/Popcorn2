@@ -33,30 +33,33 @@ static NSString * const accessToken = @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ
     [request setURL:[NSURL URLWithString:@"https://api.themoviedb.org/4/list"]];
     [request setHTTPMethod:@"POST"];
     
+    //headers
     NSString *bearer = @"Bearer ";
     NSString *accessing = [bearer stringByAppendingString:accessToken];
+    
     [request addValue:accessing forHTTPHeaderField: @"Authorization"];
     [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
     
-    
-    
-//    [request setValue:apiKey forKey:@"api_key"];
-//    [request setValue:accessToken forKey:@"access_token"];
-    
-    NSDictionary *parameters = @{@"name": name, @"iso_639_1":@"en"};
-    NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:parameters];
-    [request setHTTPBody:myData];
+    //request body + variables
+    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"name",@"en",@"iso_639_1", nil];
+    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
+            NSError* error;
+            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
+        [request setHTTPBody:jsonData];
 
-    NSURLSession *session = [NSURLSession sharedSession];
-    [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if(error != nil){
-            NSLog(@"Error: %@", error.localizedDescription);
-            completion(error);
-        }
-        else{
-            NSLog(@"Request successful");
-        }
-    }];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if(error != nil){
+                NSLog(@"Error: %@", error.localizedDescription);
+                completion(error);
+            }
+            else{
+                NSLog(@"Request successful");
+            }
+        }];
+        [task resume];
+    }
 }
 
 
