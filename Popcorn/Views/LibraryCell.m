@@ -21,4 +21,13 @@
     // Configure the view for the selected state
 }
 
+- (void)configureCell:(NSDictionary *)shelfInfo{
+    self.titleLabel.text = shelfInfo[@"name"];
+    NSString *itemCount = [shelfInfo[@"item_count"] stringValue];
+    self.numberItemsLabel.text = [itemCount stringByAppendingString:@" items"];
+    
+    self.movieId = shelfInfo[@"id"];
+    self.listType = shelfInfo[@"list_type"];
+}
+
 @end
