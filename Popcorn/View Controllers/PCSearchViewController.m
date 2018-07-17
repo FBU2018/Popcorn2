@@ -106,6 +106,27 @@
     [task resume];
 }
 
+// called when user starts typing
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchText.length != 0) {
+        // network call to get the search results
+        [self searchMoviesWithString:searchText];
+        
+        // set up predicate for searching movies
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+            return [item[@"title"] containsString:searchText];
+        }];
+        
+        self.filteredData = [self.moviesArray filteredArrayUsingPredicate:predicate];
+    }
+    // if user hasn't typed anything then don't filter movies
+    else {
+        self.filteredData = self.moviesArray;
+    }
+    
+    [self.searchTableView reloadData];
+}
+
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     // String to store search text
@@ -123,26 +144,6 @@
     }
     else {
         self.filteredData = self.moviesArray;
-    }
-    
-    [self.searchTableView reloadData];
-    
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if (searchText.length != 0) {
-        
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject containsString:searchText];
-        }];
-        self.filteredData = [self.data filteredArrayUsingPredicate:predicate];
-        
-        NSLog(@"%@", self.filteredData);
-        
-    }
-    else {
-        self.filteredData = self.data;
     }
     
     [self.searchTableView reloadData];
