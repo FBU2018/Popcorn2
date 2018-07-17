@@ -10,11 +10,13 @@
 #import "SearchCell.h"
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
+#import "PCMovieDetailViewController.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) NSArray *filteredMovieObjects;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *moviesArray;
 @end
@@ -42,25 +44,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
     
     // change array of dictionaries to an array of movies
-    NSArray *movies = [Movie moviesWithDictionaries:self.filteredData];
+    self.filteredMovieObjects = [Movie moviesWithDictionaries:self.filteredData];
     
     // Get current movie
-    Movie *movie = movies[indexPath.row];
+    Movie *movie = self.filteredMovieObjects[indexPath.row];
     
     // set cell label to text from particular row in array
     cell.titleLabel.text = movie.title;
@@ -161,6 +153,19 @@
     return self.filteredData.count;
 }
 
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"cellToDetailSegue"]){
+        // Get the detail view controller using [segue destinationViewController].
+        PCMovieDetailViewController *detailVC = [segue destinationViewController];
+        
+        // Pass the selected cell's movie object to the detail view controller.
+        SearchCell *cell = sender;
+        NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
+        detailVC.movie = self.filteredMovieObjects[cellPath.row];
+    }
+}
 
 @end
