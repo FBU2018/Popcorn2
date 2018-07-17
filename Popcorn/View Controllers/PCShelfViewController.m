@@ -7,8 +7,17 @@
 //
 
 #import "PCShelfViewController.h"
+#import "SearchCell.h"
+#import "APIManager.h"
+#import "Movie.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface PCShelfViewController ()
+
+@interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *movieArray;
 
 @end
 
@@ -16,13 +25,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    if(self.shelfId != nil){
+        NSNumber *shelfIdNum = self.shelfId;
+        [self getMovies: [shelfIdNum stringValue]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+    
+    //TODO: eventually combine the following into setCell method
+    Movie *movie = self.movieArray[indexPath.row];
+    cell.titleLabel.text = movie.title;
+    cell.releaseDateLabel.text = movie.releaseDateString;
+    cell.posterView.image = nil;
+    [cell.posterView setImageWithURL:movie.posterUrl];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.movieArray.count;
+}
+
+- (void)getMovies: (NSString *) movieId{
+
+    [[APIManager shared] getShelfMovies:movieId completion:^(NSArray *movies, NSError *error) {
+        if(error == nil){
+            NSLog(@"Successfully got movies on shelves");
+            
+            NSMutableArray *moviesArray = [NSMutableArray array];
+            moviesArray = [Movie moviesWithDictionaries:movies];
+            self.movieArray = moviesArray;
+            [self.tableView reloadData];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
+
 
 /*
 #pragma mark - Navigation

@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberItemsLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *shelfImageView;
 
-@property (strong, nonatomic) NSString *movieId;
+@property (strong, nonatomic) NSNumber *shelfId;
 @property (strong, nonatomic) NSString *listType;
 - (void)configureCell:(NSDictionary *) shelfInfo;
 

@@ -97,4 +97,30 @@ static NSString * const accountID = @"7966256";
 }
 
 
+- (void)getShelfMovies:(NSString *)listId completion:(void (^)(NSArray *, NSError *))completion{
+    //get request to get array of all movies in a list
+    
+    NSString *urlString = [[[@"https://api.themoviedb.org/4/list/" stringByAppendingString:listId] stringByAppendingString: @"?page=1&api_key="] stringByAppendingString: apiKey];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        //this part runs when network call is finished
+        if (error != nil) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"Successfully got movies in shelf");
+
+            completion(dataDictionary[@"results"], nil);
+        }
+    }];
+    [task resume];
+}
+
+
+
 @end
