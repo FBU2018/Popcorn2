@@ -9,6 +9,7 @@
 #import "PCSearchViewController.h"
 #import "SearchCell.h"
 #import "Movie.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -55,9 +56,19 @@
     // dequeue a reusable Search cell
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
     
+    // change array of dictionaries to an array of movies
+    NSArray *movies = [Movie moviesWithDictionaries:self.filteredData];
+    
+    // Get current movie
+    Movie *movie = movies[indexPath.row];
+    
     // set cell label to text from particular row in array
-    cell.titleLabel.text = self.filteredData[indexPath.row][@"original_title"];
-    cell.releaseDateLabel.text = self.filteredData[indexPath.row][@"release_date"];
+    cell.titleLabel.text = movie.title;
+    cell.releaseDateLabel.text = movie.releaseDateString;
+    
+    // set poster picture
+    cell.posterView.image = nil;
+    [cell.posterView setImageWithURL:movie.posterUrl];
     
     return cell;
 }
