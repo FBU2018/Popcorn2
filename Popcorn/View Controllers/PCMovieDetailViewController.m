@@ -34,8 +34,8 @@
     // Do any additional setup after loading the view.
     self.castCollectionView.delegate = self;
     self.castCollectionView.dataSource = self;
-    NSLog(@"%@", self.movie.title);
-    self.titleLabel.text = self.movie.title;
+    
+    [self configureDetails];
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -48,10 +48,10 @@
 }
 
 -(void) configureDetails{
-//    self.titleLabel.text = self.movie.title;
-//    self.summaryLabel.text = self.movie.overview;
-//    self.ratingLabel.text = self.movie.ratingString;
-//    self.dateLabel.text = self.movie.releaseDateString;
+    self.titleLabel.text = self.movie.title;
+    self.summaryLabel.text = self.movie.overview;
+    self.ratingLabel.text = self.movie.ratingString;
+    self.dateLabel.text = self.movie.releaseDateString;
 }
 
 /*
