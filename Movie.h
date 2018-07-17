@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSURL *backdropUrl;
 @property (strong, nonatomic) NSString *overview;
 @property (strong, nonatomic) NSString *releaseDateString;
-@property (strong, nonatomic) NSString *movieID;
+@property (strong, nonatomic) NSNumber *movieID; 
 @property (strong, nonatomic) NSString *tagline;
 @property (strong, nonatomic) NSString *ratingString;
 @end

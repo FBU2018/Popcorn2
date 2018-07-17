@@ -10,4 +10,6 @@
 
 @interface PCShelfViewController : UIViewController
 
+@property (strong, nonatomic) NSNumber *shelfId;
+
 @end

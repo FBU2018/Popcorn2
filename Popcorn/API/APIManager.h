@@ -13,7 +13,7 @@
 + (instancetype)shared;
 
 - (void)createList: (NSString*) name completion:(void (^)(NSString *, NSError *))completion;
-//(void(^)(NSDictionary *accountInfo, NSError *error))completion
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;
+- (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
 
 @end
