@@ -25,11 +25,12 @@
     self.posterUrl = [NSURL URLWithString:fullPosterURLString];
     
     // Setting the backdropurl
-    NSString *backdropURLString = dictionary[@"backdrop_path"] ;
+    if(![dictionary[@"backdrop_path"] isEqual:[NSNull null]]){
+    NSString *backdropURLString = dictionary[@"backdrop_path"];
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
     
     self.backdropUrl = [NSURL URLWithString:fullBackdropURLString];
-
+    }
     
     self.overview = dictionary[@"overview"];
     self.releaseDateString = dictionary[@"release_date"];

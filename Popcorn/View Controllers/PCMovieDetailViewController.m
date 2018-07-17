@@ -36,6 +36,7 @@
     self.castCollectionView.dataSource = self;
     
     [self configureDetails];
+    
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -52,6 +53,7 @@
     self.summaryLabel.text = self.movie.overview;
     self.ratingLabel.text = self.movie.ratingString;
     self.dateLabel.text = self.movie.releaseDateString;
+    [self fetchCast];
 }
 
 /*
@@ -76,7 +78,7 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    CastCollectionViewCell *cell = [self.castCollectionView dequeueReusableCellWithReuseIdentifier:@"CastCollectionViwCell" forIndexPath:indexPath];
+    CastCollectionViewCell *cell = [self.castCollectionView dequeueReusableCellWithReuseIdentifier:@"CastCollectionViewCell" forIndexPath:indexPath];
     
     [cell configureCell:self.castList withIndexPath:indexPath];
     
@@ -88,8 +90,35 @@
 }
 
 //this will go in APIManager later
--(void) getCast{
-  
+-(void) fetchCast{
+    
+    NSString *stringID = [self.movie.movieID stringValue];
+    NSString *apiKey = @"69308a1aa1f4a3c54b17a53c591eadb0";
+    NSString *urlString = [[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:stringID]stringByAppendingString:@"/credits?api_key="]stringByAppendingString:apiKey];
+    
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            NSArray *fullCastList = dataDictionary[@"cast"];
+            if(fullCastList.count > 20){
+                self.castList = [fullCastList subarrayWithRange:NSMakeRange(0, 19)];
+            }
+            else{
+                self.castList = fullCastList;
+            }
+            NSLog(@"%@", self.castList);
+            [self.castCollectionView reloadData];
+        }
+    }];
+    [task resume];
 }
 
 
