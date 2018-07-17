@@ -35,7 +35,7 @@
     self.overview = dictionary[@"overview"];
     self.releaseDateString = dictionary[@"release_date"];
     self.movieID = dictionary[@"id"];
-    self.tagline = dictionary[@"tagline"];
+//    self.tagline = dictionary[@"tagline"];
     
     return self;
 }

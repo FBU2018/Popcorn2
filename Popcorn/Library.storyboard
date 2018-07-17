@@ -71,7 +71,7 @@
                                             <outlet property="numberItemsLabel" destination="GIr-em-Pzg" id="b58-0O-D7Q"/>
                                             <outlet property="shelfImageView" destination="WwS-SO-kSM" id="0qq-au-2WF"/>
                                             <outlet property="titleLabel" destination="ZfQ-bS-g3n" id="0bv-ek-szo"/>
-                                            <segue destination="fWq-xU-6xp" kind="show" id="YEm-aG-U38"/>
+                                            <segue destination="fWq-xU-6xp" kind="show" identifier="libraryToShelf" id="YEm-aG-U38"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,9 +102,71 @@
                     <view key="view" contentMode="scaleToFill" id="qRn-Mh-uu4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="176" id="BX4-FG-oYJ" customClass="SearchCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="176"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BX4-FG-oYJ" id="Z8c-eW-94C">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-2h-1G7">
+                                                    <rect key="frame" x="8" y="19" width="117" height="137"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="137" id="AJK-sZ-2uw"/>
+                                                        <constraint firstAttribute="width" constant="117" id="nw5-iB-YwO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghZ-hz-CNd">
+                                                    <rect key="frame" x="133" y="54" width="99.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="nIU-hv-WaT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-j9-pcW">
+                                                    <rect key="frame" x="133" y="26" width="40" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="2qr-Lp-QZU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="0EG-2h-1G7" secondAttribute="bottom" constant="19.5" id="6gd-zl-xj1"/>
+                                                <constraint firstItem="0EG-2h-1G7" firstAttribute="leading" secondItem="Z8c-eW-94C" secondAttribute="leading" constant="8" id="6gp-DN-aCp"/>
+                                                <constraint firstItem="0EG-2h-1G7" firstAttribute="top" secondItem="Z8c-eW-94C" secondAttribute="top" constant="19" id="Ent-Uf-Eub"/>
+                                                <constraint firstItem="c3u-j9-pcW" firstAttribute="leading" secondItem="0EG-2h-1G7" secondAttribute="trailing" constant="8" id="JBe-Xe-zuL"/>
+                                                <constraint firstItem="ghZ-hz-CNd" firstAttribute="top" secondItem="c3u-j9-pcW" secondAttribute="bottom" constant="4" id="geb-hB-Hit"/>
+                                                <constraint firstItem="c3u-j9-pcW" firstAttribute="top" secondItem="Z8c-eW-94C" secondAttribute="topMargin" constant="15" id="hPi-HW-OOb"/>
+                                                <constraint firstItem="ghZ-hz-CNd" firstAttribute="leading" secondItem="0EG-2h-1G7" secondAttribute="trailing" constant="8" id="tPN-q5-9IQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="posterView" destination="0EG-2h-1G7" id="9zM-Uy-GDE"/>
+                                            <outlet property="releaseDateLabel" destination="ghZ-hz-CNd" id="WSP-az-OFa"/>
+                                            <outlet property="titleLabel" destination="c3u-j9-pcW" id="orm-3y-a63"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ftg-1a-owk"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="qEF-vW-1Y8" id="3gM-lE-N0k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICT-2V-LRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

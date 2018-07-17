@@ -26,7 +26,7 @@
     NSString *itemCount = [shelfInfo[@"item_count"] stringValue];
     self.numberItemsLabel.text = [itemCount stringByAppendingString:@" items"];
     
-    self.movieId = shelfInfo[@"id"];
+    self.shelfId = shelfInfo[@"id"];
     self.listType = shelfInfo[@"list_type"];
 }
 
