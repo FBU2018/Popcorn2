@@ -159,7 +159,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"cellToDetailSegue"]){
         // Get the detail view controller using [segue destinationViewController].
-        PCMovieDetailViewController *detailVC = [segue destinationViewController];
+        UINavigationController *navigateVC = [segue destinationViewController];
+        
+        PCMovieDetailViewController *detailVC = (PCMovieDetailViewController *)navigateVC.topViewController;
         // Pass the selected cell's movie object to the detail view controller.
         SearchCell *cell = sender;
         NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
