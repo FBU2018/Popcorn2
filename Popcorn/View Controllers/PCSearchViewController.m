@@ -8,6 +8,7 @@
 
 #import "PCSearchViewController.h"
 #import "SearchCell.h"
+#import "Movie.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -55,9 +56,8 @@
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
     
     // set cell label to text from particular row in array
-    cell.testLabel.text = self.filteredData[indexPath.row][@"original_title"];
-    
-    
+    cell.titleLabel.text = self.filteredData[indexPath.row][@"original_title"];
+    cell.releaseDateLabel.text = self.filteredData[indexPath.row][@"release_date"];
     
     return cell;
 }
@@ -95,7 +95,9 @@
             // store the received data in a dictionary
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             // store the results section of the JSON data in the movies array
-            self.moviesArray = dataDictionary[@"results"];
+            NSArray *dictionaries = dataDictionary[@"results"];
+            
+            self.moviesArray = dictionaries;
         }
     }];
     [task resume];
