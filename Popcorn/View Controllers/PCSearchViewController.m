@@ -10,6 +10,7 @@
 #import "SearchCell.h"
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
+#import "PCMovieDetailViewController.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -41,16 +42,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell
@@ -161,6 +152,18 @@
     return self.filteredData.count;
 }
 
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"cellToDetailSegue"]){
+        // Get the detail view controller using [segue destinationViewController].
+        PCMovieDetailViewController *detailVC = [segue destinationViewController];
+        // Pass the selected cell's movie object to the detail view controller.
+        SearchCell *cell = sender;
+        NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
+        detailVC.movie = self.filteredData[cellPath.row];
+    }
+}
 
 @end

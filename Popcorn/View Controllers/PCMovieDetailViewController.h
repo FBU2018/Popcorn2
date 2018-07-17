@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 @interface PCMovieDetailViewController : UIViewController 
-//@property (strong, nonatomic) Movie *movie;
+@property (strong, nonatomic) Movie *movie;
 @end
