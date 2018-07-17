@@ -20,6 +20,13 @@
 		951A794520FD0CB5003D3901 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794420FD0CB5003D3901 /* Library.storyboard */; };
 		951A794720FD0CC1003D3901 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794620FD0CC1003D3901 /* Search.storyboard */; };
 		951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A794820FD0CCC003D3901 /* Detail.storyboard */; };
+		951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A794B20FD0E42003D3901 /* PCLibraryViewController.m */; };
+		951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A794E20FD0E77003D3901 /* PCShelfViewController.m */; };
+		951A795320FD0F2F003D3901 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795220FD0F2F003D3901 /* APIManager.m */; };
+		951A795620FD11A1003D3901 /* LibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795520FD11A1003D3901 /* LibraryCell.m */; };
+		963C025F4758FE667156D96B /* libPods-PopcornTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */; };
+		D1910B1DD3850011033127A4 /* libPods-PopcornUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF57B52494D74F913B75092 /* libPods-PopcornUITests.a */; };
+		FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB24C848515EA0D355910C /* libPods-Popcorn.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,11 @@
 		71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CastCollectionViewCell.m; path = Popcorn/CastCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
 		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
+		0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.debug.xcconfig"; sourceTree = "<group>"; };
+		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
+		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.release.xcconfig"; sourceTree = "<group>"; };
 		951A790C20FD0A89003D3901 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A790F20FD0A89003D3901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		951A791020FD0A89003D3901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,6 +75,18 @@
 		951A794420FD0CB5003D3901 /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
 		951A794620FD0CC1003D3901 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		951A794820FD0CCC003D3901 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		951A794A20FD0E42003D3901 /* PCLibraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCLibraryViewController.h; sourceTree = "<group>"; };
+		951A794B20FD0E42003D3901 /* PCLibraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCLibraryViewController.m; sourceTree = "<group>"; };
+		951A794D20FD0E77003D3901 /* PCShelfViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCShelfViewController.h; sourceTree = "<group>"; };
+		951A794E20FD0E77003D3901 /* PCShelfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCShelfViewController.m; sourceTree = "<group>"; };
+		951A795120FD0F2F003D3901 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		951A795220FD0F2F003D3901 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		951A795420FD11A1003D3901 /* LibraryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
+		951A795520FD11A1003D3901 /* LibraryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LibraryCell.m; sourceTree = "<group>"; };
+		C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1F26F587999050C3F8A05BB /* Pods-PopcornTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D58AF72C9334674A442A9E5D /* Pods-PopcornUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EDF57B52494D74F913B75092 /* libPods-PopcornUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963C025F4758FE667156D96B /* libPods-PopcornTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +110,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1910B1DD3850011033127A4 /* libPods-PopcornUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66A24435E3DDD8F5F7479415 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */,
+				7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */,
+				D1F26F587999050C3F8A05BB /* Pods-PopcornTests.debug.xcconfig */,
+				381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */,
+				0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */,
+				D58AF72C9334674A442A9E5D /* Pods-PopcornUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		951A790320FD0A89003D3901 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +137,8 @@
 				951A792720FD0A8B003D3901 /* PopcornTests */,
 				951A793220FD0A8B003D3901 /* PopcornUITests */,
 				951A790D20FD0A89003D3901 /* Products */,
+				66A24435E3DDD8F5F7479415 /* Pods */,
+				FC080368C3B1E330142ABD06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +155,7 @@
 		951A790E20FD0A89003D3901 /* Popcorn */ = {
 			isa = PBXGroup;
 			children = (
+				951A795020FD0E89003D3901 /* API */,
 				951A794320FD0BA0003D3901 /* Models */,
 				951A794220FD0B9A003D3901 /* Views */,
 				951A794120FD0B93003D3901 /* View Controllers */,
@@ -155,6 +198,10 @@
 				951A791320FD0A89003D3901 /* ViewController.m */,
 				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
 				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
+				951A794A20FD0E42003D3901 /* PCLibraryViewController.h */,
+				951A794B20FD0E42003D3901 /* PCLibraryViewController.m */,
+				951A794D20FD0E77003D3901 /* PCShelfViewController.h */,
+				951A794E20FD0E77003D3901 /* PCShelfViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -164,6 +211,8 @@
 			children = (
 				71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */,
 				71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */,
+				951A795420FD11A1003D3901 /* LibraryCell.h */,
+				951A795520FD11A1003D3901 /* LibraryCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +224,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		951A795020FD0E89003D3901 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				951A795120FD0F2F003D3901 /* APIManager.h */,
+				951A795220FD0F2F003D3901 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FC080368C3B1E330142ABD06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BAB24C848515EA0D355910C /* libPods-Popcorn.a */,
+				C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */,
+				EDF57B52494D74F913B75092 /* libPods-PopcornUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 951A793820FD0A8B003D3901 /* Build configuration list for PBXNativeTarget "Popcorn" */;
 			buildPhases = (
+				F1D267665801097EE7CF2717 /* [CP] Check Pods Manifest.lock */,
 				951A790820FD0A89003D3901 /* Sources */,
 				951A790920FD0A89003D3901 /* Frameworks */,
 				951A790A20FD0A89003D3901 /* Resources */,
@@ -199,6 +268,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 951A793B20FD0A8B003D3901 /* Build configuration list for PBXNativeTarget "PopcornTests" */;
 			buildPhases = (
+				6A8448640E5B51F973C59826 /* [CP] Check Pods Manifest.lock */,
 				951A792020FD0A8B003D3901 /* Sources */,
 				951A792120FD0A8B003D3901 /* Frameworks */,
 				951A792220FD0A8B003D3901 /* Resources */,
@@ -217,6 +287,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 951A793E20FD0A8B003D3901 /* Build configuration list for PBXNativeTarget "PopcornUITests" */;
 			buildPhases = (
+				5482C59952A146E633D185BC /* [CP] Check Pods Manifest.lock */,
 				951A792B20FD0A8B003D3901 /* Sources */,
 				951A792C20FD0A8B003D3901 /* Frameworks */,
 				951A792D20FD0A8B003D3901 /* Resources */,
@@ -303,14 +374,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5482C59952A146E633D185BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopcornUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A8448640E5B51F973C59826 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopcornTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1D267665801097EE7CF2717 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Popcorn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		951A790820FD0A89003D3901 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				951A791420FD0A89003D3901 /* ViewController.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
+				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
+				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
+				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
 			);
@@ -479,6 +611,7 @@
 		};
 		951A793920FD0A8B003D3901 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -495,6 +628,7 @@
 		};
 		951A793A20FD0A8B003D3901 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -511,6 +645,7 @@
 		};
 		951A793C20FD0A8B003D3901 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1F26F587999050C3F8A05BB /* Pods-PopcornTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -529,6 +664,7 @@
 		};
 		951A793D20FD0A8B003D3901 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -547,6 +683,7 @@
 		};
 		951A793F20FD0A8B003D3901 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PopcornUITests/Info.plist;
@@ -564,6 +701,7 @@
 		};
 		951A794020FD0A8B003D3901 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D58AF72C9334674A442A9E5D /* Pods-PopcornUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PopcornUITests/Info.plist;
