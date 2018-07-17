@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) NSArray *filteredMovieObjects;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *moviesArray;
 @end
@@ -48,10 +49,10 @@
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
     
     // change array of dictionaries to an array of movies
-    NSArray *movies = [Movie moviesWithDictionaries:self.filteredData];
+    self.filteredMovieObjects = [Movie moviesWithDictionaries:self.filteredData];
     
     // Get current movie
-    Movie *movie = movies[indexPath.row];
+    Movie *movie = self.filteredMovieObjects[indexPath.row];
     
     // set cell label to text from particular row in array
     cell.titleLabel.text = movie.title;
@@ -162,7 +163,7 @@
         // Pass the selected cell's movie object to the detail view controller.
         SearchCell *cell = sender;
         NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
-        detailVC.movie = self.filteredData[cellPath.row];
+        detailVC.movie = self.filteredMovieObjects[cellPath.row];
     }
 }
 
