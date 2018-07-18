@@ -113,9 +113,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="5iq-63-ccj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="176" id="BX4-FG-oYJ" customClass="SearchCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="176"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BX4-FG-oYJ" id="Z8c-eW-94C">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
@@ -172,6 +177,7 @@
                         <viewLayoutGuide key="safeArea" id="ftg-1a-owk"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="5iq-63-ccj" id="Xaw-bt-ytM"/>
                         <outlet property="tableView" destination="qEF-vW-1Y8" id="3gM-lE-N0k"/>
                     </connections>
                 </viewController>
