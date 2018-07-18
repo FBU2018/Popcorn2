@@ -46,6 +46,7 @@
     
     //TODO: eventually combine the following into setCell method
     Movie *movie = self.movieArray[indexPath.row];
+    cell.movie = movie;
     cell.titleLabel.text = movie.title;
     cell.releaseDateLabel.text = movie.releaseDateString;
     cell.posterView.image = nil;

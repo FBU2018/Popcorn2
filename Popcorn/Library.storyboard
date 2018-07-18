@@ -76,7 +76,7 @@
                                             <outlet property="numberItemsLabel" destination="GIr-em-Pzg" id="b58-0O-D7Q"/>
                                             <outlet property="shelfImageView" destination="WwS-SO-kSM" id="0qq-au-2WF"/>
                                             <outlet property="titleLabel" destination="ZfQ-bS-g3n" id="0bv-ek-szo"/>
-                                            <segue destination="fWq-xU-6xp" kind="show" identifier="libraryToShelf" id="YEm-aG-U38"/>
+                                            <segue destination="fWq-xU-6xp" kind="show" identifier="libraryToShelf" id="rOT-6s-DLE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

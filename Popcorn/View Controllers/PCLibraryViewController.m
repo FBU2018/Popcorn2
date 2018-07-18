@@ -12,8 +12,10 @@
 #import "Movie.h"
 #import "PCShelfViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import <SWTableViewCell.h>
 
-@interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+@interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
 
 //array of shelf dictionaries
 @property (strong, nonatomic) NSArray *shelves; //array of dictionaries about each shelf
@@ -81,13 +83,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LibraryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"libraryToShelf" sender:cell];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
     unsigned long count = self.filteredData.count;
     [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
+    
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
+    
     return cell;
 }
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    return rightUtilityButtons;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            //Delete button was pressed
+            NSLog(@"Delete button was pressed");
+            LibraryCell *sender = cell;
+            NSNumber *shelfId = sender.shelfId;
+            NSString *shelfIdString = [shelfId stringValue];
+            [self deleteList:shelfIdString];
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.filteredData.count;
@@ -182,6 +220,31 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+
+
+- (IBAction)didTapDelete:(id)sender {
+    [[APIManager shared] deleteList:@"82362" completion:^(NSError *error) {
+        if(error == nil){
+            NSLog(@"Successfully deleted shelf");
+            [self getLists];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)deleteList: (NSString*) shelfId{
+    [[APIManager shared] deleteList:shelfId completion:^(NSError *error) {
+        if(error == nil){
+            NSLog(@"Successfully deleted shelf");
+            [self getLists];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
 
 
 
