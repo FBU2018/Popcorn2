@@ -47,14 +47,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ip-wW-bbc">
-                                        <rect key="frame" x="8" y="622" width="135" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Community reviews"/>
-                                        <connections>
-                                            <action selector="didTapCommunityReviews:" destination="8ub-PJ-jCL" eventType="touchUpInside" id="gsJ-CM-DOU"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUr-pR-ByP">
                                         <rect key="frame" x="8" y="398" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,6 +110,14 @@
                                         <state key="normal" title="Your rating"/>
                                         <connections>
                                             <action selector="didTapRating:" destination="8ub-PJ-jCL" eventType="touchUpInside" id="6bY-DT-ZxC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ip-wW-bbc">
+                                        <rect key="frame" x="8" y="474" width="135" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Community reviews"/>
+                                        <connections>
+                                            <action selector="didTapCommunityReviews:" destination="8ub-PJ-jCL" eventType="touchUpInside" id="gsJ-CM-DOU"/>
                                         </connections>
                                     </button>
                                 </subviews>
