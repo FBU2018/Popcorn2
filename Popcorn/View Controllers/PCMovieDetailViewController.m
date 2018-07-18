@@ -41,8 +41,10 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
+//    layout.estimatedItemSize = CGSizeMake(110, 160);
+//    layout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
 
-} 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
