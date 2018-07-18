@@ -51,8 +51,16 @@
 -(void) configureDetails{
     self.titleLabel.text = self.movie.title;
     self.summaryLabel.text = self.movie.overview;
-    self.ratingLabel.text = self.movie.ratingString;
+    NSString *ratingString = [@"Average rating: " stringByAppendingString:[[self.movie.rating stringValue] stringByAppendingString:@"/10"]];
+    self.ratingLabel.text = ratingString;
     self.dateLabel.text = self.movie.releaseDateString;
+    //CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
+    [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    
+ 
+    [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    
+    
     [self fetchCast];
 }
 

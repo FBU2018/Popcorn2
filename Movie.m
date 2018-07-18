@@ -17,14 +17,16 @@
     // set different properties that the movie will have
     self.title = dictionary[@"original_title"];
     
-    // Setting the posterurl
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    
+    // Setting the posterurl if the property exists
+    if(![dictionary[@"poster_path"] isEqual:[NSNull null]]){
     NSString *posterURLString = dictionary[@"poster_path"] ;
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     
     self.posterUrl = [NSURL URLWithString:fullPosterURLString];
-    
-    // Setting the backdropurl
+    }
+    // Setting the backdropurl if the property exists
     if(![dictionary[@"backdrop_path"] isEqual:[NSNull null]]){
     NSString *backdropURLString = dictionary[@"backdrop_path"];
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
@@ -37,6 +39,7 @@
     self.movieID = dictionary[@"id"];
     self.mediaType = dictionary[@"media_type"];
 //    self.tagline = dictionary[@"tagline"];
+    self.rating = dictionary[@"vote_average"];
     
     return self;
 }
