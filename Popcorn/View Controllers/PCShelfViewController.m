@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "PCMovieDetailViewController.h"
 #import <SWTableViewCell.h>
+#import "PCTrailerViewController.h"
 
 
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
@@ -117,15 +118,26 @@
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    SearchCell *tappedCell = cell;
     switch (index) {
         case 0:
         {
             //Remove from shelf
+            [[APIManager shared] removeItem:[self.shelfId stringValue] forItem:tappedCell.movie completion:^(NSError *error) {
+                if(error == nil){
+                    NSLog(@"succesfully removed item from list");
+                    [self getMovies:[self.shelfId stringValue]];
+                }
+                else{
+                    NSLog(@"error: %@", error.localizedDescription);
+                }
+            }];
             break;
         }
         case 1:
         {
             //Watch trailer
+            [self performSegueWithIdentifier:@"shelfToTrailer" sender:cell];
             break;
         }
         case 2:
@@ -163,6 +175,7 @@
 
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -171,6 +184,11 @@
     if([segue.identifier isEqualToString:@"shelfToDetail"]){
         SearchCell *tappedCell = sender;
         PCMovieDetailViewController *receiver = [segue destinationViewController];
+        receiver.movie = tappedCell.movie;
+    }
+    else if([segue.identifier isEqualToString:@"shelfToTrailer"]){
+        SearchCell *tappedCell = sender;
+        PCTrailerViewController *receiver = [segue destinationViewController];
         receiver.movie = tappedCell.movie;
     }
 }

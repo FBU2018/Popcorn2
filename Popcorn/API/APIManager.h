@@ -19,5 +19,6 @@
 
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
+- (void)getTrailerURL: (NSString *) movieId completion:(void (^) (NSURL *, NSError *)) completion;
 
 @end

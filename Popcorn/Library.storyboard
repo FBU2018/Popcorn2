@@ -179,11 +179,49 @@
                     <connections>
                         <outlet property="searchBar" destination="5iq-63-ccj" id="Xaw-bt-ytM"/>
                         <outlet property="tableView" destination="qEF-vW-1Y8" id="3gM-lE-N0k"/>
+                        <segue destination="CXt-2S-Xji" kind="presentation" identifier="shelfToTrailer" id="WME-Fn-kNs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICT-2V-LRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1644" y="74.212893553223395"/>
+        </scene>
+        <!--Trailer View Controller-->
+        <scene sceneID="XYI-Cc-s2Y">
+            <objects>
+                <viewController id="CXt-2S-Xji" customClass="PCTrailerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CX8-ah-dsi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jD-Ak-pZ4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FF-B1-Zts">
+                                <rect key="frame" x="16" y="26" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="didTapBack:" destination="CXt-2S-Xji" eventType="touchUpInside" id="owk-1R-94O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BmY-Ku-0fB"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="9jD-Ak-pZ4" id="u11-dQ-PX6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5V-Tp-4lK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.8000000000002" y="-286.50674662668666"/>
         </scene>
         <!--Detail-->
         <scene sceneID="6Xu-eJ-Bum">
@@ -191,7 +229,7 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="mxr-D3-NY0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9w-BD-0Wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="-11"/>
+            <point key="canvasLocation" x="2544" y="171"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETa-38-fzx">
