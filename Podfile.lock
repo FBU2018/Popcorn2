@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - AFNetworking
+  - SWTableViewCell
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - SWTableViewCell
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 08950909763e02fbbf1984fb990b66b497796e9f
+PODFILE CHECKSUM: 83f060cae0c6a5bc4be537030bbdda21ea754507
 
 COCOAPODS: 1.5.3

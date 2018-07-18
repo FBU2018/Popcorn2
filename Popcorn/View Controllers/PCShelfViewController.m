@@ -11,6 +11,7 @@
 #import "APIManager.h"
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
+#import "PCMovieDetailViewController.h"
 
 
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -45,6 +46,7 @@
     
     //TODO: eventually combine the following into setCell method
     Movie *movie = self.movieArray[indexPath.row];
+    cell.movie = movie;
     cell.titleLabel.text = movie.title;
     cell.releaseDateLabel.text = movie.releaseDateString;
     cell.posterView.image = nil;
@@ -76,14 +78,18 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if([segue.identifier isEqualToString:@"shelfToDetail"]){
+        SearchCell *tappedCell = sender;
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        receiver.movie = tappedCell.movie;
+    }
 }
-*/
+
 
 @end

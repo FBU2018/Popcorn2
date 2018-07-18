@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
+#import <SWTableViewCell.h>
 
-@interface LibraryCell : UITableViewCell
+@interface LibraryCell : SWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberItemsLabel;
@@ -16,6 +18,7 @@
 
 @property (strong, nonatomic) NSNumber *shelfId;
 @property (strong, nonatomic) NSString *listType;
+@property (strong, nonatomic) Movie *movieForImage;
 - (void)configureCell:(NSDictionary *) shelfInfo;
 
 

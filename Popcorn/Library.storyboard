@@ -23,9 +23,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="A9X-M9-I4E">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LibraryCell" rowHeight="111" id="pFo-IE-S3P" customClass="LibraryCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="111"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pFo-IE-S3P" id="hLC-ey-2Mj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
@@ -71,7 +76,7 @@
                                             <outlet property="numberItemsLabel" destination="GIr-em-Pzg" id="b58-0O-D7Q"/>
                                             <outlet property="shelfImageView" destination="WwS-SO-kSM" id="0qq-au-2WF"/>
                                             <outlet property="titleLabel" destination="ZfQ-bS-g3n" id="0bv-ek-szo"/>
-                                            <segue destination="fWq-xU-6xp" kind="show" identifier="libraryToShelf" id="YEm-aG-U38"/>
+                                            <segue destination="fWq-xU-6xp" kind="show" identifier="libraryToShelf" id="rOT-6s-DLE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -81,13 +86,14 @@
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Watchlist" id="2iw-vI-whp">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="I0m-gU-WDV">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
                             <connections>
-                                <action selector="didTapCreate:" destination="MkW-Uf-1rx" id="r3O-UQ-KY1"/>
+                                <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="A9X-M9-I4E" id="jsP-2B-BZe"/>
                         <outlet property="tableView" destination="Ibw-hw-ImS" id="d68-tz-3bY"/>
                     </connections>
                 </viewController>
@@ -115,7 +121,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-2h-1G7">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-2h-1G7">
                                                     <rect key="frame" x="8" y="19" width="117" height="137"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -156,6 +162,7 @@
                                             <outlet property="posterView" destination="0EG-2h-1G7" id="9zM-Uy-GDE"/>
                                             <outlet property="releaseDateLabel" destination="ghZ-hz-CNd" id="WSP-az-OFa"/>
                                             <outlet property="titleLabel" destination="c3u-j9-pcW" id="orm-3y-a63"/>
+                                            <segue destination="mxr-D3-NY0" kind="show" identifier="shelfToDetail" id="7hh-sX-Jwg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -171,6 +178,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICT-2V-LRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1644" y="74.212893553223395"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="6Xu-eJ-Bum">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="mxr-D3-NY0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W9w-BD-0Wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2354" y="-11"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETa-38-fzx">

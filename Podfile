@@ -7,6 +7,7 @@ target 'Popcorn' do
 
   # Pods for Popcorn
   pod 'AFNetworking'
+  pod 'SWTableViewCell'
 
   target 'PopcornTests' do
     inherit! :search_paths
