@@ -41,7 +41,8 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
-}
+
+} 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
