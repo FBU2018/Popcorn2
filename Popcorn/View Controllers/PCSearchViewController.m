@@ -33,6 +33,7 @@
     self.searchBar.delegate = self;
     
     //
+    self.moviesArray = [NSArray new];
     
     
     self.filteredData = self.data;
@@ -127,28 +128,42 @@
     [self.searchTableView reloadData];
 }
 
-// called when keyboard search button pressed
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    // String to store search text
-    NSString *searchText = searchBar.text;
-    
-    // network call to get the search results
-    [self searchMoviesWithString:searchText];
-    
-    if (searchText.length != 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-            return [item[@"title"] containsString:searchText];
-        }];
-        
-        self.filteredData = [self.moviesArray filteredArrayUsingPredicate:predicate];
-    }
-    else {
-        self.filteredData = self.moviesArray;
-    }
-    
+//// called when keyboard search button pressed
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+//    // String to store search text
+//    NSString *searchText = searchBar.text;
+//    
+//    // network call to get the search results
+//    [self searchMoviesWithString:searchText];
+//    
+//    if (searchText.length != 0) {
+//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+//            return [item[@"title"] containsString:searchText];
+//        }];
+//        
+//        self.filteredData = [self.moviesArray filteredArrayUsingPredicate:predicate];
+//    }
+//    else {
+//        self.filteredData = self.moviesArray;
+//    }
+//    
+//    [self.searchTableView reloadData];
+//    
+//}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.filteredData = self.moviesArray;
     [self.searchTableView reloadData];
     
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
 }
+
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.filteredData.count;
