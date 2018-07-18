@@ -81,22 +81,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
-//    [cell configureCell:self.shelves[indexPath.row]];
-    [cell configureCell:self.filteredData[indexPath.row]];
-
+    unsigned long count = self.filteredData.count;
+    [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.shelves.count;
     return self.filteredData.count;
 }
 
 
-- (IBAction)didTapCreate:(id)sender {
-    [[APIManager shared] createList:@"Test" completion:^(NSString *listId, NSError *error) {
+- (void)createList:(NSString *)name {
+    [[APIManager shared] createList:name completion:^(NSString *listId, NSError *error) {
         if(error){
             NSLog(@"Error creating list: %@", error.localizedDescription);
         }
@@ -160,6 +159,29 @@
         }
     }];
 }
+
+- (IBAction)didTapPlus:(id)sender {
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Create a New Shelf" message: @"Name your shelf"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Name";
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    }];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }]];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Create" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = alertController.textFields;
+        UITextField * namefield = textfields[0];
+        
+        if([namefield.text isEqualToString:@""] == NO){
+            [self createList:namefield.text];
+        }
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 
 

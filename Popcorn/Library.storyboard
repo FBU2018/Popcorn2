@@ -86,9 +86,9 @@
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Watchlist" id="2iw-vI-whp">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="I0m-gU-WDV">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
                             <connections>
-                                <action selector="didTapCreate:" destination="MkW-Uf-1rx" id="r3O-UQ-KY1"/>
+                                <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
