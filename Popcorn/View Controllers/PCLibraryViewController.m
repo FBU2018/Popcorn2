@@ -199,7 +199,7 @@
 }
 
 - (IBAction)didTapPlus:(id)sender {
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Create a New Shelf" message: @"Name your shelf"
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Create a New Shelf" message: nil
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Name";
