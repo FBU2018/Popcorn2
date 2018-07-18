@@ -41,8 +41,6 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
-//    layout.estimatedItemSize = CGSizeMake(110, 160);
-//    layout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
 
 }
 
@@ -62,6 +60,9 @@
     
  
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
+    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+    [self.backdropImageView addSubview:overlay];
     
     
     [self fetchCast];
