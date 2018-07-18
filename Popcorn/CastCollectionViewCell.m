@@ -21,7 +21,7 @@
         [self.castImageView setImageWithURL:profileURL];
     }
    
-    [self.castImageView.layer setCornerRadius:45.0f];
+    [self.castImageView.layer setCornerRadius:self.castImageView.frame.size.width / 2];
     [self.castImageView.layer setMasksToBounds:YES];
     
     self.characterNameLabel.text = actor[@"character"];
