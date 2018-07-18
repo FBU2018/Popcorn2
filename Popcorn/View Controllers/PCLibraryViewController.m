@@ -11,17 +11,18 @@
 #import "LibraryCell.h"
 #import "Movie.h"
 #import "PCShelfViewController.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource/*, UISearchBarDelegate*/>
+@interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 //array of shelf dictionaries
-@property (strong, nonatomic) NSArray *shelves;
-@property (strong, nonatomic) NSMutableArray *allMovies; //contains all movie objects in all of user's lists
-@property (strong, nonatomic) NSMutableArray *moviesInList;
-@property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) NSArray *shelves; //array of dictionaries about each shelf
+@property (strong, nonatomic) NSMutableArray *allMovies; //contains all Movie objects in all of user's lists
+@property (strong, nonatomic) NSMutableArray *moviesInList; //helper
+@property (strong, nonatomic) NSArray *filteredData; //for search
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end
@@ -32,51 +33,47 @@
     [super viewDidLoad];
 
     self.shelves = [NSArray new];
+    self.filteredData = [NSArray new];
     self.moviesInList = [NSMutableArray new];
     self.allMovies = [NSMutableArray new];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.searchBar.delegate = self;
+    self.searchBar.delegate = self;
     
     
     [self getLists];
 
 }
 
-//TO DISCUSS: move searching all movies to stretch goal?
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//
-//    if (searchText.length != 0) {
-//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Movie *movie, NSDictionary *bindings) {
-//            return [movie.title containsString:searchText];
-//        }];
-//
-//        self.filteredData = [self.allMovies filteredArrayUsingPredicate:predicate];
-//        NSLog(@"allMovies: %@", self.allMovies);
-//
-//        NSLog(@"%@", self.filteredData);
-//    }
-//    else {
-//        self.filteredData = self.allMovies;
-//    }
-//
-//    [self.tableView reloadData];
-//}
-//
-//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-//    self.searchBar.showsCancelButton = YES;
-//}
-//
-//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-//    self.filteredData = self.allMovies;
-//    [self.tableView reloadData];
-//
-//    self.searchBar.showsCancelButton = NO;
-//    self.searchBar.text = @"";
-//    [self.searchBar resignFirstResponder];
-//}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *shelf, NSDictionary *bindings) {
+            return [shelf[@"name"] containsString:searchText];
+        }];
+        self.filteredData = [self.shelves filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@", self.filteredData);
+    }
+    else {
+        self.filteredData = self.shelves;
+    }
+    [self.tableView reloadData];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.filteredData = self.shelves;
+    [self.tableView reloadData];
+
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -86,12 +83,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
-    [cell configureCell:self.shelves[indexPath.row]];
+//    [cell configureCell:self.shelves[indexPath.row]];
+    [cell configureCell:self.filteredData[indexPath.row]];
+
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.shelves.count;
+//    return self.shelves.count;
+    return self.filteredData.count;
 }
 
 
@@ -113,6 +113,7 @@
     [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
         if(error == nil){
             self.shelves = shelves[@"results"];
+            self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
             [self.tableView reloadData];
             

@@ -7,6 +7,8 @@
 //
 
 #import "LibraryCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "APIManager.h"
 
 @implementation LibraryCell
 
@@ -25,9 +27,27 @@
     self.titleLabel.text = shelfInfo[@"name"];
     NSString *itemCount = [shelfInfo[@"item_count"] stringValue];
     self.numberItemsLabel.text = [itemCount stringByAppendingString:@" items"];
-    
     self.shelfId = shelfInfo[@"id"];
     self.listType = shelfInfo[@"list_type"];
+    
+    //set image
+    NSString *shelfIdString = [self.shelfId stringValue];
+    [[APIManager shared] getShelfMovies:shelfIdString completion:^(NSArray *movies, NSError *error) {
+        if(error == nil){
+            NSLog(@"Successfully got movies on shelves");
+            NSMutableArray *moviesArray = [NSMutableArray array];
+            moviesArray = [Movie moviesWithDictionaries:movies];
+            self.shelfImageView.image = nil;
+            if(moviesArray.count > 0){
+                self.movieForImage = moviesArray[moviesArray.count-1];
+                [self.shelfImageView setImageWithURL:self.movieForImage.posterUrl];
+            }
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+
 }
 
 @end

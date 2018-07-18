@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 @interface LibraryCell : UITableViewCell
 
@@ -16,6 +17,7 @@
 
 @property (strong, nonatomic) NSNumber *shelfId;
 @property (strong, nonatomic) NSString *listType;
+@property (strong, nonatomic) Movie *movieForImage;
 - (void)configureCell:(NSDictionary *) shelfInfo;
 
 
