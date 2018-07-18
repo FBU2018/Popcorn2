@@ -143,6 +143,7 @@
         case 2:
         {
             //Add to shelf
+            [self performSegueWithIdentifier:@"shelfToPicker" sender:cell];
             break;
         }
         default:
