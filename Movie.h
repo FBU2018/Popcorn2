@@ -18,5 +18,5 @@
 @property (strong, nonatomic) NSString *releaseDateString;
 @property (strong, nonatomic) NSNumber *movieID; 
 @property (strong, nonatomic) NSString *tagline;
-@property (strong, nonatomic) NSString *ratingString;
+@property (strong, nonatomic) NSNumber *rating;
 @end

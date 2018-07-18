@@ -14,11 +14,14 @@
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *profileURLString = actor[@"profile_path"];
     
-    
-    NSString *fullProfileURLString = [baseURLString stringByAppendingString:profileURLString];
-    NSURL *profileURL = [NSURL URLWithString:fullProfileURLString];
-    [self.castImageView setImageWithURL:profileURL]; 
-    [self.castImageView.layer setCornerRadius:45.0f];
+    self.castImageView.image = [UIImage imageNamed:@"person placeholder.png"];
+    if(![profileURLString isEqual:[NSNull null]]){
+        NSString *fullProfileURLString = [baseURLString stringByAppendingString:profileURLString];
+        NSURL *profileURL = [NSURL URLWithString:fullProfileURLString];
+        [self.castImageView setImageWithURL:profileURL];
+    }
+   
+    [self.castImageView.layer setCornerRadius:self.castImageView.frame.size.width / 2];
     [self.castImageView.layer setMasksToBounds:YES];
     
     self.characterNameLabel.text = actor[@"character"];

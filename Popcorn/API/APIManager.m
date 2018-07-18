@@ -71,6 +71,34 @@ static NSString * const accountID = @"7966256";
     }
 }
 
+- (void)deleteList:(NSString *)listId completion:(void (^)(NSError *error))completion{
+    //delete request to delete list with given id
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString *urlString = [@"https://api.themoviedb.org/4/list/" stringByAppendingString:listId];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"DELETE"];
+    
+    //headers
+    NSString *bearer = @"Bearer ";
+    NSString *accessing = [bearer stringByAppendingString:accessToken];
+
+    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
+    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+            completion(error);
+        }
+        else {
+            NSLog(@"Successfully deleted shelf");
+            completion(nil);
+        }
+    }];
+    [task resume];
+}
 
 
 - (void)getShelves:(void (^)(NSDictionary *shelves, NSError *error))completion{
@@ -91,6 +119,8 @@ static NSString * const accountID = @"7966256";
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Successfully got shelves");
             completion(dataDictionary, nil);
+            
+//            NSLog(@"dictionary: %@", dataDictionary);
         }
     }];
      [task resume];
