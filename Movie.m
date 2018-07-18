@@ -37,6 +37,7 @@
     self.overview = dictionary[@"overview"];
     self.releaseDateString = dictionary[@"release_date"];
     self.movieID = dictionary[@"id"];
+    self.mediaType = dictionary[@"media_type"];
 //    self.tagline = dictionary[@"tagline"];
     self.rating = dictionary[@"vote_average"];
     

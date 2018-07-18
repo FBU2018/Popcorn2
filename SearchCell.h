@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
+#import <SWTableViewCell.h>
 
-@interface SearchCell : UITableViewCell
+@interface SearchCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
