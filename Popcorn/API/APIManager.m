@@ -119,8 +119,6 @@ static NSString * const accountID = @"7966256";
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Successfully got shelves");
             completion(dataDictionary, nil);
-            
-            NSLog(@"dataDictionary: %@", dataDictionary);
         }
     }];
      [task resume];
@@ -270,9 +268,6 @@ static NSString * const accountID = @"7966256";
     }];
     [task resume];
 }
-
-
-
 
 - (void)addItem:(NSString *)shelfId forItem:(Movie *)item completion:(void (^)(NSError *))completion{
     //post request to add item to list
