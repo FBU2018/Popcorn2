@@ -12,6 +12,8 @@
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
 		2690D4F4210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D4F3210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
+		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
+		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		951A791120FD0A89003D3901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791020FD0A89003D3901 /* AppDelegate.m */; };
 		951A791720FD0A89003D3901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A791520FD0A89003D3901 /* Main.storyboard */; };
@@ -69,6 +71,10 @@
 		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CastCollectionViewCell.m; path = Popcorn/CastCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		7178E8A621010D2300431364 /* PCReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCReviewViewController.h; sourceTree = "<group>"; };
+		7178E8A721010D2300431364 /* PCReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCReviewViewController.m; sourceTree = "<group>"; };
+		7178E8A921010D4D00431364 /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		7178E8AA21010D4D00431364 /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
 		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
 		7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +238,8 @@
 				959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */,
 				959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */,
 				959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */,
+				7178E8A621010D2300431364 /* PCReviewViewController.h */,
+				7178E8A721010D2300431364 /* PCReviewViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -247,6 +255,8 @@
 				951A795520FD11A1003D3901 /* LibraryCell.m */,
 				959B2AFF2100F8B6005D418E /* ShelfPickerCell.h */,
 				959B2B002100F8B6005D418E /* ShelfPickerCell.m */,
+				7178E8A921010D4D00431364 /* ReviewCell.h */,
+				7178E8AA21010D4D00431364 /* ReviewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,11 +491,13 @@
 				2690D4F4210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
+				7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */,
 				959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */,
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
 				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
+				7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */,
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
