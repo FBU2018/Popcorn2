@@ -7,6 +7,7 @@
 //
 
 #import "PCRatingViewController.h"
+#import "APIManager.h"
 
 @interface PCRatingViewController ()
 - (IBAction)didTapDone:(id)sender;
@@ -37,7 +38,15 @@
 */
 
 - (IBAction)didTapDone:(id)sender {
-    [self postRating];
+
+    [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text completion:^(NSError * error) {
+        if(error != nil){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Request successful");
+        }
+    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -45,41 +54,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void) postRating{
-    //post request to add item to list
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[@"https://api.themoviedb.org/4/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/items"];
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-    
-    //headers
-    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-    
-    //request body + variables
-    NSDictionary *itemDict = [[NSDictionary alloc] initWithObjectsAndKeys: item.mediaType,@"media_type",item.movieID, @"media_id", nil];
-    NSArray *itemArr = [[NSArray alloc] initWithObjects:itemDict, nil];
-    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:itemArr, @"items", nil];
-    
-    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-        NSError* error;
-        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-        [request setHTTPBody:jsonData];
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            if(error != nil){
-                NSLog(@"Error: %@", error.localizedDescription);
-                completion(error);
-            }
-            else{
-                NSLog(@"Request successful");
-                completion(nil);
-            }
-        }];
-        [task resume];
-    }
-}
+
 
 @end

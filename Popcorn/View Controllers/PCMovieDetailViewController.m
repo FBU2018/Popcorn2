@@ -12,6 +12,7 @@
 #import "APIManager.h"
 #import "PCShelfPickerViewController.h"
 #import "PCReviewViewController.h"
+#import "PCRatingViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -85,6 +86,10 @@
     }
     else if ([segue.identifier isEqualToString:@"detailToReviews"]){
         PCReviewViewController *receiver = [segue destinationViewController];
+        receiver.movie = self.movie;
+    }
+    else if ([segue.identifier isEqualToString:@"detailToRating"]){
+        PCRatingViewController *receiver = [segue destinationViewController];
         receiver.movie = self.movie;
     }
 }

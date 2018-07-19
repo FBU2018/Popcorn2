@@ -84,7 +84,7 @@
                                                 <state key="normal" title="Your rating"/>
                                                 <connections>
                                                     <action selector="didTapRating:" destination="8ub-PJ-jCL" eventType="touchUpInside" id="6bY-DT-ZxC"/>
-                                                    <segue destination="hvf-cg-uzW" kind="presentation" id="ZWB-nl-73M"/>
+                                                    <segue destination="hvf-cg-uzW" kind="presentation" identifier="detailToRating" id="ZWB-nl-73M"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-3e-vre">
