@@ -347,7 +347,7 @@ static NSString * const accountID = @"7966256";
     //post request to add item to list
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieId] stringByAppendingString:@"/rating?api_key="] stringByAppendingString:apiKey];
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieId] stringByAppendingString:@"/rating?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:sessionID];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];
     
