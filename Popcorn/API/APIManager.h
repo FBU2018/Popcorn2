@@ -23,4 +23,5 @@
 - (void)getTrailerURL: (NSString *) movieId completion:(void (^) (NSURL *, NSError *)) completion;
 - (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (NSString *, NSError *)) completion;
 
+- (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
 @end

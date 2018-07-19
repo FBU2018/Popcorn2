@@ -11,6 +11,7 @@
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
 #import "PCMovieDetailViewController.h"
+#import "PCInfiniteScrollActivityIndicator.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -19,20 +20,37 @@
 @property (strong, nonatomic) NSArray *filteredMovieObjects;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *moviesArray;
--(void) searchMoviesWithString:(NSString *)searchString andCompletionHandler:(void (^) (NSArray*))completionHandler;
--(void)searchAndFilterWithSearchString:(NSString *) searchText;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) NSString *currentSearchText;
+ -(void) searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString*)pageNumber andCompletionHandler:(void (^) (NSArray*))completionHandler;
+-(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber;
 @end
 
 @implementation PCSearchViewController
+
+int currentPageNumber = 1;
+bool isMoreDataLoading = false;
+PCInfiniteScrollActivityIndicator *loadingMoreView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Set up Infinite Scroll loading indicator
+    CGRect frame = CGRectMake(0, self.searchTableView.contentSize.height, self.searchTableView.bounds.size.width, PCInfiniteScrollActivityIndicator.defaultHeight);
+    loadingMoreView = [[PCInfiniteScrollActivityIndicator alloc] initWithFrame:frame];
+    loadingMoreView.hidden = true;
+    [self.searchTableView addSubview:loadingMoreView];
+    
+    UIEdgeInsets insets = self.searchTableView.contentInset;
+    insets.bottom += PCInfiniteScrollActivityIndicator.defaultHeight;
+    self.searchTableView.contentInset = insets;
+    
     //set delegate and data sources
     self.searchTableView.delegate = self;
     self.searchTableView.dataSource = self;
     self.searchBar.delegate = self;
+    self.
     
     //
     self.moviesArray = [NSArray new];
@@ -45,6 +63,37 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// method to continuously load data if there is more data
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.searchTableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.searchTableView.bounds.size.height;
+        
+        // when the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.searchTableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.searchTableView.contentSize.height, self.searchTableView.bounds.size.width, PCInfiniteScrollActivityIndicator.defaultHeight);
+            loadingMoreView.frame = frame;
+            [loadingMoreView startAnimating];
+            
+            [self loadMoreData];
+        }
+    }
+    
+}
+
+-(void)loadMoreData{
+    currentPageNumber += 1;
+    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
+    self.isMoreDataLoading = false;
+    // Stop the loading indicator
+    [loadingMoreView stopAnimating];
+    [self.searchTableView reloadData];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -68,53 +117,18 @@
     return cell;
 }
 
-//- (void) searchMoviesWithString: (NSString*) searchString{
-//    // place search string in URL
-//    NSString *baseUrl = @"https://api.themoviedb.org/3/search/movie?api_key=69308a1aa1f4a3c54b17a53c591eadb0&language=en-US&query=";
-//    NSString *searchUrl = [baseUrl stringByAppendingString:searchString];
-//    NSString *fullUrl = [searchUrl stringByAppendingString:@"&page=1&include_adult=false"];
-//
-//    NSURL *url = [NSURL URLWithString:fullUrl];
-//
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        // this runs when network call is finished
-//        if (error != nil) {
-//            //creating alert if networking error
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
-//
-//            // create try again action
-//            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                // handle tryAgain response here. Doing nothing will dismiss the view.
-//                [self searchMoviesWithString:searchString];
-//            }];
-//            [self presentViewController:alert animated:YES completion:^{
-//                // optional code for what happens after the alert controller has finished presenting
-//            }];
-//            // add the tryAgain action to the alertController
-//            [alert addAction:tryAgainAction];
-//
-//            NSLog(@"%@", [error localizedDescription]);
-//        }
-//        else{
-//            // store the received data in a dictionary
-//            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//            // store the results section of the JSON data in the movies array
-//            NSArray *dictionaries = dataDictionary[@"results"];
-//
-//            self.moviesArray = dictionaries;
-//        }
-//    }];
-//    [task resume];
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SearchCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"cellToDetailSegue" sender:cell];
+}
 
 // define a completion block for the search network call
--(void) searchMoviesWithString:(NSString *)searchString andCompletionHandler:(void (^) (NSArray*))completionHandler{
+-(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andCompletionHandler:(void (^)(NSArray *))completionHandler{
+    
     // place search string in URL
     NSString *baseUrl = @"https://api.themoviedb.org/3/search/movie?api_key=69308a1aa1f4a3c54b17a53c591eadb0&language=en-US&query=";
     NSString *searchUrl = [baseUrl stringByAppendingString:searchString];
-    NSString *fullUrl = [searchUrl stringByAppendingString:@"&page=1&include_adult=false"];
+    NSString *fullUrl = [[[searchUrl stringByAppendingString:@"&page="] stringByAppendingString:pageNumber] stringByAppendingString:@"&include_adult=false"];
     
     NSURL *url = [NSURL URLWithString:fullUrl];
     
@@ -129,7 +143,7 @@
             // create try again action
             UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 // handle tryAgain response here. Doing nothing will dismiss the view.
-                [self searchMoviesWithString:searchString andCompletionHandler:nil];
+                [self searchMoviesWithString:searchString andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andCompletionHandler:nil];
             }];
             [self presentViewController:alert animated:YES completion:^{
                 // optional code for what happens after the alert controller has finished presenting
@@ -154,14 +168,14 @@
 }
 
 // helper function that filters network call results with search query
--(void)searchAndFilterWithSearchString:(NSString *) searchText{
+-(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber{
     if ([searchText isEqualToString:@""]){
         self.filteredData = nil;
         [self.searchTableView reloadData];
     }
     else if (searchText.length != 0) {
         // network call to get the search results with a completion handler
-        [self searchMoviesWithString:searchText andCompletionHandler:^(NSArray *results) {
+        [self searchMoviesWithString:searchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andCompletionHandler:^(NSArray *results){
             // set up predicate for searching movies
             NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
                 return [item[@"title"] containsString:searchText];
@@ -169,7 +183,6 @@
             
             self.filteredData = [results filteredArrayUsingPredicate:predicate];
             [self.searchTableView reloadData];
-            
         }];
     }
     // if user hasn't typed anything then don't filter movies
@@ -178,14 +191,18 @@
     }
 }
 
+
+
 // called when user starts typing
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    [self searchAndFilterWithSearchString:searchText];
+    self.currentSearchText = searchText;
+    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
 }
 
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self searchAndFilterWithSearchString:searchBar.text];
+    self.currentSearchText = searchBar.text;
+    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
