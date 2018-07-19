@@ -11,5 +11,6 @@
 @interface PCShelfViewController : UIViewController
 
 @property (strong, nonatomic) NSNumber *shelfId;
+@property (strong, nonatomic) NSArray *shelves;
 
 @end

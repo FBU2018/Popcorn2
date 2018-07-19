@@ -89,7 +89,7 @@
                                                 <rect key="frame" x="0.0" y="230" width="375" height="182.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="182.5" id="I0C-CV-SA9"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="182.5" id="I0C-CV-SA9"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f0f-ZO-Ls8">
                                                     <size key="itemSize" width="118" height="187"/>
@@ -108,25 +108,25 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vQ-TN-PAT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="118" height="187"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkM-6C-6u6">
-                                                                            <rect key="frame" x="0.0" y="3" width="118" height="118"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Character" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Ev-ps8">
-                                                                            <rect key="frame" x="8" y="139" width="102" height="18"/>
+                                                                            <rect key="frame" x="8" y="136" width="102" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="102" id="hKI-0t-05W"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkM-6C-6u6">
+                                                                            <rect key="frame" x="4" y="3" width="110" height="110"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="6bJ-Ev-ps8" secondAttribute="trailing" constant="8" id="2Ox-NG-fMC"/>
                                                                         <constraint firstItem="6bJ-Ev-ps8" firstAttribute="leading" secondItem="3vQ-TN-PAT" secondAttribute="leading" constant="8" id="AKz-Yc-fhX"/>
-                                                                        <constraint firstItem="6bJ-Ev-ps8" firstAttribute="centerY" secondItem="3vQ-TN-PAT" secondAttribute="centerY" constant="54.5" id="Mk1-Fz-31B"/>
+                                                                        <constraint firstItem="6bJ-Ev-ps8" firstAttribute="centerY" secondItem="3vQ-TN-PAT" secondAttribute="centerY" constant="50.5" id="Mk1-Fz-31B"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>

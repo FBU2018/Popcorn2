@@ -45,7 +45,11 @@
     
     
     [self getLists];
+}
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [self getLists];
 }
 
 
@@ -260,6 +264,7 @@
         LibraryCell *tappedCell = sender;
         PCShelfViewController *receiver = [segue destinationViewController];
         receiver.shelfId = tappedCell.shelfId;
+        receiver.shelves = self.shelves;
     }
 }
 
