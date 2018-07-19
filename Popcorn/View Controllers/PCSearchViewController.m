@@ -11,6 +11,8 @@
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
 #import "PCMovieDetailViewController.h"
+#import "JGProgressHUD.h"
+#import "APIManager.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -21,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *moviesArray;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (strong, nonatomic) NSString *currentSearchText;
- -(void) searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString*)pageNumber andCompletionHandler:(void (^) (NSArray*))completionHandler;
+@property (strong, nonatomic) JGProgressHUD *HUD;
 -(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber;
 @end
 
@@ -33,8 +35,9 @@ bool isMoreDataLoading = false;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     // Set up activity indicator for infinite scrolling
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
     
     //set delegate and data sources
     self.searchTableView.delegate = self;
@@ -62,17 +65,22 @@ bool isMoreDataLoading = false;
         // when the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.searchTableView.isDragging) {
             self.isMoreDataLoading = true;
+            // Start animating the progress indicator
+            [self.HUD showInView:self.view];
             [self loadMoreData];
         }
     }
     
 }
 
+// helper function to load more data
 -(void)loadMoreData{
     currentPageNumber += 1;
     [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
     self.isMoreDataLoading = false;
-    // Stop the loading indicator
+    // Stop animating the progress indicator
+    [self.HUD dismissAnimated:YES];
+    // Reload the table view
     [self.searchTableView reloadData];
 }
 
@@ -102,52 +110,24 @@ bool isMoreDataLoading = false;
     [self performSegueWithIdentifier:@"cellToDetailSegue" sender:cell];
 }
 
-// define a completion block for the search network call
--(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andCompletionHandler:(void (^)(NSArray *))completionHandler{
+// Error method that creates an alert if there's an error from a network call and allows user to try again
+-(void)networkCallErrorHandler:(NSError *)error{
     
-    // place search string in URL
-    NSString *baseUrl = @"https://api.themoviedb.org/3/search/movie?api_key=69308a1aa1f4a3c54b17a53c591eadb0&language=en-US&query=";
-    NSString *searchUrl = [baseUrl stringByAppendingString:searchString];
-    NSString *fullUrl = [[[searchUrl stringByAppendingString:@"&page="] stringByAppendingString:pageNumber] stringByAppendingString:@"&include_adult=false"];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+    NSLog(@"%@", error.localizedDescription);
     
-    NSURL *url = [NSURL URLWithString:fullUrl];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        // this runs when network call is finished
-        if (error != nil) {
-            //creating alert if networking error
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
-            NSLog(@"%@", error.localizedDescription);
-            
-            // create try again action
-            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                // handle tryAgain response here. Doing nothing will dismiss the view.
-                [self searchMoviesWithString:searchString andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andCompletionHandler:nil];
-            }];
-            [self presentViewController:alert animated:YES completion:^{
-                // optional code for what happens after the alert controller has finished presenting
-            }];
-            // add the tryAgain action to the alertController
-            [alert addAction:tryAgainAction];
-            
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else{
-            NSLog(@"Network call returned results");
-            // store the received data in a dictionary
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            // store the results section of the JSON data in the movies array
-            NSArray *dictionaries = dataDictionary[@"results"];
-            
-            for (NSDictionary *dictionary in dictionaries){
-                [self.moviesArray addObject:dictionary];
-            }
-            completionHandler(self.moviesArray);
-        }
+    // create a dismiss action
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss Error" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    [task resume];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
+    // add the dismiss action to the alertController
+    [alert addAction:dismiss];
+    
+    NSLog(@"%@", [error localizedDescription]);
 }
 
 // helper function that filters network call results with search query
@@ -159,7 +139,7 @@ bool isMoreDataLoading = false;
     }
     else if (searchText.length != 0) {
         // network call to get the search results with a completion handler
-        [self searchMoviesWithString:searchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andCompletionHandler:^(NSArray *results){
+        [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
             // set up predicate for searching movies
             NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
                 return [item[@"title"] containsString:searchText];
@@ -167,6 +147,8 @@ bool isMoreDataLoading = false;
             
             self.filteredData = [results filteredArrayUsingPredicate:predicate];
             [self.searchTableView reloadData];
+        } andErrorCompletionHandler:^(NSError *error) {
+            [self networkCallErrorHandler:error];
         }];
     }
     // if user hasn't typed anything then don't filter movies
@@ -181,7 +163,20 @@ bool isMoreDataLoading = false;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     self.currentSearchText = searchText;
     currentPageNumber = 1;
-    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
+    
+    // API call to search
+    [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
+        // set up predicate for searching movies
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+            return [item[@"title"] containsString:searchText];
+        }];
+        
+        self.filteredData = [results filteredArrayUsingPredicate:predicate];
+        [self.searchTableView reloadData];
+    } andErrorCompletionHandler:^(NSError *error){
+        [self networkCallErrorHandler:error];
+    }];
+    
     // scroll back to the top
     [self.searchTableView setContentOffset:CGPointMake(0.0f, -self.searchTableView.contentInset.top) animated:YES];
 }

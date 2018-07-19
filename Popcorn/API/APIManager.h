@@ -24,4 +24,5 @@
 - (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (NSString *, NSError *)) completion;
 
 - (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
+-(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andResultsCompletionHandler:(void (^)(NSArray *))resultsHandler andErrorCompletionHandler:(void (^)(NSError *))errorHandler;
 @end
