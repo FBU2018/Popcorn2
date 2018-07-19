@@ -30,6 +30,8 @@
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
+		959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2B002100F8B6005D418E /* ShelfPickerCell.m */; };
+		959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959B2B0221010610005D418E /* ShelfPicker.storyboard */; };
 		963C025F4758FE667156D96B /* libPods-PopcornTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */; };
 		D1910B1DD3850011033127A4 /* libPods-PopcornUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF57B52494D74F913B75092 /* libPods-PopcornUITests.a */; };
 		FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB24C848515EA0D355910C /* libPods-Popcorn.a */; };
@@ -100,6 +102,9 @@
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCShelfPickerViewController.h; sourceTree = "<group>"; };
 		959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCShelfPickerViewController.m; sourceTree = "<group>"; };
+		959B2AFF2100F8B6005D418E /* ShelfPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShelfPickerCell.h; sourceTree = "<group>"; };
+		959B2B002100F8B6005D418E /* ShelfPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShelfPickerCell.m; sourceTree = "<group>"; };
+		959B2B0221010610005D418E /* ShelfPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShelfPicker.storyboard; sourceTree = "<group>"; };
 		C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F26F587999050C3F8A05BB /* Pods-PopcornTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D58AF72C9334674A442A9E5D /* Pods-PopcornUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 				951A794420FD0CB5003D3901 /* Library.storyboard */,
 				951A794620FD0CC1003D3901 /* Search.storyboard */,
 				951A794820FD0CCC003D3901 /* Detail.storyboard */,
+				959B2B0221010610005D418E /* ShelfPicker.storyboard */,
 				951A791820FD0A8B003D3901 /* Assets.xcassets */,
 				951A791A20FD0A8B003D3901 /* LaunchScreen.storyboard */,
 				951A791D20FD0A8B003D3901 /* Info.plist */,
@@ -239,6 +245,8 @@
 				71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */,
 				951A795420FD11A1003D3901 /* LibraryCell.h */,
 				951A795520FD11A1003D3901 /* LibraryCell.m */,
+				959B2AFF2100F8B6005D418E /* ShelfPickerCell.h */,
+				959B2B002100F8B6005D418E /* ShelfPickerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				951A791C20FD0A8B003D3901 /* LaunchScreen.storyboard in Resources */,
 				951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */,
 				951A794520FD0CB5003D3901 /* Library.storyboard in Resources */,
+				959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */,
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
 				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
@@ -472,6 +481,7 @@
 				2690D4F4210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
+				959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */,
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
