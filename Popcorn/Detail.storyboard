@@ -163,7 +163,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Community Reviews"/>
                                                 <connections>
-                                                    <segue destination="tfe-bA-05h" kind="show" identifier="detailToReviews" id="iag-8a-tgV"/>
+                                                    <segue destination="tfe-bA-05h" kind="presentation" identifier="detailToReviews" id="iag-8a-tgV"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Trd-XM-jQi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="58" width="375" height="609"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -294,12 +294,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hx1-Mb-fo8">
+                                <rect key="frame" x="322" y="20" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="didTapDone:" destination="tfe-bA-05h" eventType="touchUpInside" id="YVR-U5-Abi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bZn-dn-VGJ"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Trd-XM-jQi" id="LpF-RE-bwn"/>
+                        <segue destination="8ub-PJ-jCL" kind="show" identifier="reviewsToDetail" id="w5f-za-5UG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcU-AB-UxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

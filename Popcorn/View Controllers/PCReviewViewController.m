@@ -12,6 +12,7 @@
 @interface PCReviewViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *reviews;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)didTapDone:(id)sender;
 
 @end
 
@@ -19,9 +20,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchReviews];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self fetchReviews];
+
+    //this is displaying every time for some reason, breakpoint says that reviews is nill
+//    if(self.reviews.count == 0){
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Reviews" message:@"This movie has no reviews" preferredStyle:(UIAlertControllerStyleAlert)];
+//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [self dismissViewControllerAnimated:NO completion:nil];
+//        }];
+//        [alert addAction:okAction];
+//        [self presentViewController:alert animated:YES completion:^{
+//
+//        }];
+//    }
+
 
 }
 
@@ -53,6 +67,7 @@
     return self.reviews.count;
 }
 
+//move to APIManager later
 -(void) fetchReviews{
     NSString *movieID = [self.movie.movieID stringValue];
     NSString *apiKey = @"69308a1aa1f4a3c54b17a53c591eadb0";
@@ -70,11 +85,25 @@
             NSLog(@"successfully fetched reviews");
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             self.reviews = dataDictionary[@"results"];
-            NSLog(@"%@", self.reviews);
+            //NSLog(@"%@", self.reviews);
+                if(self.reviews.count == 0){
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Reviews" message:@"This movie has no reviews" preferredStyle:(UIAlertControllerStyleAlert)];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{
+            
+                    }];
+                }
+
             [self.tableView reloadData];
         }
     }];
     [task resume];
 }
 
+- (IBAction)didTapDone:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
