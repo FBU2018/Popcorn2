@@ -194,6 +194,7 @@
         SearchCell *tappedCell = sender;
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.movie = tappedCell.movie;
+        receiver.shelves = self.shelves;
     }
     else if([segue.identifier isEqualToString:@"shelfToTrailer"]){
         SearchCell *tappedCell = sender;
