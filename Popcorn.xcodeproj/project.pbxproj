@@ -13,6 +13,7 @@
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
+		7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7196F6B621014AD20005643B /* PCRatingViewController.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		951A791120FD0A89003D3901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791020FD0A89003D3901 /* AppDelegate.m */; };
 		951A791720FD0A89003D3901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A791520FD0A89003D3901 /* Main.storyboard */; };
@@ -72,6 +73,8 @@
 		7178E8A721010D2300431364 /* PCReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCReviewViewController.m; sourceTree = "<group>"; };
 		7178E8A921010D4D00431364 /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		7178E8AA21010D4D00431364 /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
+		7196F6B521014AD20005643B /* PCRatingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCRatingViewController.h; sourceTree = "<group>"; };
+		7196F6B621014AD20005643B /* PCRatingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCRatingViewController.m; sourceTree = "<group>"; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
 		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
 		7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */,
 				7178E8A621010D2300431364 /* PCReviewViewController.h */,
 				7178E8A721010D2300431364 /* PCReviewViewController.m */,
+				7196F6B521014AD20005643B /* PCRatingViewController.h */,
+				7196F6B621014AD20005643B /* PCRatingViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				951A790820FD0A89003D3901 /* Sources */,
 				951A790920FD0A89003D3901 /* Frameworks */,
 				951A790A20FD0A89003D3901 /* Resources */,
+				F42D4D470B5AA8DFC832ED73 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +478,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F42D4D470B5AA8DFC832ED73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/JGProgressHUD/JGProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JGProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -491,6 +515,7 @@
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
 				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
+				7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */,
 				7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */,
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,

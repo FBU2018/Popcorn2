@@ -14,25 +14,29 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - JGProgressHUD (2.0.3)
   - SVPullToRefresh (0.4.1)
   - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - AFNetworking
+  - JGProgressHUD
   - SVPullToRefresh
   - SWTableViewCell
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - JGProgressHUD
     - SVPullToRefresh
     - SWTableViewCell
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 8d8beca471c61b02c46e6fad8fcb15ec943dc29c
+PODFILE CHECKSUM: fccda21d1a6f6f1aefd49e3d3fbd97321bc7fd0b
 
 COCOAPODS: 1.5.3

@@ -17,6 +17,8 @@
 - (void)deleteList: (NSString*) listId completion:(void (^)(NSError *))completion;
 - (void)removeItem: (NSString *) shelfId forItem:(Movie *)item completion:(void (^) (NSError *)) completion;
 - (void)addItem: (NSString *) shelfId forItem:(Movie *)item completion:(void (^) (NSError *)) completion;
+- (void)addRating: (NSString *) movieId withRating: (NSString *) rating completion:(void (^) (NSError *)) completion;
+
 
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
@@ -24,4 +26,5 @@
 - (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (NSString *, NSError *)) completion;
 
 - (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
+-(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andResultsCompletionHandler:(void (^)(NSArray *))resultsHandler andErrorCompletionHandler:(void (^)(NSError *))errorHandler;
 @end
