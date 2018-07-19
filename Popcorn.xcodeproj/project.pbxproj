@@ -10,6 +10,7 @@
 		26245A0C20FD54FE00A47E10 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26245A0B20FD54FE00A47E10 /* Movie.m */; };
 		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
+		2690D4F4210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D4F3210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		951A791120FD0A89003D3901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A791020FD0A89003D3901 /* AppDelegate.m */; };
@@ -49,20 +50,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.debug.xcconfig"; sourceTree = "<group>"; };
 		26245A0A20FD54FE00A47E10 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = SOURCE_ROOT; };
 		26245A0B20FD54FE00A47E10 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = SOURCE_ROOT; };
 		2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSearchViewController.h; sourceTree = "<group>"; };
 		2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSearchViewController.m; sourceTree = "<group>"; };
 		2684D0BD20FD159000FBB985 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = SOURCE_ROOT; };
 		2684D0BE20FD159000FBB985 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = SOURCE_ROOT; };
+		2690D4F2210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCInfiniteScrollActivityIndicator.h; sourceTree = "<group>"; };
+		2690D4F3210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCInfiniteScrollActivityIndicator.m; sourceTree = "<group>"; };
+		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
+		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CastCollectionViewCell.m; path = Popcorn/CastCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
 		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
-		0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.debug.xcconfig"; sourceTree = "<group>"; };
-		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
-		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAFEEDDED5793EBE028DAAD /* Pods-Popcorn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.release.xcconfig"; sourceTree = "<group>"; };
 		951A790C20FD0A89003D3901 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A790F20FD0A89003D3901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -200,10 +203,10 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2690D4F2210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.h */,
+				2690D4F3210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m */,
 				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
 				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
-				951A791220FD0A89003D3901 /* ViewController.h */,
-				951A791320FD0A89003D3901 /* ViewController.m */,
 				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
 				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
 				951A794A20FD0E42003D3901 /* PCLibraryViewController.h */,
@@ -452,7 +455,7 @@
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
-				951A791420FD0A89003D3901 /* ViewController.m in Sources */,
+				2690D4F4210013AA00ACEB00 /* PCInfiniteScrollActivityIndicator.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
