@@ -11,7 +11,6 @@
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
 #import "PCMovieDetailViewController.h"
-#import "PCInfiniteScrollActivityIndicator.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -19,7 +18,7 @@
 @property (strong, nonatomic) NSArray *filteredData;
 @property (strong, nonatomic) NSArray *filteredMovieObjects;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray *moviesArray;
+@property (strong, nonatomic) NSMutableArray *moviesArray;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (strong, nonatomic) NSString *currentSearchText;
  -(void) searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString*)pageNumber andCompletionHandler:(void (^) (NSArray*))completionHandler;
@@ -30,31 +29,19 @@
 
 int currentPageNumber = 1;
 bool isMoreDataLoading = false;
-PCInfiniteScrollActivityIndicator *loadingMoreView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    // Set up Infinite Scroll loading indicator
-    CGRect frame = CGRectMake(0, self.searchTableView.contentSize.height, self.searchTableView.bounds.size.width, PCInfiniteScrollActivityIndicator.defaultHeight);
-    loadingMoreView = [[PCInfiniteScrollActivityIndicator alloc] initWithFrame:frame];
-    loadingMoreView.hidden = true;
-    [self.searchTableView addSubview:loadingMoreView];
-    
-    UIEdgeInsets insets = self.searchTableView.contentInset;
-    insets.bottom += PCInfiniteScrollActivityIndicator.defaultHeight;
-    self.searchTableView.contentInset = insets;
+
+    // Set up activity indicator for infinite scrolling
     
     //set delegate and data sources
     self.searchTableView.delegate = self;
     self.searchTableView.dataSource = self;
     self.searchBar.delegate = self;
-    self.
     
-    //
-    self.moviesArray = [NSArray new];
-    
+    self.moviesArray = [NSMutableArray new];
     
     self.filteredData = self.data;
     
@@ -75,12 +62,6 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
         // when the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.searchTableView.isDragging) {
             self.isMoreDataLoading = true;
-            
-            // Update position of loadingMoreView, and start loading indicator
-            CGRect frame = CGRectMake(0, self.searchTableView.contentSize.height, self.searchTableView.bounds.size.width, PCInfiniteScrollActivityIndicator.defaultHeight);
-            loadingMoreView.frame = frame;
-            [loadingMoreView startAnimating];
-            
             [self loadMoreData];
         }
     }
@@ -92,7 +73,6 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
     [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
     self.isMoreDataLoading = false;
     // Stop the loading indicator
-    [loadingMoreView stopAnimating];
     [self.searchTableView reloadData];
 }
 
@@ -139,6 +119,7 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
         if (error != nil) {
             //creating alert if networking error
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+            NSLog(@"%@", error.localizedDescription);
             
             // create try again action
             UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -160,7 +141,9 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
             // store the results section of the JSON data in the movies array
             NSArray *dictionaries = dataDictionary[@"results"];
             
-            self.moviesArray = dictionaries;
+            for (NSDictionary *dictionary in dictionaries){
+                [self.moviesArray addObject:dictionary];
+            }
             completionHandler(self.moviesArray);
         }
     }];
@@ -171,6 +154,7 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
 -(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber{
     if ([searchText isEqualToString:@""]){
         self.filteredData = nil;
+        currentPageNumber = 1;
         [self.searchTableView reloadData];
     }
     else if (searchText.length != 0) {
@@ -196,7 +180,10 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
 // called when user starts typing
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     self.currentSearchText = searchText;
+    currentPageNumber = 1;
     [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
+    // scroll back to the top
+    [self.searchTableView setContentOffset:CGPointMake(0.0f, -self.searchTableView.contentInset.top) animated:YES];
 }
 
 // called when keyboard search button pressed
@@ -211,6 +198,7 @@ PCInfiniteScrollActivityIndicator *loadingMoreView;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.filteredData = nil;
+    currentPageNumber = 1;
     [self.searchTableView reloadData];
     
     self.searchBar.showsCancelButton = NO;
