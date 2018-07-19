@@ -21,4 +21,5 @@
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
 - (void)getTrailerURL: (NSString *) movieId completion:(void (^) (NSURL *, NSError *)) completion;
 
+- (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
 @end

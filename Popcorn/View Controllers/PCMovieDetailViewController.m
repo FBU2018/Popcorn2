@@ -9,6 +9,7 @@
 #import "PCMovieDetailViewController.h"
 #import "CastCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "APIManager.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -60,6 +61,8 @@
     
  
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    
+    //adds a dark tint to the backdrop so text is readable
     UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
     [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     [self.backdropImageView addSubview:overlay];
@@ -101,25 +104,10 @@
     return self.castList.count;
 }
 
-//this will go in APIManager later
+
 -(void) fetchCast{
-    
     NSString *stringID = [self.movie.movieID stringValue];
-    NSString *apiKey = @"69308a1aa1f4a3c54b17a53c591eadb0";
-    NSString *urlString = [[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:stringID]stringByAppendingString:@"/credits?api_key="]stringByAppendingString:apiKey];
-    
-    NSURL *url = [NSURL URLWithString: urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else {
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            
-            NSArray *fullCastList = dataDictionary[@"cast"];
+    [[APIManager shared] getCast:stringID completion:^(NSArray *fullCastList, NSError *error){
             if(fullCastList.count > 20){
                 self.castList = [fullCastList subarrayWithRange:NSMakeRange(0, 19)];
             }
@@ -128,9 +116,7 @@
             }
             NSLog(@"%@", self.castList);
             [self.castCollectionView reloadData];
-        }
-    }];
-    [task resume];
+     }];
 }
 
 

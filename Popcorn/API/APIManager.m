@@ -219,6 +219,26 @@ static NSString * const accountID = @"7966256";
     [task resume];
 }
 
-
+- (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion{
+    NSString *urlString = [[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieId]stringByAppendingString:@"/credits?api_key="]stringByAppendingString:apiKey];
+    
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            NSArray *fullCastList = dataDictionary[@"cast"];
+            completion(fullCastList, nil);
+        }
+    }];
+    [task resume];
+}
 
 @end
