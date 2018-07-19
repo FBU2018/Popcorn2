@@ -13,6 +13,7 @@
 // initialize Movie object with given dictionary
 - (id)initWithDictionary:(NSDictionary*) dictionary{
     self = [super init];
+//    NSLog(@"dictionary: %@", dictionary);
     
     // set different properties that the movie will have
     self.title = dictionary[@"original_title"];

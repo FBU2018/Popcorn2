@@ -14,6 +14,7 @@
 #import "PCMovieDetailViewController.h"
 #import <SWTableViewCell.h>
 #import "PCTrailerViewController.h"
+#import "PCShelfPickerViewController.h"
 
 
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
@@ -41,6 +42,13 @@
     
     if(self.shelfId != nil){
         [self getMovies: [self.shelfId stringValue]];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    if(self.shelfId != nil){
+        [self getMovies:[self.shelfId stringValue]];
     }
 }
 
@@ -191,6 +199,12 @@
         SearchCell *tappedCell = sender;
         PCTrailerViewController *receiver = [segue destinationViewController];
         receiver.movie = tappedCell.movie;
+    }
+    else if([segue.identifier isEqualToString:@"shelfToPicker"]){
+        SearchCell *tappedCell = sender;
+        PCShelfPickerViewController *receiver = [segue destinationViewController];
+        receiver.movie = tappedCell.movie;
+        receiver.shelves = self.shelves;
     }
 }
 
