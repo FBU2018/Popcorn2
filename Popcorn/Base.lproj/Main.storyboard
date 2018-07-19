@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Library-->
+        <!--LibraryNavigationControl-->
         <scene sceneID="9Ze-Rd-2DT">
             <objects>
-                <viewControllerPlaceholder storyboardName="Library" id="pF6-hK-Rz7" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Library" referencedIdentifier="LibraryNavigationControl" id="pF6-hK-Rz7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="WD3-qa-0yr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXo-eb-Aob" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,7 +27,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAh-a2-BSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="201"/>
+            <point key="canvasLocation" x="598" y="200"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pKi-eG-6PV">

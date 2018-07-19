@@ -10,6 +10,8 @@
 #import "CastCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "PCShelfPickerViewController.h"
+#import "PCReviewViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -20,11 +22,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *castCollectionView;
 
-- (IBAction)didTapAddTo:(id)sender; 
+
 - (IBAction)didTapRating:(id)sender;
-- (IBAction)didTapCommunityReviews:(id)sender;
 
 @property (strong, nonatomic) NSArray *castList;
+
 
 @end
 
@@ -71,25 +73,25 @@
     [self fetchCast];
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
-- (IBAction)didTapAddTo:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"detailToPicker"]){
+        PCShelfPickerViewController *receiver = [segue destinationViewController];
+        receiver.movie = self.movie;
+        receiver.shelves = self.shelves;
+    }
+    else if ([segue.identifier isEqualToString:@"detailToReviews"]){
+        PCReviewViewController *receiver = [segue destinationViewController];
+        receiver.movie = self.movie;
+    }
 }
+
 
 - (IBAction)didTapRating:(id)sender {
 }
-
-- (IBAction)didTapCommunityReviews:(id)sender {
-}
-
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
