@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PCSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface PCSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>
 
 @end
