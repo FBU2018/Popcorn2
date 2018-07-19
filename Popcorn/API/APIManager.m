@@ -310,5 +310,37 @@ static NSString * const accountID = @"7966256";
     }
 }
 
+// Send a network call to search movies with a given string and page number, with completion blocks to make use of the returned data and handle any errors
+-(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andResultsCompletionHandler:(void (^)(NSArray *))resultsHandler andErrorCompletionHandler:(void (^)(NSError *))errorHandler{
+    // place search string in URL
+    NSString *baseUrl = @"https://api.themoviedb.org/3/search/movie?api_key=69308a1aa1f4a3c54b17a53c591eadb0&language=en-US&query=";
+    NSString *searchUrl = [baseUrl stringByAppendingString:searchString];
+    NSString *fullUrl = [[[searchUrl stringByAppendingString:@"&page="] stringByAppendingString:pageNumber] stringByAppendingString:@"&include_adult=false"];
+    
+    NSURL *url = [NSURL URLWithString:fullUrl];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        // this runs when network call is finished
+        if (error != nil) {
+            //calls completion handler that creates an alert when there is an error
+            errorHandler(error);
+        }
+        else{
+            NSLog(@"Network call returned results");
+            // store the received data in a dictionary
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            // store the results section of the JSON data in the movies array
+            NSArray *dictionaries = dataDictionary[@"results"];
+            NSMutableArray *finalResults = [NSMutableArray new];
+            for (NSDictionary *dictionary in dictionaries){
+                [finalResults addObject:dictionary];
+            }
+            resultsHandler(finalResults);
+        }
+    }];
+    [task resume];
+}
 
 @end
