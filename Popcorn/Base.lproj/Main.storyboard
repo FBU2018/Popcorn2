@@ -19,15 +19,15 @@
             </objects>
             <point key="canvasLocation" x="686" y="-171"/>
         </scene>
-        <!--Search-->
+        <!--PCSearchNavigationViewController-->
         <scene sceneID="akr-2r-TDn">
             <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="92k-Oj-sL8" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="PCSearchNavigationViewController" id="92k-Oj-sL8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="A9p-MQ-zKk"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAh-a2-BSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="200"/>
+            <point key="canvasLocation" x="734" y="201"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pKi-eG-6PV">

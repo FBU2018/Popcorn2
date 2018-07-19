@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--Search View Controller-->
         <scene sceneID="BiI-C9-bcl">
             <objects>
-                <viewController storyboardIdentifier="PCSearchViewController" id="d6c-rO-qwZ" customClass="PCSearchViewController" sceneMemberID="viewController">
+                <viewController id="d6c-rO-qwZ" customClass="PCSearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="46a-3W-PdP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TyW-6j-AJX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="M3D-rt-s5L"/>
                     <navigationItem key="navigationItem" id="fEN-Fo-HBO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -106,11 +105,13 @@
             </objects>
             <point key="canvasLocation" x="1654.4000000000001" y="-80.059970014992516"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="LTf-3e-vlq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fg6-nj-dg6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PCSearchNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Fg6-nj-dg6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="4H8-5f-G6v"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BB1-gU-X12">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,4 +126,7 @@
             <point key="canvasLocation" x="92" y="-0.44977511244377816"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="search" width="30" height="30"/>
+    </resources>
 </document>
