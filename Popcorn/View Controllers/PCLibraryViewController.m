@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (weak, nonatomic) IBOutlet UITabBarItem *tabBarButton;
 
 @end
 
@@ -51,7 +52,6 @@
     [super viewDidAppear:YES];
     [self getLists];
 }
-
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
