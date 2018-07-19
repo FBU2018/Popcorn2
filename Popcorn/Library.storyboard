@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Watchlist-->
+        <!--Library-->
         <scene sceneID="EYB-AC-iZ3">
             <objects>
-                <viewController id="MkW-Uf-1rx" customClass="PCLibraryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PCLibraryViewController" id="MkW-Uf-1rx" customClass="PCLibraryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a33-AT-Gml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,13 +85,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Watchlist" id="2iw-vI-whp">
+                    <navigationItem key="navigationItem" title="Library" id="2iw-vI-whp">
                         <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
                             <connections>
                                 <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="A9X-M9-I4E" id="jsP-2B-BZe"/>
                         <outlet property="tableView" destination="Ibw-hw-ImS" id="d68-tz-3bY"/>
@@ -240,17 +241,20 @@
             </objects>
             <point key="canvasLocation" x="2544" y="274"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Library-->
         <scene sceneID="ETa-38-fzx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3X7-Ao-lFz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LibraryNavigationControl" automaticallyAdjustsScrollViewInsets="NO" id="3X7-Ao-lFz" customClass="PCLibraryNavigationViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Library" id="AIG-1l-peN"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0r4-h8-IRU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="tabBarItem" destination="AIG-1l-peN" id="Pkw-bk-tqP"/>
                         <segue destination="MkW-Uf-1rx" kind="relationship" relationship="rootViewController" id="wMn-fg-FXd"/>
                     </connections>
                 </navigationController>
