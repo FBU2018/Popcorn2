@@ -81,7 +81,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="g8t-1z-xLM"/>
                                                     <constraint firstAttribute="width" constant="75" id="vcK-P1-XWc"/>
                                                 </constraints>
-                                                <state key="normal" title="Your rating"/>
+                                                <state key="normal" title="Add rating"/>
                                                 <connections>
                                                     <action selector="didTapRating:" destination="8ub-PJ-jCL" eventType="touchUpInside" id="6bY-DT-ZxC"/>
                                                     <segue destination="hvf-cg-uzW" kind="presentation" identifier="detailToRating" id="ZWB-nl-73M"/>
@@ -226,6 +226,7 @@
                         <outlet property="castCollectionView" destination="8jp-4g-JuO" id="aCB-Lt-PnS"/>
                         <outlet property="dateLabel" destination="6kM-gA-KW8" id="mqr-zr-IKk"/>
                         <outlet property="posterImageView" destination="llI-cb-9p8" id="oQq-Y8-ERy"/>
+                        <outlet property="ratingButton" destination="AG0-Vq-KZV" id="9L2-e3-Abb"/>
                         <outlet property="ratingLabel" destination="ISv-3e-vre" id="Gtb-3G-gRa"/>
                         <outlet property="summaryLabel" destination="aAc-oU-UTr" id="XCO-JM-EPm"/>
                         <outlet property="titleLabel" destination="Jws-6w-d53" id="FWh-Pf-l61"/>
