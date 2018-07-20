@@ -28,5 +28,6 @@
 - (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
 -(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andResultsCompletionHandler:(void (^)(NSArray *))resultsHandler andErrorCompletionHandler:(void (^)(NSError *))errorHandler;
 
--(void) getRating:(NSString *)movieID completion:(void (^)(NSObject *, NSError *)) completion;
+- (void)getRating:(NSString *)movieID completion:(void (^)(NSObject *, NSError *)) completion;
+- (void) getReviews:(NSString *)movieID completion:(void (^)(NSArray *, NSError *))completion;
 @end
