@@ -38,8 +38,11 @@
     self.overview = dictionary[@"overview"];
     self.releaseDateString = dictionary[@"release_date"];
     self.movieID = dictionary[@"id"];
-    self.mediaType = dictionary[@"media_type"];
-//    self.tagline = dictionary[@"tagline"];
+    
+    // Hard coded to movie but should change once we implement multi-search instead
+    self.mediaType = @"movie";
+    
+    //    self.tagline = dictionary[@"tagline"];
     self.rating = dictionary[@"vote_average"];
     
     return self;

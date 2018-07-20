@@ -13,6 +13,8 @@
 #import "PCMovieDetailViewController.h"
 #import "JGProgressHUD.h"
 #import "APIManager.h"
+#import "PCTrailerViewController.h"
+#import "PCShelfPickerViewController.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -24,6 +26,7 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (strong, nonatomic) NSString *currentSearchText;
 @property (strong, nonatomic) JGProgressHUD *HUD;
+@property (strong, nonatomic) NSArray *shelvesArray;
 -(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber;
 -(void)testCapitalize;
 @end
@@ -47,9 +50,10 @@ bool isMoreDataLoading = false;
     self.searchBar.delegate = self;
     
     self.moviesArray = [NSMutableArray new];
+    self.shelvesArray = [NSArray new];
     
     self.filteredData = self.data;
-    
+    [self getLists];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +77,18 @@ bool isMoreDataLoading = false;
         }
     }
     
+}
+
+- (void)getLists{
+    //gets a dictionary of all of user's saved lists
+    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
+        if(error == nil){
+            self.shelvesArray = shelves[@"results"];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
 }
 
 // helper function to load more data
@@ -120,13 +136,13 @@ bool isMoreDataLoading = false;
         case 0:
         {
             //Watch trailer
-            [self performSegueWithIdentifier:@"shelfToTrailer" sender:cell];
+            [self performSegueWithIdentifier:@"searchToTrailer" sender:cell];
             break;
         }
         case 1:
         {
             //Add to shelf
-            [self performSegueWithIdentifier:@"shelfToPicker" sender:cell];
+            [self performSegueWithIdentifier:@"searchToPicker" sender:cell];
             break;
         }
         default:
@@ -287,6 +303,27 @@ bool isMoreDataLoading = false;
         SearchCell *cell = sender;
         NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
         detailVC.movie = self.filteredMovieObjects[cellPath.row];
+    }
+    else if ([segue.identifier isEqualToString:@"searchToTrailer"]){
+        // Get the trailer view controller
+        PCTrailerViewController *trailerVC = [segue destinationViewController];
+        
+        // Pass the selected cell's movie object to the trailer view controller
+        SearchCell *cell = sender;
+        NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
+        trailerVC.movie = self.filteredMovieObjects[cellPath.row];
+    }
+    else if ([segue.identifier isEqualToString:@"searchToPicker"]){
+        // Get the Shelf Picker View Controller
+        PCShelfPickerViewController *shelfPickerVC = [segue destinationViewController];
+        
+        // Pass the current list of shelves
+        shelfPickerVC.shelves = self.shelvesArray;
+        
+        //Pass the selected cell's movie object
+        SearchCell *cell = sender;
+        NSIndexPath *cellPath = [self.searchTableView indexPathForCell:cell];
+        shelfPickerVC.movie = self.filteredMovieObjects[cellPath.row];
     }
 }
 
