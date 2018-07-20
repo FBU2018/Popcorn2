@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (strong, nonatomic) Movie *movie;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
 @end

@@ -316,7 +316,6 @@ static NSString * const accountID = @"7966256";
     NSString *baseUrl = @"https://api.themoviedb.org/3/search/movie?api_key=69308a1aa1f4a3c54b17a53c591eadb0&language=en-US&query=";
     NSString *searchUrl = [baseUrl stringByAppendingString:searchString];
     NSString *fullUrl = [[[searchUrl stringByAppendingString:@"&page="] stringByAppendingString:pageNumber] stringByAppendingString:@"&include_adult=false"];
-    
     NSURL *url = [NSURL URLWithString:fullUrl];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];

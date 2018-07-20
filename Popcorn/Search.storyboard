@@ -39,15 +39,6 @@
                                                         <constraint firstAttribute="width" constant="117" id="l9W-hS-RHp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sD1-le-Efc">
-                                                    <rect key="frame" x="133" y="54" width="99.5" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="Ik4-dy-A4C"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFN-KR-fYn">
                                                     <rect key="frame" x="133" y="26" width="40" height="24"/>
                                                     <constraints>
@@ -57,11 +48,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2z-F9-Pmd">
+                                                    <rect key="frame" x="133" y="58" width="227" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sD1-le-Efc">
+                                                    <rect key="frame" x="133" y="87" width="99.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Ik4-dy-A4C"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sD1-le-Efc" firstAttribute="leading" secondItem="MMm-0U-x4Y" secondAttribute="trailing" constant="8" id="7cr-Yl-WGY"/>
                                                 <constraint firstItem="MMm-0U-x4Y" firstAttribute="leading" secondItem="Iw6-Sz-Djb" secondAttribute="leading" constant="8" id="EEr-j1-kF3"/>
-                                                <constraint firstItem="sD1-le-Efc" firstAttribute="top" secondItem="CFN-KR-fYn" secondAttribute="bottom" constant="4" id="EUb-jl-b5I"/>
+                                                <constraint firstItem="sD1-le-Efc" firstAttribute="top" secondItem="CFN-KR-fYn" secondAttribute="bottom" constant="37" id="EUb-jl-b5I"/>
                                                 <constraint firstItem="CFN-KR-fYn" firstAttribute="top" secondItem="Iw6-Sz-Djb" secondAttribute="topMargin" constant="15" id="bGE-Cx-Jhw"/>
                                                 <constraint firstItem="CFN-KR-fYn" firstAttribute="leading" secondItem="MMm-0U-x4Y" secondAttribute="trailing" constant="8" id="vST-4K-J6s"/>
                                                 <constraint firstAttribute="bottom" secondItem="MMm-0U-x4Y" secondAttribute="bottom" constant="19.5" id="wBq-tP-dhN"/>
@@ -70,6 +77,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="posterView" destination="MMm-0U-x4Y" id="xFM-Zz-jcd"/>
+                                            <outlet property="ratingLabel" destination="c2z-F9-Pmd" id="1ZM-hf-G3l"/>
                                             <outlet property="releaseDateLabel" destination="sD1-le-Efc" id="Gz8-JK-NHQ"/>
                                             <outlet property="titleLabel" destination="CFN-KR-fYn" id="lCL-Ej-Lcf"/>
                                             <segue destination="TSf-fE-BRB" kind="show" identifier="cellToDetailSegue" id="zmI-Ao-U3H"/>

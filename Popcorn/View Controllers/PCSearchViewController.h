@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PCSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate>
-
+@property (strong, nonatomic) NSNumber *shelfId;
 @end

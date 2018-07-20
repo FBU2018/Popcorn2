@@ -102,7 +102,48 @@ bool isMoreDataLoading = false;
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:movie.posterUrl];
     
+    // set rating
+    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];;
+    
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
+    
     return cell;
+}
+
+// Defines actions that happen when user swipes right on a shelf and picks a button
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    SearchCell *tappedCell = cell;
+    switch (index) {
+        case 0:
+        {
+            //Watch trailer
+            [self performSegueWithIdentifier:@"shelfToTrailer" sender:cell];
+            break;
+        }
+        case 1:
+        {
+            //Add to shelf
+            [self performSegueWithIdentifier:@"shelfToPicker" sender:cell];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+// Defines buttons that are shown when user swipes right on a cell
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f]
+                                                title:@"Trailer"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Add to"];
+    
+    return rightUtilityButtons;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,6 +179,11 @@ bool isMoreDataLoading = false;
         [self.searchTableView reloadData];
     }
     else if (searchText.length != 0) {
+        // Update current search text
+        self.currentSearchText = searchText;
+        // Change search text to be compatible with query characters
+        self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        
         // network call to get the search results with a completion handler
         [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
             // set up predicate for searching movies
@@ -164,6 +210,9 @@ bool isMoreDataLoading = false;
     self.currentSearchText = searchText;
     currentPageNumber = 1;
     
+    // Change search text to be compatible with query characters
+    self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    
     // API call to search
     [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
         // set up predicate for searching movies
@@ -181,11 +230,12 @@ bool isMoreDataLoading = false;
     [self.searchTableView setContentOffset:CGPointMake(0.0f, -self.searchTableView.contentInset.top) animated:YES];
 }
 
-// called when keyboard search button pressed
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    self.currentSearchText = searchBar.text;
-    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
-}
+//// called when keyboard search button pressed
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+//    // update current search text property
+//    self.currentSearchText = searchBar.text;
+//    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
+//}
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = YES;
