@@ -58,7 +58,7 @@
 
 -(void)fetchRating{
     NSString *stringID = [self.movie.movieID stringValue];
-    [[APIManager shared]getRating:stringID completion:^(NSObject *rating, NSError *error) {
+    [[APIManager shared] getRating:stringID completion:^(NSObject *rating, NSError *error) {
         if(error != nil){
             NSLog(@"%@", error.localizedDescription);
         }

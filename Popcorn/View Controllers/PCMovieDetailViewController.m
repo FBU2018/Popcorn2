@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *castCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *ratingButton;
 
 
 - (IBAction)didTapRating:(id)sender;
@@ -72,6 +73,7 @@
     
     
     [self fetchCast];
+    [self fetchRating];
 }
 
 
@@ -126,6 +128,26 @@
      }];
 }
 
+-(void)fetchRating{
+    NSString *stringID = [self.movie.movieID stringValue];
+    [[APIManager shared] getRating:stringID completion:^(NSObject *rating, NSError *error) {
+        if(error != nil){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        else{
+            //            check if the object being returned from api call is a dictionary or a boolean
+            if([rating isKindOfClass:[NSDictionary class]]){
+                NSDictionary *ratingDict = (NSDictionary *)rating;
+                [self.ratingButton setTitle:[[ratingDict[@"value"] stringValue]stringByAppendingString:@"/10"] forState:UIControlStateNormal];
+                
+            }
+            //if the result is a boolean, that means the user hasn't rated it yet
+            else{
+                
+            }
+        }
+    }];
+}
 
 
 @end
