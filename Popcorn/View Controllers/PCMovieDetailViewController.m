@@ -13,6 +13,7 @@
 #import "PCShelfPickerViewController.h"
 #import "PCReviewViewController.h"
 #import "PCRatingViewController.h"
+#import "PCActorDetailViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -94,6 +95,14 @@
         PCRatingViewController *receiver = [segue destinationViewController];
         receiver.movie = self.movie;
     }
+    else if ([segue.identifier isEqualToString:@"detailToActorDetail"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.castCollectionView indexPathForCell:tappedCell];
+        NSDictionary *actor = self.castList[indexPath.item];
+        
+        PCActorDetailViewController *receiver = [segue destinationViewController];
+        receiver.actorID = actor[@"id"];
+    }
 }
 
 
@@ -122,7 +131,7 @@
             }
             else{
                 self.castList = fullCastList;
-        //    NSLog(@"%@", self.castList);
+            NSLog(@"%@", self.castList);
             }
         [self.castCollectionView reloadData];
      }];

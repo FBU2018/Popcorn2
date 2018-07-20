@@ -152,6 +152,7 @@
                                                         <connections>
                                                             <outlet property="castImageView" destination="xkM-6C-6u6" id="mJ4-7B-OZ6"/>
                                                             <outlet property="characterNameLabel" destination="6bJ-Ev-ps8" id="mPw-df-6Tq"/>
+                                                            <segue destination="Ehw-0i-Jru" kind="show" identifier="detailToActorDetail" id="kcc-3r-vjb"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -234,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-ss-esi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1004" y="148.87556221889056"/>
+            <point key="canvasLocation" x="1041" y="115"/>
         </scene>
         <!--ShelfPicker-->
         <scene sceneID="gyJ-aB-St1">
@@ -242,7 +243,22 @@
                 <viewControllerPlaceholder storyboardName="ShelfPicker" id="U2u-L0-97p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIJ-xp-rVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="-60"/>
+            <point key="canvasLocation" x="1787" y="-397"/>
+        </scene>
+        <!--Actor Detail View Controller-->
+        <scene sceneID="mpC-my-Um3">
+            <objects>
+                <viewController id="Ehw-0i-Jru" customClass="PCActorDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Zs-al-heh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Uza-gy-gI6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T2Z-bl-3MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424.8000000000002" y="114.69265367316342"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="hGQ-04-cQ9">
@@ -301,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbF-Th-1qT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136.8000000000002" y="148.87556221889056"/>
+            <point key="canvasLocation" x="1729" y="824"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="5vv-bD-HqT">
@@ -374,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcU-AB-UxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="430"/>
+            <point key="canvasLocation" x="356" y="824"/>
         </scene>
     </scenes>
 </document>
