@@ -14,12 +14,12 @@
 		<key>JGProgressHUD-JGProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>JGProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-Popcorn.xcscheme</key>
 		<dict>
@@ -45,7 +45,7 @@
 		<key>SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>8</integer>
 		</dict>
 		<key>SWTableViewCell.xcscheme</key>
 		<dict>

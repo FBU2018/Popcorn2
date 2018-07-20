@@ -35,6 +35,8 @@
 		959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2B002100F8B6005D418E /* ShelfPickerCell.m */; };
 		959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959B2B0221010610005D418E /* ShelfPicker.storyboard */; };
 		959B2B0B2102476E005D418E /* Trailer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959B2B0A2102476E005D418E /* Trailer.storyboard */; };
+		95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A313E221028A70006F1828 /* PCWebLoginViewController.m */; };
+		95A313E6210290EB006F1828 /* PCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A313E5210290EB006F1828 /* PCLoginViewController.m */; };
 		963C025F4758FE667156D96B /* libPods-PopcornTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */; };
 		D1910B1DD3850011033127A4 /* libPods-PopcornUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF57B52494D74F913B75092 /* libPods-PopcornUITests.a */; };
 		FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB24C848515EA0D355910C /* libPods-Popcorn.a */; };
@@ -113,6 +115,10 @@
 		959B2B002100F8B6005D418E /* ShelfPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShelfPickerCell.m; sourceTree = "<group>"; };
 		959B2B0221010610005D418E /* ShelfPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShelfPicker.storyboard; sourceTree = "<group>"; };
 		959B2B0A2102476E005D418E /* Trailer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trailer.storyboard; sourceTree = "<group>"; };
+		95A313E121028A70006F1828 /* PCWebLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWebLoginViewController.h; sourceTree = "<group>"; };
+		95A313E221028A70006F1828 /* PCWebLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWebLoginViewController.m; sourceTree = "<group>"; };
+		95A313E4210290EB006F1828 /* PCLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCLoginViewController.h; sourceTree = "<group>"; };
+		95A313E5210290EB006F1828 /* PCLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCLoginViewController.m; sourceTree = "<group>"; };
 		C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F26F587999050C3F8A05BB /* Pods-PopcornTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D58AF72C9334674A442A9E5D /* Pods-PopcornUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,22 +233,26 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
-				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
-				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
-				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
 				951A794A20FD0E42003D3901 /* PCLibraryViewController.h */,
 				951A794B20FD0E42003D3901 /* PCLibraryViewController.m */,
 				951A794D20FD0E77003D3901 /* PCShelfViewController.h */,
 				951A794E20FD0E77003D3901 /* PCShelfViewController.m */,
-				959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */,
-				959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */,
+				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
+				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
+				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
+				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
 				959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */,
 				959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */,
+				959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */,
+				959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */,
 				7178E8A621010D2300431364 /* PCReviewViewController.h */,
 				7178E8A721010D2300431364 /* PCReviewViewController.m */,
 				7196F6B521014AD20005643B /* PCRatingViewController.h */,
 				7196F6B621014AD20005643B /* PCRatingViewController.m */,
+				95A313E121028A70006F1828 /* PCWebLoginViewController.h */,
+				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
+				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
+				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -511,6 +521,8 @@
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
+				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
+				95A313E6210290EB006F1828 /* PCLoginViewController.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
 				7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */,
