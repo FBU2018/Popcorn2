@@ -16,7 +16,6 @@
 #import "PCTrailerViewController.h"
 #import "PCShelfPickerViewController.h"
 
-
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -95,6 +94,7 @@
     cell.releaseDateLabel.text = movie.releaseDateString;
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:movie.posterUrl];
+    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];;
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -104,6 +104,7 @@
 
 - (NSArray *)rightButtons
 {
+    //3 options in swipeable cell: Remove, Trailer, Add to
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
@@ -163,9 +164,9 @@
     return self.filteredData.count;
 }
 
-- (void)getMovies: (NSString *) movieId{
-
-    [[APIManager shared] getShelfMovies:movieId completion:^(NSArray *movies, NSError *error) {
+- (void)getMovies: (NSString *) shelfId{
+    //gets movies for given shelfId and updates tableview
+    [[APIManager shared] getShelfMovies:shelfId completion:^(NSArray *movies, NSError *error) {
         if(error == nil){
             NSLog(@"Successfully got movies on shelves");
             
@@ -174,6 +175,20 @@
             self.filteredData = moviesArray;
             self.movieArray = moviesArray;
             [self.tableView reloadData];
+            
+            if(self.movieArray.count == 0){
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Movies"
+                                                                               message:@"This shelf has no movies"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                // create an ok action, add to alert
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    //go back to Library
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:^{
+                }];
+            }
         }
         else{
             NSLog(@"Error: %@", error.localizedDescription);

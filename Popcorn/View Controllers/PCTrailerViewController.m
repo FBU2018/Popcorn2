@@ -28,12 +28,14 @@
 }
 
 - (void)showTrailer{
+    //Make call to get the trailer URL
     [[APIManager shared] getTrailerURL:[self.movie.movieID stringValue] completion:^(NSURL *url, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
             NSLog(@"Successfully got URL");
+            //Use URL to make a request, show inside the webView
             NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
             [self.webView loadRequest:request];
         }
