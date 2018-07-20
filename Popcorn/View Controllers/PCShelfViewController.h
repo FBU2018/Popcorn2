@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PCLibraryViewController.h"
+
 
 @interface PCShelfViewController : UIViewController
 

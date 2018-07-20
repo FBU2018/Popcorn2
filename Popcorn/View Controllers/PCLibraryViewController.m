@@ -35,15 +35,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //instantiate all arrays
     self.shelves = [NSArray new];
     self.filteredData = [NSArray new];
     self.moviesInList = [NSMutableArray new];
     self.allMovies = [NSMutableArray new];
-    
+    //sets delegates
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
-    
     
     [self getLists];
 }
@@ -54,7 +54,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-
+    //filter for shelfs with its name including search text
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *shelf, NSDictionary *bindings) {
             return [shelf[@"name"] containsString:searchText];
@@ -73,6 +73,7 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    //reset filter, cancel search text
     self.filteredData = self.shelves;
     [self.tableView reloadData];
 
@@ -95,6 +96,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
     unsigned long count = self.filteredData.count;
+    
+    //fill cells in backwards order: newly created shelves will now appear at the bottom
     [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
     
     cell.rightUtilityButtons = [self rightButtons];
@@ -105,6 +108,7 @@
 
 - (NSArray *)rightButtons
 {
+    //swipeable cell has one delete option
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
@@ -137,6 +141,7 @@
 
 
 - (void)createList:(NSString *)name {
+    //create new list with given name
     [[APIManager shared] createList:name completion:^(NSString *listId, NSError *error) {
         if(error){
             NSLog(@"Error creating list: %@", error.localizedDescription);
@@ -203,6 +208,7 @@
 }
 
 - (IBAction)didTapPlus:(id)sender {
+    //shows alert to create new shelf
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Create a New Shelf" message: nil
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
@@ -210,6 +216,7 @@
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }];
     
+    //Cancel and create options
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     }]];
 
@@ -217,6 +224,7 @@
         NSArray * textfields = alertController.textFields;
         UITextField * namefield = textfields[0];
         
+        //create list if name is inputted
         if([namefield.text isEqualToString:@""] == NO){
             [self createList:namefield.text];
         }
@@ -224,21 +232,8 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-
-
-- (IBAction)didTapDelete:(id)sender {
-    [[APIManager shared] deleteList:@"82362" completion:^(NSError *error) {
-        if(error == nil){
-            NSLog(@"Successfully deleted shelf");
-            [self getLists];
-        }
-        else{
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
-}
-
 - (void)deleteList: (NSString*) shelfId{
+    //makes request to delete the shelf with the given shelfId
     [[APIManager shared] deleteList:shelfId completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"Successfully deleted shelf");
@@ -261,6 +256,7 @@
     // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString:@"libraryToShelf"]){
+        //pass the shelfId and shelves array
         LibraryCell *tappedCell = sender;
         PCShelfViewController *receiver = [segue destinationViewController];
         receiver.shelfId = tappedCell.shelfId;

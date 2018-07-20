@@ -35,6 +35,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShelfPickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ShelfPickerCell" forIndexPath:indexPath];
     
+    //set shelf text by checking corresponding name in shelves array
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
     cell.shelfLabel.text = selectedShelf[@"name"];
     [self updateChecks:[selectedShelf[@"id"] stringValue] forCell:cell];
@@ -47,10 +48,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //If shelf is selected/unselected, updates checks and adds/removes from shelf
     ShelfPickerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
-    
     if(cell.accessoryType == UITableViewCellAccessoryCheckmark){
         cell.accessoryType = UITableViewCellAccessoryNone;
         //remove from list
@@ -69,6 +70,7 @@
 
 
 - (void)updateChecks: (NSString *) shelfId forCell: (ShelfPickerCell *) cell{
+    //sets check marks on shelves which already have the movie in the shelf
     [[APIManager shared] getItemStatus:shelfId forMovie:[self.movie.movieID stringValue] ofType:self.movie.mediaType completion:^(NSString *status, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
@@ -87,6 +89,7 @@
 }
 
 - (void)addToList: (NSNumber *) shelfId {
+    //add movie to the shelf with the given shelfId
     [[APIManager shared] addItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully added item to list");
@@ -98,6 +101,7 @@
 }
 
 - (void)removeFromList: (NSNumber *) shelfId{
+    //remove movie from the shelf with the given shelfId
     [[APIManager shared] removeItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully removed item from list");
