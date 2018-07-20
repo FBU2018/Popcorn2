@@ -267,18 +267,34 @@
                                     <action selector="didTapCancel:" destination="hvf-cg-uzW" eventType="touchUpInside" id="atT-MP-Gw8"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rating (1-10)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2H-WC-kLN">
-                                <rect key="frame" x="133" y="96" width="109" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rating (1-10)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2H-WC-kLN">
+                                <rect key="frame" x="133" y="120.5" width="109" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current User Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywW-1D-Gd0">
+                                <rect key="frame" x="112.5" y="92" width="150" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BHi-50-dSh" firstAttribute="trailing" secondItem="b2H-WC-kLN" secondAttribute="trailing" constant="133" id="4c6-b8-Bum"/>
+                            <constraint firstItem="ywW-1D-Gd0" firstAttribute="centerX" secondItem="6pg-7Z-Dx4" secondAttribute="centerX" id="5FN-0P-u3M"/>
+                            <constraint firstItem="ywW-1D-Gd0" firstAttribute="leading" relation="lessThanOrEqual" secondItem="BHi-50-dSh" secondAttribute="leading" constant="134" id="ETv-YW-BdF"/>
+                            <constraint firstItem="BHi-50-dSh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ywW-1D-Gd0" secondAttribute="trailing" constant="135" id="Erm-TD-8O0"/>
+                            <constraint firstItem="ywW-1D-Gd0" firstAttribute="top" secondItem="BHi-50-dSh" secondAttribute="top" constant="72" id="MgS-PF-H8W"/>
+                            <constraint firstItem="b2H-WC-kLN" firstAttribute="leading" secondItem="BHi-50-dSh" secondAttribute="leading" constant="133" id="O5C-T5-4vM"/>
+                            <constraint firstItem="b2H-WC-kLN" firstAttribute="top" secondItem="ywW-1D-Gd0" secondAttribute="bottom" constant="8" id="PC7-U4-F9A"/>
+                            <constraint firstItem="b2H-WC-kLN" firstAttribute="centerX" secondItem="ywW-1D-Gd0" secondAttribute="centerX" id="sJD-3B-7jV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BHi-50-dSh"/>
                     </view>
                     <connections>
+                        <outlet property="currentRatingLabel" destination="ywW-1D-Gd0" id="aZ8-y2-oq0"/>
                         <outlet property="ratingTextField" destination="b2H-WC-kLN" id="4MB-Ch-e8h"/>
                     </connections>
                 </viewController>

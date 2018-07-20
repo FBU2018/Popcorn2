@@ -377,4 +377,25 @@ static NSString * const accountID = @"7966256";
         [task resume];
     }
 }
+
+- (void) getRating:(NSString *)movieID completion:(void (^)(NSObject *, NSError *))completion{
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieID] stringByAppendingString:@"/account_states?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:sessionID];
+    
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSObject *rating = dataDictionary[@"rated"];
+            completion(rating, nil);
+        }
+    }];
+    [task resume];
+} 
 @end
