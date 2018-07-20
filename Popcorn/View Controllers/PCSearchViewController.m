@@ -56,6 +56,18 @@ bool isMoreDataLoading = false;
     [self getLists];
 }
 
+- (void)getLists{
+    //gets a dictionary of all of user's saved lists
+    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
+        if(error == nil){
+            self.shelvesArray = shelves[@"results"];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -79,18 +91,6 @@ bool isMoreDataLoading = false;
     
 }
 
-- (void)getLists{
-    //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
-        if(error == nil){
-            self.shelvesArray = shelves[@"results"];
-        }
-        else{
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
-}
-
 // helper function to load more data
 -(void)loadMoreData{
     currentPageNumber += 1;
@@ -101,6 +101,48 @@ bool isMoreDataLoading = false;
     // Reload the table view
     [self.searchTableView reloadData];
 }
+
+// helper function for load more data that filters network call results with search query
+-(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber{
+    if ([searchText isEqualToString:@""]){
+        self.filteredData = nil;
+        currentPageNumber = 1;
+        [self.searchTableView reloadData];
+    }
+    else if (searchText.length != 0) {
+        // Update current search text
+        self.currentSearchText = searchText;
+        
+        // Change search text to be compatible with query characters
+        self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        
+        // network call to get the search results with a completion handler
+        [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
+            // set up predicate for searching movies
+            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+                return [item[@"title"] containsString:searchText];
+            }];
+            
+            self.filteredData = [results filteredArrayUsingPredicate:predicate];
+            [self.searchTableView reloadData];
+        } andErrorCompletionHandler:^(NSError *error) {
+            [self networkCallErrorHandler:error];
+        }];
+    }
+    // if user hasn't typed anything then don't filter movies
+    else {
+        self.filteredData = self.moviesArray;
+    }
+}
+
+-(void)testCapitalize{
+    NSString *abc = @"this is test for people who do stuff";
+    
+    abc = [NSString stringWithFormat:@"%@%@",[[abc substringToIndex:1] uppercaseString],[abc substringFromIndex:1] ];
+    NSLog(@"abc = %@",abc);
+}
+
+
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell
@@ -190,56 +232,11 @@ bool isMoreDataLoading = false;
     NSLog(@"%@", [error localizedDescription]);
 }
 
-// helper function that filters network call results with search query
--(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber{
-    if ([searchText isEqualToString:@""]){
-        self.filteredData = nil;
-        currentPageNumber = 1;
-        [self.searchTableView reloadData];
-    }
-    else if (searchText.length != 0) {
-        // Update current search text
-        self.currentSearchText = searchText;
-//        // Capitalize first letter of search text
-//        self.currentSearchText = [NSString stringWithFormat:@"%@%@",[[self.currentSearchText substringToIndex:1] uppercaseString],[self.currentSearchText substringFromIndex:1] ];
-
-        // Change search text to be compatible with query characters
-        self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
-        
-        // network call to get the search results with a completion handler
-        [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
-            // set up predicate for searching movies
-            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-                return [item[@"title"] containsString:searchText];
-            }];
-            
-            self.filteredData = [results filteredArrayUsingPredicate:predicate];
-            [self.searchTableView reloadData];
-        } andErrorCompletionHandler:^(NSError *error) {
-            [self networkCallErrorHandler:error];
-        }];
-    }
-    // if user hasn't typed anything then don't filter movies
-    else {
-        self.filteredData = self.moviesArray;
-    }
-}
-
--(void)testCapitalize{
-    NSString *abc = @"this is test for people who do stuff";
-    
-    abc = [NSString stringWithFormat:@"%@%@",[[abc substringToIndex:1] uppercaseString],[abc substringFromIndex:1] ];
-    NSLog(@"abc = %@",abc);
-}
-
-
 // called when user starts typing
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if(![searchText isEqualToString:@""]){
         self.currentSearchText = searchText;
         currentPageNumber = 1;
-        
-
         
         // Change search text to be compatible with query characters
         self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
