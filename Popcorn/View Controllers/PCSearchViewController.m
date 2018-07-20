@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *currentSearchText;
 @property (strong, nonatomic) JGProgressHUD *HUD;
 -(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber;
+-(void)testCapitalize;
 @end
 
 @implementation PCSearchViewController
@@ -35,6 +36,7 @@ bool isMoreDataLoading = false;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self testCapitalize];
     // Set up activity indicator for infinite scrolling
     self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     self.HUD.textLabel.text = @"Loading";
@@ -146,15 +148,16 @@ bool isMoreDataLoading = false;
     return rightUtilityButtons;
 }
 
+// Manual segue to go to Details VC from tapped cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"cellToDetailSegue" sender:cell];
 }
 
-// Error method that creates an alert if there's an error from a network call and allows user to try again
+// Error method that creates an alert if there's an error from a network call and allows user to dismiss the error message
 -(void)networkCallErrorHandler:(NSError *)error{
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movie" message:@"There seems to be a problem with your search query. Please try again." preferredStyle:(UIAlertControllerStyleAlert)];
     NSLog(@"%@", error.localizedDescription);
     
     // create a dismiss action
@@ -181,6 +184,9 @@ bool isMoreDataLoading = false;
     else if (searchText.length != 0) {
         // Update current search text
         self.currentSearchText = searchText;
+//        // Capitalize first letter of search text
+//        self.currentSearchText = [NSString stringWithFormat:@"%@%@",[[self.currentSearchText substringToIndex:1] uppercaseString],[self.currentSearchText substringFromIndex:1] ];
+
         // Change search text to be compatible with query characters
         self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
         
@@ -203,39 +209,52 @@ bool isMoreDataLoading = false;
     }
 }
 
+-(void)testCapitalize{
+    NSString *abc = @"this is test for people who do stuff";
+    
+    abc = [NSString stringWithFormat:@"%@%@",[[abc substringToIndex:1] uppercaseString],[abc substringFromIndex:1] ];
+    NSLog(@"abc = %@",abc);
+}
 
 
 // called when user starts typing
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    self.currentSearchText = searchText;
-    currentPageNumber = 1;
-    
-    // Change search text to be compatible with query characters
-    self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
-    
-    // API call to search
-    [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
-        // set up predicate for searching movies
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-            return [item[@"title"] containsString:searchText];
+    if(![searchText isEqualToString:@""]){
+        self.currentSearchText = searchText;
+        currentPageNumber = 1;
+        
+
+        
+        // Change search text to be compatible with query characters
+        self.currentSearchText = [self.currentSearchText stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+        
+        // API call to search
+        [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
+            // Put search text for filtering into proper case
+            self.currentSearchText = [self.currentSearchText lowercaseString];
+            // Capitalize first letter of search text
+            self.currentSearchText = [NSString stringWithFormat:@"%@%@",[[self.currentSearchText substringToIndex:1] uppercaseString],[self.currentSearchText substringFromIndex:1] ];
+            
+            // set up predicate for searching movies
+            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+                return [item[@"title"] containsString:self.currentSearchText];
+            }];
+            
+            self.filteredData = [results filteredArrayUsingPredicate:predicate];
+            [self.searchTableView reloadData];
+        } andErrorCompletionHandler:^(NSError *error){
+            [self networkCallErrorHandler:error];
         }];
         
-        self.filteredData = [results filteredArrayUsingPredicate:predicate];
+        // scroll back to the top
+        [self.searchTableView setContentOffset:CGPointMake(0.0f, -self.searchTableView.contentInset.top) animated:YES];
+    }
+    else{
+        self.filteredData = nil;
+        currentPageNumber = 1;
         [self.searchTableView reloadData];
-    } andErrorCompletionHandler:^(NSError *error){
-        [self networkCallErrorHandler:error];
-    }];
-    
-    // scroll back to the top
-    [self.searchTableView setContentOffset:CGPointMake(0.0f, -self.searchTableView.contentInset.top) animated:YES];
+    }
 }
-
-//// called when keyboard search button pressed
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-//    // update current search text property
-//    self.currentSearchText = searchBar.text;
-//    [self searchAndFilterWithSearchString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber]];
-//}
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = YES;
