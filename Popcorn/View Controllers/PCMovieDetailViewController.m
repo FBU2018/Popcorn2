@@ -120,9 +120,9 @@
             }
             else{
                 self.castList = fullCastList;
+        //    NSLog(@"%@", self.castList);
             }
-            NSLog(@"%@", self.castList);
-            [self.castCollectionView reloadData];
+        [self.castCollectionView reloadData];
      }];
 }
 

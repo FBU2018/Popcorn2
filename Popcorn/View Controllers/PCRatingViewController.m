@@ -13,6 +13,8 @@
 - (IBAction)didTapDone:(id)sender;
 - (IBAction)didTapCancel:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *ratingTextField;
+@property (weak, nonatomic) IBOutlet UILabel *currentRatingLabel;
+
 @end
 
 @implementation PCRatingViewController
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self fetchRating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +41,6 @@
 */
 
 - (IBAction)didTapDone:(id)sender {
-
     [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text completion:^(NSError * error) {
         if(error != nil){
             NSLog(@"%@", error.localizedDescription);
@@ -54,6 +56,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+-(void)fetchRating{
+    NSString *stringID = [self.movie.movieID stringValue];
+    [[APIManager shared]getRating:stringID completion:^(NSObject *rating, NSError *error) {
+        if(error != nil){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        else{
+//            check if the object being returned from api call is a dictionary or a boolean
+            if([rating isKindOfClass:[NSDictionary class]]){
+                NSDictionary *ratingDict = (NSDictionary *)rating;
+                self.currentRatingLabel.text = [[@"You previously rated this " stringByAppendingString:[ratingDict[@"value"] stringValue]] stringByAppendingString:@"/10"];
+//                NSLog(@"%@", ratingDict[@"value"]);
+            }
+            //if the result is a boolean, that means the user hasn't rated it yet
+            else{
+                self.currentRatingLabel.text = @"You haven't rated this movie yet!";
+            }
+        }
+    }];
+}
 
 @end
