@@ -99,11 +99,29 @@
                     <connections>
                         <outlet property="searchBar" destination="fsm-fU-jye" id="TBv-3V-jhQ"/>
                         <outlet property="searchTableView" destination="b5u-eu-zpe" id="pPP-vE-S0s"/>
+                        <segue destination="TwJ-s2-aK0" kind="presentation" identifier="searchToPicker" id="amz-8H-DHk"/>
+                        <segue destination="Mvi-5h-VeP" kind="presentation" identifier="searchToTrailer" id="TU4-k6-COz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4z-Mi-Fac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.2" y="-0.44977511244377816"/>
+        </scene>
+        <!--ShelfPicker-->
+        <scene sceneID="vMa-jO-Uva">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShelfPicker" id="TwJ-s2-aK0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpm-7m-gn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="-91"/>
+        </scene>
+        <!--Trailer-->
+        <scene sceneID="Ftd-7c-bik">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Trailer" id="Mvi-5h-VeP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOx-1n-wfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1601" y="-24"/>
         </scene>
         <!--Detail-->
         <scene sceneID="IbL-0t-e3y">
@@ -111,7 +129,7 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="TSf-fE-BRB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCV-x5-X0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1654.4000000000001" y="-80.059970014992516"/>
+            <point key="canvasLocation" x="1598" y="21"/>
         </scene>
         <!--Search-->
         <scene sceneID="LTf-3e-vlq">
