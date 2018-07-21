@@ -8,10 +8,12 @@
 
 #import "PCTrailerViewController.h"
 #import "APIManager.h"
+#import <WebKit/WebKit.h>
+
 
 @interface PCTrailerViewController ()
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet WKWebView *webView;
 
 @end
 

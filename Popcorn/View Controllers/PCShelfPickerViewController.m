@@ -25,6 +25,21 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self getLists];
+}
+
+- (void)getLists{
+    //gets a dictionary of all of user's saved lists
+    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
+        if(error == nil){
+            self.shelves = shelves[@"results"];
+            [self.tableView reloadData];
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

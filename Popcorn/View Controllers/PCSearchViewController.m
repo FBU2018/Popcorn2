@@ -18,8 +18,8 @@
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
-@property (strong, nonatomic) NSArray *data;
-@property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) NSArray *filteredMovieObjects;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *moviesArray;
@@ -51,8 +51,8 @@ bool isMoreDataLoading = false;
     
     self.moviesArray = [NSMutableArray new];
     self.shelvesArray = [NSArray new];
-    
-    self.filteredData = self.data;
+    self.filteredData = [[NSMutableArray alloc] init];
+    self.data = [[NSMutableArray alloc] init];
     [self getLists];
 }
 
@@ -123,7 +123,11 @@ bool isMoreDataLoading = false;
                 return [item[@"title"] containsString:searchText];
             }];
             
-            self.filteredData = [results filteredArrayUsingPredicate:predicate];
+            // Add filtered results to Mutable array
+            NSArray *filteredResults = [results filteredArrayUsingPredicate:predicate];
+            for (NSDictionary *dictionary in filteredResults){
+                [self.filteredData addObject:dictionary];
+            }
             [self.searchTableView reloadData];
         } andErrorCompletionHandler:^(NSError *error) {
             [self networkCallErrorHandler:error];
@@ -253,7 +257,7 @@ bool isMoreDataLoading = false;
                 return [item[@"title"] containsString:self.currentSearchText];
             }];
             
-            self.filteredData = [results filteredArrayUsingPredicate:predicate];
+            self.filteredData = [NSMutableArray arrayWithArray:[results filteredArrayUsingPredicate:predicate]];
             [self.searchTableView reloadData];
         } andErrorCompletionHandler:^(NSError *error){
             [self networkCallErrorHandler:error];
