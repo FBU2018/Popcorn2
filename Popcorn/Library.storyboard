@@ -86,6 +86,11 @@
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Library" id="2iw-vI-whp">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="8hO-12-gxQ">
+                            <connections>
+                                <action selector="didTapLogout:" destination="MkW-Uf-1rx" id="fik-tI-7HW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
                             <connections>
                                 <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>

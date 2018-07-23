@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Parse/Parse.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        
+        configuration.applicationId = @"myAppId";
+        configuration.clientKey = @"myMasterKey";
+        configuration.server = @"http://popcorn-fbu.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:config];
+    
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+        self.window.rootViewController = tabBarController;
+    }
+    
     return YES;
 }
 

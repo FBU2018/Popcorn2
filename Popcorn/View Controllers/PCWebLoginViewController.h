@@ -10,4 +10,6 @@
 
 @interface PCWebLoginViewController : UIViewController
 
+@property(strong, nonatomic) NSString *targetURL;
+
 @end
