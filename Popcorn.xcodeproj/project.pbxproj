@@ -505,10 +505,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/JGProgressHUD/JGProgressHUD.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JGProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
