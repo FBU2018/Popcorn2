@@ -253,21 +253,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-Zg-4SN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-Zg-4SN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="817"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBO-yi-nfO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBO-yi-nfO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="817"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-Ix-j4U">
+                                                <rect key="frame" x="0.0" y="0.0" width="142" height="197"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgz-M2-Tnk">
+                                                <rect key="frame" x="150" y="45" width="212" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Known for" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6l-Da-hCe">
+                                                <rect key="frame" x="150" y="79" width="77" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZi-tT-0Av">
+                                                <rect key="frame" x="150" y="108" width="64" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthplace" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqx-pI-H2H">
+                                                <rect key="frame" x="150" y="137" width="77" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLR-dw-j1C">
+                                                <rect key="frame" x="8" y="205" width="354" height="426"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZBO-yi-nfO" firstAttribute="width" secondItem="5FU-Zg-4SN" secondAttribute="width" id="3hp-wA-bei"/>
+                                    <constraint firstItem="ZBO-yi-nfO" firstAttribute="top" secondItem="5FU-Zg-4SN" secondAttribute="top" id="G9U-fO-63r"/>
+                                    <constraint firstItem="ZBO-yi-nfO" firstAttribute="height" secondItem="5FU-Zg-4SN" secondAttribute="height" priority="250" id="Usc-5K-nQ7"/>
+                                    <constraint firstItem="ZBO-yi-nfO" firstAttribute="leading" secondItem="5FU-Zg-4SN" secondAttribute="leading" id="aMt-7q-Cbq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZBO-yi-nfO" secondAttribute="trailing" id="bsM-Vr-H08"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZBO-yi-nfO" secondAttribute="bottom" id="tSV-ys-ggp"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5FU-Zg-4SN" firstAttribute="top" secondItem="6Zs-al-heh" secondAttribute="top" id="EU6-wf-EM0"/>
+                            <constraint firstItem="5FU-Zg-4SN" firstAttribute="trailing" secondItem="Uza-gy-gI6" secondAttribute="trailing" id="j6x-pa-r4T"/>
+                            <constraint firstItem="5FU-Zg-4SN" firstAttribute="bottom" secondItem="Uza-gy-gI6" secondAttribute="bottom" constant="150" id="kHO-E2-lSx"/>
+                            <constraint firstItem="5FU-Zg-4SN" firstAttribute="leading" secondItem="Uza-gy-gI6" secondAttribute="leading" id="uu7-Oc-V4R"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Uza-gy-gI6"/>
                     </view>
+                    <connections>
+                        <outlet property="bioLabel" destination="VLR-dw-j1C" id="fxp-2h-tmv"/>
+                        <outlet property="birthdayLabel" destination="qZi-tT-0Av" id="FpT-Nu-mCo"/>
+                        <outlet property="birthplaceLabel" destination="mqx-pI-H2H" id="LJQ-1G-Kiy"/>
+                        <outlet property="knownForLabel" destination="G6l-Da-hCe" id="8M6-AS-qHO"/>
+                        <outlet property="nameLabel" destination="Mgz-M2-Tnk" id="EIg-WM-ksW"/>
+                        <outlet property="profileImageView" destination="EOg-Ix-j4U" id="fvb-gb-qnU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2Z-bl-3MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
