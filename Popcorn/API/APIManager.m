@@ -9,10 +9,10 @@
 #import "APIManager.h"
 
 static NSString * const apiKey = @"15703e94357b9dc777959d930e92e7dc";
-//static NSString * const requestToken = @"585512c8018c084ce18c5419769f5e161c870fe0";
-static NSString * const sessionID = @"241562b4ac28f52aa9c89e810b4046d6df4dc985";
-static NSString * const accessToken = @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1MzE3NzI4NTUsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsImp0aSI6Ijg5NTk3MSIsImF1ZCI6IjE1NzAzZTk0MzU3YjlkYzc3Nzk1OWQ5MzBlOTJlN2RjIiwic2NvcGVzIjpbImFwaV9yZWFkIiwiYXBpX3dyaXRlIl0sInZlcnNpb24iOjF9.abd9n5YDL2ToVRuaNw3CQhUAs95H2Gqhxwlf3sZusZw";
-static NSString * const accountID = @"7966256";
+static NSString * requestToken = @"585512c8018c084ce18c5419769f5e161c870fe0";
+static NSString * sessionID = @"241562b4ac28f52aa9c89e810b4046d6df4dc985";
+static NSString * accessToken = @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1MzE3NzI4NTUsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsImp0aSI6Ijg5NTk3MSIsImF1ZCI6IjE1NzAzZTk0MzU3YjlkYzc3Nzk1OWQ5MzBlOTJlN2RjIiwic2NvcGVzIjpbImFwaV9yZWFkIiwiYXBpX3dyaXRlIl0sInZlcnNpb24iOjF9.abd9n5YDL2ToVRuaNw3CQhUAs95H2Gqhxwlf3sZusZw";
+static NSString * accountID = @"7966256";
 
 
 @implementation APIManager
@@ -419,4 +419,94 @@ static NSString * const accountID = @"7966256";
     }];
     [task resume];
 }
+
+- (void)getRequestToken:(void (^)(NSString *, NSError *))completion{
+    NSString *urlString = [@"https://api.themoviedb.org/3/authentication/token/new?api_key=" stringByAppendingString:apiKey];
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSLog(@"successfully got request token");
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString *returnedRequestToken = dataDictionary[@"request_token"];
+            requestToken = returnedRequestToken;
+            NSLog(@"Request token: %@", returnedRequestToken);
+            completion(returnedRequestToken, nil);
+            
+            //forward user to https://www.themoviedb.org/authenticate/{REQUEST_TOKEN}
+        }
+    }];
+    [task resume];
+}
+
+- (void)getSession:(void (^)(NSString *, NSError *))completion{
+    NSString *urlString = [[[@"https://api.themoviedb.org/3/authentication/session/new?api_key=" stringByAppendingString:apiKey] stringByAppendingString:@"&request_token="] stringByAppendingString:requestToken];
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSLog(@"successfully got session ID");
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString *returnedSessionId = dataDictionary[@"session_id"];
+            sessionID = returnedSessionId;
+            completion(returnedSessionId, nil);
+        }
+    }];
+    [task resume];
+}
+
+- (void)createAccessToken:(void (^)(NSString *, NSString *, NSError *))completion{
+    //post request to create access token
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString *urlString = @"https://api.themoviedb.org/4/auth/access_token";
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    //headers
+    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
+//    NSString *bearerVal = [@"Bearer " stringByAppendingString:requestToken];
+//    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
+    
+    //request body + variables
+    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:requestToken, @"request_token", nil];
+    
+    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
+        NSError* error;
+        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
+        [request setHTTPBody:jsonData];
+        
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if(error != nil){
+                NSLog(@"Error: %@", error.localizedDescription);
+                completion(nil,nil,error);
+            }
+            else{
+                NSLog(@"Request successful");
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSString *returnedAccessToken = dataDictionary[@"access_token"];
+                NSString *returnedAccountId = dataDictionary[@"account_id"];
+                accessToken = returnedAccessToken;
+                accountID = returnedAccountId;
+                completion(accessToken, accountID, nil);
+            }
+        }];
+        [task resume];
+    }
+}
+
 @end

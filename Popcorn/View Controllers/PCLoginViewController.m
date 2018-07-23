@@ -8,6 +8,7 @@
 
 #import "PCLoginViewController.h"
 #import "Parse.h"
+#import "APIManager.h"
 
 @interface PCLoginViewController ()
 
@@ -89,11 +90,20 @@
         } else {
             NSLog(@"User registered successfully");
             
-            PFUser *curr = PFUser.currentUser;
-            curr[@"UserId"] = @"7966256";
-            curr[@"Followers"] = [NSMutableArray new];
-            curr[@"Reviews"] = [NSMutableArray new];
-            [curr saveInBackground];
+            [[APIManager shared] getRequestToken:^(NSString *requestToken, NSError *error) {
+                if(error != nil){
+                    NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else{
+                    //authenticate with website
+                }
+            }];
+            
+//            PFUser *curr = PFUser.currentUser;
+//            curr[@"UserId"] = @"7966256";
+//            curr[@"Followers"] = [NSMutableArray new];
+//            curr[@"Reviews"] = [NSMutableArray new];
+//            [curr saveInBackground];
             
             [self performSegueWithIdentifier:@"loginToMain" sender:nil];
         }
