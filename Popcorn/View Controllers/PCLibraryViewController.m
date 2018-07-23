@@ -53,6 +53,11 @@
     [self getLists];
 }
 
+- (IBAction)didTapSafari:(id)sender {
+    [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
+}
+
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     //filter for shelfs with its name including search text
     if (searchText.length != 0) {

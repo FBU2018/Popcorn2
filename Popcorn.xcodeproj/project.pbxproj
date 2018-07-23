@@ -10,6 +10,9 @@
 		26245A0C20FD54FE00A47E10 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26245A0B20FD54FE00A47E10 /* Movie.m */; };
 		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
+		26B6B67521064ED1001BE727 /* TmdbLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67421064ED1001BE727 /* TmdbLogin.storyboard */; };
+		26B6B67821064FAA001BE727 /* PCSafariLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67721064FAA001BE727 /* PCSafariLoginViewController.m */; };
+		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
@@ -69,6 +72,10 @@
 		2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSearchViewController.m; sourceTree = "<group>"; };
 		2684D0BD20FD159000FBB985 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = SOURCE_ROOT; };
 		2684D0BE20FD159000FBB985 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = SOURCE_ROOT; };
+		26B6B67421064ED1001BE727 /* TmdbLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TmdbLogin.storyboard; sourceTree = "<group>"; };
+		26B6B67621064FAA001BE727 /* PCSafariLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSafariLoginViewController.h; sourceTree = "<group>"; };
+		26B6B67721064FAA001BE727 /* PCSafariLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSafariLoginViewController.m; sourceTree = "<group>"; };
+		26B6B6792106511D001BE727 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -133,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */,
 				959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */,
 				FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */,
 			);
@@ -205,6 +213,7 @@
 				951A794420FD0CB5003D3901 /* Library.storyboard */,
 				959B2B0A2102476E005D418E /* Trailer.storyboard */,
 				951A794620FD0CC1003D3901 /* Search.storyboard */,
+				26B6B67421064ED1001BE727 /* TmdbLogin.storyboard */,
 				951A794820FD0CCC003D3901 /* Detail.storyboard */,
 				959B2B0221010610005D418E /* ShelfPicker.storyboard */,
 				951A791820FD0A8B003D3901 /* Assets.xcassets */,
@@ -256,6 +265,8 @@
 				71F631C92102AD11001BAA77 /* PCActorDetailViewController.m */,
 				95A313E121028A70006F1828 /* PCWebLoginViewController.h */,
 				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
+				26B6B67621064FAA001BE727 /* PCSafariLoginViewController.h */,
+				26B6B67721064FAA001BE727 /* PCSafariLoginViewController.m */,
 				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
 			);
@@ -300,6 +311,7 @@
 		FC080368C3B1E330142ABD06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26B6B6792106511D001BE727 /* SafariServices.framework */,
 				959B2AFA20FFF15A005D418E /* WebKit.framework */,
 				5BAB24C848515EA0D355910C /* libPods-Popcorn.a */,
 				C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */,
@@ -419,6 +431,7 @@
 				951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */,
 				951A794520FD0CB5003D3901 /* Library.storyboard in Resources */,
 				959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */,
+				26B6B67521064ED1001BE727 /* TmdbLogin.storyboard in Resources */,
 				959B2B0B2102476E005D418E /* Trailer.storyboard in Resources */,
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
@@ -527,6 +540,7 @@
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
+				26B6B67821064FAA001BE727 /* PCSafariLoginViewController.m in Sources */,
 				95A313E6210290EB006F1828 /* PCLoginViewController.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
