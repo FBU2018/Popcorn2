@@ -468,7 +468,7 @@ static NSString * accountID = @"";
     [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
     
     //request body + variables
-    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"http://www.themoviedb.org/", @"redirect_to", nil];
+    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"https://www.themoviedb.org/", @"redirect_to", nil];
     
     if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
         NSError* error;
