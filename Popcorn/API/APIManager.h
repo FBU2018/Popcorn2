@@ -19,8 +19,9 @@
 - (void)addItem: (NSString *) shelfId forItem:(Movie *)item completion:(void (^) (NSError *)) completion;
 - (void)addRating: (NSString *) movieId withRating: (NSString *) rating completion:(void (^) (NSError *)) completion;
 
-- (void)createAccessToken:(void (^)(NSString *accessToken, NSString *accountId, NSError *))completion;
-- (void)getRequestToken:(void(^)(NSString *requestToken, NSError *error))completion;
+- (void)createAccessToken4:(void (^)(NSString *accessToken, NSString *accountId, NSError *error))completion;
+- (void)getRequestToken3:(void(^)(NSString *requestToken, NSError *error))completion;
+- (void)postRequestToken4:(void(^)(NSString *requestToken, NSError *error))completion;
 - (void)getSession:(void(^)(NSString *sessionId, NSError *error))completion;
 
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;

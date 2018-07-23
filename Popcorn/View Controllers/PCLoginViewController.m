@@ -9,11 +9,14 @@
 #import "PCLoginViewController.h"
 #import "Parse.h"
 #import "APIManager.h"
+#import "PCWebLoginViewController.h"
 
 @interface PCLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (strong, nonatomic) NSString *targetURL;
 
 
 @end
@@ -90,14 +93,32 @@
         } else {
             NSLog(@"User registered successfully");
             
-            [[APIManager shared] getRequestToken:^(NSString *requestToken, NSError *error) {
-                if(error != nil){
-                    NSLog(@"Error: %@", error.localizedDescription);
-                }
-                else{
-                    //authenticate with website
-                }
-            }];
+            //get request token
+//            [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
+//                if(error != nil){
+//                    NSLog(@"Error: %@", error.localizedDescription);
+//                }
+//                else{
+//                    NSLog(@"request token: %@", requestToken);
+//                    self.targetURL = requestToken;
+//                    [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
+//                    //authenticate with website!!!
+//                    //then get session
+//                    [[APIManager shared] getSession:^(NSString *sessionId, NSError *error) {
+//                        if(error != nil){
+//                            NSLog(@"Error: %@", error.localizedDescription);
+//                        }
+//                        else{
+//                            //get access token
+//                            [[APIManager shared] createAccessToken:^(NSString *accessToken, NSString *accountId, NSError *error) {
+//                                if(error != nil){
+//                                    NSLog(@"Error: %@", error.localizedDescription);
+//                                }
+//                            }];
+//                        }
+//                    }];
+//                }
+//            }];
             
 //            PFUser *curr = PFUser.currentUser;
 //            curr[@"UserId"] = @"7966256";
@@ -133,7 +154,18 @@
         } else {
             NSLog(@"User logged in successfully");
             
-            [self performSegueWithIdentifier:@"loginToMain" sender:nil];
+            //get request token
+            [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
+                if(error != nil){
+                    NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"request token: %@", requestToken);
+                    self.targetURL = requestToken;
+                    [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
+                    //authenticate with website
+                }
+            }];
         }
     }];
 }
@@ -148,14 +180,18 @@
 //}
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"loginToWebLogin"]){
+        PCWebLoginViewController *reciever = [segue destinationViewController];
+        reciever.targetURL = self.targetURL;
+    }
 }
-*/
+
 
 @end
