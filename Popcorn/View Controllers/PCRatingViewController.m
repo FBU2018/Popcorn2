@@ -41,15 +41,26 @@
 */
 
 - (IBAction)didTapDone:(id)sender {
-    [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text completion:^(NSError * error) {
-        if(error != nil){
-            NSLog(@"%@", error.localizedDescription);
-        }
-        else{
-            NSLog(@"Request successful");
-        }
-    }];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if([self.ratingTextField.text doubleValue] >= 0 && [self.ratingTextField.text doubleValue] <= 10){
+        [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text completion:^(NSError * error) {
+            if(error != nil){
+                NSLog(@"%@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Request successful");
+            }
+        }];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else{
+        //present an alert if user enters a rating outside of the possible bounds
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid input" message:@"Rating must be between 0 and 10" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (IBAction)didTapCancel:(id)sender {

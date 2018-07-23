@@ -13,6 +13,9 @@
 #import "PCShelfViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <SWTableViewCell.h>
+#import "AppDelegate.h"
+#import "Parse/Parse.h"
+#import "PCLoginViewController.h"
 
 
 @interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
@@ -55,6 +58,17 @@
 
 - (IBAction)didTapSafari:(id)sender {
     [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
+}
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PCLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"PCLoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
 }
 
 

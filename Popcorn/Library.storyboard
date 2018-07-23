@@ -86,11 +86,6 @@
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Library" id="2iw-vI-whp">
-                        <barButtonItem key="leftBarButtonItem" title="Safari" id="y6d-HZ-zHe">
-                            <connections>
-                                <action selector="didTapSafari:" destination="MkW-Uf-1rx" id="pzt-0i-Gh8"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
                             <connections>
                                 <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>
@@ -101,7 +96,6 @@
                     <connections>
                         <outlet property="searchBar" destination="A9X-M9-I4E" id="jsP-2B-BZe"/>
                         <outlet property="tableView" destination="Ibw-hw-ImS" id="d68-tz-3bY"/>
-                        <segue destination="6kF-TW-Zxy" kind="show" identifier="libraryToSafari" id="1l4-Yp-HkG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1x-fI-fX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,14 +219,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBK-Dw-LrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2570" y="119"/>
-        </scene>
-        <!--TmdbLogin-->
-        <scene sceneID="ZSb-TF-QPE">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TmdbLogin" id="6kF-TW-Zxy" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZaX-OL-vZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="190" y="-473"/>
         </scene>
         <!--Library-->
         <scene sceneID="ETa-38-fzx">
