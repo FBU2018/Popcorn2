@@ -97,6 +97,41 @@
         } else {
             NSLog(@"User registered successfully");
             
+            [PFUser logInWithUsernameInBackground:newUser.username password:newUser.password block:^(PFUser * user, NSError *  error) {
+                if (error != nil) {
+                    NSLog(@"User log in failed: %@", error.localizedDescription);
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"User log in failed"
+                                                                                   message:error.localizedDescription
+                                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+                    
+                    // create an OK action
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                                     }];
+                    // add the OK action to the alert controller
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{
+                    }];
+                } else {
+                    NSLog(@"User logged in successfully");
+                    
+                    //get request token
+                    [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
+                        if(error != nil){
+                            NSLog(@"Error: %@", error.localizedDescription);
+                        }
+                        else{
+                            NSLog(@"request token: %@", requestToken);
+                            self.targetURL = requestToken;
+                            [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
+                            //authenticate with website
+                        }
+                    }];
+                }
+            }];
+            
+            
             //get request token
 //            [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
 //                if(error != nil){

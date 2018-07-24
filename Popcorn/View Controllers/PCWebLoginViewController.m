@@ -55,8 +55,18 @@
                 else{
                     NSLog(@"Request token 4: %@", requestToken);
                     self.requestTokenToSend = requestToken;
-                    [self performSegueWithIdentifier:@"toNextAuth" sender:nil];
+//                    [self performSegueWithIdentifier:@"toNextAuth" sender:nil];
                     //another web view to approve, then create access token
+                    
+                    [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
+                        if(error != nil){
+                            NSLog(@"Error: %@", error.localizedDescription);
+                        }
+                        else{
+                            NSLog(@"Successfully get account details, id: %@", userId);
+                            [self performSegueWithIdentifier:@"loginToMain" sender:nil];
+                        }
+                    }];
                 }
             }];
         }

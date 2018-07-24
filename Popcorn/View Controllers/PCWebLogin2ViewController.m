@@ -31,12 +31,24 @@
 }
 
 - (void)getAccess{
-    [[APIManager shared] createAccessToken4:^(NSString *accessToken, NSString *accountId, NSError *error) {
+    
+    
+//    [[APIManager shared] createAccessToken4:^(NSString *accessToken, NSString *accountId, NSError *error) {
+//        if(error != nil){
+//            NSLog(@"Error: %@", error.localizedDescription);
+//        }
+//        else{
+//            NSLog(@"account id: %@", accountId);
+////            [self performSegueWithIdentifier:@"loginToMain" sender:nil];
+//        }
+//    }];
+    
+    [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            NSLog(@"account id: %@", accountId);
+            NSLog(@"Successfully get account details, id: %@", userId);
             [self performSegueWithIdentifier:@"loginToMain" sender:nil];
         }
     }];
