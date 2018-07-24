@@ -41,12 +41,15 @@
     self.castCollectionView.delegate = self;
     self.castCollectionView.dataSource = self;
     
+    [self.castCollectionView layoutIfNeeded];
+    
     [self configureDetails];
     
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
+    
 
 }
 
@@ -61,7 +64,7 @@
     NSString *ratingString = [@"Average rating: " stringByAppendingString:[[self.movie.rating stringValue] stringByAppendingString:@"/10"]];
     self.ratingLabel.text = ratingString;
     self.dateLabel.text = self.movie.releaseDateString;
-    //CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
+    //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
     
  
