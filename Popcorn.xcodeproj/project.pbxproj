@@ -10,6 +10,9 @@
 		26245A0C20FD54FE00A47E10 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26245A0B20FD54FE00A47E10 /* Movie.m */; };
 		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
+		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; };
+		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
+		26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67E21068289001BE727 /* PCProfileViewController.m */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
@@ -31,7 +34,6 @@
 		951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A794E20FD0E77003D3901 /* PCShelfViewController.m */; };
 		951A795320FD0F2F003D3901 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795220FD0F2F003D3901 /* APIManager.m */; };
 		951A795620FD11A1003D3901 /* LibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795520FD11A1003D3901 /* LibraryCell.m */; };
-		953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -71,6 +73,10 @@
 		2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSearchViewController.m; sourceTree = "<group>"; };
 		2684D0BD20FD159000FBB985 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = SOURCE_ROOT; };
 		2684D0BE20FD159000FBB985 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = SOURCE_ROOT; };
+		26B6B6792106511D001BE727 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		26B6B67B21068255001BE727 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		26B6B67D21068289001BE727 /* PCProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCProfileViewController.h; sourceTree = "<group>"; };
+		26B6B67E21068289001BE727 /* PCProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCProfileViewController.m; sourceTree = "<group>"; };
 		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BAB24C848515EA0D355910C /* libPods-Popcorn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popcorn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -113,8 +119,6 @@
 		951A795220FD0F2F003D3901 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		951A795420FD11A1003D3901 /* LibraryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
 		951A795520FD11A1003D3901 /* LibraryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LibraryCell.m; sourceTree = "<group>"; };
-		953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWebLogin2ViewController.h; sourceTree = "<group>"; };
-		953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWebLogin2ViewController.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -139,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */,
 				959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */,
 				FD13DECCAD065EF85917D031 /* libPods-Popcorn.a in Frameworks */,
 			);
@@ -208,6 +213,7 @@
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				26B6B67B21068255001BE727 /* Profile.storyboard */,
 				951A794420FD0CB5003D3901 /* Library.storyboard */,
 				959B2B0A2102476E005D418E /* Trailer.storyboard */,
 				951A794620FD0CC1003D3901 /* Search.storyboard */,
@@ -264,6 +270,8 @@
 				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
 				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
+				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
+				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
 				953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */,
 				953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */,
 				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
@@ -310,6 +318,7 @@
 		FC080368C3B1E330142ABD06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26B6B6792106511D001BE727 /* SafariServices.framework */,
 				959B2AFA20FFF15A005D418E /* WebKit.framework */,
 				5BAB24C848515EA0D355910C /* libPods-Popcorn.a */,
 				C03962F5EEE2D7D6DE80E414 /* libPods-PopcornTests.a */,
@@ -431,6 +440,7 @@
 				959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */,
 				959B2B0B2102476E005D418E /* Trailer.storyboard in Resources */,
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
+				26B6B67C21068255001BE727 /* Profile.storyboard in Resources */,
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
 				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
 			);
@@ -547,6 +557,7 @@
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
+				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
 				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
 				7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */,

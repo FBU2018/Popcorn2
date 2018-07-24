@@ -86,12 +86,12 @@
 
 - (void)updateChecks: (NSString *) shelfId forCell: (ShelfPickerCell *) cell{
     //sets check marks on shelves which already have the movie in the shelf
-    [[APIManager shared] getItemStatus:shelfId forMovie:[self.movie.movieID stringValue] ofType:self.movie.mediaType completion:^(NSString *status, NSError *error) {
+    [[APIManager shared] getItemStatus:shelfId forMovie:[self.movie.movieID stringValue] ofType:self.movie.mediaType completion:^(bool inList, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            if([status isEqualToString:@"1"]){
+            if(inList == YES){
                 NSLog(@"Item is in list");
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
