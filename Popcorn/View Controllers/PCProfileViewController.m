@@ -9,7 +9,7 @@
 #import "PCProfileViewController.h"
 #import "Parse.h"
 
-@interface PCProfileViewController ()
+@interface PCProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong,  nonatomic) PFUser *currentUser;
 @end
 
@@ -22,6 +22,11 @@
     // Show the current users username and followers and following count
     self.currentUser = [PFUser currentUser];
     self.usernameLabel.text = self.currentUser.username;
+    
+    // Call method to get users list given their account id
+    
+}
+- (IBAction)didTapFollow:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,7 +34,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+// Define a method that gets a given user's lists
+-(void)getProfileLists{
+    
+}
 
 
 /*
@@ -41,5 +49,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+//    <#code#>
+//}
+//
+//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    <#code#>
+//}
+//
+
 
 @end
