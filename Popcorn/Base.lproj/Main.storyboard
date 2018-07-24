@@ -28,7 +28,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAh-a2-BSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="201"/>
+            <point key="canvasLocation" x="818" y="31"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="E06-oT-Wal">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="Oh0-pz-ewI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="0su-wd-dsF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fx-LQ-Qx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="769" y="152"/>
         </scene>
         <!--Web Login View Controller-->
         <scene sceneID="an5-DT-Wvd">
@@ -87,6 +97,7 @@
                     <connections>
                         <segue destination="pF6-hK-Rz7" kind="relationship" relationship="viewControllers" id="iYc-BP-A0y"/>
                         <segue destination="92k-Oj-sL8" kind="relationship" relationship="viewControllers" id="7wy-qu-bSK"/>
+                        <segue destination="Oh0-pz-ewI" kind="relationship" relationship="viewControllers" id="3f0-Eo-xmz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewj-zm-gOd" userLabel="First Responder" sceneMemberID="firstResponder"/>

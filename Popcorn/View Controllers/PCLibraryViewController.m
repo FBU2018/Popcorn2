@@ -56,6 +56,9 @@
     [self getLists];
 }
 
+- (IBAction)didTapSafari:(id)sender {
+    [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
+}
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
