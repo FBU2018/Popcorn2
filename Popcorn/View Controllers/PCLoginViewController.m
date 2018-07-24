@@ -96,6 +96,7 @@
             [self presentViewController:alert animated:YES completion:^{
             }];
         } else {
+            //User has successfully made Parse account
             NSLog(@"User registered successfully");
             
             [PFUser logInWithUsernameInBackground:newUser.username password:newUser.password block:^(PFUser * user, NSError *  error) {
@@ -115,6 +116,7 @@
                     [self presentViewController:alert animated:YES completion:^{
                     }];
                 } else {
+                    //User has successfully logged into Parse account
                     NSLog(@"User logged in successfully");
                     
                     //get request token
@@ -125,48 +127,12 @@
                         else{
                             NSLog(@"request token: %@", requestToken);
                             self.targetURL = requestToken;
-                            [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
                             //authenticate with website
+                            [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
                         }
                     }];
                 }
             }];
-            
-            
-            //get request token
-//            [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
-//                if(error != nil){
-//                    NSLog(@"Error: %@", error.localizedDescription);
-//                }
-//                else{
-//                    NSLog(@"request token: %@", requestToken);
-//                    self.targetURL = requestToken;
-//                    [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
-//                    //authenticate with website!!!
-//                    //then get session
-//                    [[APIManager shared] getSession:^(NSString *sessionId, NSError *error) {
-//                        if(error != nil){
-//                            NSLog(@"Error: %@", error.localizedDescription);
-//                        }
-//                        else{
-//                            //get access token
-//                            [[APIManager shared] createAccessToken:^(NSString *accessToken, NSString *accountId, NSError *error) {
-//                                if(error != nil){
-//                                    NSLog(@"Error: %@", error.localizedDescription);
-//                                }
-//                            }];
-//                        }
-//                    }];
-//                }
-//            }];
-            
-//            PFUser *curr = PFUser.currentUser;
-//            curr[@"UserId"] = @"7966256";
-//            curr[@"Followers"] = [NSMutableArray new];
-//            curr[@"Reviews"] = [NSMutableArray new];
-//            [curr saveInBackground];
-            
-            [self performSegueWithIdentifier:@"loginToMain" sender:nil];
         }
     }];
 }
@@ -202,8 +168,8 @@
                 else{
                     NSLog(@"request token: %@", requestToken);
                     self.targetURL = requestToken;
-                    [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
                     //authenticate with website
+                    [self performSegueWithIdentifier:@"loginToWebLogin" sender:self];
                 }
             }];
         }
@@ -214,11 +180,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (IBAction)didTapLogin:(id)sender {
-////    [self performSegueWithIdentifier:@"loginToWebLogin" sender:nil];
-//}
-
 
 
 #pragma mark - Navigation

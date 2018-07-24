@@ -82,8 +82,12 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     //filter for shelfs with its name including search text
     if (searchText.length != 0) {
+        //case does not matter
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *shelf, NSDictionary *bindings) {
-            return [shelf[@"name"] containsString:searchText];
+            NSString *modifiedSearchText = [searchText lowercaseString];
+            //make each starting letter capital
+            modifiedSearchText = [NSString stringWithFormat:@"%@%@",[[modifiedSearchText substringToIndex:1] uppercaseString],[modifiedSearchText substringFromIndex:1] ];
+            return [shelf[@"name"] containsString:modifiedSearchText];
         }];
         self.filteredData = [self.shelves filteredArrayUsingPredicate:predicate];
         NSLog(@"%@", self.filteredData);

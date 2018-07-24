@@ -8,6 +8,7 @@
 
 #import "PCActorDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "PCActorBioViewController.h"
 
 @interface PCActorDetailViewController ()
 @property (strong, nonatomic) NSDictionary *actorDetails;
@@ -32,15 +33,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"actorDetailsToBio"]){
+        PCActorBioViewController *receiver = [segue destinationViewController];
+        receiver.bio = self.actorDetails[@"biography"];
+    }
 }
-*/
+
 
 - (void)getActorDetails:(NSString *)actorID completion:(void (^)(NSDictionary *, NSError *))completion{
     NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";

@@ -19,9 +19,9 @@
 static NSString * const apiKey = @"15703e94357b9dc777959d930e92e7dc";
 static NSString * const readAccessToken4 = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTcwM2U5NDM1N2I5ZGM3Nzc5NTlkOTMwZTkyZTdkYyIsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4BwAxs_-AWbqm-ckcyg8IH5bwrfNCjN8iHAV84xiLJc";
 static NSString * requestToken3 = @"";
-static NSString * requestToken4 = @"";
+//static NSString * requestToken4 = @"";
 static NSString * sessionID = @"";
-static NSString * accessToken = @"";
+//static NSString * accessToken = @"";
 static NSString * accountID = @"";
 
 
@@ -651,45 +651,44 @@ static NSString * accountID = @"";
 }
 
 
-//HERE
-- (void)postRequestToken4:(void (^)(NSString *, NSError *))completion{
-    //post request to get request token V4
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = @"https://api.themoviedb.org/4/auth/request_token";
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-    
-    //headers
-    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
-    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
-    
-    //request body + variables
-    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"https://www.themoviedb.org/", @"redirect_to", nil];
-    
-    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-        NSError* error;
-        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-        [request setHTTPBody:jsonData];
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            if(error != nil){
-                NSLog(@"Error: %@", error.localizedDescription);
-                completion(nil,error);
-            }
-            else{
-                NSLog(@"Request successful");
-                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString *returnedRequestToken = dataDictionary[@"request_token"];
-                requestToken4 = returnedRequestToken;
-                completion(requestToken4, nil);
-            }
-        }];
-        [task resume];
-    }
-}
+//- (void)postRequestToken4:(void (^)(NSString *, NSError *))completion{
+//    //post request to get request token V4
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    NSString *urlString = @"https://api.themoviedb.org/4/auth/request_token";
+//    [request setURL:[NSURL URLWithString:urlString]];
+//    [request setHTTPMethod:@"POST"];
+//
+//    //headers
+//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
+//    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
+//    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
+//
+//    //request body + variables
+//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"https://www.themoviedb.org/", @"redirect_to", nil];
+//
+//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
+//        NSError* error;
+//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
+//        [request setHTTPBody:jsonData];
+//
+//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//
+//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//            if(error != nil){
+//                NSLog(@"Error: %@", error.localizedDescription);
+//                completion(nil,error);
+//            }
+//            else{
+//                NSLog(@"Request successful");
+//                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//                NSString *returnedRequestToken = dataDictionary[@"request_token"];
+//                requestToken4 = returnedRequestToken;
+//                completion(requestToken4, nil);
+//            }
+//        }];
+//        [task resume];
+//    }
+//}
 
 
 
@@ -739,49 +738,49 @@ static NSString * accountID = @"";
 
 
 
-- (void)createAccessToken4:(void (^)(NSString *, NSString *, NSError *))completion{
-    //post request to create access token
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = @"https://api.themoviedb.org/4/auth/access_token";
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-    
-    //headers
-    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
-    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
-    
-    
-    //request body
-    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:requestToken4, @"request_token", nil];
-    
-    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-        NSError* error;
-        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-        [request setHTTPBody:jsonData];
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            if(error != nil){
-                NSLog(@"Error: %@", error.localizedDescription);
-                completion(nil,nil,error);
-            }
-            else{
-                NSLog(@"Request successful");
-                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSLog(@"Data dictionary: %@", dataDictionary);
-                NSString *returnedAccessToken = dataDictionary[@"access_token"];
-                NSString *returnedAccountId = dataDictionary[@"account_id"];
-                accessToken = returnedAccessToken;
-                accountID = returnedAccountId;
-                NSLog(@"ACCESS TOKEN: %@", accessToken);
-                completion(accessToken, accountID, nil);
-            }
-        }];
-        [task resume];
-    }
-}
+//- (void)createAccessToken4:(void (^)(NSString *, NSString *, NSError *))completion{
+//    //post request to create access token
+//
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    NSString *urlString = @"https://api.themoviedb.org/4/auth/access_token";
+//    [request setURL:[NSURL URLWithString:urlString]];
+//    [request setHTTPMethod:@"POST"];
+//
+//    //headers
+//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
+//    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
+//    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
+//
+//
+//    //request body
+//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:requestToken4, @"request_token", nil];
+//
+//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
+//        NSError* error;
+//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
+//        [request setHTTPBody:jsonData];
+//
+//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//
+//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//            if(error != nil){
+//                NSLog(@"Error: %@", error.localizedDescription);
+//                completion(nil,nil,error);
+//            }
+//            else{
+//                NSLog(@"Request successful");
+//                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//                NSLog(@"Data dictionary: %@", dataDictionary);
+//                NSString *returnedAccessToken = dataDictionary[@"access_token"];
+//                NSString *returnedAccountId = dataDictionary[@"account_id"];
+//                accessToken = returnedAccessToken;
+//                accountID = returnedAccountId;
+//                NSLog(@"ACCESS TOKEN: %@", accessToken);
+//                completion(accessToken, accountID, nil);
+//            }
+//        }];
+//        [task resume];
+//    }
+//}
 
 @end
