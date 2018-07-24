@@ -9,7 +9,6 @@
 #import "PCWebLoginViewController.h"
 #import <WebKit/WebKit.h>
 #import "APIManager.h"
-#import "PCWebLogin2ViewController.h"
 
 
 @interface PCWebLoginViewController ()
@@ -46,27 +45,13 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            //get request token for 4, then access token for 4
-            NSLog(@"session id: %@", sessionId);
-            [[APIManager shared] postRequestToken4:^(NSString *requestToken, NSError *error) {
+            [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
                 if(error != nil){
                     NSLog(@"Error: %@", error.localizedDescription);
                 }
                 else{
-                    NSLog(@"Request token 4: %@", requestToken);
-                    self.requestTokenToSend = requestToken;
-//                    [self performSegueWithIdentifier:@"toNextAuth" sender:nil];
-                    //another web view to approve, then create access token
-                    
-                    [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
-                        if(error != nil){
-                            NSLog(@"Error: %@", error.localizedDescription);
-                        }
-                        else{
-                            NSLog(@"Successfully get account details, id: %@", userId);
-                            [self performSegueWithIdentifier:@"loginToMain" sender:nil];
-                        }
-                    }];
+                    NSLog(@"Successfully get account details, id: %@", userId);
+                    [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }
             }];
         }
@@ -86,10 +71,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"toNextAuth"]){
-        PCWebLogin2ViewController *receiver = [segue destinationViewController];
-        receiver.requestToken = self.requestTokenToSend;
-    }
 }
 
 
