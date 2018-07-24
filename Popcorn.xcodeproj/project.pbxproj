@@ -13,6 +13,7 @@
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
+		7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7188D3362107E4690057E9AE /* PCActorBioViewController.m */; };
 		7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7196F6B621014AD20005643B /* PCRatingViewController.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F631C92102AD11001BAA77 /* PCActorDetailViewController.m */; };
@@ -78,6 +79,8 @@
 		7178E8A721010D2300431364 /* PCReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCReviewViewController.m; sourceTree = "<group>"; };
 		7178E8A921010D4D00431364 /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		7178E8AA21010D4D00431364 /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
+		7188D3352107E4690057E9AE /* PCActorBioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCActorBioViewController.h; sourceTree = "<group>"; };
+		7188D3362107E4690057E9AE /* PCActorBioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCActorBioViewController.m; sourceTree = "<group>"; };
 		7196F6B521014AD20005643B /* PCRatingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCRatingViewController.h; sourceTree = "<group>"; };
 		7196F6B621014AD20005643B /* PCRatingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCRatingViewController.m; sourceTree = "<group>"; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
 				953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */,
 				953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */,
+				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
+				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
+				7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */,
 				953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
