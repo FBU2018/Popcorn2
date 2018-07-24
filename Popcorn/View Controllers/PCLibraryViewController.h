@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PCLibraryViewController : UIViewController
-
+@property (strong, nonatomic) NSString *sessionId;
+@property (strong, nonatomic) NSString *accountId;
 @end

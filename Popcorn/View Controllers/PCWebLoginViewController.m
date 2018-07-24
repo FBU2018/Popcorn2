@@ -9,13 +9,15 @@
 #import "PCWebLoginViewController.h"
 #import <WebKit/WebKit.h>
 #import "APIManager.h"
+#import "PCLibraryViewController.h"
 
 
 @interface PCWebLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIView *viewForFrame;
-
+@property (strong, nonatomic) NSString *sessionId;
+@property (strong, nonatomic) NSString *accountId;
 @property(strong, nonatomic) NSString *username;
 @property(strong, nonatomic) NSString *password;
 
@@ -51,9 +53,13 @@
                 }
                 else{
                     NSLog(@"Successfully get account details, id: %@", userId);
+                    // store returned account id to private property
+                    self.accountId = userId;
                     [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }
             }];
+            // store returned session_id to private property
+            self.sessionId = sessionId;
         }
     }];
 }
@@ -71,6 +77,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"loginToMain"]){
+        PCLibraryViewController *libraryVC = [segue destinationViewController];
+        // Pass the current user's session id to the Library VC
+        libraryVC.sessionId = self.sessionId;
+        libraryVC.accountId = self.accountId;
+    }
 }
 
 
