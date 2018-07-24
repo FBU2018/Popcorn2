@@ -28,7 +28,7 @@
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
 - (void)getTrailerURL: (NSString *) movieId completion:(void (^) (NSURL *, NSError *)) completion;
-- (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (NSString *, NSError *)) completion;
+- (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (bool presentInList, NSError *error)) completion;
 
 - (void)getCast:(NSString *)movieId completion:(void (^)(NSArray *, NSError *))completion;
 -(void)searchMoviesWithString:(NSString *)searchString andPageNumber:(NSString *)pageNumber andResultsCompletionHandler:(void (^)(NSArray *))resultsHandler andErrorCompletionHandler:(void (^)(NSError *))errorHandler;

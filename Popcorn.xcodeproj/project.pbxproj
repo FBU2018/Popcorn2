@@ -33,7 +33,6 @@
 		951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A794E20FD0E77003D3901 /* PCShelfViewController.m */; };
 		951A795320FD0F2F003D3901 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795220FD0F2F003D3901 /* APIManager.m */; };
 		951A795620FD11A1003D3901 /* LibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795520FD11A1003D3901 /* LibraryCell.m */; };
-		953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -117,8 +116,6 @@
 		951A795220FD0F2F003D3901 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		951A795420FD11A1003D3901 /* LibraryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
 		951A795520FD11A1003D3901 /* LibraryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LibraryCell.m; sourceTree = "<group>"; };
-		953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWebLogin2ViewController.h; sourceTree = "<group>"; };
-		953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWebLogin2ViewController.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -563,7 +560,6 @@
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
-				953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

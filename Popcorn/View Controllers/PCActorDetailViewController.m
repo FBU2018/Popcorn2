@@ -25,8 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self fetchActorDetails];
-   // [self configureDetails];
-    NSLog(@"%@", self.actorDetails);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +70,7 @@
         }
         else{
             self.actorDetails = results;
-       //NSLog(@"%@", self.actorDetails);
+            NSLog(@"%@", self.actorDetails);
             [self configureDetails];
         }
     }];
@@ -80,13 +78,29 @@
 }
 
 -(void) configureDetails{
-    NSString *urlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.actorDetails[@"profile_path"]];
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    [self.profileImageView setImage:[UIImage imageNamed:@"person placeholder.png"]];
+    if(![self.actorDetails[@"profile_path"] isEqual:[NSNull null]]){
+        NSString *urlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.actorDetails[@"profile_path"]];
+        [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+     }
+    
     self.nameLabel.text = self.actorDetails[@"name"];
-    self.knownForLabel.text = [@"Known for " stringByAppendingString:self.actorDetails[@"known_for_department"]];
-    self.birthdayLabel.text = self.actorDetails[@"birthday"];
-    self.birthplaceLabel.text = self.actorDetails[@"place_of_birth"];
-    self.bioLabel.text = self.actorDetails[@"biography"];
+    
+    if(![self.actorDetails[@"known_for_department"] isEqual:[NSNull null]]){
+        self.knownForLabel.text = [@"Known for " stringByAppendingString:self.actorDetails[@"known_for_department"]];
+    }
+    
+    if(![self.actorDetails[@"birthday"] isEqual: [NSNull null]]){
+        self.birthdayLabel.text = self.actorDetails[@"birthday"];
+    }
+    
+    if(![self.actorDetails[@"place_of_birth"] isEqual: [NSNull null]]){
+        self.birthplaceLabel.text = self.actorDetails[@"place_of_birth"];
+    }
+    
+    if(![self.actorDetails[@"biography"] isEqual:[NSNull null]]){
+        self.bioLabel.text = self.actorDetails[@"biography"];
+    }
 }
 
 @end
