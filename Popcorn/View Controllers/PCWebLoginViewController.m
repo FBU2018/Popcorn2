@@ -18,7 +18,6 @@
 
 @property(strong, nonatomic) NSString *username;
 @property(strong, nonatomic) NSString *password;
-
 @property(strong, nonatomic) NSString *requestTokenToSend;
 
 @end
@@ -30,7 +29,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    
+    //show authentication page, user must click "allow"
     NSString *targetString = [@"https://www.themoviedb.org/authenticate/" stringByAppendingString:self.targetURL];
     NSURL *target = [NSURL URLWithString:targetString];
 
@@ -40,17 +39,20 @@
 
 
 - (IBAction)didTapBack:(id)sender {
+    //get session id
     [[APIManager shared] getSession:^(NSString *sessionId, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
+            //get account details (user id, etc)
             [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
                 if(error != nil){
                     NSLog(@"Error: %@", error.localizedDescription);
                 }
                 else{
-                    NSLog(@"Successfully get account details, id: %@", userId);
+                    NSLog(@"Successfully get account details");
+                    //go to main tab bar controller
                     [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }
             }];

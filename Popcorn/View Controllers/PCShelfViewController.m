@@ -55,7 +55,11 @@
     
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Movie *movie, NSDictionary *bindings) {
-            return [movie.title containsString:searchText];
+            //case doesn't affect searching
+            NSString *modifiedSearchText = [searchText lowercaseString];
+            //make each starting letter capital
+            modifiedSearchText = [NSString stringWithFormat:@"%@%@",[[modifiedSearchText substringToIndex:1] uppercaseString],[modifiedSearchText substringFromIndex:1] ];
+            return [movie.title containsString:modifiedSearchText];
         }];
         self.filteredData = [self.movieArray filteredArrayUsingPredicate:predicate];
         NSLog(@"%@", self.filteredData);
