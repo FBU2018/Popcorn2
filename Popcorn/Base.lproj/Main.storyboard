@@ -67,7 +67,7 @@
                     <connections>
                         <outlet property="viewForFrame" destination="va9-7n-bzC" id="bz3-GJ-tTt"/>
                         <outlet property="webView" destination="2QV-4n-8yB" id="uIR-od-kxc"/>
-                        <segue destination="pq4-kd-o72" kind="show" identifier="toNextAuth" id="zNZ-pn-OFR"/>
+                        <segue destination="7SX-Uc-E2Q" kind="show" identifier="loginToMain" id="otE-vF-KYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1K-Ka-KQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,4 +190,7 @@
             <point key="canvasLocation" x="32.799999999999997" y="777.66116941529242"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="otE-vF-KYj"/>
+    </inferredMetricsTieBreakers>
 </document>

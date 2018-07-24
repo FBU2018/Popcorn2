@@ -23,6 +23,7 @@
 - (void)getRequestToken3:(void(^)(NSString *requestToken, NSError *error))completion;
 - (void)postRequestToken4:(void(^)(NSString *requestToken, NSError *error))completion;
 - (void)getSession:(void(^)(NSString *sessionId, NSError *error))completion;
+- (void)getAccountDetails:(void(^)(NSString *userId, NSError *error))completion;
 
 - (void)getShelves:(void(^)(NSDictionary *shelves, NSError *error))completion;
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
