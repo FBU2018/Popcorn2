@@ -34,4 +34,7 @@
 
 - (void)getRating:(NSString *)movieID withSessionId: (NSString*) mySessionId completion:(void (^)(NSObject *, NSError *)) completion;
 - (void) getReviews:(NSString *)movieID completion:(void (^)(NSArray *, NSError *))completion;
+
+- (void)getActorDetails:(NSString *)actorID completion:(void (^)(NSDictionary *, NSError *))completion;
+- (void)getCredits:(NSString *)actorID completion:(void (^)(NSArray *, NSError *))completion;
 @end
