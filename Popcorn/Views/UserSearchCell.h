@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParseUI.h"
 
 @interface UserSearchCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet PFImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
+- (void) configureCell:(NSArray *)users withIndexPath:(NSIndexPath *)indexPath;
 
 @end
