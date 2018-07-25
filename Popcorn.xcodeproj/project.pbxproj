@@ -179,6 +179,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2611EA9421091DA1006DC803 /* Main Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Main Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9521091DBC006DC803 /* User Search Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Search Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9621091DCA006DC803 /* Profile Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
+				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
+			);
+			path = "Profile Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9721091DDA006DC803 /* Library Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Library Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9821091DEC006DC803 /* Trailer Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Trailer Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9921091DFD006DC803 /* Search Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
+				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
+			);
+			path = "Search Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9A21091E12006DC803 /* Detail Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Detail Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "ShelfPicker Storyboard VCs";
+			sourceTree = "<group>";
+		};
 		66A24435E3DDD8F5F7479415 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +277,14 @@
 		951A790E20FD0A89003D3901 /* Popcorn */ = {
 			isa = PBXGroup;
 			children = (
+				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
+				2611EA9A21091E12006DC803 /* Detail Storyboard VCs */,
+				2611EA9921091DFD006DC803 /* Search Storyboard VCs */,
+				2611EA9821091DEC006DC803 /* Trailer Storyboard VCs */,
+				2611EA9721091DDA006DC803 /* Library Storyboard VCs */,
+				2611EA9621091DCA006DC803 /* Profile Storyboard VCs */,
+				2611EA9521091DBC006DC803 /* User Search Storyboard VCs */,
+				2611EA9421091DA1006DC803 /* Main Storyboard VCs */,
 				951A795020FD0E89003D3901 /* API */,
 				951A794320FD0BA0003D3901 /* Models */,
 				951A794220FD0B9A003D3901 /* Views */,
@@ -264,8 +332,6 @@
 				951A794B20FD0E42003D3901 /* PCLibraryViewController.m */,
 				951A794D20FD0E77003D3901 /* PCShelfViewController.h */,
 				951A794E20FD0E77003D3901 /* PCShelfViewController.m */,
-				2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */,
-				2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */,
 				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
 				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
 				959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */,
@@ -282,8 +348,6 @@
 				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
 				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
-				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
-				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
 				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
 				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
 				953A1AAB2107F097008215B0 /* PCUserSearchViewController.h */,
