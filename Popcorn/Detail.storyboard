@@ -131,7 +131,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vQ-TN-PAT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="118" height="172"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Character" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Ev-ps8">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Ev-ps8">
                                                                             <rect key="frame" x="8" y="136" width="102" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="102" id="hKI-0t-05W"/>
@@ -149,6 +149,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="6bJ-Ev-ps8" secondAttribute="trailing" constant="8" id="2Ox-NG-fMC"/>
                                                                         <constraint firstItem="6bJ-Ev-ps8" firstAttribute="leading" secondItem="3vQ-TN-PAT" secondAttribute="leading" constant="8" id="AKz-Yc-fhX"/>
+                                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6bJ-Ev-ps8" secondAttribute="bottom" priority="700" constant="8" id="LJD-Vp-WLQ"/>
                                                                         <constraint firstItem="6bJ-Ev-ps8" firstAttribute="centerY" secondItem="3vQ-TN-PAT" secondAttribute="centerY" constant="58" id="Mk1-Fz-31B"/>
                                                                     </constraints>
                                                                 </view>
