@@ -81,11 +81,11 @@ static NSString * accountID = @"";
 //    }
 //}
 
-- (void)createList:(NSString *)name completion:(void (^)(NSString *, NSError *))completion{
+- (void)createList:(NSString *)name withSessionId: (NSString *) mySessionId completion:(void (^)(NSString *, NSError *))completion{
     //post request to create list VERSION 3
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *stringURL = [[[@"https://api.themoviedb.org/3/list?api_key=" stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:sessionID];
+    NSString *stringURL = [[[@"https://api.themoviedb.org/3/list?api_key=" stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:mySessionId];
     [request setURL:[NSURL URLWithString:stringURL]];
     [request setHTTPMethod:@"POST"];
 
@@ -151,11 +151,11 @@ static NSString * accountID = @"";
 //    [task resume];
 //}
 
-- (void)deleteList:(NSString *)listId completion:(void (^)(NSError *error))completion{
+- (void)deleteList:(NSString *)listId withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *error))completion{
     //delete request to delete list with given id VERSION 3
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:listId] stringByAppendingString:@"?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:sessionID];
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:listId] stringByAppendingString:@"?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:mySessionId];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"DELETE"];
     
@@ -173,10 +173,10 @@ static NSString * accountID = @"";
     [task resume];
 }
 
--(void)getShelvesWithSessionId: (NSString *)sessionId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
-    // get requesrt ro getr all of a particular user's created lists/shelves using their sessionId
+-(void)getShelvesWithSessionId: (NSString *)sessionId andAccountId: (NSString *) accountId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
+    // get request to get all of a particular user's created lists/shelves using their sessionId
     
-    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountID] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
+    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountId] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -286,11 +286,11 @@ static NSString * accountID = @"";
 //    }
 //}
 
-- (void)removeItem:(NSString *)shelfId forItem:(Movie *)item completion:(void (^)(NSError *error))completion{
+- (void)removeItem:(NSString *)shelfId forItem:(Movie *)item withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *error))completion{
     //post request to delete item from list VERSION 3
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/remove_item?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:sessionID];
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/remove_item?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:mySessionId];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];
     
@@ -477,11 +477,11 @@ static NSString * accountID = @"";
 //    }
 //}
 
-- (void)addItem:(NSString *)shelfId forItem:(Movie *)item completion:(void (^)(NSError *))completion{
+- (void)addItem:(NSString *)shelfId forItem:(Movie *)item withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *))completion{
     //post request to add item to list VERSION 3
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/add_item?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:sessionID];
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/add_item?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="] stringByAppendingString:mySessionId];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];
     
@@ -544,11 +544,11 @@ static NSString * accountID = @"";
     [task resume];
 }
 
--(void) addRating:(NSString *)movieId withRating:(NSString *)rating completion:(void (^)(NSError *))completion{
+-(void) addRating:(NSString *)movieId withRating:(NSString *)rating withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *))completion{
     //post request to add item to list
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieId] stringByAppendingString:@"/rating?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:sessionID];
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieId] stringByAppendingString:@"/rating?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:mySessionId];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"POST"];
     
@@ -580,8 +580,8 @@ static NSString * accountID = @"";
     }
 }
 
-- (void) getRating:(NSString *)movieID completion:(void (^)(NSObject *, NSError *))completion{
-    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieID] stringByAppendingString:@"/account_states?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:sessionID];
+- (void) getRating:(NSString *)movieID withSessionId: (NSString*) mySessionId completion:(void (^)(NSObject *, NSError *))completion{
+    NSString *urlString = [[[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieID] stringByAppendingString:@"/account_states?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&session_id="]stringByAppendingString:mySessionId];
     
     NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -716,7 +716,7 @@ static NSString * accountID = @"";
     NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
+
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);

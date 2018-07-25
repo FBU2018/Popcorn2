@@ -16,6 +16,7 @@
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
+		718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */; };
 		7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7188D3362107E4690057E9AE /* PCActorBioViewController.m */; };
 		7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7196F6B621014AD20005643B /* PCRatingViewController.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
@@ -88,6 +89,8 @@
 		7178E8A721010D2300431364 /* PCReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCReviewViewController.m; sourceTree = "<group>"; };
 		7178E8A921010D4D00431364 /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		7178E8AA21010D4D00431364 /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
+		718341142108EFA8003D9BDE /* ActorCreditsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActorCreditsCollectionViewCell.h; sourceTree = "<group>"; };
+		718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActorCreditsCollectionViewCell.m; sourceTree = "<group>"; };
 		7188D3352107E4690057E9AE /* PCActorBioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCActorBioViewController.h; sourceTree = "<group>"; };
 		7188D3362107E4690057E9AE /* PCActorBioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCActorBioViewController.m; sourceTree = "<group>"; };
 		7196F6B521014AD20005643B /* PCRatingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCRatingViewController.h; sourceTree = "<group>"; };
@@ -304,6 +307,8 @@
 				7178E8AA21010D4D00431364 /* ReviewCell.m */,
 				953A1AAE2107F214008215B0 /* UserSearchCell.h */,
 				953A1AAF2107F214008215B0 /* UserSearchCell.m */,
+				718341142108EFA8003D9BDE /* ActorCreditsCollectionViewCell.h */,
+				718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
+				718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */,
 				95A313E6210290EB006F1828 /* PCLoginViewController.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,

@@ -172,7 +172,7 @@
 
 - (void)createList:(NSString *)name {
     //create new list with given name
-    [[APIManager shared] createList:name completion:^(NSString *listId, NSError *error) {
+    [[APIManager shared] createList:name withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSString *listId, NSError *error) {
         if(error){
             NSLog(@"Error creating list: %@", error.localizedDescription);
         }
@@ -186,9 +186,12 @@
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    NSLog(@"SESSION ID: %@", PFUser.currentUser[@"sessionId"]);
+    NSLog(@"ACCOUNT ID: %@", PFUser.currentUser[@"accountId"]);
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
         if(error == nil){
             self.shelves = shelves[@"results"];
+//            NSLog(@"SHELF RESULTS: %@", shelves[@"results"]);
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
             [self.tableView reloadData];
@@ -264,7 +267,7 @@
 
 - (void)deleteList: (NSString*) shelfId{
     //makes request to delete the shelf with the given shelfId
-    [[APIManager shared] deleteList:shelfId completion:^(NSError *error) {
+    [[APIManager shared] deleteList:shelfId withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"Successfully deleted shelf");
             [self getLists];

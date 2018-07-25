@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "APIManager.h"
 #import "PCLibraryViewController.h"
+#import "Parse.h"
 
 
 @interface PCWebLoginViewController ()
@@ -47,6 +48,8 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
+            PFUser *currUser = PFUser.currentUser;
+            currUser[@"sessionId"] = sessionId;
             //get account details (user id, etc)
             [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
                 if(error != nil){
@@ -54,9 +57,9 @@
                 }
                 else{
                     NSLog(@"Successfully get account details, id: %@", userId);
+                    currUser[@"accountId"] = userId;
                     // store returned account id to private property
                     self.accountId = userId;
-                    NSLog(@"Successfully get account details");
                     //go to main tab bar controller
                     [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }

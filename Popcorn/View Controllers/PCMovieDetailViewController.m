@@ -14,6 +14,7 @@
 #import "PCReviewViewController.h"
 #import "PCRatingViewController.h"
 #import "PCActorDetailViewController.h"
+#import "Parse.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -143,7 +144,7 @@
 
 -(void)fetchRating{
     NSString *stringID = [self.movie.movieID stringValue];
-    [[APIManager shared] getRating:stringID completion:^(NSObject *rating, NSError *error) {
+    [[APIManager shared] getRating:stringID withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSObject *rating, NSError *error) {
         if(error != nil){
             NSLog(@"%@", error.localizedDescription);
         }

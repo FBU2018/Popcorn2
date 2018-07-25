@@ -28,11 +28,11 @@
     
     [Parse initializeWithConfiguration:config];
     
-//    if (PFUser.currentUser) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        UIViewController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-//        self.window.rootViewController = tabBarController;
-//    }
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+        self.window.rootViewController = tabBarController;
+    }
     
     return YES;
 }

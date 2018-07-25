@@ -32,7 +32,7 @@
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error){
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error){
         if(error == nil){
             self.shelves = shelves[@"results"];
             [self.tableView reloadData];
@@ -106,7 +106,7 @@
 
 - (void)addToList: (NSNumber *) shelfId {
     //add movie to the shelf with the given shelfId
-    [[APIManager shared] addItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
+    [[APIManager shared] addItem:[shelfId stringValue] forItem:self.movie withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully added item to list");
         }
@@ -118,7 +118,7 @@
 
 - (void)removeFromList: (NSNumber *) shelfId{
     //remove movie from the shelf with the given shelfId
-    [[APIManager shared] removeItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
+    [[APIManager shared] removeItem:[shelfId stringValue] forItem:self.movie withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully removed item from list");
         }
