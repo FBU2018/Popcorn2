@@ -7,6 +7,7 @@
 //
 
 #import "APIManager.h"
+#import "Parse.h"
 
 //static NSString * const apiKey = @"15703e94357b9dc777959d930e92e7dc";
 //static NSString * const readAccessToken4 = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTcwM2U5NDM1N2I5ZGM3Nzc5NTlkOTMwZTkyZTdkYyIsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4BwAxs_-AWbqm-ckcyg8IH5bwrfNCjN8iHAV84xiLJc";
@@ -173,10 +174,10 @@ static NSString * accountID = @"";
     [task resume];
 }
 
--(void)getShelvesWithSessionId: (NSString *)sessionId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
-    // get requesrt ro getr all of a particular user's created lists/shelves using their sessionId
+-(void)getShelvesWithSessionId: (NSString *)sessionId andAccountId: (NSString *) accountId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
+    // get request to get all of a particular user's created lists/shelves using their sessionId
     
-    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountID] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
+    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountId] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];

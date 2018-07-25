@@ -24,7 +24,7 @@
 //- (void)postRequestToken4:(void(^)(NSString *requestToken, NSError *error))completion;
 - (void)getSession:(void(^)(NSString *sessionId, NSError *error))completion;
 - (void)getAccountDetails:(void(^)(NSString *userId, NSError *error))completion;
--(void)getShelvesWithSessionId: (NSString *)sessionId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion;
+-(void)getShelvesWithSessionId: (NSString *)sessionId andAccountId: (NSString *) accountId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion;
 - (void)getShelfMovies: (NSString *) listId completion:(void (^) (NSArray *, NSError *))completion;
 - (void)getTrailerURL: (NSString *) movieId completion:(void (^) (NSURL *, NSError *)) completion;
 - (void)getItemStatus: (NSString *) listId forMovie: (NSString *) movieId ofType: (NSString *) itemType completion:(void (^) (bool presentInList, NSError *error)) completion;
