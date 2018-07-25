@@ -37,4 +37,6 @@
 
 - (void)getActorDetails:(NSString *)actorID completion:(void (^)(NSDictionary *, NSError *))completion;
 - (void)getCredits:(NSString *)actorID completion:(void (^)(NSArray *, NSError *))completion;
+
+- (void)getSimilar:(NSString *)movieID completion:(void (^)(NSArray *, NSError *))completion;
 @end
