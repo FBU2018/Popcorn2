@@ -10,6 +10,6 @@
 
 @interface ActorCreditsCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
-@property (weak, nonatomic) IBOutlet UILabel *characterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 -(void) configureCell: (NSArray *)credits atIndexPath:(NSIndexPath *)indexPath;
 @end

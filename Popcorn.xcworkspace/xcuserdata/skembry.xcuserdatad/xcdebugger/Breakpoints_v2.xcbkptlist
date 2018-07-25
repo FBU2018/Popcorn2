@@ -63,11 +63,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Popcorn/View Controllers/PCActorDetailViewController.m"
-            timestampString = "554240417.008788"
+            timestampString = "554246345.1674041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-fetchCredits"
             landmarkType = "7">
          </BreakpointContent>
@@ -79,7 +79,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Popcorn/View Controllers/PCActorDetailViewController.m"
-            timestampString = "554240417.008862"
+            timestampString = "554246345.167485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -95,28 +95,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Popcorn/View Controllers/PCMovieDetailViewController.m"
-            timestampString = "554240417.008906"
+            timestampString = "554246345.167544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-fetchCast"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Popcorn/View Controllers/PCMovieDetailViewController.m"
-            timestampString = "554240417.009478"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
