@@ -182,6 +182,10 @@
 		2611EA9421091DA1006DC803 /* Main Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
+				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
+				95A313E121028A70006F1828 /* PCWebLoginViewController.h */,
+				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
 			);
 			path = "Main Storyboard VCs";
 			sourceTree = "<group>";
@@ -189,6 +193,8 @@
 		2611EA9521091DBC006DC803 /* User Search Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				953A1AAB2107F097008215B0 /* PCUserSearchViewController.h */,
+				953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */,
 			);
 			path = "User Search Storyboard VCs";
 			sourceTree = "<group>";
@@ -205,6 +211,10 @@
 		2611EA9721091DDA006DC803 /* Library Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				951A794A20FD0E42003D3901 /* PCLibraryViewController.h */,
+				951A794B20FD0E42003D3901 /* PCLibraryViewController.m */,
+				951A794D20FD0E77003D3901 /* PCShelfViewController.h */,
+				951A794E20FD0E77003D3901 /* PCShelfViewController.m */,
 			);
 			path = "Library Storyboard VCs";
 			sourceTree = "<group>";
@@ -212,6 +222,8 @@
 		2611EA9821091DEC006DC803 /* Trailer Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */,
+				959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */,
 			);
 			path = "Trailer Storyboard VCs";
 			sourceTree = "<group>";
@@ -228,13 +240,26 @@
 		2611EA9A21091E12006DC803 /* Detail Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
+				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
+				7178E8A621010D2300431364 /* PCReviewViewController.h */,
+				7178E8A721010D2300431364 /* PCReviewViewController.m */,
+				7196F6B521014AD20005643B /* PCRatingViewController.h */,
+				7196F6B621014AD20005643B /* PCRatingViewController.m */,
+				71F631C82102AD11001BAA77 /* PCActorDetailViewController.h */,
+				71F631C92102AD11001BAA77 /* PCActorDetailViewController.m */,
+				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
+				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
 			);
-			path = "Detail Storyboard VCs";
+			name = "Detail Storyboard VCs";
+			path = "../Detail Storyboard VCs";
 			sourceTree = "<group>";
 		};
 		2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
+				959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */,
+				959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */,
 			);
 			path = "ShelfPicker Storyboard VCs";
 			sourceTree = "<group>";
@@ -277,14 +302,6 @@
 		951A790E20FD0A89003D3901 /* Popcorn */ = {
 			isa = PBXGroup;
 			children = (
-				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
-				2611EA9A21091E12006DC803 /* Detail Storyboard VCs */,
-				2611EA9921091DFD006DC803 /* Search Storyboard VCs */,
-				2611EA9821091DEC006DC803 /* Trailer Storyboard VCs */,
-				2611EA9721091DDA006DC803 /* Library Storyboard VCs */,
-				2611EA9621091DCA006DC803 /* Profile Storyboard VCs */,
-				2611EA9521091DBC006DC803 /* User Search Storyboard VCs */,
-				2611EA9421091DA1006DC803 /* Main Storyboard VCs */,
 				951A795020FD0E89003D3901 /* API */,
 				951A794320FD0BA0003D3901 /* Models */,
 				951A794220FD0B9A003D3901 /* Views */,
@@ -328,30 +345,14 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				951A794A20FD0E42003D3901 /* PCLibraryViewController.h */,
-				951A794B20FD0E42003D3901 /* PCLibraryViewController.m */,
-				951A794D20FD0E77003D3901 /* PCShelfViewController.h */,
-				951A794E20FD0E77003D3901 /* PCShelfViewController.m */,
-				71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */,
-				71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */,
-				959B2AFC210003B0005D418E /* PCShelfPickerViewController.h */,
-				959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */,
-				959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */,
-				959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */,
-				7178E8A621010D2300431364 /* PCReviewViewController.h */,
-				7178E8A721010D2300431364 /* PCReviewViewController.m */,
-				7196F6B521014AD20005643B /* PCRatingViewController.h */,
-				7196F6B621014AD20005643B /* PCRatingViewController.m */,
-				71F631C82102AD11001BAA77 /* PCActorDetailViewController.h */,
-				71F631C92102AD11001BAA77 /* PCActorDetailViewController.m */,
-				95A313E121028A70006F1828 /* PCWebLoginViewController.h */,
-				95A313E221028A70006F1828 /* PCWebLoginViewController.m */,
-				95A313E4210290EB006F1828 /* PCLoginViewController.h */,
-				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
-				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
-				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
-				953A1AAB2107F097008215B0 /* PCUserSearchViewController.h */,
-				953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */,
+				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
+				2611EA9A21091E12006DC803 /* Detail Storyboard VCs */,
+				2611EA9921091DFD006DC803 /* Search Storyboard VCs */,
+				2611EA9821091DEC006DC803 /* Trailer Storyboard VCs */,
+				2611EA9721091DDA006DC803 /* Library Storyboard VCs */,
+				2611EA9621091DCA006DC803 /* Profile Storyboard VCs */,
+				2611EA9521091DBC006DC803 /* User Search Storyboard VCs */,
+				2611EA9421091DA1006DC803 /* Main Storyboard VCs */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
