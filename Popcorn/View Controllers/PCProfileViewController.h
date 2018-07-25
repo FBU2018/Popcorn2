@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse.h"
 
 @interface PCProfileViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingCount;
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
+@property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
+@property (strong,  nonatomic) PFUser *currentUser;
 @end

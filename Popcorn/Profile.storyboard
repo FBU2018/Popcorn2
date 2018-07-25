@@ -68,11 +68,11 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TrQ-2s-2sq">
-                                <rect key="frame" x="0.0" y="251" width="375" height="367"/>
+                                <rect key="frame" x="0.0" y="277" width="375" height="341"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LibraryCell" rowHeight="111" id="UTW-0d-k6e" customClass="LibraryCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileLibraryCell" rowHeight="111" id="UTW-0d-k6e" customClass="LibraryCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTW-0d-k6e" id="2U4-WV-Ggg">
@@ -131,6 +131,13 @@
                                     <segue destination="u07-mY-MVf" kind="show" id="xCR-wA-Y6X"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User's Shelves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-8z-IcH">
+                                <rect key="frame" x="0.0" y="238" width="375" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VH7-wv-m87"/>
@@ -140,12 +147,23 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="followersCount" destination="dwc-q7-GXd" id="a2w-n6-bH6"/>
+                        <outlet property="tableView" destination="TrQ-2s-2sq" id="aJa-sT-UbL"/>
+                        <outlet property="userShelvesLabel" destination="sXk-8z-IcH" id="WRr-Ho-hej"/>
                         <outlet property="usernameLabel" destination="uTH-Jc-X9k" id="5MY-4l-BFh"/>
+                        <segue destination="vRc-01-U5E" kind="show" identifier="libraryToShelf" id="rip-Wj-mgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwe-ms-G0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="177.66116941529236"/>
+        </scene>
+        <!--shelfView-->
+        <scene sceneID="mw4-mJ-HSQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Library" referencedIdentifier="shelfView" id="vRc-01-U5E" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LrD-7L-h4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="-110"/>
         </scene>
         <!--UserSearch-->
         <scene sceneID="FfA-2G-wa4">
@@ -153,13 +171,13 @@
                 <viewControllerPlaceholder storyboardName="UserSearch" id="u07-mY-MVf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdO-Xi-ujo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="13"/>
+            <point key="canvasLocation" x="1570" y="194"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MKR-kS-BAx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqS-OK-9p8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Uyf-Eo-PW1"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="Uyf-Eo-PW1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JDu-UC-yMe">
@@ -176,4 +194,7 @@
             <point key="canvasLocation" x="45.600000000000001" y="177.66116941529236"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile" width="32" height="32"/>
+    </resources>
 </document>

@@ -8,9 +8,17 @@
 
 #import "PCProfileViewController.h"
 #import "Parse.h"
+#import "APIManager.h"
+#import "LibraryCell.h"
+#import "PCShelfViewController.h"
 
 @interface PCProfileViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (strong,  nonatomic) PFUser *currentUser;
+@property (strong, nonatomic) NSArray *shelves; // array of dictionaries about each shelf
+@property (strong, nonatomic) NSMutableArray *allMovies; //contains all Movie objects in all of user's lists
+@property (strong, nonatomic) NSMutableArray *moviesInList; //helper
+@property (strong, nonatomic) NSArray *filteredData; //for search
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation PCProfileViewController
@@ -18,14 +26,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    // check if showing the logged in user's profile or another user's profile
+    if(self.currentUser == nil){
+        self.currentUser = [PFUser currentUser];
+    }
     // Show the current users username and followers and following count
-    self.currentUser = [PFUser currentUser];
     self.usernameLabel.text = self.currentUser.username;
+    self.userShelvesLabel.text = [self.currentUser.username stringByAppendingString:@"'s Shelves"];
     
     // Call method to get users list given their session id
+    [self getProfileLists];
     
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
+
 - (IBAction)didTapFollow:(id)sender {
 }
 
@@ -36,27 +51,54 @@
 
 // Define a method that gets a given user's lists
 -(void)getProfileLists{
+    [[APIManager shared] getShelvesWithSessionId:self.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+        if(error == nil){
+            self.shelves = shelves[@"results"];
+            self.filteredData = self.shelves;
+            NSLog(@"Successfully got all of profile user's shelves");
+            [self.tableView reloadData];
+            
+            // for updating allMovies array
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
 }
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    LibraryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileLibraryCell"];
+    unsigned long count = self.filteredData.count;
+    
+    // configure details of the cell
+    //fill cells in backwards order: newly created shelves will now appear at the bottom
+    [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
 
-/*
-#pragma mark - Navigation
+    return cell;
+}
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.shelves.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LibraryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"libraryToShelf" sender:cell];
+}
+
+ #pragma mark - Navigation
+ 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// Get the new view controller using [segue destinationViewController].
+// Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"libraryToShelf"]){
+        //pass the shelfId and shelves array
+        LibraryCell *tappedCell = sender;
+        PCShelfViewController *receiver = [segue destinationViewController];
+        receiver.shelfId = tappedCell.shelfId;
+        receiver.shelves = self.shelves;
+    }
 }
-*/
-
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//    <#code#>
-//}
-//
-//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    <#code#>
-//}
-//
-
 
 @end

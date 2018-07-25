@@ -110,7 +110,7 @@
         <!--Shelf View Controller-->
         <scene sceneID="zxI-49-OQY">
             <objects>
-                <viewController id="fWq-xU-6xp" customClass="PCShelfViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shelfView" id="fWq-xU-6xp" customClass="PCShelfViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qRn-Mh-uu4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
