@@ -106,7 +106,7 @@
 
 - (void)addToList: (NSNumber *) shelfId {
     //add movie to the shelf with the given shelfId
-    [[APIManager shared] addItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
+    [[APIManager shared] addItem:[shelfId stringValue] forItem:self.movie withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully added item to list");
         }
@@ -118,7 +118,7 @@
 
 - (void)removeFromList: (NSNumber *) shelfId{
     //remove movie from the shelf with the given shelfId
-    [[APIManager shared] removeItem:[shelfId stringValue] forItem:self.movie completion:^(NSError *error) {
+    [[APIManager shared] removeItem:[shelfId stringValue] forItem:self.movie withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"succesfully removed item from list");
         }

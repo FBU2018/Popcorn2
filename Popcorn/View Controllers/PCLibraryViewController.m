@@ -172,7 +172,7 @@
 
 - (void)createList:(NSString *)name {
     //create new list with given name
-    [[APIManager shared] createList:name completion:^(NSString *listId, NSError *error) {
+    [[APIManager shared] createList:name withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSString *listId, NSError *error) {
         if(error){
             NSLog(@"Error creating list: %@", error.localizedDescription);
         }
@@ -267,7 +267,7 @@
 
 - (void)deleteList: (NSString*) shelfId{
     //makes request to delete the shelf with the given shelfId
-    [[APIManager shared] deleteList:shelfId completion:^(NSError *error) {
+    [[APIManager shared] deleteList:shelfId withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
         if(error == nil){
             NSLog(@"Successfully deleted shelf");
             [self getLists];

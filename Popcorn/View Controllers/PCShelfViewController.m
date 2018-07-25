@@ -15,6 +15,7 @@
 #import <SWTableViewCell.h>
 #import "PCTrailerViewController.h"
 #import "PCShelfPickerViewController.h"
+#import "Parse.h"
 
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
 
@@ -136,7 +137,7 @@
         case 0:
         {
             //Remove from shelf
-            [[APIManager shared] removeItem:[self.shelfId stringValue] forItem:tappedCell.movie completion:^(NSError *error) {
+            [[APIManager shared] removeItem:[self.shelfId stringValue] forItem:tappedCell.movie withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError *error) {
                 if(error == nil){
                     NSLog(@"succesfully removed item from list");
                     [self getMovies:[self.shelfId stringValue]];

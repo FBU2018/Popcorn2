@@ -8,6 +8,7 @@
 
 #import "PCRatingViewController.h"
 #import "APIManager.h"
+#import "Parse.h"
 
 @interface PCRatingViewController ()
 - (IBAction)didTapDone:(id)sender;
@@ -42,7 +43,7 @@
 
 - (IBAction)didTapDone:(id)sender {
     if([self.ratingTextField.text doubleValue] >= 0 && [self.ratingTextField.text doubleValue] <= 10){
-        [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text completion:^(NSError * error) {
+        [[APIManager shared]addRating:[self.movie.movieID stringValue] withRating:self.ratingTextField.text withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError * error) {
             if(error != nil){
                 NSLog(@"%@", error.localizedDescription);
             }
@@ -69,7 +70,7 @@
 
 -(void)fetchRating{
     NSString *stringID = [self.movie.movieID stringValue];
-    [[APIManager shared] getRating:stringID completion:^(NSObject *rating, NSError *error) {
+    [[APIManager shared] getRating:stringID withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSObject *rating, NSError *error) {
         if(error != nil){
             NSLog(@"%@", error.localizedDescription);
         }
