@@ -91,6 +91,9 @@
                                 <rect key="frame" x="156" y="195" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search Other Users"/>
+                                <connections>
+                                    <segue destination="u07-mY-MVf" kind="show" id="xCR-wA-Y6X"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,6 +110,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwe-ms-G0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="177.66116941529236"/>
+        </scene>
+        <!--UserSearch-->
+        <scene sceneID="FfA-2G-wa4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserSearch" id="u07-mY-MVf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WdO-Xi-ujo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="13"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MKR-kS-BAx">
