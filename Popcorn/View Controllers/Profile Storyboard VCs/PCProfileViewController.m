@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingCount;
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
 
@@ -37,9 +37,18 @@
     // Do any additional setup after loading the view.
     // check if showing the logged in user's profile or another user's profile
     if(self.currentUser == nil){
+        // showing logged in user's profile
         self.currentUser = [PFUser currentUser];
+        // Hide and disable the follow button
+        self.followButton.hidden = YES;
+        self.followButton.enabled = NO;
     }
-
+    else{
+        // showing other user's profile
+        // show and enable follow button
+        self.followButton.hidden = NO;
+        self.followButton.enabled = YES;
+    }
     //sets all labels at the top of the screen
     [self setViews];
     
@@ -51,6 +60,21 @@
 }
 
 - (IBAction)didTapFollow:(id)sender {
+    // Get logged in user's PFUser object
+    PFUser *loggedInUser = [PFUser currentUser];
+    // Update array of following in logged in users PFUser object
+    [loggedInUser[@"following"] addObject:self.currentUser.username];
+    // Update array of followers in other users PFUser object
+    [self.currentUser[@"followers"] addObject:loggedInUser.username];
+    // Save current and logged-in's users objects to Parse
+    NSArray *objects = [NSArray arrayWithObjects:self.currentUser, loggedInUser, nil];
+    [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError * _Nullable error) {
+        
+    }];
+    
+    NSLog(@"Ruchas following: %@", loggedInUser[@"following"]);
+    NSLog(@"Sarahs followers: %@", self.currentUser[@"followers"]);
+
 }
 
 - (void)didReceiveMemoryWarning {
