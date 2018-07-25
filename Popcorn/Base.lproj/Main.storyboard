@@ -30,15 +30,15 @@
             </objects>
             <point key="canvasLocation" x="907" y="31"/>
         </scene>
-        <!--Profile-->
+        <!--PCProfileNavigationController-->
         <scene sceneID="E06-oT-Wal">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="Oh0-pz-ewI" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="PCProfileNavigationController" id="Oh0-pz-ewI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="0su-wd-dsF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fx-LQ-Qx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768" y="131"/>
+            <point key="canvasLocation" x="867" y="136"/>
         </scene>
         <!--Web Login View Controller-->
         <scene sceneID="an5-DT-Wvd">
