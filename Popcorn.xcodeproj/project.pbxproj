@@ -38,6 +38,8 @@
 		953A1AAA2107F018008215B0 /* UserSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AA92107F018008215B0 /* UserSearch.storyboard */; };
 		953A1AAD2107F097008215B0 /* PCUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */; };
 		953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AAF2107F214008215B0 /* UserSearchCell.m */; };
+		953A1AB2210927A2008215B0 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AB1210927A2008215B0 /* Review.storyboard */; };
+		953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -130,6 +132,9 @@
 		953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCUserSearchViewController.m; sourceTree = "<group>"; };
 		953A1AAE2107F214008215B0 /* UserSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSearchCell.h; sourceTree = "<group>"; };
 		953A1AAF2107F214008215B0 /* UserSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchCell.m; sourceTree = "<group>"; };
+		953A1AB1210927A2008215B0 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
+		953A1AB721092A74008215B0 /* PCWriteReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWriteReviewViewController.h; sourceTree = "<group>"; };
+		953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWriteReviewViewController.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -309,6 +314,7 @@
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				953A1AB1210927A2008215B0 /* Review.storyboard */,
 				953A1AA92107F018008215B0 /* UserSearch.storyboard */,
 				26B6B67B21068255001BE727 /* Profile.storyboard */,
 				951A794420FD0CB5003D3901 /* Library.storyboard */,
@@ -345,6 +351,7 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				953A1AB3210927C9008215B0 /* Review Storyboard VCs */,
 				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
 				2611EA9A21091E12006DC803 /* Detail Storyboard VCs */,
 				2611EA9921091DFD006DC803 /* Search Storyboard VCs */,
@@ -394,6 +401,15 @@
 				951A795220FD0F2F003D3901 /* APIManager.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		953A1AB3210927C9008215B0 /* Review Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+				953A1AB721092A74008215B0 /* PCWriteReviewViewController.h */,
+				953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */,
+			);
+			path = "Review Storyboard VCs";
 			sourceTree = "<group>";
 		};
 		FC080368C3B1E330142ABD06 /* Frameworks */ = {
@@ -524,6 +540,7 @@
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
 				26B6B67C21068255001BE727 /* Profile.storyboard in Resources */,
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
+				953A1AB2210927A2008215B0 /* Review.storyboard in Resources */,
 				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +652,7 @@
 				953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */,
 				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
+				953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */,
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
