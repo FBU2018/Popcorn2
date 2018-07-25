@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,29 +29,42 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchCell" rowHeight="76" id="iK5-g2-4U0" customClass="UserSearchCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="76"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchCell" rowHeight="81" id="iK5-g2-4U0" customClass="UserSearchCell">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iK5-g2-4U0" id="gDk-5F-Xwm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d79-Ey-sbB" customClass="PFImageView">
-                                                    <rect key="frame" x="15" y="11" width="54" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="d79-Ey-sbB" customClass="PFImageView">
+                                                    <rect key="frame" x="15" y="13" width="54" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="aNT-RB-HY3"/>
+                                                        <constraint firstAttribute="width" constant="54" id="vil-W4-ira"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVu-O4-LXq">
-                                                    <rect key="frame" x="77" y="27" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVu-O4-LXq">
+                                                    <rect key="frame" x="83" y="30" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="xFw-Gy-Diw"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QVu-O4-LXq" firstAttribute="leading" secondItem="d79-Ey-sbB" secondAttribute="trailing" constant="14" id="FfL-Qp-fTf"/>
+                                                <constraint firstItem="d79-Ey-sbB" firstAttribute="top" secondItem="gDk-5F-Xwm" secondAttribute="topMargin" constant="2" id="Gad-48-QTj"/>
+                                                <constraint firstItem="QVu-O4-LXq" firstAttribute="top" secondItem="gDk-5F-Xwm" secondAttribute="topMargin" constant="19" id="ImS-CB-fHZ"/>
+                                                <constraint firstItem="d79-Ey-sbB" firstAttribute="leading" secondItem="gDk-5F-Xwm" secondAttribute="leadingMargin" id="ZSN-el-TTS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="d79-Ey-sbB" secondAttribute="bottom" constant="3" id="ymX-2m-p6S"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="userImage" destination="d79-Ey-sbB" id="Bcn-bD-tjy"/>
                                             <outlet property="usernameLabel" destination="QVu-O4-LXq" id="N8P-LO-efg"/>
+                                            <segue destination="i9j-oF-EUD" kind="show" identifier="userSearchToProfile" id="rga-Y0-cLi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -59,6 +73,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ZCd-Y5-1GW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Whw-x6-ZKj"/>
                     <connections>
                         <outlet property="searchBar" destination="z9H-XR-lun" id="8Km-Lz-Tdq"/>
                         <outlet property="tableView" destination="Zhe-LA-2Ex" id="gKF-Yv-WPD"/>
@@ -66,7 +81,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vu1-th-cWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.39999999999998" y="33.733133433283363"/>
+            <point key="canvasLocation" x="632.79999999999995" y="33.733133433283363"/>
+        </scene>
+        <!--PCProfileViewController-->
+        <scene sceneID="05o-RJ-h0e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="PCProfileViewController" id="i9j-oF-EUD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvq-oI-2Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281.5999999999999" y="-86.35682158920541"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person placeholder" width="240" height="240"/>
+    </resources>
 </document>
