@@ -37,13 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // store current users session id and account id in Parse
-    PFUser *currentUser = [PFUser currentUser];
-    currentUser[@"accountId"] = self.accountId;
-    currentUser[@"sessionId"] = self.sessionId;
-    
-    // saves current user with new information to the Parse server
-    [PFUser.currentUser saveInBackground];
+//    // store current users session id and account id in Parse
+//    PFUser *currentUser = [PFUser currentUser];
+//    currentUser[@"accountId"] = self.accountId;
+//    currentUser[@"sessionId"] = self.sessionId;
+//    
+//    // saves current user with new information to the Parse server
+//    [PFUser.currentUser saveInBackground];
 
     //instantiate all arrays
     self.shelves = [NSArray new];
