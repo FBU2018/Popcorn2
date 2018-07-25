@@ -11,6 +11,7 @@
 #import "APIManager.h"
 #import "LibraryCell.h"
 #import "PCShelfViewController.h"
+#import "ParseUI.h"
 
 @interface PCProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *shelves; // array of dictionaries about each shelf
@@ -19,6 +20,14 @@
 @property (strong, nonatomic) NSArray *filteredData; //for search
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingCount;
+@property (weak, nonatomic) IBOutlet UILabel *followersCount;
+@property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
+
+@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
+
+
 @end
 
 @implementation PCProfileViewController
@@ -30,9 +39,9 @@
     if(self.currentUser == nil){
         self.currentUser = [PFUser currentUser];
     }
-    // Show the current users username and followers and following count
-    self.usernameLabel.text = self.currentUser.username;
-    self.userShelvesLabel.text = [self.currentUser.username stringByAppendingString:@"'s Shelves"];
+
+    //sets all labels at the top of the screen
+    [self setViews];
     
     // Call method to get users list given their session id
     [self getProfileLists];
@@ -48,6 +57,58 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)setViews{
+    // Show the current users username and followers and following count
+    self.usernameLabel.text = self.currentUser.username;
+    self.userShelvesLabel.text = [self.currentUser.username stringByAppendingString:@"'s Shelves"];
+    
+    //set image if file is not nil
+    PFFile *imageFile = self.currentUser[@"userImage"];
+    if(imageFile != nil){
+        self.profileImage.file = imageFile;
+        [self.profileImage loadInBackground];
+    }
+    //make it a circle
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height /2;
+    self.profileImage.layer.masksToBounds = YES;
+    self.profileImage.layer.borderWidth = 0;
+    
+    //gesture recognizer
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    [self.profileImage setUserInteractionEnabled:YES];
+    [self.profileImage addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (IBAction)didTap:(id)sender {
+    //when tapped, goes to an image picker
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    //image picker presented, can pick images
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    self.profileImage.image = editedImage;
+    PFFile *userImageFile = [PFFile fileWithData: UIImageJPEGRepresentation(editedImage, 1.0)];
+    
+    //Save user's profile image
+    self.currentUser[@"userImage"] = userImageFile;
+    [self.currentUser saveInBackground];
+    
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height /2;
+    self.profileImage.layer.masksToBounds = YES;
+    self.profileImage.layer.borderWidth = 0;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 // Define a method that gets a given user's lists
 -(void)getProfileLists{
