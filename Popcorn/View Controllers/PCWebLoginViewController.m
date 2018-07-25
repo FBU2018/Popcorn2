@@ -81,8 +81,10 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([segue.identifier isEqualToString:@"loginToMain"]){
-        PCLibraryViewController *libraryVC = [segue destinationViewController];
+    if ([segue.identifier isEqualToString:@"loginToMain"]){   
+        UITabBarController *tabVC = [segue destinationViewController];
+        UINavigationController *navVC = tabVC.viewControllers[0];
+        PCLibraryViewController *libraryVC = [navVC.viewControllers objectAtIndex:0];
         // Pass the current user's session id to the Library VC
         libraryVC.sessionId = self.sessionId;
         libraryVC.accountId = self.accountId;
