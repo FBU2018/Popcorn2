@@ -9,6 +9,7 @@
 #import "PCUserSearchViewController.h"
 #import "Parse.h"
 #import "UserSearchCell.h"
+#import "PCProfileViewController.h"
 
 @interface PCUserSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -59,9 +60,10 @@
     return self.filteredUsers.count;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UserSearchCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"UserSearchCell"];
-    [cell configureCell:self.users withIndexPath:indexPath];
+    [cell configureCell:self.filteredUsers withIndexPath:indexPath];
     return cell;
 }
 
@@ -69,7 +71,9 @@
     //filter for users with name given
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *user, NSDictionary *bindings) {
-            return [user.username containsString:searchText];
+            NSString *usernameLower = [user.username lowercaseString];
+            NSString *searchTextLower = [searchText lowercaseString];
+            return [usernameLower containsString:searchTextLower];
         }];
         self.filteredUsers = [self.users filteredArrayUsingPredicate:predicate];
     }
@@ -98,14 +102,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"userSearchToProfile"]){
+        UserSearchCell *cell = sender;
+        PCProfileViewController *receiver = [segue destinationViewController];
+        receiver.currentUser = cell.user;
+    }
 }
-*/
+
 
 @end

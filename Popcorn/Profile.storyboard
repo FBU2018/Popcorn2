@@ -14,7 +14,7 @@
         <!--Profile View Controller-->
         <scene sceneID="8XK-mz-qNE">
             <objects>
-                <viewController id="Uj9-P4-Sv5" customClass="PCProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PCProfileViewController" id="Uj9-P4-Sv5" customClass="PCProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fZw-Wq-8de">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
         <!--Profile-->
         <scene sceneID="MKR-kS-BAx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqS-OK-9p8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PCProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="cqS-OK-9p8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="Uyf-Eo-PW1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -25,6 +25,7 @@
 - (void)configureCell:(NSArray *)users withIndexPath:(NSIndexPath *)indexPath{
     //Configure labels and image
     PFUser *userForCell = users[indexPath.row];
+    self.user = userForCell;
     self.usernameLabel.text = userForCell.username;
     
     //set image if file is not nil
