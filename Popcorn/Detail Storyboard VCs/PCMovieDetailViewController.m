@@ -15,6 +15,8 @@
 #import "PCRatingViewController.h"
 #import "PCActorDetailViewController.h"
 #import "Parse.h"
+//this cell has the same properties as the actor credits collectionview cell
+#import "ActorCreditsCollectionViewCell.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -25,12 +27,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *castCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *ratingButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *similarToCollectionView;
 
 
 - (IBAction)didTapRating:(id)sender;
 
 @property (strong, nonatomic) NSArray *castList;
 
+@property (strong, nonatomic) NSArray *similarToList;
 
 @end
 
@@ -42,6 +46,9 @@
     self.castCollectionView.delegate = self;
     self.castCollectionView.dataSource = self;
     
+    self.similarToCollectionView.delegate = self;
+    self.similarToCollectionView.dataSource = self;
+    
     [self.castCollectionView layoutIfNeeded];
     
     [self configureDetails];
@@ -50,6 +57,10 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
+    
+    UICollectionViewFlowLayout *similarLayout = (UICollectionViewFlowLayout *)self.similarToCollectionView.collectionViewLayout;
+    similarLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    similarLayout.minimumInteritemSpacing = 2;
     
 
 }
@@ -80,6 +91,7 @@
     
     [self fetchCast];
     [self fetchRating];
+    [self fetchSimilar];
 }
 
 
@@ -116,15 +128,28 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    CastCollectionViewCell *cell = [self.castCollectionView dequeueReusableCellWithReuseIdentifier:@"CastCollectionViewCell" forIndexPath:indexPath];
+    if(collectionView == self.castCollectionView){
+        CastCollectionViewCell *cell = [self.castCollectionView dequeueReusableCellWithReuseIdentifier:@"CastCollectionViewCell" forIndexPath:indexPath];
+        [cell configureCell:self.castList withIndexPath:indexPath];
+        return cell;
+    }
+    else{
+        //change this to be the collection view cell for similar to when the time comes
+        ActorCreditsCollectionViewCell *cell = [self.similarToCollectionView dequeueReusableCellWithReuseIdentifier:@"actorCreditsCollectionViewCell" forIndexPath:indexPath];
+        [cell configureCell:self.similarToList atIndexPath:indexPath];
+        return cell;
+    }
     
-    [cell configureCell:self.castList withIndexPath:indexPath];
     
-    return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.castList.count;
+    if(collectionView == self.castCollectionView){
+        return self.castList.count;
+    }
+    else{
+        return self.similarToList.count;
+    }
 }
 
 
@@ -163,5 +188,17 @@
     }];
 }
 
+-(void) fetchSimilar{
+    [[APIManager shared] getSimilar:[self.movie.movieID stringValue] completion:^(NSArray *results, NSError *error) {
+        if(error != nil){
+            NSLog(@"%@", error);
+        }
+        else{
+            self.similarToList = results;
+        }
+         [self.similarToCollectionView reloadData];
+    }];
+   
+}
 
 @end
