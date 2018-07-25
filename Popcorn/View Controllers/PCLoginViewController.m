@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    self.passwordTextField.secureTextEntry = YES;
 }
 
 -(void)dismissKeyboard
