@@ -120,7 +120,10 @@
     }
 }
 
+//idk if this works & can't test it rn. but theoretically this will let you tap the bio preview and segue to the full bio VC...
 - (IBAction)didTapBio:(id)sender {
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UILabel *label = (UILabel *)gesture.view;
     [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
 }
 @end
