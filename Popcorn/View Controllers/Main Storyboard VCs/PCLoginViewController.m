@@ -77,7 +77,11 @@
     newUser[@"following"] = [NSMutableArray new];
     newUser[@"followers"] = [NSMutableArray new];
     newUser[@"reviews"] = [NSMutableArray new];
-    newUser[@"profileImage"] = [PFFile init];
+    
+    //set image to temporary image
+    UIImage *myImage = [UIImage imageNamed:@"person placeholder"];
+    PFFile *temporaryImage = [PFFile fileWithData: UIImageJPEGRepresentation(myImage, 1.0)];
+    newUser[@"profileImage"] = temporaryImage;
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
