@@ -801,7 +801,6 @@ static NSString * accountID = @"";
 }
 
 - (void)getCredits:(NSString *)actorID completion:(void (^)(NSArray *, NSError *))completion{
-    NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";
     NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"/movie_credits?api_key="]stringByAppendingString:apiKey]stringByAppendingString:@"&language=en-US"];
     
     NSURL *url = [NSURL URLWithString: urlString];
@@ -816,8 +815,29 @@ static NSString * accountID = @"";
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSArray *fullCreditsList = dataDictionary[@"cast"];
-            NSLog(@"%@", fullCreditsList);
             completion(fullCreditsList, nil);
+        }
+    }];
+    [task resume];
+}
+
+- (void)getSimilar:(NSString *)movieID completion:(void (^)(NSArray *, NSError *))completion{
+    NSString *urlString = [[[[@"https://api.themoviedb.org/3/movie/" stringByAppendingString:movieID]stringByAppendingString:@"/similar?api_key="]stringByAppendingString:apiKey]stringByAppendingString:@"&language=en-US"];
+    
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSArray *similarMovies = dataDictionary[@"results"];
+            NSLog(@"%@", similarMovies);
+            completion(similarMovies, nil);
         }
     }];
     [task resume];
