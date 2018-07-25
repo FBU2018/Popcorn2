@@ -29,6 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.creditsCollectionView.delegate = self;
+    self.creditsCollectionView.dataSource = self;
+    
+    //format collection view to be horizontal
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.creditsCollectionView.collectionViewLayout;
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.minimumInteritemSpacing = 2;
+    
     [self fetchActorDetails];
     [self fetchCredits];
 }
@@ -129,7 +137,8 @@
     [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
 }
 
-- (void)getCredits:(NSString *)actorID completion:(void (^)([NSArray *, NSError *))completion{
+- (void)getCredits:(NSString *)actorID completion:(void (^)(
+                                                            NSArray *, NSError *))completion{
     NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";
     NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"/movie_credits?api_key="]stringByAppendingString:apiKey]stringByAppendingString:@"&language=en-US"];
     
@@ -157,23 +166,24 @@
     [task resume];
 }
 
--(void)fetchCredits{
+- (void)fetchCredits{
     [self getCredits:[self.actorID stringValue] completion:^(NSArray *credits, NSError *error) {
         if(error == nil){
-   //         self.actorCreditPosters = credits[@"poster_path"];
-            NSLog(@"%@", credits);
+            self.actorCredits = credits;
+            //NSLog(@"%@", credits);
         }
+    [self.creditsCollectionView reloadData];
     }];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActorCreditsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"actorCreditsCollectionViewCell" forIndexPath:indexPath];
-    [cell configureCell:self.actorCreditPosters atIndexPath:indexPath];
+    [cell configureCell:self.actorCredits atIndexPath:indexPath];
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.actorCreditPosters.count;
+    return self.actorCredits.count;
 }
 
 

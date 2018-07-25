@@ -11,6 +11,7 @@
 
 @implementation ActorCreditsCollectionViewCell
 -(void) configureCell:(NSArray *)credits atIndexPath:(NSIndexPath *)indexPath{
+    [self.posterView setImage:[UIImage imageNamed:@"poster-placeholder.png"]];
    // NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:credits[]];
 //    NSURL *posterURL = [NSURL URLWithString:posterURLString];
 //    [self.posterView setImageWithURL:posterURL];

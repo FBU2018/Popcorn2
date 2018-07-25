@@ -10,5 +10,5 @@
 
 @interface PCActorDetailViewController : UIViewController
 @property (strong, nonatomic) NSNumber *actorID;
-@property (strong, nonatomic) NSArray *actorCreditPosters;
+@property (strong, nonatomic) NSArray *actorCredits;
 @end
