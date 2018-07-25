@@ -119,14 +119,7 @@ bool isMoreDataLoading = false;
         
         // network call to get the search results with a completion handler
         [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
-            // set up predicate for searching movies
-            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-                return [item[@"title"] containsString:searchText];
-            }];
-            
-            // Add filtered results to Mutable array
-            NSArray *filteredResults = [results filteredArrayUsingPredicate:predicate];
-            for (NSDictionary *dictionary in filteredResults){
+            for (NSDictionary *dictionary in results){
                 [self.filteredData addObject:dictionary];
             }
             [self.searchTableView reloadData];
@@ -248,17 +241,7 @@ bool isMoreDataLoading = false;
         
         // API call to search
         [[APIManager shared] searchMoviesWithString:self.currentSearchText andPageNumber:[NSString stringWithFormat:@"%d", currentPageNumber] andResultsCompletionHandler:^(NSArray *results) {
-            // Put search text for filtering into proper case
-            self.currentSearchText = [self.currentSearchText lowercaseString];
-            // Capitalize first letter of search text
-            self.currentSearchText = [NSString stringWithFormat:@"%@%@",[[self.currentSearchText substringToIndex:1] uppercaseString],[self.currentSearchText substringFromIndex:1] ];
-            
-            // set up predicate for searching movies
-            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-                return [item[@"title"] containsString:self.currentSearchText];
-            }];
-            
-            self.filteredData = [NSMutableArray arrayWithArray:[results filteredArrayUsingPredicate:predicate]];
+            self.filteredData = [NSMutableArray arrayWithArray:results];
             [self.searchTableView reloadData];
         } andErrorCompletionHandler:^(NSError *error){
             [self networkCallErrorHandler:error];
