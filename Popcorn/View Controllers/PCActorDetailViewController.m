@@ -129,7 +129,7 @@
     [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
 }
 
-- (void)getCredits:(NSString *)actorID completion:(void (^)([NSArray *, NSError *))completion{
+- (void)getCredits:(NSString *)actorID completion:(void (^)(NSArray *, NSError *))completion{
     NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";
     NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"/movie_credits?api_key="]stringByAppendingString:apiKey]stringByAppendingString:@"&language=en-US"];
     

@@ -51,7 +51,7 @@
 
 // Define a method that gets a given user's lists
 -(void)getProfileLists{
-    [[APIManager shared] getShelvesWithSessionId:self.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:self.currentUser[@"sessionId"] andAccountId:self.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
         if(error == nil){
             self.shelves = shelves[@"results"];
             self.filteredData = self.shelves;
