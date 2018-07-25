@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *birthplaceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+@property (weak, nonatomic) IBOutlet UIButton *bioButton;
+- (IBAction)didTapBio:(id)sender;
 @end
 
 @implementation PCActorDetailViewController
@@ -98,14 +100,27 @@
     if(![self.actorDetails[@"birthday"] isEqual: [NSNull null]]){
         self.birthdayLabel.text = self.actorDetails[@"birthday"];
     }
+    else{
+        self.birthdayLabel.text = @"Unknown birthday";
+    }
     
     if(![self.actorDetails[@"place_of_birth"] isEqual: [NSNull null]]){
         self.birthplaceLabel.text = self.actorDetails[@"place_of_birth"];
+    }
+    else{
+        self.birthplaceLabel.text = @"Unknown birthplace";
     }
     
     if(![self.actorDetails[@"biography"] isEqual:[NSNull null]]){
         self.bioLabel.text = self.actorDetails[@"biography"];
     }
+    else{
+        self.bioLabel.text = @"No biography information.";
+        self.bioButton.hidden = YES;
+    }
 }
 
+- (IBAction)didTapBio:(id)sender {
+    [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
+}
 @end

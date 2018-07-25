@@ -272,8 +272,6 @@
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
 				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
 				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
-				953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */,
-				953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */,
 				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
 				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
 			);
@@ -566,7 +564,6 @@
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
 				7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */,
-				953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
