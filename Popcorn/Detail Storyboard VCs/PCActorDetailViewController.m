@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "PCActorBioViewController.h"
 #import "ActorCreditsCollectionViewCell.h"
+#import "APIManager.h"
 
 @interface PCActorDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSDictionary *actorDetails;
@@ -60,40 +61,7 @@
 }
 
 
-- (void)getActorDetails:(NSString *)actorID completion:(void (^)(NSDictionary *, NSError *))completion{
-    NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";
-    NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&language=en-US"];
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if(error != nil){
-            NSLog(@"%@", [error localizedDescription]);
-            completion(nil, error);
-        }
-        else{
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            completion(dataDictionary, nil);
-        }
-    }];
-    [task resume];
-}
 
-- (void)fetchActorDetails{
-    [self getActorDetails:[self.actorID stringValue] completion:^(NSDictionary *results, NSError *error) {
-        if(error != nil){
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else{
-            self.actorDetails = results;
-            NSLog(@"%@", self.actorDetails);
-            [self configureDetails];
-        }
-    }];
-   
-}
 
 -(void) configureDetails{
     [self.profileImageView setImage:[UIImage imageNamed:@"person placeholder.png"]];
@@ -137,37 +105,10 @@
     [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
 }
 
-- (void)getCredits:(NSString *)actorID completion:(void (^)(
-                                                            NSArray *, NSError *))completion{
-    NSString *apiKey = @"15703e94357b9dc777959d930e92e7dc";
-    NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"/movie_credits?api_key="]stringByAppendingString:apiKey]stringByAppendingString:@"&language=en-US"];
-    
-    NSURL *url = [NSURL URLWithString: urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
-            completion(nil, error);
-        }
-        else {
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSArray *fullCreditsList = dataDictionary[@"cast"];
-            NSLog(@"%@", fullCreditsList);
-//            //changing this, but this makes an array of just the different poster paths (now irrelevant since I need the movie titles also
-//            NSMutableArray *postersArray = [NSMutableArray array];
-//            for(int i = 0; i<fullCreditsList.count; i++){
-//                [postersArray addObject:fullCreditsList[i][@"poster_path"]];
-//            }
-            completion(fullCreditsList, nil);
-        }
-    }];
-    [task resume];
-}
+
 
 - (void)fetchCredits{
-    [self getCredits:[self.actorID stringValue] completion:^(NSArray *credits, NSError *error) {
+    [[APIManager shared] getCredits:[self.actorID stringValue] completion:^(NSArray *credits, NSError *error) {
         if(error == nil){
             self.actorCredits = credits;
             //NSLog(@"%@", credits);
@@ -186,5 +127,18 @@
     return self.actorCredits.count;
 }
 
+- (void)fetchActorDetails{
+    [[APIManager shared]getActorDetails:[self.actorID stringValue] completion:^(NSDictionary *results, NSError *error) {
+        if(error != nil){
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        else{
+            self.actorDetails = results;
+            NSLog(@"%@", self.actorDetails);
+            [self configureDetails];
+        }
+    }];
+    
+}
 
 @end
