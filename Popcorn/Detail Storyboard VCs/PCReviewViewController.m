@@ -39,6 +39,8 @@
 
 
 }
+- (IBAction)didTapDone:(id)sender {
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -92,11 +94,5 @@
     }];
 }
 
-
-
-
-- (IBAction)didTapDone:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end
