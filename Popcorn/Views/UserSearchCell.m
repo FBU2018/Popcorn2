@@ -28,7 +28,7 @@
     self.usernameLabel.text = userForCell.username;
     
     //set image if file is not nil
-    PFFile *imageFile = userForCell[@"userImage"];
+    PFFile *imageFile = userForCell[@"profileImage"];
     if(imageFile != nil){
         self.userImage.file = imageFile;
         [self.userImage loadInBackground];

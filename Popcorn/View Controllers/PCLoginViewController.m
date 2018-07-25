@@ -77,7 +77,7 @@
     newUser[@"following"] = [NSMutableArray new];
     newUser[@"followers"] = [NSMutableArray new];
     newUser[@"reviews"] = [NSMutableArray new];
-    newUser[@"userImage"] = [PFFile init];
+    newUser[@"profileImage"] = [PFFile init];
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
