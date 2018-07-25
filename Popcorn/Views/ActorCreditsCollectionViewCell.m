@@ -11,7 +11,7 @@
 
 @implementation ActorCreditsCollectionViewCell
 -(void) configureCell:(NSArray *)credits atIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@", credits);
+    //sets default image in case there is no poster available
     [self.posterView setImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
     if(![credits[indexPath.item][@"poster_path"] isEqual:[NSNull null]]){
@@ -19,7 +19,6 @@
         NSURL *posterURL = [NSURL URLWithString:posterURLString];
         [self.posterView setImageWithURL:posterURL];
     }
-    
     self.titleLabel.text = credits[indexPath.item][@"title"];
 }
 @end
