@@ -34,6 +34,9 @@
 		951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A794E20FD0E77003D3901 /* PCShelfViewController.m */; };
 		951A795320FD0F2F003D3901 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795220FD0F2F003D3901 /* APIManager.m */; };
 		951A795620FD11A1003D3901 /* LibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 951A795520FD11A1003D3901 /* LibraryCell.m */; };
+		953A1AAA2107F018008215B0 /* UserSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AA92107F018008215B0 /* UserSearch.storyboard */; };
+		953A1AAD2107F097008215B0 /* PCUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */; };
+		953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AAF2107F214008215B0 /* UserSearchCell.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -119,6 +122,11 @@
 		951A795220FD0F2F003D3901 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		951A795420FD11A1003D3901 /* LibraryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
 		951A795520FD11A1003D3901 /* LibraryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LibraryCell.m; sourceTree = "<group>"; };
+		953A1AA92107F018008215B0 /* UserSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserSearch.storyboard; sourceTree = "<group>"; };
+		953A1AAB2107F097008215B0 /* PCUserSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCUserSearchViewController.h; sourceTree = "<group>"; };
+		953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCUserSearchViewController.m; sourceTree = "<group>"; };
+		953A1AAE2107F214008215B0 /* UserSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSearchCell.h; sourceTree = "<group>"; };
+		953A1AAF2107F214008215B0 /* UserSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchCell.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -213,6 +221,7 @@
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				953A1AA92107F018008215B0 /* UserSearch.storyboard */,
 				26B6B67B21068255001BE727 /* Profile.storyboard */,
 				951A794420FD0CB5003D3901 /* Library.storyboard */,
 				959B2B0A2102476E005D418E /* Trailer.storyboard */,
@@ -272,10 +281,10 @@
 				95A313E5210290EB006F1828 /* PCLoginViewController.m */,
 				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
 				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
-				953A1AA621068242008215B0 /* PCWebLogin2ViewController.h */,
-				953A1AA721068242008215B0 /* PCWebLogin2ViewController.m */,
 				7188D3352107E4690057E9AE /* PCActorBioViewController.h */,
 				7188D3362107E4690057E9AE /* PCActorBioViewController.m */,
+				953A1AAB2107F097008215B0 /* PCUserSearchViewController.h */,
+				953A1AAC2107F097008215B0 /* PCUserSearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -293,6 +302,8 @@
 				959B2B002100F8B6005D418E /* ShelfPickerCell.m */,
 				7178E8A921010D4D00431364 /* ReviewCell.h */,
 				7178E8AA21010D4D00431364 /* ReviewCell.m */,
+				953A1AAE2107F214008215B0 /* UserSearchCell.h */,
+				953A1AAF2107F214008215B0 /* UserSearchCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -437,6 +448,7 @@
 				951A791C20FD0A8B003D3901 /* LaunchScreen.storyboard in Resources */,
 				951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */,
 				951A794520FD0CB5003D3901 /* Library.storyboard in Resources */,
+				953A1AAA2107F018008215B0 /* UserSearch.storyboard in Resources */,
 				959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */,
 				959B2B0B2102476E005D418E /* Trailer.storyboard in Resources */,
 				951A791720FD0A89003D3901 /* Main.storyboard in Resources */,
@@ -526,11 +538,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/JGProgressHUD/JGProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/pt-BR.lproj",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JGProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-BR.lproj",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -544,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */,
 				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
 				26245A0C20FD54FE00A47E10 /* Movie.m in Sources */,
@@ -555,6 +574,7 @@
 				7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */,
 				959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */,
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
+				953A1AAD2107F097008215B0 /* PCUserSearchViewController.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
 				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
@@ -566,7 +586,6 @@
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
 				7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */,
-				953A1AA821068242008215B0 /* PCWebLogin2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

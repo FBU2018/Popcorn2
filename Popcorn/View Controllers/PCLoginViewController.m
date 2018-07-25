@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    self.passwordTextField.secureTextEntry = YES;
 }
 
 -(void)dismissKeyboard
@@ -76,6 +77,7 @@
     newUser[@"following"] = [NSMutableArray new];
     newUser[@"followers"] = [NSMutableArray new];
     newUser[@"reviews"] = [NSMutableArray new];
+    newUser[@"profileImage"] = [PFFile init];
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

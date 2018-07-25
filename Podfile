@@ -11,6 +11,7 @@ target 'Popcorn' do
   pod 'SVPullToRefresh'
   pod 'JGProgressHUD'
   pod 'Parse'
+  pod 'ParseUI'
 
   target 'PopcornTests' do
     inherit! :search_paths
