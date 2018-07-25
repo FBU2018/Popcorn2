@@ -15,6 +15,7 @@
 #import "APIManager.h"
 #import "PCTrailerViewController.h"
 #import "PCShelfPickerViewController.h"
+#import "Parse/Parse.h"
 
 @interface PCSearchViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -58,7 +59,7 @@ bool isMoreDataLoading = false;
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error){
         if(error == nil){
             self.shelvesArray = shelves[@"results"];
         }

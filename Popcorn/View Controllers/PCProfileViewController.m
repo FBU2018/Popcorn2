@@ -23,7 +23,7 @@
     self.currentUser = [PFUser currentUser];
     self.usernameLabel.text = self.currentUser.username;
     
-    // Call method to get users list given their account id
+    // Call method to get users list given their session id
     
 }
 - (IBAction)didTapFollow:(id)sender {
@@ -36,7 +36,6 @@
 
 // Define a method that gets a given user's lists
 -(void)getProfileLists{
-    
 }
 
 

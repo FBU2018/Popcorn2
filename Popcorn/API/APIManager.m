@@ -173,18 +173,15 @@ static NSString * accountID = @"";
     [task resume];
 }
 
-
-
-
-- (void)getShelves:(void (^)(NSDictionary *shelves, NSError *error))completion{
-    //get request to get all of user's created list
+-(void)getShelvesWithSessionId: (NSString *)sessionId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
+    // get requesrt ro getr all of a particular user's created lists/shelves using their sessionId
     
-    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountID] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionID] stringByAppendingString:@"&page=1"];
+    NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountID] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
     NSURL *url = [NSURL URLWithString:urlString];
     
-     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         //this part runs when network call is finished
         if (error != nil) {
             NSLog(@"Error: %@", [error localizedDescription]);
@@ -196,7 +193,7 @@ static NSString * accountID = @"";
             completion(dataDictionary, nil);
         }
     }];
-     [task resume];
+    [task resume];
 }
 
 

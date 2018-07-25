@@ -41,7 +41,7 @@
 //    PFUser *currentUser = [PFUser currentUser];
 //    currentUser[@"accountId"] = self.accountId;
 //    currentUser[@"sessionId"] = self.sessionId;
-//    
+//
 //    // saves current user with new information to the Parse server
 //    [PFUser.currentUser saveInBackground];
 
@@ -186,7 +186,7 @@
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelves:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
         if(error == nil){
             self.shelves = shelves[@"results"];
             self.filteredData = self.shelves;
