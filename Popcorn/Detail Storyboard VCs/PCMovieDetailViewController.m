@@ -68,6 +68,10 @@
 
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    [self fetchRating];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -93,7 +97,7 @@
     
     
     [self fetchCast];
-    [self fetchRating];
+   // [self fetchRating];
     [self fetchSimilar];
 }
 
