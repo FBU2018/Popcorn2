@@ -335,6 +335,7 @@
                         <outlet property="posterImageView" destination="llI-cb-9p8" id="oQq-Y8-ERy"/>
                         <outlet property="ratingButton" destination="AG0-Vq-KZV" id="9L2-e3-Abb"/>
                         <outlet property="ratingLabel" destination="ISv-3e-vre" id="Gtb-3G-gRa"/>
+                        <outlet property="scrollView" destination="UMM-Sm-Ilt" id="kaY-uj-dvs"/>
                         <outlet property="similarToCollectionView" destination="8E4-aa-lG6" id="vvR-bb-hnc"/>
                         <outlet property="summaryLabel" destination="aAc-oU-UTr" id="XCO-JM-EPm"/>
                         <outlet property="titleLabel" destination="Jws-6w-d53" id="FWh-Pf-l61"/>

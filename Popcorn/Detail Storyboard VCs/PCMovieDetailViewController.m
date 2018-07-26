@@ -19,7 +19,7 @@
 #import "ActorCreditsCollectionViewCell.h"
 #import "PCWriteReviewViewController.h"
 
-@interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource, PCRatingViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -36,7 +36,8 @@
 @property (strong, nonatomic) NSArray *castList;
 
 @property (strong, nonatomic) NSArray *similarToList;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation PCMovieDetailViewController
@@ -51,6 +52,10 @@
     self.similarToCollectionView.dataSource = self;
     
     [self.castCollectionView layoutIfNeeded];
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(didPullToRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.scrollView addSubview:self.refreshControl];
     
     [self configureDetails];
     
@@ -68,6 +73,9 @@
 
 }
 
+-(void) didPullToRefresh{
+    [self configureDetails];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,7 +89,7 @@
     self.ratingLabel.text = ratingString;
     self.dateLabel.text = self.movie.releaseDateString;
     //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
-    [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
  
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
@@ -95,6 +103,7 @@
     [self fetchCast];
     [self fetchRating];
     [self fetchSimilar];
+    [self.refreshControl endRefreshing];
 }
 
 
@@ -114,6 +123,7 @@
     else if ([segue.identifier isEqualToString:@"detailToRating"]){
         PCRatingViewController *receiver = [segue destinationViewController];
         receiver.movie = self.movie;
+        receiver.delegate = self;
     }
     else if ([segue.identifier isEqualToString:@"detailToActorDetail"]){
         UICollectionViewCell *tappedCell = sender;
@@ -192,7 +202,7 @@
             if([rating isKindOfClass:[NSDictionary class]]){
                 NSDictionary *ratingDict = (NSDictionary *)rating;
                 [self.ratingButton setTitle:[[ratingDict[@"value"] stringValue]stringByAppendingString:@"/10"] forState:UIControlStateNormal];
-                
+                NSLog(@"%@", ratingDict[@"value"]);
             }
             //if the result is a boolean, that means the user hasn't rated it yet
             else{
@@ -215,6 +225,8 @@
    
 }
 
+
+//fetch is not working
 - (void) didPostRating{
     [self fetchRating];
 }

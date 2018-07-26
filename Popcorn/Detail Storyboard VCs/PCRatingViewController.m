@@ -49,9 +49,9 @@
             }
             else{
                 NSLog(@"Request successful");
-                [self.delegate didPostRating];
             }
         }];
+         [self.delegate didPostRating];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else{
