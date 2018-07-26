@@ -11,6 +11,8 @@
 #import "PCActorBioViewController.h"
 #import "ActorCreditsCollectionViewCell.h"
 #import "APIManager.h"
+#import "PCMovieDetailViewController.h"
+#import "Movie.h"
 
 @interface PCActorDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSDictionary *actorDetails;
@@ -57,6 +59,13 @@
     if([segue.identifier isEqualToString:@"actorDetailsToBio"]){
         PCActorBioViewController *receiver = [segue destinationViewController];
         receiver.bio = self.actorDetails[@"biography"];
+    }
+    if([segue.identifier isEqualToString:@"filmographyToMovieDetail"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.creditsCollectionView indexPathForCell:tappedCell];
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        Movie *movie = [[Movie alloc]initWithDictionary:self.actorCredits[indexPath.item]]; 
+        receiver.movie = movie;
     }
 }
 
