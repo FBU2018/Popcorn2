@@ -131,6 +131,13 @@
         PCWriteReviewViewController *receiver = [segue destinationViewController];
         receiver.currentMovie = self.movie;
     }
+    else if([segue.identifier isEqualToString:@"similarToDetail"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.similarToCollectionView indexPathForCell:tappedCell];
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        Movie *movie = [[Movie alloc]initWithDictionary:self.similarToList[indexPath.item]];
+        receiver.movie = movie;
+    }
 }
 
 
@@ -212,4 +219,4 @@
    
 }
 
-@end
+@end 

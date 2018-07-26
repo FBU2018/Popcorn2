@@ -2,7 +2,7 @@
 //  Movie.h
 //  Popcorn
 //
-//  Created by Ernest Omondi on 7/16/18.
+//  Created by Ernest Omondi on 7/26/18.
 //  Copyright © 2018 Rucha Patki. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSURL *backdropUrl;
 @property (strong, nonatomic) NSString *overview;
 @property (strong, nonatomic) NSString *releaseDateString;
-@property (strong, nonatomic) NSNumber *movieID; 
+@property (strong, nonatomic) NSNumber *movieID;
 @property (strong, nonatomic) NSString *tagline;
 @property (strong, nonatomic) NSString *ratingString;
 @property (strong, nonatomic) NSString *mediaType;

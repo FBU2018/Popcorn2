@@ -25,7 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
 
@@ -38,9 +41,18 @@
     // Do any additional setup after loading the view.
     // check if showing the logged in user's profile or another user's profile
     if(self.currentUser == nil){
+        // showing logged in user's profile
         self.currentUser = [PFUser currentUser];
+        // Hide and disable the follow button
+        self.followButton.hidden = YES;
+        self.followButton.enabled = NO;
     }
-
+    else{
+        // showing other user's profile
+        // show and enable follow button
+        self.followButton.hidden = NO;
+        self.followButton.enabled = YES;
+    }
     //sets all labels at the top of the screen
     [self setViews];
     
@@ -52,11 +64,29 @@
 }
 
 - (IBAction)didTapFollow:(id)sender {
+<<<<<<< HEAD
     //check that user is not yourself
     if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
         //if not following, follow
         //if following, unfollow
     }
+=======
+    // Get logged in user's PFUser object
+    PFUser *loggedInUser = [PFUser currentUser];
+    // Update array of following in logged in users PFUser object
+    [loggedInUser[@"following"] addObject:self.currentUser.username];
+    // Update array of followers in other users PFUser object
+    [self.currentUser[@"followers"] addObject:loggedInUser.username];
+    // Save current and logged-in's users objects to Parse
+    NSArray *objects = [NSArray arrayWithObjects:self.currentUser, loggedInUser, nil];
+    [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError * _Nullable error) {
+        
+    }];
+    
+    NSLog(@"Ruchas following: %@", loggedInUser[@"following"]);
+    NSLog(@"Sarahs followers: %@", self.currentUser[@"followers"]);
+
+>>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +98,11 @@
     // Show the current users username and followers and following count
     self.usernameLabel.text = self.currentUser.username;
     self.userShelvesLabel.text = [self.currentUser.username stringByAppendingString:@"'s Shelves"];
-    
+    NSArray *followers = self.currentUser[@"followers"];
+    NSArray *following = self.currentUser[@"following"];
+    self.followersCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)followers.count];
+    self.followingCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)following.count];
+
     //set image if file is not nil
     PFFile *imageFile = self.currentUser[@"userImage"];
     if(imageFile != nil){
