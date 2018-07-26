@@ -25,10 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
-<<<<<<< HEAD
-
-=======
->>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
 
@@ -64,13 +60,13 @@
 }
 
 - (IBAction)didTapFollow:(id)sender {
-<<<<<<< HEAD
-    //check that user is not yourself
-    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
-        //if not following, follow
-        //if following, unfollow
-    }
-=======
+//    //check that user is not yourself
+//    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
+//        //if not following, follow
+//        //if following, unfollow
+//    }
+    
+    
     // Get logged in user's PFUser object
     PFUser *loggedInUser = [PFUser currentUser];
     // Update array of following in logged in users PFUser object
@@ -86,7 +82,6 @@
     NSLog(@"Ruchas following: %@", loggedInUser[@"following"]);
     NSLog(@"Sarahs followers: %@", self.currentUser[@"followers"]);
 
->>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 }
 
 - (void)didReceiveMemoryWarning {
