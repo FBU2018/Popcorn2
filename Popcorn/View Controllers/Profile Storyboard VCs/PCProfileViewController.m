@@ -86,7 +86,11 @@
     // Show the current users username and followers and following count
     self.usernameLabel.text = self.currentUser.username;
     self.userShelvesLabel.text = [self.currentUser.username stringByAppendingString:@"'s Shelves"];
-    
+    NSArray *followers = self.currentUser[@"followers"];
+    NSArray *following = self.currentUser[@"following"];
+    self.followersCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)followers.count];
+    self.followingCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)following.count];
+
     //set image if file is not nil
     PFFile *imageFile = self.currentUser[@"userImage"];
     if(imageFile != nil){
