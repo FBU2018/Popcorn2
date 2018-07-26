@@ -17,6 +17,7 @@
 #import "Parse.h"
 //this cell has the same properties as the actor credits collectionview cell
 #import "ActorCreditsCollectionViewCell.h"
+#import "PCWriteReviewViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -52,6 +53,8 @@
     [self.castCollectionView layoutIfNeeded];
     
     [self configureDetails];
+    
+   [self.similarToCollectionView layoutIfNeeded];
     
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
@@ -119,6 +122,10 @@
         
         PCActorDetailViewController *receiver = [segue destinationViewController];
         receiver.actorID = actor[@"id"];
+    }
+    else if ([segue.identifier isEqualToString:@"detailToReview"]){
+        PCWriteReviewViewController *receiver = [segue destinationViewController];
+        receiver.currentMovie = self.movie;
     }
 }
 
