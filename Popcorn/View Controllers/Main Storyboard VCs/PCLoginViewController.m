@@ -81,7 +81,7 @@
     //set image to temporary image
     UIImage *myImage = [UIImage imageNamed:@"person placeholder"];
     PFFile *temporaryImage = [PFFile fileWithData: UIImageJPEGRepresentation(myImage, 1.0)];
-    newUser[@"profileImage"] = temporaryImage;
+    newUser[@"userImage"] = temporaryImage;
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

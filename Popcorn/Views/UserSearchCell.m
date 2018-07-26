@@ -14,7 +14,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    UITapGestureRecognizer *followGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapFollow:)];
+    [self.followButton addGestureRecognizer:followGestureRecognizer];
+    [self.followButton setUserInteractionEnabled:YES];
 }
+
+- (IBAction)didTapFollow:(id)sender {
+    [self.delegate userSearchCell:self didTapFollow:self.user];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -29,7 +38,7 @@
     self.usernameLabel.text = userForCell.username;
     
     //set image if file is not nil
-    PFFile *imageFile = userForCell[@"profileImage"];
+    PFFile *imageFile = userForCell[@"userImage"];
     if(imageFile != nil){
         self.userImage.file = imageFile;
         [self.userImage loadInBackground];
@@ -39,6 +48,9 @@
     self.userImage.layer.cornerRadius = self.userImage.frame.size.height /2;
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 0;
+    
+    //TODO: FOLLOW BUTTON - change style if following
+    self.followButton.layer.cornerRadius = 5;
 }
 
 @end

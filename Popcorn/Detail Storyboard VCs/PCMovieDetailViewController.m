@@ -17,6 +17,7 @@
 #import "Parse.h"
 //this cell has the same properties as the actor credits collectionview cell
 #import "ActorCreditsCollectionViewCell.h"
+#import "PCWriteReviewViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -53,6 +54,8 @@
     
     [self configureDetails];
     
+   [self.similarToCollectionView layoutIfNeeded];
+    
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -63,6 +66,10 @@
     similarLayout.minimumInteritemSpacing = 2;
     
 
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [self fetchRating];
 }
 
 
@@ -90,7 +97,7 @@
     
     
     [self fetchCast];
-    [self fetchRating];
+   // [self fetchRating];
     [self fetchSimilar];
 }
 
@@ -119,6 +126,10 @@
         
         PCActorDetailViewController *receiver = [segue destinationViewController];
         receiver.actorID = actor[@"id"];
+    }
+    else if ([segue.identifier isEqualToString:@"detailToReview"]){
+        PCWriteReviewViewController *receiver = [segue destinationViewController];
+        receiver.currentMovie = self.movie;
     }
 }
 

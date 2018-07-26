@@ -48,8 +48,8 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            PFUser *currUser = PFUser.currentUser;
-            currUser[@"sessionId"] = sessionId;
+            PFUser.currentUser[@"sessionId"] = sessionId;
+            [PFUser.currentUser saveInBackground];
             //get account details (user id, etc)
             [[APIManager shared] getAccountDetails:^(NSString *userId, NSError *error) {
                 if(error != nil){
@@ -57,9 +57,11 @@
                 }
                 else{
                     NSLog(@"Successfully get account details, id: %@", userId);
-                    currUser[@"accountId"] = userId;
+                    PFUser.currentUser[@"accountId"] = userId;
+                    [PFUser.currentUser saveInBackground];
                     // store returned account id to private property
                     self.accountId = userId;
+                    NSLog(@"accountId: %@", userId);
                     //go to main tab bar controller
                     [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }

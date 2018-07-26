@@ -40,6 +40,7 @@
 
 }
 - (IBAction)didTapDone:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +71,7 @@
     return self.reviews.count;
 }
 
-//move to APIManager later
+
 -(void) fetchReviews{
     [[APIManager shared] getReviews:[self.movie.movieID stringValue] completion:^(NSArray *reviews, NSError *error) {
         if(error != nil){
