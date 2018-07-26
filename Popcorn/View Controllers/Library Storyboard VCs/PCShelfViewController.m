@@ -25,6 +25,7 @@
 
 @property (strong, nonatomic) NSArray *movieArray; //all movies in the shelf
 @property (strong, nonatomic) NSArray *filteredData; //for search
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -43,7 +44,16 @@
     if(self.shelfId != nil){
         [self getMovies: [self.shelfId stringValue]];
     }
+    //setting refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(performGetMovies) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
+
+- (void)performGetMovies{
+    [self getMovies:[self.shelfId stringValue]];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
@@ -182,6 +192,7 @@
             moviesArray = [Movie moviesWithDictionaries:movies];
             self.filteredData = moviesArray;
             self.movieArray = moviesArray;
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
             
             if(self.movieArray.count == 0){

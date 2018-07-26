@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBarButton;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -37,13 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    // store current users session id and account id in Parse
-//    PFUser *currentUser = [PFUser currentUser];
-//    currentUser[@"accountId"] = self.accountId;
-//    currentUser[@"sessionId"] = self.sessionId;
-//
-//    // saves current user with new information to the Parse server
-//    [PFUser.currentUser saveInBackground];
 
     //instantiate all arrays
     self.shelves = [NSArray new];
@@ -56,6 +50,11 @@
     self.searchBar.delegate = self;
     
     [self getLists];
+    
+    //setting refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getLists) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -208,6 +207,7 @@
             self.shelves = shelves[@"results"];
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         }
         else{

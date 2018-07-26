@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -49,6 +51,12 @@
         self.followButton.hidden = NO;
         self.followButton.enabled = YES;
     }
+    
+    //setting refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getProfileLists) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     //sets all labels at the top of the screen
     [self setViews];
     
@@ -163,9 +171,8 @@
             self.shelves = shelves[@"results"];
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of profile user's shelves");
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
-            
-            // for updating allMovies array
         }
         else{
             NSLog(@"Error: %@", error.localizedDescription);
