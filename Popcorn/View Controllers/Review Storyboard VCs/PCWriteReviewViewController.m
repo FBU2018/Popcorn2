@@ -49,7 +49,7 @@
         self.reviewTextView.text = @"";
         self.reviewTextView.textColor = [UIColor blackColor];
     }
-    [self.reviewTextView becomeFirstResponder]; //TODO: review!!
+    [self.reviewTextView becomeFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
@@ -64,18 +64,34 @@
 
 - (IBAction)didTapDone:(id)sender {
     //push review to Parse
-    if([self.reviewTextView.text isEqualToString:self.placeholderText] == NO && [self.reviewTextView.text isEqualToString:@""] == NO){
+    if([self.reviewTextView.text isEqualToString:self.placeholderText] || [self.reviewTextView.text isEqualToString:@""]){
+        //alert saying you need to right a review to publish
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't Publish Review" message:@"You need to include a review to publish" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+    }
+    else{
         //push review to parse
         //dictionary = [key: movieId, value: review]
-        NSDictionary *reviewDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:self.reviewTextView.text,self.currentMovie.movieID, nil];
+        NSDictionary *reviewDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:self.reviewTextView.text,[self.currentMovie.movieID stringValue], nil];
         [PFUser.currentUser addUniqueObject:reviewDictionary forKey:@"reviews"];
         [PFUser.currentUser saveInBackground];
         
         //reset --> TODO: check if needed
         self.reviewTextView.text = self.placeholderText;
         self.reviewTextView.textColor = [UIColor lightGrayColor];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 /*

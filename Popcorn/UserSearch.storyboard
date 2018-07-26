@@ -44,14 +44,27 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVu-O4-LXq">
-                                                    <rect key="frame" x="83" y="30" width="42" height="21"/>
+                                                    <rect key="frame" x="83" y="30" width="43.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="xFw-Gy-Diw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPM-Ug-rw9">
+                                                    <rect key="frame" x="264" y="26" width="96" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <gestureRecognizers/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Follow">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Sdm-Qp-6OK" appends="YES" id="f8y-Tn-wuW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QVu-O4-LXq" firstAttribute="leading" secondItem="d79-Ey-sbB" secondAttribute="trailing" constant="14" id="FfL-Qp-fTf"/>
@@ -62,6 +75,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="followButton" destination="gPM-Ug-rw9" id="Z03-sa-GG9"/>
+                                            <outlet property="followGestureRecognizer" destination="Sdm-Qp-6OK" id="5v2-yd-dqz"/>
                                             <outlet property="userImage" destination="d79-Ey-sbB" id="Bcn-bD-tjy"/>
                                             <outlet property="usernameLabel" destination="QVu-O4-LXq" id="N8P-LO-efg"/>
                                             <segue destination="i9j-oF-EUD" kind="show" identifier="userSearchToProfile" id="rga-Y0-cLi"/>
@@ -80,6 +95,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vu1-th-cWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AfE-cP-l6m" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Sdm-Qp-6OK">
+                    <connections>
+                        <action selector="didTapFollow:" destination="AfE-cP-l6m" id="MDy-mh-KJz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="632.79999999999995" y="33.733133433283363"/>
         </scene>

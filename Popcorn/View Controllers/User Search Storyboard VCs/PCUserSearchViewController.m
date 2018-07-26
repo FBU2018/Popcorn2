@@ -11,13 +11,13 @@
 #import "UserSearchCell.h"
 #import "PCProfileViewController.h"
 
-@interface PCUserSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface PCUserSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UserSearchCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property(strong, nonatomic) NSArray *users;
-@property(strong, nonatomic) NSArray *filteredUsers;
+@property(strong, nonatomic) NSMutableArray *users;
+@property(strong, nonatomic) NSMutableArray *filteredUsers;
 
 @end
 
@@ -29,7 +29,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
-    self.users = [NSArray new];
+    self.users = [NSMutableArray new];
     
     [self getUserArray];
 }
@@ -39,15 +39,21 @@
     
     // construct query
     PFQuery *query = [PFUser query];
-//    [query orderByDescending:@"createdAt"];
+    //most active users show up first
+    [query orderByDescending:@"updatedAt"];
 //    self.numTimes++;
 //    query.limit = self.numTimes * 20;
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
         if (users != nil) {
-            self.users = users;
-            self.filteredUsers = users;
+            self.users = [users mutableCopy];
+            for(PFUser *user in users){
+                if([user.username isEqualToString:PFUser.currentUser.username]){
+                    [self.users removeObject:user];
+                }
+            }
+            self.filteredUsers = self.users;
 //            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         } else {
@@ -63,6 +69,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UserSearchCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"UserSearchCell"];
+    cell.delegate = self;
     [cell configureCell:self.filteredUsers withIndexPath:indexPath];
     return cell;
 }
@@ -75,7 +82,8 @@
             NSString *searchTextLower = [searchText lowercaseString];
             return [usernameLower containsString:searchTextLower];
         }];
-        self.filteredUsers = [self.users filteredArrayUsingPredicate:predicate];
+        NSArray *tempArray = [self.users filteredArrayUsingPredicate:predicate];
+        self.filteredUsers = [tempArray mutableCopy];
     }
     else {
         self.filteredUsers = self.users;
@@ -100,6 +108,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)userSearchCell:(UserSearchCell *)cell didTapFollow:(PFUser *)user{
+    //TODO: implement following
+    NSLog(@"User followed");
 }
 
 
