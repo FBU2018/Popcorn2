@@ -228,6 +228,7 @@
                                                         <connections>
                                                             <outlet property="posterView" destination="WSU-Xc-BEq" id="Lt8-YN-7qN"/>
                                                             <outlet property="titleLabel" destination="XWu-mK-evd" id="FOY-Ye-KIS"/>
+                                                            <segue destination="8ub-PJ-jCL" kind="show" identifier="similarToDetail" id="KHR-OR-VBU"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
