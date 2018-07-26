@@ -1,9 +1,8 @@
-
 //
 //  Movie.m
 //  Popcorn
 //
-//  Created by Ernest Omondi on 7/16/18.
+//  Created by Ernest Omondi on 7/26/18.
 //  Copyright © 2018 Rucha Patki. All rights reserved.
 //
 
@@ -13,7 +12,7 @@
 // initialize Movie object with given dictionary
 - (id)initWithDictionary:(NSDictionary*) dictionary{
     self = [super init];
-//    NSLog(@"dictionary: %@", dictionary);
+    //    NSLog(@"dictionary: %@", dictionary);
     
     // set different properties that the movie will have
     self.title = dictionary[@"original_title"];
@@ -22,17 +21,17 @@
     
     // Setting the posterurl if the property exists
     if(![dictionary[@"poster_path"] isEqual:[NSNull null]]){
-    NSString *posterURLString = dictionary[@"poster_path"] ;
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    self.posterUrl = [NSURL URLWithString:fullPosterURLString];
+        NSString *posterURLString = dictionary[@"poster_path"] ;
+        NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
+        
+        self.posterUrl = [NSURL URLWithString:fullPosterURLString];
     }
     // Setting the backdropurl if the property exists
     if(![dictionary[@"backdrop_path"] isEqual:[NSNull null]]){
-    NSString *backdropURLString = dictionary[@"backdrop_path"];
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
-    
-    self.backdropUrl = [NSURL URLWithString:fullBackdropURLString];
+        NSString *backdropURLString = dictionary[@"backdrop_path"];
+        NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
+        
+        self.backdropUrl = [NSURL URLWithString:fullBackdropURLString];
     }
     
     self.overview = dictionary[@"overview"];
@@ -62,3 +61,4 @@
 }
 
 @end
+
