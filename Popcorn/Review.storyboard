@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your review here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1N5-55-k7O">
-                                <rect key="frame" x="16" y="146" width="343" height="501"/>
+                                <rect key="frame" x="16" y="137" width="343" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="ad4-92-ZgW"/>
-                                    <constraint firstAttribute="height" constant="501" id="hUT-xt-J0G"/>
+                                    <constraint firstAttribute="height" constant="510" id="hUT-xt-J0G"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-Cs-IOn">
-                                <rect key="frame" x="16" y="107" width="79" height="18"/>
+                                <rect key="frame" x="16" y="108" width="79" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Ckj-fU-ipc"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQw-iu-OZ1">
-                                <rect key="frame" x="103" y="107" width="31" height="18"/>
+                                <rect key="frame" x="103" y="108" width="31" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Ah7-Zi-blx"/>
                                 </constraints>
@@ -69,11 +69,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3p-M0-2XH">
-                                <rect key="frame" x="16" y="79" width="97" height="21"/>
+                                <rect key="frame" x="16" y="79" width="115" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="mjs-e2-6ZG"/>
+                                    <constraint firstAttribute="height" constant="29" id="mjs-e2-6ZG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -87,10 +87,10 @@
                             <constraint firstItem="e3p-M0-2XH" firstAttribute="leading" secondItem="8BX-tS-5O5" secondAttribute="leading" constant="16" id="MRD-hM-LjJ"/>
                             <constraint firstItem="8BX-tS-5O5" firstAttribute="trailing" secondItem="TTQ-tz-c4R" secondAttribute="trailing" constant="13" id="MVr-TD-06X"/>
                             <constraint firstItem="DlD-eF-D3h" firstAttribute="top" secondItem="8BX-tS-5O5" secondAttribute="top" constant="13" id="Mxg-4M-qlf"/>
-                            <constraint firstItem="1N5-55-k7O" firstAttribute="top" secondItem="Ocq-Cs-IOn" secondAttribute="bottom" constant="21" id="Nyd-Ye-NY3"/>
+                            <constraint firstItem="1N5-55-k7O" firstAttribute="top" secondItem="Ocq-Cs-IOn" secondAttribute="bottom" constant="11" id="Nyd-Ye-NY3"/>
                             <constraint firstItem="Ocq-Cs-IOn" firstAttribute="leading" secondItem="8BX-tS-5O5" secondAttribute="leading" constant="16" id="YXz-jk-Qab"/>
-                            <constraint firstItem="Ocq-Cs-IOn" firstAttribute="top" secondItem="e3p-M0-2XH" secondAttribute="bottom" constant="7" id="Zc4-sc-5Ui"/>
-                            <constraint firstItem="iQw-iu-OZ1" firstAttribute="top" secondItem="e3p-M0-2XH" secondAttribute="bottom" constant="7" id="ndg-jM-8nj"/>
+                            <constraint firstItem="Ocq-Cs-IOn" firstAttribute="top" secondItem="e3p-M0-2XH" secondAttribute="bottom" id="Zc4-sc-5Ui"/>
+                            <constraint firstItem="iQw-iu-OZ1" firstAttribute="top" secondItem="e3p-M0-2XH" secondAttribute="bottom" id="ndg-jM-8nj"/>
                             <constraint firstItem="TTQ-tz-c4R" firstAttribute="top" secondItem="8BX-tS-5O5" secondAttribute="top" constant="14" id="wXs-AP-J12"/>
                             <constraint firstItem="DlD-eF-D3h" firstAttribute="leading" secondItem="8BX-tS-5O5" secondAttribute="leading" constant="14" id="x0M-Px-ddz"/>
                         </constraints>

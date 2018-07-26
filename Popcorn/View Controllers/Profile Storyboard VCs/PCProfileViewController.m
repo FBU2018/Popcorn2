@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
 
@@ -60,6 +64,13 @@
 }
 
 - (IBAction)didTapFollow:(id)sender {
+<<<<<<< HEAD
+    //check that user is not yourself
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
+        //if not following, follow
+        //if following, unfollow
+    }
+=======
     // Get logged in user's PFUser object
     PFUser *loggedInUser = [PFUser currentUser];
     // Update array of following in logged in users PFUser object
@@ -75,6 +86,7 @@
     NSLog(@"Ruchas following: %@", loggedInUser[@"following"]);
     NSLog(@"Sarahs followers: %@", self.currentUser[@"followers"]);
 
+>>>>>>> 8fe600e60f87586fe20645139b02ee86e7de37bf
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,9 +115,19 @@
     self.profileImage.layer.borderWidth = 0;
     
     //gesture recognizer
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-    [self.profileImage setUserInteractionEnabled:YES];
-    [self.profileImage addGestureRecognizer:tapGestureRecognizer];
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+        [self.profileImage setUserInteractionEnabled:YES];
+        [self.profileImage addGestureRecognizer:tapGestureRecognizer];
+    }
+    
+    //TODO: FOLLOW BUTTON - change style if following
+    self.followButton.layer.cornerRadius = 5;
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
+        [self.followButton setTitle:@"You" forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self.followButton setBackgroundColor:[UIColor whiteColor]];
+    }
 }
 
 - (IBAction)didTap:(id)sender {

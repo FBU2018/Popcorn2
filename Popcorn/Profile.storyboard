@@ -136,9 +136,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkO-8u-M5x">
-                                <rect key="frame" x="290" y="97" width="79" height="30"/>
+                                <rect key="frame" x="273" y="97" width="96" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Follow">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -155,7 +155,7 @@
                     <navigationItem key="navigationItem" id="SYk-6x-LIJ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="followButton" destination="JkO-8u-M5x" id="6hs-jD-IFy"/>
+                        <outlet property="followButton" destination="JkO-8u-M5x" id="FmT-kB-MMB"/>
                         <outlet property="followersCount" destination="dwc-q7-GXd" id="a2w-n6-bH6"/>
                         <outlet property="followingCount" destination="xN6-zJ-YoS" id="NMR-EA-Hde"/>
                         <outlet property="profileImage" destination="cl3-GY-V0H" id="mvJ-GP-SgL"/>

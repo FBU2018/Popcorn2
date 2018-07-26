@@ -95,11 +95,13 @@
     //TODO: eventually combine the following into setCell method in searchCell
     Movie *movie = self.filteredData[indexPath.row];
     cell.movie = movie;
-    cell.titleLabel.text = movie.title;
-    cell.releaseDateLabel.text = movie.releaseDateString;
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:movie.posterUrl];
-    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];;
+    
+    [cell configureCell:movie];
+//    cell.titleLabel.text = movie.title;
+//    cell.releaseDateLabel.text = movie.releaseDateString;
+//    cell.posterView.image = nil;
+//    [cell.posterView setImageWithURL:movie.posterUrl];
+//    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -127,6 +129,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SearchCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"shelfToDetail" sender:cell];
 }

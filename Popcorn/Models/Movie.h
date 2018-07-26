@@ -21,4 +21,5 @@
 @property (strong, nonatomic) NSString *ratingString;
 @property (strong, nonatomic) NSString *mediaType;
 @property (strong, nonatomic) NSNumber *rating;
+
 @end
