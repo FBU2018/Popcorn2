@@ -11,6 +11,7 @@
 #import "PCActorBioViewController.h"
 #import "ActorCreditsCollectionViewCell.h"
 #import "APIManager.h"
+#import "PCMovieDetailViewController.h"
 
 @interface PCActorDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSDictionary *actorDetails;
