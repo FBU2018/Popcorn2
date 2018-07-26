@@ -61,6 +61,7 @@
                     [PFUser.currentUser saveInBackground];
                     // store returned account id to private property
                     self.accountId = userId;
+                    NSLog(@"accountId: %@", userId);
                     //go to main tab bar controller
                     [self performSegueWithIdentifier:@"loginToMain" sender:nil];
                 }
