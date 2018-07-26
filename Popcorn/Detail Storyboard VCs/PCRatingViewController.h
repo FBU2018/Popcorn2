@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 
+@protocol PCRatingViewControllerDelegate
+- (void) didPostRating;
+@end
+
 @interface PCRatingViewController : UIViewController
 @property (strong, nonatomic) Movie *movie;
+@property (weak, nonatomic) id<PCRatingViewControllerDelegate> delegate;
 @end 

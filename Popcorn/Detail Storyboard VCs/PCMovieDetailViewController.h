@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
+#import "PCRatingViewController.h"
 
-@interface PCMovieDetailViewController : UIViewController 
+@interface PCMovieDetailViewController : UIViewController <PCRatingViewControllerDelegate>
 @property (strong, nonatomic) Movie *movie;
 @property (strong, nonatomic) NSArray *shelves;
 @end
