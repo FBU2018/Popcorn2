@@ -45,6 +45,10 @@
     //    self.tagline = dictionary[@"tagline"];
     self.rating = dictionary[@"vote_average"];
     
+    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+    [fmt setPositiveFormat:@"0.##"];
+    self.ratingString = [fmt stringFromNumber:self.rating];
+    
     return self;
 }
 

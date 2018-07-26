@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingCount;
 @property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *userShelvesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
@@ -51,6 +52,11 @@
 }
 
 - (IBAction)didTapFollow:(id)sender {
+    //check that user is not yourself
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
+        //if not following, follow
+        //if following, unfollow
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,9 +81,19 @@
     self.profileImage.layer.borderWidth = 0;
     
     //gesture recognizer
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-    [self.profileImage setUserInteractionEnabled:YES];
-    [self.profileImage addGestureRecognizer:tapGestureRecognizer];
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+        [self.profileImage setUserInteractionEnabled:YES];
+        [self.profileImage addGestureRecognizer:tapGestureRecognizer];
+    }
+    
+    //TODO: FOLLOW BUTTON - change style if following
+    self.followButton.layer.cornerRadius = 5;
+    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
+        [self.followButton setTitle:@"You" forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self.followButton setBackgroundColor:[UIColor whiteColor]];
+    }
 }
 
 - (IBAction)didTap:(id)sender {

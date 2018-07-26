@@ -187,10 +187,10 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sq2-Nk-pA1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="226"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="225"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWu-mK-evd">
-                                                                            <rect key="frame" x="8" y="181.5" width="91" height="18"/>
+                                                                            <rect key="frame" x="8" y="181" width="91" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="91" id="JjP-0j-zYD"/>
                                                                             </constraints>

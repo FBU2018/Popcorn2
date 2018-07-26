@@ -17,4 +17,6 @@
 @property (strong, nonatomic) Movie *movie;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
+- (void)configureCell: (Movie*) movie;
+
 @end

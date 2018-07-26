@@ -151,17 +151,7 @@ bool isMoreDataLoading = false;
     
     // Get current movie
     Movie *movie = self.filteredMovieObjects[indexPath.row];
-    
-    // set cell label to text from particular row in array
-    cell.titleLabel.text = movie.title;
-    cell.releaseDateLabel.text = movie.releaseDateString;
-    
-    // set poster picture
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:movie.posterUrl];
-    
-    // set rating
-    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];;
+    [cell configureCell:movie];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;

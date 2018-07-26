@@ -41,6 +41,9 @@
     //sets placeholder text
     self.reviewTextView.text = self.placeholderText;
     self.reviewTextView.textColor = [UIColor lightGrayColor];
+    
+    self.reviewTextView.layer.borderWidth = 0.3f;
+    self.reviewTextView.layer.borderColor = [[UIColor grayColor] CGColor];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
