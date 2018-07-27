@@ -7,7 +7,7 @@
 //
 
 #import "PCLoginViewController.h"
-#import "Parse.h"
+#import "PFUser+ExtendedUser.h"
 #import "APIManager.h"
 #import "PCWebLoginViewController.h"
 
@@ -67,6 +67,8 @@
 - (void)registerUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
+    // Initialize a relations object
+    Relations *relations = [Relations object];
     
     // set user properties
     newUser.username = self.usernameTextField.text;
@@ -77,6 +79,7 @@
     newUser[@"following"] = [NSMutableArray new];
     newUser[@"followers"] = [NSMutableArray new];
     newUser[@"reviews"] = [NSMutableArray new];
+    newUser.relations = relations;
     
     //set image to temporary image
     UIImage *myImage = [UIImage imageNamed:@"person placeholder"];
@@ -124,7 +127,8 @@
                 } else {
                     //User has successfully logged into Parse account
                     NSLog(@"User logged in successfully");
-                    
+                    [relations saveInBackground];
+
                     //get request token
                     [[APIManager shared] getRequestToken3:^(NSString *requestToken, NSError *error) {
                         if(error != nil){

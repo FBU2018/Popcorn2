@@ -10,6 +10,8 @@
 		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
 		26A04901210A6C6000DF8496 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04900210A6C6000DF8496 /* Movie.m */; };
+		26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */; };
+		26A0490A210A6F4C00DF8496 /* Relations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04909210A6F4C00DF8496 /* Relations.m */; };
 		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; };
 		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
 		26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67E21068289001BE727 /* PCProfileViewController.m */; };
@@ -79,6 +81,10 @@
 		2684D0BE20FD159000FBB985 /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = SOURCE_ROOT; };
 		26A048FF210A6C6000DF8496 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		26A04900210A6C6000DF8496 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		26A04902210A6DD100DF8496 /* PFUser+ExtendedUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PFUser+ExtendedUser.h"; sourceTree = "<group>"; };
+		26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PFUser+ExtendedUser.m"; sourceTree = "<group>"; };
+		26A04908210A6F4C00DF8496 /* Relations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Relations.h; sourceTree = "<group>"; };
+		26A04909210A6F4C00DF8496 /* Relations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Relations.m; sourceTree = "<group>"; };
 		26B6B6792106511D001BE727 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		26B6B67B21068255001BE727 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		26B6B67D21068289001BE727 /* PCProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCProfileViewController.h; sourceTree = "<group>"; };
@@ -274,6 +280,10 @@
 			children = (
 				26A048FF210A6C6000DF8496 /* Movie.h */,
 				26A04900210A6C6000DF8496 /* Movie.m */,
+				26A04902210A6DD100DF8496 /* PFUser+ExtendedUser.h */,
+				26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */,
+				26A04908210A6F4C00DF8496 /* Relations.h */,
+				26A04909210A6F4C00DF8496 /* Relations.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -653,6 +663,7 @@
 				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
 				953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */,
+				26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
 				718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */,
@@ -667,6 +678,7 @@
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
 				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
+				26A0490A210A6F4C00DF8496 /* Relations.m in Sources */,
 				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
 				7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */,
 				7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */,
