@@ -7,7 +7,7 @@
 //
 
 #import "PCUserSearchViewController.h"
-#import "Parse.h"
+#import "PFUser+ExtendedUser.h"
 #import "UserSearchCell.h"
 #import "PCProfileViewController.h"
 
