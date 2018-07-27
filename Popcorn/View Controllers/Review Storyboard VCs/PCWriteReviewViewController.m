@@ -8,12 +8,16 @@
 
 #import "PCWriteReviewViewController.h"
 #import "Parse.h"
+#import "HCSStarRatingView.h"
+#import "APIManager.h"
+
 
 @interface PCWriteReviewViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *ratingView;
 
 @property(strong, nonatomic) NSString *placeholderText;
 
@@ -87,6 +91,20 @@
         //reset --> TODO: check if needed
         self.reviewTextView.text = self.placeholderText;
         self.reviewTextView.textColor = [UIColor lightGrayColor];
+        
+        //converts the rating from 5 stars to out of 10 points to match the movieDB
+        NSString *ratingString = [NSString stringWithFormat:@"%.1f", self.ratingView.value * 2];
+        //post rating to movieDB
+        [[APIManager shared]addRating:[self.currentMovie.movieID stringValue] withRating:ratingString withSessionId: PFUser.currentUser[@"sessionId"] completion:^(NSError * error) {
+            if(error != nil){
+                NSLog(@"%@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Request successful");
+            }
+        }];
+        
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
