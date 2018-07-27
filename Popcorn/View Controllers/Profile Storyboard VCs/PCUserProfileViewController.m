@@ -12,6 +12,8 @@
 #import "ProfileInfoCell.h"
 #import "LibraryCell.h"
 #import "PCShelfViewController.h"
+#import <Parse/Parse.h>
+#import "PFUser+ExtendedUser.h"
 
 @interface PCUserProfileViewController () <UITableViewDelegate, UITableViewDataSource, ProfileInfoCellDelegate>
 
@@ -111,29 +113,91 @@
 
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapFollow:(PFUser *)user {
-    //    //check that user is not yourself
-    //    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]] == NO){
-    //        //if not following, follow
-    //        //if following, unfollow
-    //    }
-    NSLog(@"follow pressed");
-    
-    
-//    // Get logged in user's PFUser object
-//    PFUser *loggedInUser = [PFUser currentUser];
-//    // Update array of following in logged in users PFUser object
-//    [loggedInUser[@"following"] addObject:self.currentUser.username];
-//    // Update array of followers in other users PFUser object
-//    [self.currentUser[@"followers"] addObject:loggedInUser.username];
-//    // Save current and logged-in's users objects to Parse
-//    NSArray *objects = [NSArray arrayWithObjects:self.currentUser, loggedInUser, nil];
-//    [PFObject saveAllInBackground:objects block:^(BOOL succeeded, NSError * _Nullable error) {
-//
-//    }];
-//
-//    NSLog(@"Ruchas following: %@", loggedInUser[@"following"]);
-//    NSLog(@"Sarahs followers: %@", self.currentUser[@"followers"]);
-    
+    // Check if logged in user is already following current user
+    if(self.following){
+        // if user is already being followed then unfollow
+        //set local following bool to NO
+        self.following = NO;
+        
+        PFUser *loggedInUser = [PFUser currentUser];
+        
+        //        [loggedInUser retrieveRelationsWithObjectID:loggedInUser.relations.objectId andCompletion:^(Relations *myRelations) {
+        //
+        //        }];
+        
+        PFQuery *loggedInQuery = [Relations query];
+        // fetch logged in user's relations object using the objectID
+        [loggedInQuery getObjectInBackgroundWithId:loggedInUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            if(error == nil){
+                // Remove current users accountId from the logged in users relations object
+                Relations *loggedInRelations = (Relations *)object;
+                NSMutableArray *array= [NSMutableArray arrayWithArray:loggedInRelations.myfollowingIds];
+                [array removeObject:self.currentUser[@"accountId"]];
+                // Save new array with removed object in Parse
+                loggedInRelations.myfollowingIds = [array copy];
+                
+                [loggedInRelations saveInBackground];
+            }
+        }];
+        
+        PFQuery *currentUserQuery = [Relations query];
+        // Change current users relations followersid array
+        [currentUserQuery getObjectInBackgroundWithId:self.currentUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            // Remove logged in users accountID from the current users relations object
+            Relations *currentUserRelations = (Relations *)object;
+            NSMutableArray *array= [NSMutableArray arrayWithArray:currentUserRelations.myfollowersIds];
+            [array removeObject:loggedInUser[@"accountId"]];
+            // Save new array with removed object in Parse
+            currentUserRelations.myfollowersIds = [array copy];
+            NSLog(@"Successfully unfollowed!");
+            
+            [currentUserRelations saveInBackground];
+            
+        }];
+    }
+    else{
+        // if user is not already being followed then follow
+        // set local following bool to YES
+        self.following = YES;
+        
+        PFUser *loggedInUser = [PFUser currentUser];
+        PFQuery *loggedInQuery = [Relations query];
+        // fetch logged in user's relations object using the objectID
+        [loggedInQuery getObjectInBackgroundWithId:loggedInUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            if(error == nil){
+                // Add current users accountId to the logged in users relations object
+                Relations *loggedInRelations = (Relations *)object;
+                NSMutableArray *array= [NSMutableArray arrayWithArray:loggedInRelations.myfollowingIds];
+                [array addObject:self.currentUser[@"accountId"]];
+                // Save new array with removed object in Parse
+                loggedInRelations.myfollowingIds = [array copy];
+                
+                [loggedInRelations saveInBackground];
+            }
+            else{
+                NSLog(@"Got an error: %@", error.localizedDescription);
+            }
+        }];
+        
+        PFQuery *currentUserQuery = [Relations query];
+        // Change current users relations followersid array
+        [currentUserQuery getObjectInBackgroundWithId:self.currentUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            if(error == nil){
+                // Add logged in users accountID to the current users relations object
+                Relations *currentUserRelations = (Relations *)object;
+                NSMutableArray *array= [NSMutableArray arrayWithArray:currentUserRelations.myfollowersIds];
+                [array addObject:loggedInUser[@"accountId"]];
+                // Save new array with removed object in Parse
+                currentUserRelations.myfollowersIds = [array copy];
+                
+                [currentUserRelations saveInBackground];
+                NSLog(@"Successfully followed!");
+            }
+            else{
+                NSLog(@"Got an error: %@", error.localizedDescription);
+            }
+        }];
+    }
 }
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapPicture:(PFUser *)user{

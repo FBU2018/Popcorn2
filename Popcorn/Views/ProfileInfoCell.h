@@ -28,6 +28,8 @@
 
 @property (nonatomic, weak) id<ProfileInfoCellDelegate> delegate;
 @property (strong, nonatomic) PFUser *user;
+@property (strong, nonatomic) NSString *followingCountString;
+@property (strong, nonatomic) NSString *followersCountString;
 
 
 - (void)configureCell:(PFUser *)user;

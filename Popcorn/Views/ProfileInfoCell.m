@@ -8,6 +8,8 @@
 
 #import "ProfileInfoCell.h"
 #import "Parse.h"
+#import "Relations.h"
+#import "PFUser+ExtendedUser.h"
 
 @implementation ProfileInfoCell
 
@@ -67,6 +69,21 @@
     // Show the current users username and followers and following count
     self.usernameLabel.text = user.username;
     self.userShelvesLabel.text = [user.username stringByAppendingString:@"'s Shelves"];
+    
+    // Get current users relations object to get followers and following data
+    PFQuery *query = [Relations query];
+    __weak typeof(self) weakSelf = self;
+    [query getObjectInBackgroundWithId:self.user.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if(error == nil){
+            Relations *myrelations = (Relations *)object;
+            weakSelf.followersCountString = [NSString stringWithFormat:@"%lu", (unsigned long)myrelations.myfollowersIds.count];
+            weakSelf.followingCountString = [NSString stringWithFormat:@"%lu", (unsigned long)myrelations.myfollowingIds.count];
+        }
+    }];
+    
+    // Set following and followers labels
+    self.followingLabel.text = self.followingCountString;
+    self.followersLabel.text = self.followersCountString;
 
     NSArray *followers = user[@"followers"];
     NSArray *following = user[@"following"];

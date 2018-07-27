@@ -9,7 +9,8 @@
 #import "PCUserSearchViewController.h"
 #import "PFUser+ExtendedUser.h"
 #import "UserSearchCell.h"
-#import "PCProfileViewController.h"
+//#import "PCProfileViewController.h"
+#import "PCUserProfileViewController.h"
 
 @interface PCUserSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UserSearchCellDelegate>
 
@@ -128,7 +129,9 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"userSearchToProfile"]){
         UserSearchCell *cell = sender;
-        PCProfileViewController *receiver = [segue destinationViewController];
+//        PCProfileViewController *receiver = [segue destinationViewController];
+//        receiver.currentUser = cell.user;
+        PCUserProfileViewController *receiver = [segue destinationViewController];
         receiver.currentUser = cell.user;
     }
 }

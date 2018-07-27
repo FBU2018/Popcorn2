@@ -11,4 +11,5 @@
 
 @interface PCUserProfileViewController : UIViewController
 @property (strong,  nonatomic) PFUser *currentUser;
+@property (nonatomic) BOOL following;
 @end
