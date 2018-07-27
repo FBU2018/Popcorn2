@@ -40,6 +40,8 @@
 		953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AAF2107F214008215B0 /* UserSearchCell.m */; };
 		953A1AB2210927A2008215B0 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AB1210927A2008215B0 /* Review.storyboard */; };
 		953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */; };
+		953A1ABF210B8973008215B0 /* ProfileInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ABE210B8973008215B0 /* ProfileInfoCell.m */; };
+		953A1AC2210B89D4008215B0 /* PCUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -135,6 +137,10 @@
 		953A1AB1210927A2008215B0 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		953A1AB721092A74008215B0 /* PCWriteReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCWriteReviewViewController.h; sourceTree = "<group>"; };
 		953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCWriteReviewViewController.m; sourceTree = "<group>"; };
+		953A1ABD210B8973008215B0 /* ProfileInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileInfoCell.h; sourceTree = "<group>"; };
+		953A1ABE210B8973008215B0 /* ProfileInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoCell.m; sourceTree = "<group>"; };
+		953A1AC0210B89D4008215B0 /* PCUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCUserProfileViewController.h; sourceTree = "<group>"; };
+		953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCUserProfileViewController.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -209,6 +215,8 @@
 			children = (
 				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
 				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
+				953A1AC0210B89D4008215B0 /* PCUserProfileViewController.h */,
+				953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */,
 			);
 			path = "Profile Storyboard VCs";
 			sourceTree = "<group>";
@@ -390,6 +398,8 @@
 				953A1AAF2107F214008215B0 /* UserSearchCell.m */,
 				718341142108EFA8003D9BDE /* ActorCreditsCollectionViewCell.h */,
 				718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */,
+				953A1ABD210B8973008215B0 /* ProfileInfoCell.h */,
+				953A1ABE210B8973008215B0 /* ProfileInfoCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -649,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953A1ABF210B8973008215B0 /* ProfileInfoCell.m in Sources */,
 				953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */,
 				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
@@ -670,6 +681,7 @@
 				951A794C20FD0E42003D3901 /* PCLibraryViewController.m in Sources */,
 				7196F6B721014AD20005643B /* PCRatingViewController.m in Sources */,
 				7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */,
+				953A1AC2210B89D4008215B0 /* PCUserProfileViewController.m in Sources */,
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
