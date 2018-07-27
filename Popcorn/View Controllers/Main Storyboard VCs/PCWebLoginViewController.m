@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "APIManager.h"
 #import "PCLibraryViewController.h"
-#import "Parse.h"
+#import "PFUser+ExtendedUser.h"
 
 
 @interface PCWebLoginViewController ()
