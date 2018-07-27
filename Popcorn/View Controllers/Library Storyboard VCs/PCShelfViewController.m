@@ -25,6 +25,7 @@
 
 @property (strong, nonatomic) NSArray *movieArray; //all movies in the shelf
 @property (strong, nonatomic) NSArray *filteredData; //for search
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -43,7 +44,16 @@
     if(self.shelfId != nil){
         [self getMovies: [self.shelfId stringValue]];
     }
+    //setting refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(performGetMovies) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
+
+- (void)performGetMovies{
+    [self getMovies:[self.shelfId stringValue]];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
@@ -95,11 +105,13 @@
     //TODO: eventually combine the following into setCell method in searchCell
     Movie *movie = self.filteredData[indexPath.row];
     cell.movie = movie;
-    cell.titleLabel.text = movie.title;
-    cell.releaseDateLabel.text = movie.releaseDateString;
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:movie.posterUrl];
-    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];;
+    
+    [cell configureCell:movie];
+//    cell.titleLabel.text = movie.title;
+//    cell.releaseDateLabel.text = movie.releaseDateString;
+//    cell.posterView.image = nil;
+//    [cell.posterView setImageWithURL:movie.posterUrl];
+//    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -127,6 +139,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SearchCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"shelfToDetail" sender:cell];
 }
@@ -179,6 +192,7 @@
             moviesArray = [Movie moviesWithDictionaries:movies];
             self.filteredData = moviesArray;
             self.movieArray = moviesArray;
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
             
             if(self.movieArray.count == 0){

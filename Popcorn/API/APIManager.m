@@ -836,7 +836,7 @@ static NSString * accountID = @"";
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSArray *similarMovies = dataDictionary[@"results"];
-            NSLog(@"%@", similarMovies);
+//            NSLog(@"%@", similarMovies);
             completion(similarMovies, nil);
         }
     }];

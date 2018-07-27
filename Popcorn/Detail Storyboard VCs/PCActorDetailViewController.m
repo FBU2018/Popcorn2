@@ -143,7 +143,7 @@
         }
         else{
             self.actorDetails = results;
-            NSLog(@"%@", self.actorDetails);
+         //   NSLog(@"%@", self.actorDetails);
             [self configureDetails];
         }
     }];

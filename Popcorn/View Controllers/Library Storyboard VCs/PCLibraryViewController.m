@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBarButton;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -37,13 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    // store current users session id and account id in Parse
-//    PFUser *currentUser = [PFUser currentUser];
-//    currentUser[@"accountId"] = self.accountId;
-//    currentUser[@"sessionId"] = self.sessionId;
-//
-//    // saves current user with new information to the Parse server
-//    [PFUser.currentUser saveInBackground];
 
     //instantiate all arrays
     self.shelves = [NSArray new];
@@ -56,6 +50,11 @@
     self.searchBar.delegate = self;
     
     [self getLists];
+    
+    //setting refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getLists) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -67,14 +66,30 @@
     [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
 }
 - (IBAction)didTapLogout:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to log out?"
+                                                                   message:nil
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    //cancel action
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //do nothing
+    }];
+    [alert addAction:cancelAction];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PCLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"PCLoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+    //logout action
+    UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:@"Log Out" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //actually log out
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        PCLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"PCLoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+        [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+            // PFUser.current() will now be nil
+        }];
+    }];
+    [logoutAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    [alert addAction:logoutAction];
+
+    [self presentViewController:alert animated:YES completion:^{
     }];
 }
 
@@ -119,6 +134,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     LibraryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"libraryToShelf" sender:cell];
 }
@@ -186,18 +202,13 @@
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    NSLog(@"SESSION ID: %@", PFUser.currentUser[@"sessionId"]);
-    NSLog(@"ACCOUNT ID: %@", PFUser.currentUser[@"accountId"]);
     [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
         if(error == nil){
             self.shelves = shelves[@"results"];
-//            NSLog(@"SHELF RESULTS: %@", shelves[@"results"]);
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
-            
-            //for updating allMovies array
-            [self updateAllLists];
         }
         else{
             NSLog(@"Error: %@", error.localizedDescription);
@@ -205,40 +216,6 @@
     }];
 }
 
-- (void)updateAllLists{
-    //creates array of all movies in all lists and stores in array allMovies
-    [self.allMovies removeAllObjects];
-    NSMutableArray *shelfIds = [NSMutableArray new];
-    for(NSDictionary *list in self.shelves){
-        NSNumber *shelfIdNum = list[@"id"];
-        NSString *shelfId = [shelfIdNum stringValue];
-        [shelfIds addObject:shelfId];
-    }
-    //have gotten all shelf id numbers, now getting movies from each shelf (which adds to the allMovies array)
-    for(NSString *shelfId in shelfIds){
-        [self getMovies:shelfId];
-    }
-}
-
-
-- (void)getMovies: (NSString *) movieId{
-    //HELPER METHOD for updateAllLists: gets movies for given shelf id and stores in moviesInList
-    [[APIManager shared] getShelfMovies:movieId completion:^(NSArray *movies, NSError *error) {
-        if(error == nil){
-            NSLog(@"Successfully got movies on shelves");
-            
-            NSMutableArray *moviesArray = [NSMutableArray array];
-            moviesArray = [Movie moviesWithDictionaries:movies];
-            self.moviesInList = moviesArray;
-            
-            //updating for updateAllLists
-            [self.allMovies addObjectsFromArray:self.moviesInList];
-        }
-        else{
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
-}
 
 - (IBAction)didTapPlus:(id)sender {
     //shows alert to create new shelf
