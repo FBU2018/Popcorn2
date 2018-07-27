@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
-#import "PCRatingViewController.h"
 
 @interface PCMovieDetailViewController : UIViewController 
 @property (strong, nonatomic) Movie *movie;
