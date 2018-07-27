@@ -102,16 +102,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
     
-    //TODO: eventually combine the following into setCell method in searchCell
     Movie *movie = self.filteredData[indexPath.row];
     cell.movie = movie;
     
     [cell configureCell:movie];
-//    cell.titleLabel.text = movie.title;
-//    cell.releaseDateLabel.text = movie.releaseDateString;
-//    cell.posterView.image = nil;
-//    [cell.posterView setImageWithURL:movie.posterUrl];
-//    cell.ratingLabel.text = [@"Average rating: " stringByAppendingString:[[movie.rating stringValue] stringByAppendingString:@"/10"]];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;

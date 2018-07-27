@@ -145,6 +145,7 @@
     
     //fill cells in backwards order: newly created shelves will now appear at the bottom
     [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
+//    [cell configureCell:self.filteredData[indexPath.row]];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;

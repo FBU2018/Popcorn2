@@ -73,6 +73,7 @@
 //        //if not following, follow
 //        //if following, unfollow
 //    }
+    NSLog(@"follow pressed");
     
     
     // Get logged in user's PFUser object
@@ -126,11 +127,6 @@
     
     //TODO: FOLLOW BUTTON - change style if following
     self.followButton.layer.cornerRadius = 5;
-    if([self.currentUser[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
-        [self.followButton setTitle:@"You" forState:UIControlStateNormal];
-        [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [self.followButton setBackgroundColor:[UIColor whiteColor]];
-    }
 }
 
 - (IBAction)didTap:(id)sender {
@@ -196,6 +192,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     LibraryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"libraryToShelf" sender:cell];
 }
