@@ -74,7 +74,7 @@
     newUser.username = self.usernameTextField.text;
     //    newUser.email = self.emailField.text;
     newUser.password = self.passwordTextField.text;
-    newUser[@"accountId"] = @"";
+    newUser.accountId = @"";
     newUser[@"sessionId"] = @"";
     newUser[@"following"] = [NSMutableArray new];
     newUser[@"followers"] = [NSMutableArray new];

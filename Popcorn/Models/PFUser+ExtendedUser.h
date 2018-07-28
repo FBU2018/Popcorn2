@@ -10,6 +10,12 @@
 #import "Relations.h"
 
 @interface PFUser (ExtendedUser) <PFSubclassing>
-//-(void)retrieveRelationsWithObjectID:(NSString*)objectId andCompletion: (void (^)(Relations *myRelations))completion;
+// Instance methods
+-(void)retrieveRelationsWithObjectID:(NSString*)objectId andCompletion: (void (^)(Relations *userRelations))completion;
+-(void)follow: (PFUser *)user;
+-(void)unfollow: (PFUser *)user;
+
+// Class properties
 @property (strong, nonatomic) Relations *relations;
+@property (strong, nonatomic) NSString *accountId;
 @end
