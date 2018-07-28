@@ -52,7 +52,7 @@
 
 - (void)configureCell:(PFUser *)user{
     self.user = user;
-    if([user[@"accountId"] isEqualToString:PFUser.currentUser[@"accountId"]]){
+    if([user.username isEqualToString:PFUser.currentUser.username]){
         // showing logged in user's profile
         // Hide and disable the follow button
         self.followButton.hidden = YES;
@@ -71,24 +71,10 @@
     self.userShelvesLabel.text = [user.username stringByAppendingString:@"'s Shelves"];
     
     // Get current users relations object to get followers and following data
-    PFQuery *query = [Relations query];
-    __weak typeof(self) weakSelf = self;
-    [query getObjectInBackgroundWithId:self.user.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-        if(error == nil){
-            Relations *myrelations = (Relations *)object;
-            weakSelf.followersCountString = [NSString stringWithFormat:@"%lu", (unsigned long)myrelations.myfollowersIds.count];
-            weakSelf.followingCountString = [NSString stringWithFormat:@"%lu", (unsigned long)myrelations.myfollowingIds.count];
-        }
+    [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
+        self.followingLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowingIds.count];
+        self.followersLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowersIds.count];
     }];
-    
-    // Set following and followers labels
-    self.followingLabel.text = self.followingCountString;
-    self.followersLabel.text = self.followersCountString;
-
-    NSArray *followers = user[@"followers"];
-    NSArray *following = user[@"following"];
-    self.followersLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)followers.count];
-    self.followingLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)following.count];
     
     //set image if file is not nil
     PFFile *imageFile = user[@"userImage"];

@@ -57,7 +57,7 @@
                 }
                 else{
                     NSLog(@"Successfully get account details, id: %@", userId);
-                    PFUser.currentUser[@"accountId"] = userId;
+                    PFUser.currentUser.accountId = userId;
                     [PFUser.currentUser saveInBackground];
                     // store returned account id to private property
                     self.accountId = userId;
