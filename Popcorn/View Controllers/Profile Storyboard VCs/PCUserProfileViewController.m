@@ -120,40 +120,8 @@
         self.following = NO;
         
         PFUser *loggedInUser = [PFUser currentUser];
+        [loggedInUser unfollow:self.currentUser];
         
-        //        [loggedInUser retrieveRelationsWithObjectID:loggedInUser.relations.objectId andCompletion:^(Relations *myRelations) {
-        //
-        //        }];
-        
-        PFQuery *loggedInQuery = [Relations query];
-        // fetch logged in user's relations object using the objectID
-        [loggedInQuery getObjectInBackgroundWithId:loggedInUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            if(error == nil){
-                // Remove current users accountId from the logged in users relations object
-                Relations *loggedInRelations = (Relations *)object;
-                NSMutableArray *array= [NSMutableArray arrayWithArray:loggedInRelations.myfollowingIds];
-                [array removeObject:self.currentUser[@"accountId"]];
-                // Save new array with removed object in Parse
-                loggedInRelations.myfollowingIds = [array copy];
-                
-                [loggedInRelations saveInBackground];
-            }
-        }];
-        
-        PFQuery *currentUserQuery = [Relations query];
-        // Change current users relations followersid array
-        [currentUserQuery getObjectInBackgroundWithId:self.currentUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            // Remove logged in users accountID from the current users relations object
-            Relations *currentUserRelations = (Relations *)object;
-            NSMutableArray *array= [NSMutableArray arrayWithArray:currentUserRelations.myfollowersIds];
-            [array removeObject:loggedInUser[@"accountId"]];
-            // Save new array with removed object in Parse
-            currentUserRelations.myfollowersIds = [array copy];
-            NSLog(@"Successfully unfollowed!");
-            
-            [currentUserRelations saveInBackground];
-            
-        }];
     }
     else{
         // if user is not already being followed then follow
@@ -161,42 +129,7 @@
         self.following = YES;
         
         PFUser *loggedInUser = [PFUser currentUser];
-        PFQuery *loggedInQuery = [Relations query];
-        // fetch logged in user's relations object using the objectID
-        [loggedInQuery getObjectInBackgroundWithId:loggedInUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            if(error == nil){
-                // Add current users accountId to the logged in users relations object
-                Relations *loggedInRelations = (Relations *)object;
-                NSMutableArray *array= [NSMutableArray arrayWithArray:loggedInRelations.myfollowingIds];
-                [array addObject:self.currentUser[@"accountId"]];
-                // Save new array with removed object in Parse
-                loggedInRelations.myfollowingIds = [array copy];
-                
-                [loggedInRelations saveInBackground];
-            }
-            else{
-                NSLog(@"Got an error: %@", error.localizedDescription);
-            }
-        }];
-        
-        PFQuery *currentUserQuery = [Relations query];
-        // Change current users relations followersid array
-        [currentUserQuery getObjectInBackgroundWithId:self.currentUser.relations.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            if(error == nil){
-                // Add logged in users accountID to the current users relations object
-                Relations *currentUserRelations = (Relations *)object;
-                NSMutableArray *array= [NSMutableArray arrayWithArray:currentUserRelations.myfollowersIds];
-                [array addObject:loggedInUser[@"accountId"]];
-                // Save new array with removed object in Parse
-                currentUserRelations.myfollowersIds = [array copy];
-                
-                [currentUserRelations saveInBackground];
-                NSLog(@"Successfully followed!");
-            }
-            else{
-                NSLog(@"Got an error: %@", error.localizedDescription);
-            }
-        }];
+        [loggedInUser follow:self.currentUser];
     }
 }
 

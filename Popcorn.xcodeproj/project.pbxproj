@@ -45,6 +45,9 @@
 		953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */; };
 		953A1ABF210B8973008215B0 /* ProfileInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ABE210B8973008215B0 /* ProfileInfoCell.m */; };
 		953A1AC2210B89D4008215B0 /* PCUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */; };
+		953A1AC4210BD061008215B0 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AC3210BD061008215B0 /* Feed.storyboard */; };
+		953A1AC8210BD0F4008215B0 /* PCFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AC7210BD0F4008215B0 /* PCFeedViewController.m */; };
+		953A1ACB210BD1E3008215B0 /* FeedReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ACA210BD1E3008215B0 /* FeedReviewCell.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -145,6 +148,11 @@
 		953A1ABE210B8973008215B0 /* ProfileInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoCell.m; sourceTree = "<group>"; };
 		953A1AC0210B89D4008215B0 /* PCUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCUserProfileViewController.h; sourceTree = "<group>"; };
 		953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCUserProfileViewController.m; sourceTree = "<group>"; };
+		953A1AC3210BD061008215B0 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		953A1AC6210BD0F4008215B0 /* PCFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCFeedViewController.h; sourceTree = "<group>"; };
+		953A1AC7210BD0F4008215B0 /* PCFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCFeedViewController.m; sourceTree = "<group>"; };
+		953A1AC9210BD1E3008215B0 /* FeedReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedReviewCell.h; sourceTree = "<group>"; };
+		953A1ACA210BD1E3008215B0 /* FeedReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedReviewCell.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -336,6 +344,7 @@
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				953A1AC3210BD061008215B0 /* Feed.storyboard */,
 				953A1AB1210927A2008215B0 /* Review.storyboard */,
 				953A1AA92107F018008215B0 /* UserSearch.storyboard */,
 				26B6B67B21068255001BE727 /* Profile.storyboard */,
@@ -373,6 +382,7 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				953A1AC5210BD0DD008215B0 /* Feed Storyboard VCs */,
 				953A1AB3210927C9008215B0 /* Review Storyboard VCs */,
 				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
 				2611EA9A21091E12006DC803 /* Detail Storyboard VCs */,
@@ -405,6 +415,8 @@
 				718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */,
 				953A1ABD210B8973008215B0 /* ProfileInfoCell.h */,
 				953A1ABE210B8973008215B0 /* ProfileInfoCell.m */,
+				953A1AC9210BD1E3008215B0 /* FeedReviewCell.h */,
+				953A1ACA210BD1E3008215B0 /* FeedReviewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +437,15 @@
 				953A1AB821092A74008215B0 /* PCWriteReviewViewController.m */,
 			);
 			path = "Review Storyboard VCs";
+			sourceTree = "<group>";
+		};
+		953A1AC5210BD0DD008215B0 /* Feed Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+				953A1AC6210BD0F4008215B0 /* PCFeedViewController.h */,
+				953A1AC7210BD0F4008215B0 /* PCFeedViewController.m */,
+			);
+			path = "Feed Storyboard VCs";
 			sourceTree = "<group>";
 		};
 		FC080368C3B1E330142ABD06 /* Frameworks */ = {
@@ -548,6 +569,7 @@
 			files = (
 				951A791C20FD0A8B003D3901 /* LaunchScreen.storyboard in Resources */,
 				951A791920FD0A8B003D3901 /* Assets.xcassets in Resources */,
+				953A1AC4210BD061008215B0 /* Feed.storyboard in Resources */,
 				951A794520FD0CB5003D3901 /* Library.storyboard in Resources */,
 				953A1AAA2107F018008215B0 /* UserSearch.storyboard in Resources */,
 				959B2B0321010610005D418E /* ShelfPicker.storyboard in Resources */,
@@ -665,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				953A1ABF210B8973008215B0 /* ProfileInfoCell.m in Sources */,
+				953A1AC8210BD0F4008215B0 /* PCFeedViewController.m in Sources */,
 				953A1AB02107F214008215B0 /* UserSearchCell.m in Sources */,
 				2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */,
 				2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */,
@@ -680,6 +703,7 @@
 				959B2B012100F8B6005D418E /* ShelfPickerCell.m in Sources */,
 				951A795320FD0F2F003D3901 /* APIManager.m in Sources */,
 				953A1AAD2107F097008215B0 /* PCUserSearchViewController.m in Sources */,
+				953A1ACB210BD1E3008215B0 /* FeedReviewCell.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
 				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
