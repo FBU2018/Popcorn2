@@ -12,14 +12,13 @@
 #import "APIManager.h"
 #import "PCShelfPickerViewController.h"
 #import "PCReviewViewController.h"
-#import "PCRatingViewController.h"
 #import "PCActorDetailViewController.h"
 #import "Parse.h"
 //this cell has the same properties as the actor credits collectionview cell
 #import "ActorCreditsCollectionViewCell.h"
 #import "PCWriteReviewViewController.h"
 
-@interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource, PCRatingViewControllerDelegate>
+@interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -120,11 +119,6 @@
         PCReviewViewController *receiver = [segue destinationViewController];
         receiver.movie = self.movie;
     }
-    else if ([segue.identifier isEqualToString:@"detailToRating"]){
-        PCRatingViewController *receiver = [segue destinationViewController];
-        receiver.movie = self.movie;
-        receiver.delegate = self;
-    }
     else if ([segue.identifier isEqualToString:@"detailToActorDetail"]){
         UICollectionViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.castCollectionView indexPathForCell:tappedCell];
@@ -223,11 +217,5 @@
          [self.similarToCollectionView reloadData];
     }];
    
-}
-
-
-//fetch is not working
-- (void) didPostRating{
-    [self fetchRating];
 }
 @end 
