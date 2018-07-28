@@ -12,6 +12,7 @@ target 'Popcorn' do
   pod 'JGProgressHUD'
   pod 'Parse'
   pod 'ParseUI'
+pod 'HCSStarRatingView', '~> 1.5'
 
   target 'PopcornTests' do
     inherit! :search_paths
