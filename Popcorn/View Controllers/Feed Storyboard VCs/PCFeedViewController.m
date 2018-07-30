@@ -8,10 +8,14 @@
 
 #import "PCFeedViewController.h"
 #import "FeedReviewCell.h"
+#import "Post.h"
+#import "APIManager.h"
+#import "PFUser+ExtendedUser.h"
 
 @interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *posts;
 
 @end
 
@@ -22,6 +26,26 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.posts = [NSArray new];
+    
+    [self getPostsArray];
+}
+
+- (void) getPostsArray{
+    PFQuery *query = [Post query];
+    [query includeKey:@"userImage"];
+    [query includeKey:@"relations"];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else{
+            self.posts = posts;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,15 +54,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"posts: %@", self.posts);
     //TODO: implement different cells
     FeedReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedReviewCell" forIndexPath:indexPath];
     //TODO: configure cell with user + movie
+    NSString *userId = self.posts[indexPath.row][@"authorId"];
+
+    [cell configureCell:userId withMovie:self.posts[indexPath.row][@"movieId"]];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //TODO: update with number of all cells
-    return 1;
+    return self.posts.count;
 }
 
 /*

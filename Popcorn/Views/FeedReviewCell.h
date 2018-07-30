@@ -21,10 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *reviewTextLabel;
 
-//@property (strong, nonatomic) PFUser *author;
-//@property (strong, nonatomic) Movie *movie;
-
-- (void)configureCell:(PFUser*) author withMovie:(Movie*) movie;
+- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movie;
 
 
 @end

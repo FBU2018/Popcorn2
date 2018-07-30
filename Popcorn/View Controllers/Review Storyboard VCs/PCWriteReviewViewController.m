@@ -10,6 +10,7 @@
 #import "Parse.h"
 #import "HCSStarRatingView.h"
 #import "APIManager.h"
+#import "Post.h"
 
 
 @interface PCWriteReviewViewController () <UITextViewDelegate>
@@ -100,6 +101,14 @@
                 NSLog(@"%@", error.localizedDescription);
             }
             else{
+                [Post postUpdateWithUser:PFUser.currentUser.objectId andMovie:[self.currentMovie.movieID stringValue] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if(error != nil){
+                        NSLog(@"Error making post in parse: %@", error.localizedDescription);
+                    }
+                    else{
+                        NSLog(@"Successfully pushed post to parse");
+                    }
+                }];
                 NSLog(@"Request successful");
             }
         }];
