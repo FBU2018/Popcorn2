@@ -101,7 +101,7 @@
                 NSLog(@"%@", error.localizedDescription);
             }
             else{
-                [Post postUpdateWithUser:PFUser.currentUser.objectId andMovie:[self.currentMovie.movieID stringValue] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                [Post postReviewWithUser:PFUser.currentUser.objectId andMovie:[self.currentMovie.movieID stringValue] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if(error != nil){
                         NSLog(@"Error making post in parse: %@", error.localizedDescription);
                     }
