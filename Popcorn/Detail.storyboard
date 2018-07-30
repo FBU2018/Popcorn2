@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbP-W5-z57">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="770"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="771"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-RT-9aO">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
@@ -80,8 +80,8 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAc-oU-UTr">
-                                                <rect key="frame" x="8" y="454" width="359" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <rect key="frame" x="8" y="454" width="359" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -157,7 +157,7 @@
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8E4-aa-lG6">
-                                                <rect key="frame" x="0.0" y="545" width="375" height="225"/>
+                                                <rect key="frame" x="0.0" y="546" width="375" height="225"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="225" id="Io2-wC-BTb"/>
@@ -224,7 +224,7 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similar to..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnC-Uh-jfs">
-                                                <rect key="frame" x="8" y="516" width="85" height="21"/>
+                                                <rect key="frame" x="8" y="517" width="85" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Ce0-xp-j9Z"/>
                                                 </constraints>
@@ -233,7 +233,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ip-wW-bbc">
-                                                <rect key="frame" x="4" y="481" width="146" height="30"/>
+                                                <rect key="frame" x="4" y="482" width="146" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Jx3-wI-W4P"/>
                                                     <constraint firstAttribute="width" constant="146" id="Vqx-JN-zcv"/>
@@ -376,7 +376,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthplace" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqx-pI-H2H">
-                                                <rect key="frame" x="150" y="137" width="212" height="21"/>
+                                                <rect key="frame" x="149" y="137" width="212" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <nil key="textColor"/>
