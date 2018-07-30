@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface Relations : PFObject <PFSubclassing>
-@property (strong, nonatomic) NSArray * _Nullable myfollowersIds;
-@property (strong, nonatomic) NSArray * _Nullable myfollowingIds;
+@property (strong, nonatomic) NSArray * _Nullable myfollowers;
+@property (strong, nonatomic) NSArray * _Nullable myfollowings;
 + (nonnull NSString *)parseClassName;
 @end
