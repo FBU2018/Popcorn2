@@ -50,7 +50,7 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell:(PFUser *)user{
+- (void)configureCell:(PFUser *)user withFollowing: (BOOL)following{
     self.user = user;
     if([user.username isEqualToString:PFUser.currentUser.username]){
         // showing logged in user's profile
@@ -96,8 +96,11 @@
     self.userImage.layer.borderWidth = 0;
 
     
-    //TODO: FOLLOW BUTTON - change style if following
+    //FOLLOW BUTTON - change style if following
     self.followButton.layer.cornerRadius = 5;
+    if(following){
+        [self.followButton setSelected:YES];
+    }
     
 }
 

@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSArray *shelves; // array of dictionaries about each shelf
 @property (strong, nonatomic) NSMutableArray *allMovies; //contains all Movie objects in all of user's lists
 @property (strong, nonatomic) NSMutableArray *moviesInList; //helper
-
+@property (nonatomic) BOOL following;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -37,7 +37,18 @@
         // showing logged in user's profile
         self.currentUser = [PFUser currentUser];
     }
-    
+    // Determine if loggedin User is already following current User
+    PFUser *loggedInUser = PFUser.currentUser;
+    [self.currentUser retrieveRelationsWithObjectID:self.currentUser.relations.objectId andCompletion:^(Relations *userRelations) {
+        if([userRelations.myfollowers containsObject:loggedInUser.username]){
+            // if user is already being followed then update following bool
+            self.following = YES;
+        }
+        else{
+            // if user is not already being followed then update following bool
+            self.following = NO;
+        }
+    }];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -46,7 +57,7 @@
     [self.refreshControl addTarget:self action:@selector(getProfileLists) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    // Call method to get users list given their session id
+    // Call method to get user's list given their session id
     [self getProfileLists];
 }
 
@@ -77,7 +88,7 @@
         //profileInfoCell
         ProfileInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileInfoCell" forIndexPath:indexPath];
         cell.delegate = self;
-        [cell configureCell:self.currentUser];
+        [cell configureCell:self.currentUser withFollowing:self.following];
         return cell;
     }
     else{
@@ -113,18 +124,16 @@
 
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapFollow:(PFUser *)user {
-    // Check if logged in user is already following current user
-    PFUser *loggedInUser = [PFUser currentUser];
-    [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
-        if([userRelations.myfollowers containsObject:loggedInUser.username]){
-            // if user is already being followed then unfollow
-            [loggedInUser unfollow:self.currentUser];
-        }
-        else{
-            // if user is not already being followed then follow
-            [loggedInUser follow:self.currentUser];
-        }
-    }];
+    PFUser *loggedInUser = PFUser.currentUser;
+    // Call follow method if user is not already following current user, otherwise unfollow
+    if(!self.following){
+        // Was not following current user
+        [loggedInUser follow:user];
+    }
+    else{
+        // Was already following current user
+        [loggedInUser unfollow:user];
+    }
 }
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapPicture:(PFUser *)user{

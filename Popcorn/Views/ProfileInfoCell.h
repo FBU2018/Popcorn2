@@ -32,7 +32,7 @@
 @property (strong, nonatomic) NSString *followersCountString;
 
 
-- (void)configureCell:(PFUser *)user;
+- (void)configureCell:(PFUser *)user withFollowing: (BOOL)following;
 
 @end
 
