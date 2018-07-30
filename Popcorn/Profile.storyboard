@@ -330,7 +330,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-SZ-Fst">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-SZ-Fst">
                                                     <rect key="frame" x="15" y="11" width="67" height="89"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="67" id="FJp-Mo-QMM"/>
@@ -480,6 +480,7 @@
     </scenes>
     <resources>
         <image name="person placeholder" width="240" height="240"/>
+        <image name="poster-placeholder" width="400" height="600"/>
         <image name="profile" width="32" height="32"/>
     </resources>
 </document>
