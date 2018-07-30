@@ -114,23 +114,17 @@
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapFollow:(PFUser *)user {
     // Check if logged in user is already following current user
-    if(self.following){
-        // if user is already being followed then unfollow
-        //set local following bool to NO
-        self.following = NO;
-        
-        PFUser *loggedInUser = [PFUser currentUser];
-        [loggedInUser unfollow:self.currentUser];
-        
-    }
-    else{
-        // if user is not already being followed then follow
-        // set local following bool to YES
-        self.following = YES;
-        
-        PFUser *loggedInUser = [PFUser currentUser];
-        [loggedInUser follow:self.currentUser];
-    }
+    PFUser *loggedInUser = [PFUser currentUser];
+    [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
+        if([userRelations.myfollowers containsObject:loggedInUser.username]){
+            // if user is already being followed then unfollow
+            [loggedInUser unfollow:self.currentUser];
+        }
+        else{
+            // if user is not already being followed then follow
+            [loggedInUser follow:self.currentUser];
+        }
+    }];
 }
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapPicture:(PFUser *)user{

@@ -9,7 +9,7 @@
 #import "Relations.h"
 
 @implementation Relations
-@dynamic myfollowersIds, myfollowingIds;
+@dynamic myfollowers, myfollowings;
 + (nonnull NSString *)parseClassName {
     return @"Relations";
 }

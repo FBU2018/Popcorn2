@@ -72,8 +72,8 @@
     
     // Get current users relations object to get followers and following data
     [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
-        self.followingLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowingIds.count];
-        self.followersLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowersIds.count];
+        self.followingLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowings.count];
+        self.followersLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)userRelations.myfollowers.count];
     }];
     
     //set image if file is not nil
