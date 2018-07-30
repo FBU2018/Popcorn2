@@ -14,7 +14,7 @@
 @interface PCShelfPickerViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) NSMutableArray *addedShelves;
 @end
 
 
@@ -26,6 +26,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.addedShelves = [NSMutableArray new];
     
     [self getLists];
 }
@@ -77,6 +79,10 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         //add to list
         [self addToList:selectedShelf[@"id"]];
+        NSString *shelfName = selectedShelf[@"name"];
+        if([shelfName isEqualToString:@"Watched"] || [shelfName isEqualToString:@"Want to Watch"] || [shelfName isEqualToString:@"Favorites"]){
+            [self.addedShelves addObject:shelfName];
+        }
     }
 }
 
