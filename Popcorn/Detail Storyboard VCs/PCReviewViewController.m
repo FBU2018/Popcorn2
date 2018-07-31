@@ -25,20 +25,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self fetchReviews];
-
-    //this is displaying every time for some reason, breakpoint says that reviews is nill
-//    if(self.reviews.count == 0){
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Reviews" message:@"This movie has no reviews" preferredStyle:(UIAlertControllerStyleAlert)];
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self dismissViewControllerAnimated:NO completion:nil];
-//        }];
-//        [alert addAction:okAction];
-//        [self presentViewController:alert animated:YES completion:^{
-//
-//        }];
-//    }
-
-
 }
 - (IBAction)didTapDone:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -78,14 +64,19 @@
     PFQuery *query = [PFUser query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if(users != nil){
+            //loop through users in parse
             for (int i = 0; i < users.count; i++){
                 NSMutableDictionary *review = [NSMutableDictionary new];
+                //accessing reviews a user has written
                 NSArray *userReviews = users[i][@"reviews"];
                 if(userReviews.count > 0){
                     for(int j = 0; j <userReviews.count; j++){
+                        //accesses review in parse, where key is string movieID and object is content
                         NSDictionary *currentReview = userReviews[j];
+                        //accessing array of movieId keys (there is only 1 for each review, but still an array)
                         NSArray *movieKey = [currentReview allKeys];
                         if([movieKey[0] isEqualToString:[self.movie.movieID stringValue]]){
+                            //sets dictionary keys to be the same as from API call
                             [review setObject:users[i][@"username"] forKey:@"author"];
                             [review setObject:[currentReview allValues][0] forKey:@"content"];
                             [communityReviews addObject:review];
@@ -104,7 +95,8 @@
            // self.reviews = reviews;
             if(reviews.count > 0){
                 for(int i = 0; i < reviews.count; i++){
-                    [communityReviews addObject:reviews[0]];
+                    //append review to list
+                    [communityReviews addObject:reviews[i]];
                 }
             }
             self.reviews = communityReviews;
@@ -125,31 +117,6 @@
     }];
 }
 
--(void) fetchCommunityReviews{
-    NSMutableArray *communityReviews = [NSMutableArray new];
-    PFQuery *query = [PFUser query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        if(users != nil){
-            for (int i = 0; i < users.count; i++){
-                NSMutableDictionary *review = [NSMutableDictionary new];
-                NSArray *userReviews = users[i][@"reviews"];
-                if(userReviews.count > 0){
-                    for(int j = 0; j <userReviews.count; j++){
-                        NSDictionary *currentReview = userReviews[j];
-                        NSArray *movieKey = [currentReview allKeys];
-                        if([movieKey[0] isEqualToString:[self.movie.movieID stringValue]]){
-                            [review setObject:users[i][@"username"] forKey:@"author"];
-                            [review setObject:[currentReview allValues][0] forKey:@"content"];
-                            [communityReviews addObject:review];
-                        }
-                    }
-                }
-            }
-            self.reviews = communityReviews;
-            [self.tableView reloadData];
-        }
-    }];
-}
 
 
 @end
