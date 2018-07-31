@@ -20,7 +20,7 @@
 }
 
 // Follow a given user by updating self and passed in user's relation objects
--(void)follow:(PFUser *)user{
+-(void)follow:(PFUser *)user withCompletionBlock:(void (^)(BOOL success))completion{
     // Get relations object of passed in user
     [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
         // Add self user's account id to passed in user's followersids array
@@ -30,7 +30,7 @@
         // Update passed in user's followersids array and save in background
         userRelations.myfollowers = [userArray copy];
         [userRelations saveInBackground];
-        
+        completion(YES);
     }];
     
     // Get relations object of self user
@@ -42,12 +42,12 @@
         // Update self user's followingids array and save in background
         userRelations.myfollowings = [selfArray copy];
         [userRelations saveInBackground];
-        
+        completion(YES);
     }];
 }
 
 // Unfollow a given user by updating self and passed in user's relation objects
--(void)unfollow: (PFUser *)user{
+-(void)unfollow: (PFUser *)user withCompletionBlock:(void (^)(BOOL success))completion{
     // Get relations object of passed in user
     [user retrieveRelationsWithObjectID:user.relations.objectId andCompletion:^(Relations *userRelations) {
         // Remove self user's account id from passed in user's followersids array
@@ -69,7 +69,7 @@
         // Update self user's followingids array and save in background
         userRelations.myfollowings = [array copy];
         [userRelations saveInBackground];
-        
+        completion(YES);
     }];
 }
 

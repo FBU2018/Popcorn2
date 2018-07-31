@@ -14,17 +14,29 @@
 @dynamic movieId;
 @dynamic createdAt;
 @dynamic shelves;
+@dynamic postType;
 
 + (nonnull NSString *)parseClassName{
     return @"Post";
 }
 
-+ (void)postUpdateWithUser:(NSString *)authorId andMovie:(NSString *)movieId withCompletion:(PFBooleanResultBlock)completion{
++ (void)postReviewWithUser:(NSString *)authorId andMovie:(NSString *)movieId withCompletion:(PFBooleanResultBlock)completion{
     Post *newPost = [Post new];
     newPost.authorId = authorId;
     newPost.movieId = movieId;
+    newPost.postType = @"review";
     
     newPost.shelves = [NSMutableArray new];
+    
+    [newPost saveInBackgroundWithBlock:completion];
+}
+
++ (void)postShelfUpdateWithUser:(NSString *)authorId andMovie:(NSString *)movieId andShelves:(NSMutableArray *)shelves withCompletion:(PFBooleanResultBlock)completion{
+    Post *newPost = [Post new];
+    newPost.authorId = authorId;
+    newPost.movieId = movieId;
+    newPost.postType = @"shelfUpdate";
+    newPost.shelves = shelves;
     
     [newPost saveInBackgroundWithBlock:completion];
 }

@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *moviesInList; //helper
 @property (nonatomic) BOOL following;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+-(void)alertWithString:(NSString *)message;
 
 @end
 
@@ -32,7 +32,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setUpView];
+}
+
+-(void)setUpView{
     if(self.currentUser == nil){
         // showing logged in user's profile
         self.currentUser = [PFUser currentUser];
@@ -122,17 +125,35 @@
     return self.shelves.count + 1;
 }
 
+-(void)alertWithString:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Okay action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self setUpView];
+            }];
+    }];
+                               
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapFollow:(PFUser *)user {
     PFUser *loggedInUser = PFUser.currentUser;
     // Call follow method if user is not already following current user, otherwise unfollow
     if(!self.following){
         // Was not following current user
-        [loggedInUser follow:user];
+        [loggedInUser follow:user withCompletionBlock:^(BOOL success) {
+            [self alertWithString:@"Successfully followed!"];
+        }];
     }
     else{
         // Was already following current user
-        [loggedInUser unfollow:user];
+        [loggedInUser unfollow:user withCompletionBlock:^(BOOL success) {
+            [self alertWithString:@"Successfully unfollowed!"];
+        }];
     }
 }
 
