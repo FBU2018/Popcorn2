@@ -24,7 +24,11 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves{
+- (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves{
+    self.authorId = authorId;
+    self.movieId = movieId;
+    self.authorSessionId = sessionId;
+    
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:authorId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         if(error != nil){
@@ -74,11 +78,11 @@
             
             for(NSString *shelf in shelves){
                 if(index == 0){
-                    [description stringByAppendingString:shelf];
+                    description = [[description stringByAppendingString:shelf] mutableCopy];
                 }
                 else{
-                    [description stringByAppendingString:@" and "];
-                    [description stringByAppendingString:shelf];
+                    description = [[description stringByAppendingString:@" and "] mutableCopy];
+                    description = [[description stringByAppendingString:shelf] mutableCopy];
                 }
                 index++;
             }

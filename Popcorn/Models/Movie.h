@@ -11,6 +11,7 @@
 @interface Movie : NSObject
 + (NSMutableArray *)moviesWithDictionaries:(NSArray *)dictionaries;
 - (id)initWithDictionary:(NSDictionary*) dictionary;
+- (id)initWithDetails:(NSDictionary*) dictionary;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSURL *posterUrl;
 @property (strong, nonatomic) NSURL *backdropUrl;
