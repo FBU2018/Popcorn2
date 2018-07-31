@@ -9,6 +9,7 @@
 #import "PCReviewViewController.h"
 #import "ReviewCell.h"
 #import "APIManager.h"
+#import "Parse/Parse.h"
 
 @interface PCReviewViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *reviews;
@@ -73,13 +74,40 @@
 
 
 -(void) fetchReviews{
+    NSMutableArray *communityReviews = [NSMutableArray new];
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil){
+            for (int i = 0; i < users.count; i++){
+                NSMutableDictionary *review = [NSMutableDictionary new];
+                NSArray *userReviews = users[i][@"reviews"];
+                if(userReviews.count > 0){
+                    for(int j = 0; j <userReviews.count; j++){
+                        NSDictionary *currentReview = userReviews[j];
+                        NSArray *movieKey = [currentReview allKeys];
+                        if([movieKey[0] isEqualToString:[self.movie.movieID stringValue]]){
+                            [review setObject:users[i][@"username"] forKey:@"author"];
+                            [review setObject:[currentReview allValues][0] forKey:@"content"];
+                            [communityReviews addObject:review];
+                        }
+                    }
+                }
+            }
+        }
+    }];
     [[APIManager shared] getReviews:[self.movie.movieID stringValue] completion:^(NSArray *reviews, NSError *error) {
         if(error != nil){
             NSLog(@"%@", [error localizedDescription]);
         }
         else{
             NSLog(@"Successfully fetched reviews");
-            self.reviews = reviews;
+           // self.reviews = reviews;
+            if(reviews.count > 0){
+                for(int i = 0; i < reviews.count; i++){
+                    [communityReviews addObject:reviews[0]];
+                }
+            }
+            self.reviews = communityReviews;
             if(self.reviews.count == 0){
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Reviews" message:@"This movie has no reviews" preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -90,6 +118,34 @@
                     
                 }];
             }
+            
+    
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+-(void) fetchCommunityReviews{
+    NSMutableArray *communityReviews = [NSMutableArray new];
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil){
+            for (int i = 0; i < users.count; i++){
+                NSMutableDictionary *review = [NSMutableDictionary new];
+                NSArray *userReviews = users[i][@"reviews"];
+                if(userReviews.count > 0){
+                    for(int j = 0; j <userReviews.count; j++){
+                        NSDictionary *currentReview = userReviews[j];
+                        NSArray *movieKey = [currentReview allKeys];
+                        if([movieKey[0] isEqualToString:[self.movie.movieID stringValue]]){
+                            [review setObject:users[i][@"username"] forKey:@"author"];
+                            [review setObject:[currentReview allValues][0] forKey:@"content"];
+                            [communityReviews addObject:review];
+                        }
+                    }
+                }
+            }
+            self.reviews = communityReviews;
             [self.tableView reloadData];
         }
     }];
