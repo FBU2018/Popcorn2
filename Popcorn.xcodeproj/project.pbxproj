@@ -13,7 +13,7 @@
 		26A04901210A6C6000DF8496 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04900210A6C6000DF8496 /* Movie.m */; };
 		26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */; };
 		26A0490A210A6F4C00DF8496 /* Relations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04909210A6F4C00DF8496 /* Relations.m */; };
-		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; };
+		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
 		26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67E21068289001BE727 /* PCProfileViewController.m */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
