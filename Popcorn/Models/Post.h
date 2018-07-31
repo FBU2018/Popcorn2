@@ -13,6 +13,7 @@
 @interface Post : PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString *authorId;
+@property (strong, nonatomic) NSString *authorUsername;
 @property (strong, nonatomic) NSString *movieId;
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSMutableArray *shelves;
@@ -20,8 +21,8 @@
 @property (strong, nonatomic) NSString *authorSessionId;
 
 + (nonnull NSString *)parseClassName;
-+ (void) postReviewWithUser: ( NSString * _Nullable )authorId withSession: (NSString * _Nullable)sessionId andMovie: ( NSString * _Nullable )movieId withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postReviewWithUser: ( NSString * _Nullable )authorId ofUsername: (NSString*) username withSession: (NSString * _Nullable)sessionId andMovie: ( NSString * _Nullable )movieId withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-+ (void) postShelfUpdateWithUser: ( NSString * _Nullable )authorId withSession: (NSString * _Nullable) sessionId andMovie: ( NSString * _Nullable )movieId andShelves: (NSMutableArray *_Nullable) shelves withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postShelfUpdateWithUser: ( NSString * _Nullable )authorId ofUsername: (NSString*) username withSession: (NSString * _Nullable) sessionId andMovie: ( NSString * _Nullable )movieId andShelves: (NSMutableArray *_Nullable) shelves withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

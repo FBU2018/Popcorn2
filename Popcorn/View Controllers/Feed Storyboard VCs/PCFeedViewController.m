@@ -14,11 +14,12 @@
 #import "ShelfUpdateCell.h"
 #import "PCMovieDetailViewController.h"
 #import "Movie.h"
+#import "PCSingleReviewViewController.h"
 
 @interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
@@ -30,7 +31,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.posts = [NSArray new];
+    self.posts = [NSMutableArray new];
     
     [self getPostsArray];
     
@@ -48,9 +49,36 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            self.posts = posts;
-            [self.refreshControl endRefreshing];
-            [self.tableView reloadData];
+            self.posts = [posts mutableCopy];
+            NSLog(@"%@", posts);
+            [PFUser.currentUser retrieveRelationsWithObjectID:PFUser.currentUser.relations.objectId andCompletion:^(Relations *userRelations) {
+                NSArray *following = userRelations.myfollowings;
+                
+                for(Post* post in [self.posts reverseObjectEnumerator]){
+                    if(post.authorUsername != nil && [following containsObject:post.authorUsername] == NO){
+                        //filtering out to only posts from users that that the user followers
+                        [self.posts removeObject:post];
+                    }
+                }
+                
+                if(self.posts.count == 0){
+                    //alert saying you aren't following anyone
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Posts"
+                                                                                   message:@"Follow users to see their updates!"
+                                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+                    // create an ok action, add to alert
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{
+                    }];
+                }
+                
+                [self.refreshControl endRefreshing];
+                [self.tableView reloadData];
+            }];
+
+
         }
     }];
 }
@@ -99,6 +127,8 @@
     }
     else if([cell isKindOfClass:[FeedReviewCell class]]){
         NSLog(@"FeedReviewCell");
+        FeedReviewCell *tappedCell = (FeedReviewCell*)cell;
+        [self performSegueWithIdentifier:@"feedToSingleReview" sender:tappedCell];
     }
 }
 
@@ -138,6 +168,16 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.shelves = tappedCell.userShelves;
         receiver.movie = tappedCell.movie;
+    }
+    else if([segue.identifier isEqualToString:@"feedToSingleReview"]){
+        FeedReviewCell *tappedCell = sender;
+        PCSingleReviewViewController *receiver = [segue destinationViewController];
+        receiver.movieName = tappedCell.titleLabel.text;
+        receiver.ratingString = tappedCell.ratingString;
+        receiver.movieImageURL = tappedCell.movieImageURL;
+        receiver.username = tappedCell.usernameLabel.text;
+        receiver.userImage = tappedCell.userImageFile;
+        receiver.review = tappedCell.reviewTextLabel.text;
     }
 }
 

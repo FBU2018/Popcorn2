@@ -7,8 +7,18 @@
 //
 
 #import "PCSingleReviewViewController.h"
+#import "ParseUI.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PCSingleReviewViewController ()
+
+@property (weak, nonatomic) IBOutlet PFImageView *moviePosterImage;
+@property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *userImageView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
+
 
 @end
 
@@ -16,7 +26,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setViews];
+}
+
+- (void)setViews{
+    //user image
+    self.userImageView.file = self.userImage;
+    [self.userImageView loadInBackground];
+    //make it a circle
+    self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height /2;
+    self.userImageView.layer.masksToBounds = YES;
+    self.userImageView.layer.borderWidth = 0;
+    
+    //set movie poster image
+    [self.moviePosterImage setImageWithURL:self.movieImageURL];
+    
+    //set labels
+    self.movieTitleLabel.text = self.movieName;
+    self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
+    self.usernameLabel.text = self.username;
+    self.reviewTextView.text = self.review;
 }
 
 - (void)didReceiveMemoryWarning {

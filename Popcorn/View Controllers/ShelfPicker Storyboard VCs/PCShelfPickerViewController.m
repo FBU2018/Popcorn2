@@ -89,7 +89,7 @@
 
 - (IBAction)didTapBack:(id)sender {
     if(self.addedShelves.count > 0){
-        [Post postShelfUpdateWithUser:PFUser.currentUser.objectId withSession: PFUser.currentUser[@"sessionId"] andMovie:[self.movie.movieID stringValue] andShelves:self.addedShelves withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        [Post postShelfUpdateWithUser:PFUser.currentUser.objectId ofUsername: PFUser.currentUser.username withSession: PFUser.currentUser[@"sessionId"] andMovie:[self.movie.movieID stringValue] andShelves:self.addedShelves withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(error != nil){
                 NSLog(@"Error: %@", error.localizedDescription);
             }

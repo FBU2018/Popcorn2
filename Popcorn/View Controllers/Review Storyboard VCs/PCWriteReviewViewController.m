@@ -102,7 +102,7 @@
             }
             else{
                 PFUser *currUser = PFUser.currentUser;
-                [Post postReviewWithUser:currUser.objectId withSession:currUser[@"sessionId"] andMovie:[self.currentMovie.movieID stringValue] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                [Post postReviewWithUser:currUser.objectId ofUsername: currUser.username withSession:currUser[@"sessionId"] andMovie:[self.currentMovie.movieID stringValue] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if(error != nil){
                         NSLog(@"Error making post in parse: %@", error.localizedDescription);
                     }

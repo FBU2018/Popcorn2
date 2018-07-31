@@ -28,6 +28,9 @@
 
 - (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId{
     
+    self.authorId = authorId;
+    self.movieId = movieId;
+    
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:authorId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         if(error != nil){
@@ -46,6 +49,7 @@
                 [author saveInBackground];
             }
             
+            self.userImageFile = imageFile;
             self.userImage.file = imageFile;
             [self.userImage loadInBackground];
             
@@ -68,6 +72,7 @@
                     
                     //set image of movie
                     [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                    self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
                 }
             }];
             
@@ -88,6 +93,7 @@
                         NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
                         [fmt setPositiveFormat:@"0.##"];
                         NSString *ratingString = [[fmt stringFromNumber:ratingVal] stringByAppendingString:@"/10"];
+                        self.ratingString = ratingString;
                         
                         self.ratedLabel.text = [[[@"Rated " stringByAppendingString:ratingString] stringByAppendingString:@" by "] stringByAppendingString:author.username];
                         
