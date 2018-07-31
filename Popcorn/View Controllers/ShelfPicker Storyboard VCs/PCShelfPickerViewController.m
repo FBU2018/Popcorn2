@@ -10,6 +10,7 @@
 #import "APIManager.h"
 #import "ShelfPickerCell.h"
 #import "Parse/Parse.h"
+#import "Post.h"
 
 @interface PCShelfPickerViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -87,6 +88,16 @@
 }
 
 - (IBAction)didTapBack:(id)sender {
+    if(self.addedShelves.count > 0){
+        [Post postShelfUpdateWithUser:PFUser.currentUser.objectId andMovie:[self.movie.movieID stringValue] andShelves:self.addedShelves withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error != nil){
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully posted update");
+            }
+        }];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
