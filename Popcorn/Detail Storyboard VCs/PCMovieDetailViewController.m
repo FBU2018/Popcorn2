@@ -17,6 +17,7 @@
 //this cell has the same properties as the actor credits collectionview cell
 #import "ActorCreditsCollectionViewCell.h"
 #import "PCWriteReviewViewController.h"
+#import "PCTrailerViewController.h"
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -139,6 +140,10 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         Movie *movie = [[Movie alloc]initWithDictionary:self.similarToList[indexPath.item]];
         receiver.movie = movie;
+    }
+    else if([segue.identifier isEqualToString:@"detailToTrailer"]){
+        PCTrailerViewController *receiver = [segue destinationViewController];
+        receiver.movie = self.movie;
     }
 }
 
