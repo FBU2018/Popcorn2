@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.9.0)
+  - DateTools (2.0.0)
   - HCSStarRatingView (1.5)
   - JGProgressHUD (2.0.3)
   - Parse (1.17.1):
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - DateTools
   - HCSStarRatingView (~> 1.5)
   - JGProgressHUD
   - Parse
@@ -40,6 +42,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Bolts
+    - DateTools
     - HCSStarRatingView
     - JGProgressHUD
     - Parse
@@ -50,6 +53,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
@@ -57,6 +61,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 6a0761178946119d4be4f44d7ffecf12eb72b0b3
+PODFILE CHECKSUM: 744e9ff2bdf126a8a510db3528a56b6496b56061
 
 COCOAPODS: 1.5.3

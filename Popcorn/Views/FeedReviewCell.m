@@ -10,8 +10,7 @@
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "PFUser+ExtendedUser.h"
-
-
+#import "NSDate+DateTools.h"
 
 @implementation FeedReviewCell
 
@@ -26,7 +25,18 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId{
+- (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId withDate:(NSDate*)date{
+    
+    self.authorId = authorId;
+    self.movieId = movieId;
+
+    //set date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    NSString *newDateString = [formatter stringFromDate:date];
+    NSDate *newDate = [NSDate dateWithString:newDateString formatString:formatter.dateFormat];
+    NSString *timeInterval = [NSDate shortTimeAgoSinceDate:newDate];
+    self.timestampLabel.text = timeInterval;
     
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:authorId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
@@ -46,6 +56,7 @@
                 [author saveInBackground];
             }
             
+            self.userImageFile = imageFile;
             self.userImage.file = imageFile;
             [self.userImage loadInBackground];
             
@@ -68,6 +79,7 @@
                     
                     //set image of movie
                     [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                    self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
                 }
             }];
             
@@ -88,6 +100,7 @@
                         NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
                         [fmt setPositiveFormat:@"0.##"];
                         NSString *ratingString = [[fmt stringFromNumber:ratingVal] stringByAppendingString:@"/10"];
+                        self.ratingString = ratingString;
                         
                         self.ratedLabel.text = [[[@"Rated " stringByAppendingString:ratingString] stringByAppendingString:@" by "] stringByAppendingString:author.username];
                         

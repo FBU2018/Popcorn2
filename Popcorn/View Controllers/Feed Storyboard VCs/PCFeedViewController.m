@@ -12,11 +12,14 @@
 #import "APIManager.h"
 #import "PFUser+ExtendedUser.h"
 #import "ShelfUpdateCell.h"
+#import "PCMovieDetailViewController.h"
+#import "Movie.h"
+#import "PCSingleReviewViewController.h"
 
 @interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
@@ -28,7 +31,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.posts = [NSArray new];
+    self.posts = [NSMutableArray new];
     
     [self getPostsArray];
     
@@ -41,14 +44,43 @@
 - (void) getPostsArray{
     PFQuery *query = [Post query];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            self.posts = posts;
-            [self.refreshControl endRefreshing];
-            [self.tableView reloadData];
+            self.posts = [posts mutableCopy];
+            NSLog(@"%@", posts);
+            [PFUser.currentUser retrieveRelationsWithObjectID:PFUser.currentUser.relations.objectId andCompletion:^(Relations *userRelations) {
+                NSArray *following = userRelations.myfollowings;
+                
+                //iterates in reverse for easy deletion
+                for(Post* post in [self.posts reverseObjectEnumerator]){
+                    if(post.authorUsername != nil && [following containsObject:post.authorUsername] == NO){
+                        //filtering out to only posts from users that that the user followers
+                        [self.posts removeObject:post];
+                    }
+                }
+                
+                if(self.posts.count == 0){
+                    //alert saying you aren't following anyone
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Posts"
+                                                                                   message:@"Follow users to see their updates!"
+                                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+                    // create an ok action, add to alert
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{
+                    }];
+                }
+                
+                [self.refreshControl endRefreshing];
+                [self.tableView reloadData];
+            }];
+
+
         }
     }];
 }
@@ -60,13 +92,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *postType = self.posts[indexPath.row][@"postType"];
+    Post *post = self.posts[indexPath.row];
+    NSDate *postDate = post.createdAt;
+
     if([postType isEqualToString:@"shelfUpdate"]){
         ShelfUpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShelfUpdateCell" forIndexPath:indexPath];
         NSString *userId = self.posts[indexPath.row][@"authorId"];
+        NSString *userSessionId = self.posts[indexPath.row][@"authorSessionId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         NSMutableArray *shelves = self.posts[indexPath.row][@"shelves"];
         
-        [cell configureCell:userId withMovie:movieId withShelves:shelves];
+        [cell configureCell:userId withSession:userSessionId withMovie:movieId withShelves:shelves withDate:postDate];
         return cell;
     }
     else{ // if([postType isEqualToString:@"review"])
@@ -74,7 +110,7 @@
         NSString *userId = self.posts[indexPath.row][@"authorId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         
-        [cell configureCell:userId withMovie:movieId];
+        [cell configureCell:userId withMovie:movieId withDate: postDate];
         return cell;
     }
 
@@ -84,14 +120,73 @@
     return self.posts.count;
 }
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableView *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if([cell isKindOfClass:[ShelfUpdateCell class]]){
+        NSLog(@"shelfUpdateCell");
+        ShelfUpdateCell *tappedCell = (ShelfUpdateCell*)cell;
+        //get shelves of user
+        [self getShelvesWithSession:tappedCell.authorSessionId andAccountId:tappedCell.authorId ofCell:tappedCell];
+        //get movie inside get shelves
+        //segue is called inside getMovie
+    }
+    else if([cell isKindOfClass:[FeedReviewCell class]]){
+        NSLog(@"FeedReviewCell");
+        FeedReviewCell *tappedCell = (FeedReviewCell*)cell;
+        [self performSegueWithIdentifier:@"feedToSingleReview" sender:tappedCell];
+    }
+}
+
+- (void)getShelvesWithSession: (NSString*) sessionId andAccountId: (NSString*) accountId ofCell: (ShelfUpdateCell*) cell {
+    [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else{
+            cell.userShelves = shelves[@"results"];
+            [self getMovie:cell.movieId ofCell:cell];
+        }
+    }];
+}
+
+- (void)getMovie: (NSString*) movieId ofCell: (ShelfUpdateCell*) cell{
+    [[APIManager shared] getMovieDetails:movieId completion:^(NSDictionary *dataDictionary, NSError *error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else{
+            cell.movie = [[Movie alloc] initWithDetails:dataDictionary];
+            [self performSegueWithIdentifier:@"shelfUpdateToDetail" sender:cell];
+        }
+    }];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"shelfUpdateToDetail"]){
+        ShelfUpdateCell *tappedCell = sender;
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        receiver.shelves = tappedCell.userShelves;
+        receiver.movie = tappedCell.movie;
+    }
+    else if([segue.identifier isEqualToString:@"feedToSingleReview"]){
+        FeedReviewCell *tappedCell = sender;
+        PCSingleReviewViewController *receiver = [segue destinationViewController];
+        receiver.movieName = tappedCell.titleLabel.text;
+        receiver.ratingString = tappedCell.ratingString;
+        receiver.movieImageURL = tappedCell.movieImageURL;
+        receiver.username = tappedCell.usernameLabel.text;
+        receiver.userImage = tappedCell.userImageFile;
+        receiver.review = tappedCell.reviewTextLabel.text;
+    }
 }
-*/
+
+
 
 @end

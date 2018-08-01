@@ -12,6 +12,8 @@ target 'Popcorn' do
   pod 'JGProgressHUD'
   pod 'Parse'
   pod 'ParseUI'
+  pod 'DateTools'
+
 pod 'HCSStarRatingView', '~> 1.5'
 
   target 'PopcornTests' do

@@ -84,8 +84,10 @@
 -(void) configureDetails{
     self.titleLabel.text = self.movie.title;
     self.summaryLabel.text = self.movie.overview;
-    NSString *ratingString = [@"Average rating: " stringByAppendingString:[self.movie.ratingString stringByAppendingString:@"/10"]];
-    self.ratingLabel.text = ratingString;
+    if(self.movie.ratingString != nil){
+        NSString *ratingString = [@"Average rating: " stringByAppendingString:[self.movie.ratingString stringByAppendingString:@"/10"]];
+        self.ratingLabel.text = ratingString;
+    }
     self.dateLabel.text = self.movie.releaseDateString;
     //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];

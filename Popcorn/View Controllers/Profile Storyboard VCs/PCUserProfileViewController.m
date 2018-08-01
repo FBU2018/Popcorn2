@@ -147,25 +147,29 @@
         // Was not following current user
         [loggedInUser follow:user withCompletionBlock:^(BOOL success) {
             [self alertWithString:@"Successfully followed!"];
+            [self getProfileLists];
         }];
     }
     else{
         // Was already following current user
         [loggedInUser unfollow:user withCompletionBlock:^(BOOL success) {
             [self alertWithString:@"Successfully unfollowed!"];
+            [self getProfileLists];
         }];
     }
 }
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapPicture:(PFUser *)user{
-    //when tapped, goes to an image picker
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:imagePickerVC animated:YES completion:^{
-    }];
+    //when tapped, goes to an image picker if you're on your own profile
+    if([user.username isEqualToString:PFUser.currentUser.username]){
+        UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+        imagePickerVC.delegate = self;
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:imagePickerVC animated:YES completion:^{
+        }];
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
