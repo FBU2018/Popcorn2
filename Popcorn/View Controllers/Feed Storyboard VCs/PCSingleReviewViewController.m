@@ -46,6 +46,7 @@
     self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
     self.usernameLabel.text = self.username;
     self.reviewTextView.text = self.review;
+    self.reviewTextView.editable = NO;
 }
 
 - (void)didReceiveMemoryWarning {

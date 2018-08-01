@@ -121,6 +121,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableView *cell = [tableView cellForRowAtIndexPath:indexPath];
     if([cell isKindOfClass:[ShelfUpdateCell class]]){
         NSLog(@"shelfUpdateCell");
