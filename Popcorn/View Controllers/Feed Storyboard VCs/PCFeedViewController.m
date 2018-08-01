@@ -44,6 +44,7 @@
 - (void) getPostsArray{
     PFQuery *query = [Post query];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
@@ -54,6 +55,7 @@
             [PFUser.currentUser retrieveRelationsWithObjectID:PFUser.currentUser.relations.objectId andCompletion:^(Relations *userRelations) {
                 NSArray *following = userRelations.myfollowings;
                 
+                //iterates in reverse for easy deletion
                 for(Post* post in [self.posts reverseObjectEnumerator]){
                     if(post.authorUsername != nil && [following containsObject:post.authorUsername] == NO){
                         //filtering out to only posts from users that that the user followers
@@ -90,6 +92,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *postType = self.posts[indexPath.row][@"postType"];
+    Post *post = self.posts[indexPath.row];
+    NSDate *postDate = post.createdAt;
+
     if([postType isEqualToString:@"shelfUpdate"]){
         ShelfUpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShelfUpdateCell" forIndexPath:indexPath];
         NSString *userId = self.posts[indexPath.row][@"authorId"];
@@ -97,7 +102,7 @@
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         NSMutableArray *shelves = self.posts[indexPath.row][@"shelves"];
         
-        [cell configureCell:userId withSession:userSessionId withMovie:movieId withShelves:shelves];
+        [cell configureCell:userId withSession:userSessionId withMovie:movieId withShelves:shelves withDate:postDate];
         return cell;
     }
     else{ // if([postType isEqualToString:@"review"])
@@ -105,7 +110,7 @@
         NSString *userId = self.posts[indexPath.row][@"authorId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         
-        [cell configureCell:userId withMovie:movieId];
+        [cell configureCell:userId withMovie:movieId withDate: postDate];
         return cell;
     }
 

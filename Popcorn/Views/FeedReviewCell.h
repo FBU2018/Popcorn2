@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *reviewTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+
 
 @property (strong, nonatomic) PFFile *userImageFile;
 @property (strong, nonatomic) NSURL *movieImageURL;
@@ -29,7 +31,7 @@
 @property (strong, nonatomic) NSString* movieId;
 @property (strong, nonatomic) Movie* movie;
 
-- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId;
+- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date;
 
 
 @end

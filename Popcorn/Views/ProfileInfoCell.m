@@ -99,7 +99,11 @@
     //FOLLOW BUTTON - change style if following
     self.followButton.layer.cornerRadius = 5;
     if(following){
-        [self.followButton setSelected:YES];
+        UIColor *lighterGray = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        self.followButton.backgroundColor = lighterGray;
+        [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+//        [self.followButton setSelected:YES];
     }
     
 }

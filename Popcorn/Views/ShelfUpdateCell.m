@@ -10,6 +10,7 @@
 #import "PFUser+ExtendedUser.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
+#import "NSDate+DateTools.h"
 
 @implementation ShelfUpdateCell
 
@@ -24,10 +25,18 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves{
+- (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
     self.authorId = authorId;
     self.movieId = movieId;
     self.authorSessionId = sessionId;
+    
+    //set date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    NSString *newDateString = [formatter stringFromDate:date];
+    NSDate *newDate = [NSDate dateWithString:newDateString formatString:formatter.dateFormat];
+    NSString *timeInterval = [NSDate shortTimeAgoSinceDate:newDate];
+    self.timestampLabel.text = timeInterval;
     
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:authorId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
