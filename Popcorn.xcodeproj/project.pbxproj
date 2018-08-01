@@ -16,6 +16,9 @@
 		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
 		26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67E21068289001BE727 /* PCProfileViewController.m */; };
+		26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */; };
+		26DBAEB3211126E00025438D /* MovieDiscussion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26DBAEB2211126E00025438D /* MovieDiscussion.storyboard */; };
+		26DBAEB9211136650025438D /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBAEB8211136650025438D /* ChatCell.m */; };
 		71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71658FBC20FD37C1002190B3 /* CastCollectionViewCell.m */; };
 		7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8A721010D2300431364 /* PCReviewViewController.m */; };
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
@@ -95,6 +98,11 @@
 		26B6B67B21068255001BE727 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		26B6B67D21068289001BE727 /* PCProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCProfileViewController.h; sourceTree = "<group>"; };
 		26B6B67E21068289001BE727 /* PCProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCProfileViewController.m; sourceTree = "<group>"; };
+		26DBAEAE211126910025438D /* PCMovieDiscussionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDiscussionViewController.h; sourceTree = "<group>"; };
+		26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDiscussionViewController.m; sourceTree = "<group>"; };
+		26DBAEB2211126E00025438D /* MovieDiscussion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieDiscussion.storyboard; sourceTree = "<group>"; };
+		26DBAEB7211136650025438D /* ChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		26DBAEB8211136650025438D /* ChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		2A3F08E237C6D1752F5AC662 /* libPods-PopcornUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		381BA8A5DE7ACA1F63323BB0 /* Pods-PopcornTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTests/Pods-PopcornTests.release.xcconfig"; sourceTree = "<group>"; };
 		71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CastCollectionViewCell.h; path = Popcorn/CastCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -307,6 +315,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		26DBAEB1211126980025438D /* Movie Discussion VCs */ = {
+			isa = PBXGroup;
+			children = (
+				26DBAEAE211126910025438D /* PCMovieDiscussionViewController.h */,
+				26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */,
+			);
+			path = "Movie Discussion VCs";
+			sourceTree = "<group>";
+		};
 		66A24435E3DDD8F5F7479415 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +378,7 @@
 				951A794620FD0CC1003D3901 /* Search.storyboard */,
 				951A794820FD0CCC003D3901 /* Detail.storyboard */,
 				959B2B0221010610005D418E /* ShelfPicker.storyboard */,
+				26DBAEB2211126E00025438D /* MovieDiscussion.storyboard */,
 				951A791820FD0A8B003D3901 /* Assets.xcassets */,
 				951A791A20FD0A8B003D3901 /* LaunchScreen.storyboard */,
 				951A791D20FD0A8B003D3901 /* Info.plist */,
@@ -390,6 +408,7 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				26DBAEB1211126980025438D /* Movie Discussion VCs */,
 				953A1AC5210BD0DD008215B0 /* Feed Storyboard VCs */,
 				953A1AB3210927C9008215B0 /* Review Storyboard VCs */,
 				2611EA9B21091E36006DC803 /* ShelfPicker Storyboard VCs */,
@@ -427,6 +446,8 @@
 				953A1ACA210BD1E3008215B0 /* FeedReviewCell.m */,
 				953A1AD2210FD0E8008215B0 /* ShelfUpdateCell.h */,
 				953A1AD3210FD0E8008215B0 /* ShelfUpdateCell.m */,
+				26DBAEB7211136650025438D /* ChatCell.h */,
+				26DBAEB8211136650025438D /* ChatCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -589,6 +610,7 @@
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
 				953A1AB2210927A2008215B0 /* Review.storyboard in Resources */,
 				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
+				26DBAEB3211126E00025438D /* MovieDiscussion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +726,7 @@
 				953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */,
 				26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */,
 				953A1ACE210F839A008215B0 /* Post.m in Sources */,
+				26DBAEB9211136650025438D /* ChatCell.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
 				718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */,
@@ -726,6 +749,7 @@
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
+				26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */,
 				953A1AD4210FD0E8008215B0 /* ShelfUpdateCell.m in Sources */,
 				26A04901210A6C6000DF8496 /* Movie.m in Sources */,
 				7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */,
@@ -899,13 +923,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47ZDXDT6BD;
+				DEVELOPMENT_TEAM = 866ALQJ6LD;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn56;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -917,13 +941,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47ZDXDT6BD;
+				DEVELOPMENT_TEAM = 866ALQJ6LD;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn56;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
