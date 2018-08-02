@@ -18,5 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (weak, nonatomic) IBOutlet UIView *bubbleView;
--(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath;
+-(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath andCurrentUsername:(NSString *)currentUsername;
 @end

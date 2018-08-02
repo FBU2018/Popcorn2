@@ -25,7 +25,7 @@
     // Configure the view for the selected state
 }
 
--(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath{
+-(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath andCurrentUsername:(NSString *)currentUsername{
     // Get user object from objectId
     PFQuery *query = [PFUser query];
     [query getObjectInBackgroundWithId:objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
@@ -60,7 +60,7 @@
             self.userImageView.file = imageFile;
             [self.userImageView loadInBackground];
             
-            //make it a circle
+            // Make it a circle
             self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height /2;
             self.userImageView.layer.masksToBounds = YES;
             self.userImageView.layer.borderWidth = 0;
@@ -68,6 +68,11 @@
             // Make the view a bubble
             self.bubbleView.layer.cornerRadius = 16;
             self.bubbleView.clipsToBounds = true;
+            
+            // Change the logged in user's chat color to grey
+            if (user.username == currentUsername){
+                self.bubbleView.backgroundColor = [UIColor grayColor];
+            }
         }
         else{
             NSLog(@"Error retrieving user with query: %@", error.localizedDescription);
