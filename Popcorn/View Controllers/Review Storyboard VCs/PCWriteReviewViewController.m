@@ -55,7 +55,7 @@
     //gets rid of placeholder text and changes text color to black
     if([self.reviewTextView.text isEqualToString:self.placeholderText]){
         self.reviewTextView.text = @"";
-        self.reviewTextView.textColor = [UIColor blackColor];
+        self.reviewTextView.textColor = [UIColor colorWithRed:255 green:255 blue:224 alpha:1];
     }
     [self.reviewTextView becomeFirstResponder];
 }
