@@ -48,7 +48,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fx-LQ-Qx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="136"/>
+            <point key="canvasLocation" x="890" y="210"/>
+        </scene>
+        <!--MapNavigationController-->
+        <scene sceneID="qeA-05-Wbz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" referencedIdentifier="MapNavigationController" id="RJA-e7-kl6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="TsO-c4-bGq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kou-SS-P3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="126"/>
         </scene>
         <!--Web Login View Controller-->
         <scene sceneID="an5-DT-Wvd">
@@ -105,10 +115,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="GIV-Y3-PVU" kind="relationship" relationship="viewControllers" id="y95-l1-35W"/>
                         <segue destination="pF6-hK-Rz7" kind="relationship" relationship="viewControllers" id="iYc-BP-A0y"/>
                         <segue destination="92k-Oj-sL8" kind="relationship" relationship="viewControllers" id="7wy-qu-bSK"/>
+                        <segue destination="RJA-e7-kl6" kind="relationship" relationship="viewControllers" id="uH1-85-PBV"/>
                         <segue destination="Oh0-pz-ewI" kind="relationship" relationship="viewControllers" id="3f0-Eo-xmz"/>
-                        <segue destination="GIV-Y3-PVU" kind="relationship" relationship="viewControllers" id="y95-l1-35W"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewj-zm-gOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
