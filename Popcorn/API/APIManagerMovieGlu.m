@@ -101,13 +101,12 @@ static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
 
 //GraceNote
 
-- (void)getTheaterswithLat:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSDictionary *, NSError *))completion{
+- (void)getTheaterswithLat:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSArray *, NSError *))completion{
     //get request to get all currently showing movies
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    //http://data.tmsapi.com/v1.1/theatres?zip=78701&api_key=1234567890
-    NSString *urlString = [[[[[@"http://data.tmsapi.com/v1.1/theatres?lat=" stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace];
-//    NSString *urlString = [@"http://data.tmsapi.com/v1.1/theatres?zip=78701&api_key=" stringByAppendingString:apiKeyGrace];
+    //TODO: update date each time
+    NSString *urlString = [[[[[[[@"http://data.tmsapi.com/v1.1/movies/showings?startDate=" stringByAppendingString:@"2018-08-02"] stringByAppendingString:@"&lat="] stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"GET"];
     
@@ -119,10 +118,18 @@ static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
             completion(nil, error);
         }
         else{
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Request successful");
-            NSLog(@"dataDictionary: %@", dataDictionary);
-            completion(dataDictionary, nil);
+            NSDictionary *oneMovie = dataArray[0];
+            NSArray *showtimes = oneMovie[@"showtimes"]; //want to iterate through this and find each theatre/name
+            NSMutableArray *theatreNames = [NSMutableArray new];
+            for(NSDictionary *showtime in showtimes){
+                NSString *name = showtime[@"theatre"][@"name"];
+                if([theatreNames containsObject:name] == NO){
+                    [theatreNames addObject:name];
+                }
+            }
+            completion(theatreNames, nil);
         }
     }];
     [task resume];
