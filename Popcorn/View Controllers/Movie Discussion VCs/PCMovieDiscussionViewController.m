@@ -49,7 +49,6 @@
     [self.discussionPosterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     // Set Movie Title
     self.movieTitleLabel.text = self.movie.title;
-
     // refresh the chats every second
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
 }
@@ -109,6 +108,10 @@
     }];
     // Clear text in the textfield
     self.chatMessageTextField.text = @"";
+    
+    // refresh table view and chats
+    [self refreshChats];
+    [self.tableView reloadData];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
