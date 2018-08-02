@@ -20,6 +20,14 @@
             </objects>
             <point key="canvasLocation" x="303" y="76"/>
         </scene>
+        <!--Trailer-->
+        <scene sceneID="CBA-Dl-ahE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Trailer" id="jgV-uM-mgZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7J-Wh-7UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="-322"/>
+        </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="P2z-1a-0GZ">
             <objects>
@@ -261,6 +269,16 @@
                                                 <state key="normal" title="Movie Discussion"/>
                                                 <connections>
                                                     <segue destination="F9G-lx-NbL" kind="show" identifier="detailToDiscussion" id="fgT-Xf-cgC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teo-Kz-nPe">
+                                                <rect key="frame" x="22" y="199" width="91" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Watch Trailer">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="jgV-uM-mgZ" kind="presentation" identifier="detailToTrailer" id="WKY-qG-WSn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
