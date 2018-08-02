@@ -260,7 +260,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Movie Discussion"/>
                                                 <connections>
-                                                    <segue destination="F9G-lx-NbL" kind="show" id="fgT-Xf-cgC"/>
+                                                    <segue destination="F9G-lx-NbL" kind="show" identifier="detailToDiscussion" id="fgT-Xf-cgC"/>
                                                 </connections>
                                             </button>
                                         </subviews>

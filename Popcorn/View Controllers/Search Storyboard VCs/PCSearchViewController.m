@@ -29,7 +29,6 @@
 @property (strong, nonatomic) JGProgressHUD *HUD;
 @property (strong, nonatomic) NSArray *shelvesArray;
 -(void)searchAndFilterWithSearchString:(NSString *)searchText andPageNumber:(NSString *) pageNumber;
--(void)testCapitalize;
 @end
 
 @implementation PCSearchViewController
@@ -40,7 +39,6 @@ bool isMoreDataLoading = false;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self testCapitalize];
     // Set up activity indicator for infinite scrolling
     self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     self.HUD.textLabel.text = @"Loading";
@@ -132,15 +130,6 @@ bool isMoreDataLoading = false;
         self.filteredData = self.moviesArray;
     }
 }
-
--(void)testCapitalize{
-    NSString *abc = @"this is test for people who do stuff";
-    
-    abc = [NSString stringWithFormat:@"%@%@",[[abc substringToIndex:1] uppercaseString],[abc substringFromIndex:1] ];
-    NSLog(@"abc = %@",abc);
-}
-
-
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell

@@ -13,6 +13,7 @@
 #import "PCShelfPickerViewController.h"
 #import "PCReviewViewController.h"
 #import "PCActorDetailViewController.h"
+#import "PCMovieDiscussionViewController.h"
 #import "Parse.h"
 //this cell has the same properties as the actor credits collectionview cell
 #import "ActorCreditsCollectionViewCell.h"
@@ -139,6 +140,10 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         Movie *movie = [[Movie alloc]initWithDictionary:self.similarToList[indexPath.item]];
         receiver.movie = movie;
+    }
+    else if ([segue.identifier isEqualToString:@"detailToDiscussion"]){
+        PCMovieDiscussionViewController *discussionVC = [segue destinationViewController];
+        discussionVC.movie = self.movie;
     }
 }
 

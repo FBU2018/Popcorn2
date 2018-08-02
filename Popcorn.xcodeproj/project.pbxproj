@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05FBF708ECB86BE06819588F /* libPods-PopcornUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3F08E237C6D1752F5AC662 /* libPods-PopcornUITests.a */; };
+		2615651B2112353B00930B68 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615651A2112353B00930B68 /* Chat.m */; };
 		2684D0BC20FD10C800FBB985 /* PCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */; };
 		2684D0BF20FD159000FBB985 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D0BE20FD159000FBB985 /* SearchCell.m */; };
 		26A04901210A6C6000DF8496 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04900210A6C6000DF8496 /* Movie.m */; };
@@ -85,6 +86,8 @@
 /* Begin PBXFileReference section */
 		0B6218C2BCC13B7F500C09ED /* Pods-PopcornUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornUITests/Pods-PopcornUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		24D5563D194E4060F7DE0628 /* Pods-Popcorn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Popcorn/Pods-Popcorn.debug.xcconfig"; sourceTree = "<group>"; };
+		261565192112353B00930B68 /* Chat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
+		2615651A2112353B00930B68 /* Chat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chat.m; sourceTree = "<group>"; };
 		2684D0BA20FD10C800FBB985 /* PCSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSearchViewController.h; sourceTree = "<group>"; };
 		2684D0BB20FD10C800FBB985 /* PCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSearchViewController.m; sourceTree = "<group>"; };
 		2684D0BD20FD159000FBB985 /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = SOURCE_ROOT; };
@@ -306,6 +309,8 @@
 		26A048FE210A6C2A00DF8496 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				261565192112353B00930B68 /* Chat.h */,
+				2615651A2112353B00930B68 /* Chat.m */,
 				26A048FF210A6C6000DF8496 /* Movie.h */,
 				26A04900210A6C6000DF8496 /* Movie.m */,
 				26A04902210A6DD100DF8496 /* PFUser+ExtendedUser.h */,
@@ -761,6 +766,7 @@
 				953A1AD4210FD0E8008215B0 /* ShelfUpdateCell.m in Sources */,
 				26A04901210A6C6000DF8496 /* Movie.m in Sources */,
 				7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */,
+				2615651B2112353B00930B68 /* Chat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
