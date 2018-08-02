@@ -20,4 +20,7 @@
 //graceNote
 - (void)getTheaterswithLat:(NSString*) lat withLong: (NSString*) lng completion:(void (^) (NSMutableDictionary *theatres, NSError *error))completion;
 
+//googlePlaces
+- (void)findPlaceFromText: (NSString*) placeName completion:(void(^) (NSDictionary *dataDictionary, NSError *error)) completion;
+
 @end
