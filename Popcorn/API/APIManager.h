@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Movie.h"
 
+//API Manager for MovieDB
 @interface APIManager : NSObject
 
 + (instancetype)shared;

@@ -43,7 +43,12 @@
     
     //set labels
     self.movieTitleLabel.text = self.movieName;
-    self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
+    if(self.ratingString != nil){
+            self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
+    }
+    else{
+        self.ratingLabel.text = [self.username stringByAppendingString:@" has not rated this movie yet"];
+    }
     self.usernameLabel.text = self.username;
     self.reviewTextView.text = self.review;
     self.reviewTextView.editable = NO;

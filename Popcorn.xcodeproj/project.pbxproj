@@ -55,6 +55,10 @@
 		953A1ACE210F839A008215B0 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ACD210F839A008215B0 /* Post.m */; };
 		953A1AD4210FD0E8008215B0 /* ShelfUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AD3210FD0E8008215B0 /* ShelfUpdateCell.m */; };
 		953A1AD72110F24D008215B0 /* PCSingleReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AD62110F24D008215B0 /* PCSingleReviewViewController.m */; };
+		953A1AD921121923008215B0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953A1AD821121923008215B0 /* Map.storyboard */; };
+		953A1ADD2112195E008215B0 /* PCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ADC2112195E008215B0 /* PCMapViewController.m */; };
+		953A1AE021121E41008215B0 /* APIManagerMovieGlu.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ADF21121E41008215B0 /* APIManagerMovieGlu.m */; };
+		953A1AE221122034008215B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953A1AE121122034008215B0 /* MapKit.framework */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -173,6 +177,12 @@
 		953A1AD3210FD0E8008215B0 /* ShelfUpdateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShelfUpdateCell.m; sourceTree = "<group>"; };
 		953A1AD52110F24D008215B0 /* PCSingleReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSingleReviewViewController.h; sourceTree = "<group>"; };
 		953A1AD62110F24D008215B0 /* PCSingleReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCSingleReviewViewController.m; sourceTree = "<group>"; };
+		953A1AD821121923008215B0 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		953A1ADB2112195E008215B0 /* PCMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMapViewController.h; sourceTree = "<group>"; };
+		953A1ADC2112195E008215B0 /* PCMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMapViewController.m; sourceTree = "<group>"; };
+		953A1ADE21121E41008215B0 /* APIManagerMovieGlu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManagerMovieGlu.h; sourceTree = "<group>"; };
+		953A1ADF21121E41008215B0 /* APIManagerMovieGlu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManagerMovieGlu.m; sourceTree = "<group>"; };
+		953A1AE121122034008215B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -196,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953A1AE221122034008215B0 /* MapKit.framework in Frameworks */,
 				26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */,
 				959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */,
 				72E3A4F7AC6317E958E370A2 /* libPods-Popcorn.a in Frameworks */,
@@ -377,6 +388,7 @@
 				951A790F20FD0A89003D3901 /* AppDelegate.h */,
 				951A791020FD0A89003D3901 /* AppDelegate.m */,
 				951A791520FD0A89003D3901 /* Main.storyboard */,
+				953A1AD821121923008215B0 /* Map.storyboard */,
 				953A1AC3210BD061008215B0 /* Feed.storyboard */,
 				953A1AB1210927A2008215B0 /* Review.storyboard */,
 				953A1AA92107F018008215B0 /* UserSearch.storyboard */,
@@ -416,6 +428,7 @@
 		951A794120FD0B93003D3901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				953A1ADA21121945008215B0 /* Map Storyboard VCs */,
 				26DBAEB1211126980025438D /* Movie Discussion VCs */,
 				953A1AC5210BD0DD008215B0 /* Feed Storyboard VCs */,
 				953A1AB3210927C9008215B0 /* Review Storyboard VCs */,
@@ -465,6 +478,8 @@
 			children = (
 				951A795120FD0F2F003D3901 /* APIManager.h */,
 				951A795220FD0F2F003D3901 /* APIManager.m */,
+				953A1ADE21121E41008215B0 /* APIManagerMovieGlu.h */,
+				953A1ADF21121E41008215B0 /* APIManagerMovieGlu.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -489,9 +504,19 @@
 			path = "Feed Storyboard VCs";
 			sourceTree = "<group>";
 		};
+		953A1ADA21121945008215B0 /* Map Storyboard VCs */ = {
+			isa = PBXGroup;
+			children = (
+				953A1ADB2112195E008215B0 /* PCMapViewController.h */,
+				953A1ADC2112195E008215B0 /* PCMapViewController.m */,
+			);
+			path = "Map Storyboard VCs";
+			sourceTree = "<group>";
+		};
 		FC080368C3B1E330142ABD06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				953A1AE121122034008215B0 /* MapKit.framework */,
 				26B6B6792106511D001BE727 /* SafariServices.framework */,
 				959B2AFA20FFF15A005D418E /* WebKit.framework */,
 				87164CDED101374CD543D693 /* libPods-Popcorn.a */,
@@ -620,6 +645,7 @@
 				951A794720FD0CC1003D3901 /* Search.storyboard in Resources */,
 				953A1AB2210927A2008215B0 /* Review.storyboard in Resources */,
 				951A794920FD0CCC003D3901 /* Detail.storyboard in Resources */,
+				953A1AD921121923008215B0 /* Map.storyboard in Resources */,
 				26DBAEB3211126E00025438D /* MovieDiscussion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +764,7 @@
 				953A1AB921092A74008215B0 /* PCWriteReviewViewController.m in Sources */,
 				26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */,
 				953A1ACE210F839A008215B0 /* Post.m in Sources */,
+				953A1ADD2112195E008215B0 /* PCMapViewController.m in Sources */,
 				26DBAEB9211136650025438D /* ChatCell.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
@@ -762,6 +789,7 @@
 				959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */,
 				951A791120FD0A89003D3901 /* AppDelegate.m in Sources */,
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
+				953A1AE021121E41008215B0 /* APIManagerMovieGlu.m in Sources */,
 				26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */,
 				953A1AD4210FD0E8008215B0 /* ShelfUpdateCell.m in Sources */,
 				26A04901210A6C6000DF8496 /* Movie.m in Sources */,
@@ -937,7 +965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 866ALQJ6LD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -955,7 +983,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 866ALQJ6LD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
