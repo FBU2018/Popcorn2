@@ -59,6 +59,8 @@
 		953A1ADD2112195E008215B0 /* PCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ADC2112195E008215B0 /* PCMapViewController.m */; };
 		953A1AE021121E41008215B0 /* APIManagerMovieGlu.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1ADF21121E41008215B0 /* APIManagerMovieGlu.m */; };
 		953A1AE221122034008215B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953A1AE121122034008215B0 /* MapKit.framework */; };
+		953A1AE521139CEE008215B0 /* PCMapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AE421139CEE008215B0 /* PCMapDetailViewController.m */; };
+		953A1AE821139E8A008215B0 /* TheatreAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A1AE721139E8A008215B0 /* TheatreAnnotation.m */; };
 		959B2AF920FFEB1D005D418E /* PCTrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */; };
 		959B2AFB20FFF15A005D418E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B2AFA20FFF15A005D418E /* WebKit.framework */; };
 		959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959B2AFD210003B0005D418E /* PCShelfPickerViewController.m */; };
@@ -183,6 +185,10 @@
 		953A1ADE21121E41008215B0 /* APIManagerMovieGlu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManagerMovieGlu.h; sourceTree = "<group>"; };
 		953A1ADF21121E41008215B0 /* APIManagerMovieGlu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManagerMovieGlu.m; sourceTree = "<group>"; };
 		953A1AE121122034008215B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		953A1AE321139CEE008215B0 /* PCMapDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMapDetailViewController.h; sourceTree = "<group>"; };
+		953A1AE421139CEE008215B0 /* PCMapDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMapDetailViewController.m; sourceTree = "<group>"; };
+		953A1AE621139E8A008215B0 /* TheatreAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheatreAnnotation.h; sourceTree = "<group>"; };
+		953A1AE721139E8A008215B0 /* TheatreAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheatreAnnotation.m; sourceTree = "<group>"; };
 		959B2AF720FFEB1D005D418E /* PCTrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTrailerViewController.h; sourceTree = "<group>"; };
 		959B2AF820FFEB1D005D418E /* PCTrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTrailerViewController.m; sourceTree = "<group>"; };
 		959B2AFA20FFF15A005D418E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -469,6 +475,8 @@
 				953A1AD3210FD0E8008215B0 /* ShelfUpdateCell.m */,
 				26DBAEB7211136650025438D /* ChatCell.h */,
 				26DBAEB8211136650025438D /* ChatCell.m */,
+				953A1AE621139E8A008215B0 /* TheatreAnnotation.h */,
+				953A1AE721139E8A008215B0 /* TheatreAnnotation.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -509,6 +517,8 @@
 			children = (
 				953A1ADB2112195E008215B0 /* PCMapViewController.h */,
 				953A1ADC2112195E008215B0 /* PCMapViewController.m */,
+				953A1AE321139CEE008215B0 /* PCMapDetailViewController.h */,
+				953A1AE421139CEE008215B0 /* PCMapDetailViewController.m */,
 			);
 			path = "Map Storyboard VCs";
 			sourceTree = "<group>";
@@ -765,6 +775,7 @@
 				26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */,
 				953A1ACE210F839A008215B0 /* Post.m in Sources */,
 				953A1ADD2112195E008215B0 /* PCMapViewController.m in Sources */,
+				953A1AE521139CEE008215B0 /* PCMapDetailViewController.m in Sources */,
 				26DBAEB9211136650025438D /* ChatCell.m in Sources */,
 				951A795620FD11A1003D3901 /* LibraryCell.m in Sources */,
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
@@ -780,6 +791,7 @@
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
 				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
+				953A1AE821139E8A008215B0 /* TheatreAnnotation.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
 				953A1AD72110F24D008215B0 /* PCSingleReviewViewController.m in Sources */,
 				26A0490A210A6F4C00DF8496 /* Relations.m in Sources */,

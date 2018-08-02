@@ -19,6 +19,9 @@ static NSString * const targetURL = @"https://api-gate.movieglu.com/";
 
 static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
 
+//Google Places
+static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM";
+
 
 
 
@@ -149,6 +152,45 @@ static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
             }
 
             completion(output, nil);
+        }
+    }];
+    [task resume];
+}
+
+
+//googlePlaces
+
+- (void)findPlaceFromText:(NSString *)placeName completion:(void (^)(NSDictionary *dataDictionary, NSError *error))completion{
+    //get request to get all currently showing movies
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    NSMutableString *placeNameURL = [@"" mutableCopy];
+    for(NSInteger charIndex = 0; charIndex < placeName.length; charIndex++){
+        if([placeName characterAtIndex:charIndex] == ' '){
+            [placeNameURL appendString:@"%20"];
+        }
+        else{
+            NSString *charAsString = [NSString stringWithFormat:@"%c", [placeName characterAtIndex:charIndex]];
+            [placeNameURL appendString:charAsString];
+        }
+    }
+    
+    NSString *urlString = [[[@"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" stringByAppendingString:placeNameURL] stringByAppendingString:@"&inputtype=textquery&fields=formatted_address,geometry,name,rating,photos,opening_hours&key="] stringByAppendingString:apiKeyGoogle];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+        else{
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"Request successful");
+            completion(dataDictionary, nil);
         }
     }];
     [task resume];

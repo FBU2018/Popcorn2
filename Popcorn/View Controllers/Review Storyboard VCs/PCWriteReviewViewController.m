@@ -55,7 +55,7 @@
     //gets rid of placeholder text and changes text color to black
     if([self.reviewTextView.text isEqualToString:self.placeholderText]){
         self.reviewTextView.text = @"";
-        self.reviewTextView.textColor = [UIColor blackColor];
+        self.reviewTextView.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:224/255.0 alpha:1];
     }
     [self.reviewTextView becomeFirstResponder];
 }
@@ -73,7 +73,7 @@
 - (IBAction)didTapDone:(id)sender {
     //push review to Parse
     if([self.reviewTextView.text isEqualToString:self.placeholderText] || [self.reviewTextView.text isEqualToString:@""]){
-        //alert saying you need to right a review to publish
+        //alert saying you need to write a review to publish
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't Publish Review" message:@"You need to include a review to publish" preferredStyle:(UIAlertControllerStyleAlert)];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
