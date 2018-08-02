@@ -50,7 +50,7 @@
     // Set Movie Title
     self.movieTitleLabel.text = self.movie.title;
     // refresh the chats every second
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
+    [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
 }
 
 -(void)dismissKeyboard {
@@ -117,7 +117,9 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
     Chat *currentChat = self.chatsArray[indexPath.row];
-    [cell configureCell:currentChat withUserObjectId:currentChat.userObjectId andIndexPath: indexPath];
+    NSString *currentUsername = PFUser.currentUser.username;
+    NSLog(@"Logged in User is : %@", currentUsername);
+    [cell configureCell:currentChat withUserObjectId:currentChat.userObjectId andIndexPath: indexPath andCurrentUsername:currentUsername];
     return cell;
 }
 
