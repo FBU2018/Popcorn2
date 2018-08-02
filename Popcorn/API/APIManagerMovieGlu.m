@@ -196,4 +196,30 @@ static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM
     [task resume];
 }
 
+- (void)getPhotoFromReference:(NSString *)photoReference completion:(void (^)(NSData *imageData, NSError *error))completion{
+    //get request to get photo of theater from reference
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+
+    NSString *urlString = [[[@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" stringByAppendingString:photoReference] stringByAppendingString:@"&key="] stringByAppendingString:apiKeyGoogle];
+    NSLog(@"REQUEST URL STRING: %@", urlString);
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+        else{
+            NSLog(@"Request successful");
+            NSData *imageData = data;
+            completion(imageData, nil);
+        }
+    }];
+    [task resume];
+}
+
 @end

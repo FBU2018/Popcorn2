@@ -22,5 +22,6 @@
 
 //googlePlaces
 - (void)findPlaceFromText: (NSString*) placeName completion:(void(^) (NSDictionary *dataDictionary, NSError *error)) completion;
+- (void)getPhotoFromReference: (NSString*) photoReference completion:(void(^) (NSData *imageData, NSError *error)) completion;
 
 @end
