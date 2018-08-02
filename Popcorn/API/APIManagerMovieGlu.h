@@ -18,6 +18,6 @@
 - (void)getCinemasNearby: (NSString*) latLong completion:(void (^) (NSDictionary *dataDictionary, NSError *error))completion;
 
 //graceNote
-- (void)getTheaterswithLat:(NSString*) lat withLong: (NSString*) lng completion:(void (^) (NSArray *theatreNames, NSError *error))completion;
+- (void)getTheaterswithLat:(NSString*) lat withLong: (NSString*) lng completion:(void (^) (NSMutableDictionary *theatres, NSError *error))completion;
 
 @end

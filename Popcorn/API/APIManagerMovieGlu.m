@@ -101,7 +101,7 @@ static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
 
 //GraceNote
 
-- (void)getTheaterswithLat:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSArray *, NSError *))completion{
+- (void)getTheaterswithLat:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSMutableDictionary *, NSError *))completion{
     //get request to get all currently showing movies
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -120,16 +120,35 @@ static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
         else{
             NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Request successful");
-            NSDictionary *oneMovie = dataArray[0];
-            NSArray *showtimes = oneMovie[@"showtimes"]; //want to iterate through this and find each theatre/name
-            NSMutableArray *theatreNames = [NSMutableArray new];
-            for(NSDictionary *showtime in showtimes){
-                NSString *name = showtime[@"theatre"][@"name"];
-                if([theatreNames containsObject:name] == NO){
-                    [theatreNames addObject:name];
+            
+            //Dictionary: {theater1: {movie1, movie2}, theater2: {movie1, movie2},...}
+            NSMutableDictionary *output = [[NSMutableDictionary alloc] init];
+            for(NSDictionary *movie in dataArray){ //for each movie
+                NSArray *showtimes = movie[@"showtimes"];
+                for(NSDictionary *showtime in showtimes){
+                    NSString *nameOfTheatre = showtime[@"theatre"][@"name"];
+                    if([output objectForKey:nameOfTheatre] == NO){ //no value for theatre name key
+                        [output setObject:[NSMutableArray new] forKey:nameOfTheatre];
+                    }
+                    NSArray *moviesInTheatres = output[nameOfTheatre];
+                    if(moviesInTheatres.count == 0){
+                        [output[nameOfTheatre] addObject:movie[@"title"]]; //add movie name to theatre key
+                    }
+                    else{
+                        bool flag = false;
+                        for(NSString *movieInTheatre in moviesInTheatres){ //check and make sure movie isn't already a key in the theatre
+                            if([movieInTheatre isEqualToString:movie[@"title"]] == YES){
+                                flag = true;
+                            }
+                        }
+                        if(flag == false){
+                            [output[nameOfTheatre] addObject:movie[@"title"]]; //add movie name to theatre key
+                        }
+                    }
                 }
             }
-            completion(theatreNames, nil);
+
+            completion(output, nil);
         }
     }];
     [task resume];

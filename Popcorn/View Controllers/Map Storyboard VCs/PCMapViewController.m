@@ -27,12 +27,12 @@
     MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
     [self.myMapView setRegion:sfRegion animated:false];
     
-    [[APIManagerMovieGlu shared] getTheaterswithLat:@"37.783333" withLong:@"-122.416667" completion:^(NSArray *theatreNames, NSError *error) {
+    [[APIManagerMovieGlu shared] getTheaterswithLat:@"37.783333" withLong:@"-122.416667" completion:^(NSMutableDictionary *theatres, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            NSLog(@"theatreNames: %@", theatreNames);
+            NSLog(@"theatres: %@", theatres);
         }
     }];
 }
