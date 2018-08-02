@@ -77,14 +77,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUr-pR-ByP">
-                                                <rect key="frame" x="8" y="416" width="46" height="30"/>
+                                                <rect key="frame" x="8" y="416" width="69" height="30"/>
+                                                <color key="backgroundColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="DjB-KL-HqY"/>
-                                                    <constraint firstAttribute="width" constant="46" id="bTE-Ji-tsf"/>
+                                                    <constraint firstAttribute="width" constant="69" id="bTE-Ji-tsf"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.87450980389999999" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Add to">
-                                                    <color key="titleColor" red="0.87450980389999999" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" red="1" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="U2u-L0-97p" kind="presentation" identifier="detailToPicker" id="CUL-C2-TRH"/>
@@ -108,7 +108,7 @@
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8jp-4g-JuO">
                                                 <rect key="frame" x="0.0" y="231" width="375" height="177"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="177" id="I0C-CV-SA9"/>
                                                 </constraints>
@@ -143,7 +143,7 @@
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         </imageView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="6bJ-Ev-ps8" secondAttribute="trailing" constant="8" id="2Ox-NG-fMC"/>
                                                                         <constraint firstItem="6bJ-Ev-ps8" firstAttribute="leading" secondItem="3vQ-TN-PAT" secondAttribute="leading" constant="8" id="AKz-Yc-fhX"/>
@@ -169,7 +169,7 @@
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8E4-aa-lG6">
                                                 <rect key="frame" x="0.0" y="546" width="375" height="225"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="225" id="Io2-wC-BTb"/>
                                                 </constraints>
@@ -206,7 +206,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <constraints>
                                                                         <constraint firstItem="XWu-mK-evd" firstAttribute="centerY" secondItem="Sq2-Nk-pA1" secondAttribute="centerY" constant="77.5" id="8jH-8W-jis"/>
                                                                         <constraint firstItem="WSU-Xc-BEq" firstAttribute="leading" secondItem="Sq2-Nk-pA1" secondAttribute="leading" id="Jqf-xu-nYt"/>
@@ -244,37 +244,27 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ip-wW-bbc">
-                                                <rect key="frame" x="4" y="482" width="146" height="30"/>
+                                                <rect key="frame" x="4" y="482" width="158" height="30"/>
+                                                <color key="backgroundColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Jx3-wI-W4P"/>
-                                                    <constraint firstAttribute="width" constant="146" id="Vqx-JN-zcv"/>
+                                                    <constraint firstAttribute="width" constant="158" id="Vqx-JN-zcv"/>
                                                 </constraints>
                                                 <state key="normal" title="Community Reviews">
-                                                    <color key="titleColor" red="0.87450980389999999" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" red="1" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="tfe-bA-05h" kind="presentation" identifier="detailToReviews" id="iag-8a-tgV"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g47-ON-Atc">
-                                                <rect key="frame" x="291" y="416" width="76" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="76" id="iE9-He-jPL"/>
-                                                </constraints>
-                                                <state key="normal" title="Add review">
-                                                    <color key="titleColor" red="0.87450980389999999" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="9ZB-IV-f3A" kind="presentation" identifier="detailToReview" id="Nkw-va-3HV"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urv-GJ-tDW">
-                                                <rect key="frame" x="247" y="482" width="120" height="30"/>
+                                                <rect key="frame" x="233" y="482" width="134" height="30"/>
+                                                <color key="backgroundColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="QrH-Fk-XYY"/>
                                                 </constraints>
                                                 <state key="normal" title="Movie Discussion">
-                                                    <color key="titleColor" red="0.87450980389999999" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" red="1" green="1" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="F9G-lx-NbL" kind="show" identifier="detailToDiscussion" id="fgT-Xf-cgC"/>
@@ -290,8 +280,19 @@
                                                     <segue destination="jgV-uM-mgZ" kind="presentation" identifier="detailToTrailer" id="WKY-qG-WSn"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g47-ON-Atc">
+                                                <rect key="frame" x="268" y="416" width="99" height="30"/>
+                                                <color key="backgroundColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="99" id="iE9-He-jPL"/>
+                                                </constraints>
+                                                <state key="normal" title="Add review"/>
+                                                <connections>
+                                                    <segue destination="9ZB-IV-f3A" kind="presentation" identifier="detailToReview" id="Nkw-va-3HV"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="llI-cb-9p8" firstAttribute="leading" secondItem="VbP-W5-z57" secondAttribute="leading" constant="8" id="0nf-dD-oO0"/>
@@ -319,7 +320,7 @@
                                             <constraint firstItem="8jp-4g-JuO" firstAttribute="top" secondItem="LIc-RT-9aO" secondAttribute="bottom" constant="2" id="drq-05-1Qc"/>
                                             <constraint firstAttribute="trailing" secondItem="8jp-4g-JuO" secondAttribute="trailing" id="iEL-ff-ehR"/>
                                             <constraint firstItem="LIc-RT-9aO" firstAttribute="leading" secondItem="VbP-W5-z57" secondAttribute="leading" id="kYE-Ka-e1E"/>
-                                            <constraint firstItem="urv-GJ-tDW" firstAttribute="leading" secondItem="5ip-wW-bbc" secondAttribute="trailing" constant="97" id="nVc-n7-94l"/>
+                                            <constraint firstItem="urv-GJ-tDW" firstAttribute="leading" secondItem="5ip-wW-bbc" secondAttribute="trailing" constant="71" id="nVc-n7-94l"/>
                                             <constraint firstItem="Jws-6w-d53" firstAttribute="top" secondItem="VbP-W5-z57" secondAttribute="top" priority="200" constant="60" id="neu-EU-A5D"/>
                                             <constraint firstAttribute="trailing" secondItem="urv-GJ-tDW" secondAttribute="trailing" constant="8" id="o1r-Wo-b0k"/>
                                             <constraint firstItem="6kM-gA-KW8" firstAttribute="leading" secondItem="llI-cb-9p8" secondAttribute="trailing" constant="8" id="osg-Cz-MJd"/>
@@ -343,7 +344,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="UMM-Sm-Ilt" firstAttribute="bottom" secondItem="96p-LH-s1Q" secondAttribute="bottom" id="UbF-cT-M4n"/>
                             <constraint firstItem="UMM-Sm-Ilt" firstAttribute="trailing" secondItem="96p-LH-s1Q" secondAttribute="trailing" id="b4b-rA-Oxv"/>
