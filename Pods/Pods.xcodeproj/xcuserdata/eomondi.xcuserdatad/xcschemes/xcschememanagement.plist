@@ -16,10 +16,15 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>DateTools.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>HCSStarRatingView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>11</integer>
 		</dict>
 		<key>JGProgressHUD-JGProgressHUD.xcscheme</key>
 		<dict>
@@ -38,17 +43,17 @@
 		<key>Parse-Parse.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>13</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>12</integer>
 		</dict>
 		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Pods-Popcorn.xcscheme</key>
 		<dict>

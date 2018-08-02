@@ -20,6 +20,14 @@
             </objects>
             <point key="canvasLocation" x="303" y="76"/>
         </scene>
+        <!--Trailer-->
+        <scene sceneID="CBA-Dl-ahE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Trailer" id="jgV-uM-mgZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7J-Wh-7UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="-322"/>
+        </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="P2z-1a-0GZ">
             <objects>
@@ -253,6 +261,26 @@
                                                     <segue destination="9ZB-IV-f3A" kind="presentation" identifier="detailToReview" id="Nkw-va-3HV"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urv-GJ-tDW">
+                                                <rect key="frame" x="247" y="482" width="120" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="QrH-Fk-XYY"/>
+                                                </constraints>
+                                                <state key="normal" title="Movie Discussion"/>
+                                                <connections>
+                                                    <segue destination="F9G-lx-NbL" kind="show" identifier="detailToDiscussion" id="fgT-Xf-cgC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teo-Kz-nPe">
+                                                <rect key="frame" x="22" y="199" width="91" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Watch Trailer">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="jgV-uM-mgZ" kind="presentation" identifier="detailToTrailer" id="WKY-qG-WSn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -281,9 +309,12 @@
                                             <constraint firstItem="8jp-4g-JuO" firstAttribute="top" secondItem="LIc-RT-9aO" secondAttribute="bottom" constant="2" id="drq-05-1Qc"/>
                                             <constraint firstAttribute="trailing" secondItem="8jp-4g-JuO" secondAttribute="trailing" id="iEL-ff-ehR"/>
                                             <constraint firstItem="LIc-RT-9aO" firstAttribute="leading" secondItem="VbP-W5-z57" secondAttribute="leading" id="kYE-Ka-e1E"/>
+                                            <constraint firstItem="urv-GJ-tDW" firstAttribute="leading" secondItem="5ip-wW-bbc" secondAttribute="trailing" constant="97" id="nVc-n7-94l"/>
                                             <constraint firstItem="Jws-6w-d53" firstAttribute="top" secondItem="VbP-W5-z57" secondAttribute="top" priority="200" constant="60" id="neu-EU-A5D"/>
+                                            <constraint firstAttribute="trailing" secondItem="urv-GJ-tDW" secondAttribute="trailing" constant="8" id="o1r-Wo-b0k"/>
                                             <constraint firstItem="6kM-gA-KW8" firstAttribute="leading" secondItem="llI-cb-9p8" secondAttribute="trailing" constant="8" id="osg-Cz-MJd"/>
                                             <constraint firstAttribute="trailing" secondItem="aAc-oU-UTr" secondAttribute="trailing" constant="8" id="spO-hW-aYb"/>
+                                            <constraint firstItem="urv-GJ-tDW" firstAttribute="top" secondItem="aAc-oU-UTr" secondAttribute="bottom" constant="7.5" id="tL8-tW-HU2"/>
                                             <constraint firstItem="aUr-pR-ByP" firstAttribute="leading" secondItem="VbP-W5-z57" secondAttribute="leading" constant="8" id="vRF-LE-ex1"/>
                                             <constraint firstItem="llI-cb-9p8" firstAttribute="top" secondItem="VbP-W5-z57" secondAttribute="top" constant="21" id="w1K-OK-Uwp"/>
                                             <constraint firstItem="aAc-oU-UTr" firstAttribute="top" secondItem="aUr-pR-ByP" secondAttribute="bottom" constant="8" id="waV-V3-ceu"/>
@@ -326,7 +357,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-ss-esi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="-136"/>
+            <point key="canvasLocation" x="1112.8" y="-136.28185907046478"/>
+        </scene>
+        <!--MovieDiscussion-->
+        <scene sceneID="ELu-lr-Gk2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieDiscussion" id="F9G-lx-NbL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owP-XO-QNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1653" y="116"/>
         </scene>
         <!--ShelfPicker-->
         <scene sceneID="gyJ-aB-St1">
