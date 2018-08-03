@@ -32,7 +32,6 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-p2-VVI">
                                                     <rect key="frame" x="10" y="16" width="120" height="180"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="IyF-dG-jcC"/>
                                                         <constraint firstAttribute="height" constant="180" id="xXI-2z-xbs"/>
