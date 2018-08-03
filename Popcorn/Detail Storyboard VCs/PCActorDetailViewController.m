@@ -110,6 +110,10 @@
 }
 
 
+//- (IBAction)didTapArrow:(id)sender {
+//    [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
+//}
+
 - (IBAction)didTapBio:(id)sender {
     [self performSegueWithIdentifier:@"actorDetailsToBio" sender:self];
 }
