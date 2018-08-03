@@ -63,27 +63,64 @@
                                     <constraint firstAttribute="height" constant="18" id="jUQ-qP-r4u"/>
                                     <constraint firstAttribute="width" constant="174" id="zE8-Gn-eWM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theater" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUN-fX-cPa">
-                                <rect key="frame" x="16" y="96" width="87" height="32"/>
+                                <rect key="frame" x="16" y="102" width="92" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="S1D-Mb-FeQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating: 4.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1y-5k-5qB">
+                                <rect key="frame" x="16" y="142" width="343" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gis-mz-TV8">
+                                <rect key="frame" x="0.0" y="315" width="375" height="352"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yyl-LF-hCM">
+                                    <size key="itemSize" width="120" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TheatreMoviesCell" id="HKn-2b-uam" customClass="TheatreMoviesCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIo-BM-9Lg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="posterImage" destination="KIo-BM-9Lg" id="sWg-nS-RXw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tIK-dd-Oph" firstAttribute="trailing" secondItem="N3a-nS-QNH" secondAttribute="trailing" constant="16" id="Ea4-FO-Bh1"/>
                             <constraint firstItem="XN3-d3-tGq" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="GTK-X6-nT5"/>
-                            <constraint firstItem="JUN-fX-cPa" firstAttribute="top" secondItem="tIK-dd-Oph" secondAttribute="top" constant="32" id="SFc-0c-Y86"/>
+                            <constraint firstItem="JUN-fX-cPa" firstAttribute="top" secondItem="tIK-dd-Oph" secondAttribute="top" constant="38" id="SFc-0c-Y86"/>
                             <constraint firstItem="N3a-nS-QNH" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="VnP-LA-5cJ"/>
-                            <constraint firstItem="N3a-nS-QNH" firstAttribute="top" secondItem="JUN-fX-cPa" secondAttribute="bottom" constant="105" id="ZR9-bZ-Wou"/>
+                            <constraint firstItem="N3a-nS-QNH" firstAttribute="top" secondItem="JUN-fX-cPa" secondAttribute="bottom" constant="99" id="ZR9-bZ-Wou"/>
                             <constraint firstItem="XN3-d3-tGq" firstAttribute="top" secondItem="N3a-nS-QNH" secondAttribute="bottom" constant="32" id="uNx-T0-b5j"/>
                             <constraint firstItem="JUN-fX-cPa" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="zdw-bQ-N7m"/>
                         </constraints>
@@ -91,6 +128,8 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="N3a-nS-QNH" id="0Hj-KX-Xyc"/>
+                        <outlet property="collectionView" destination="gis-mz-TV8" id="mJ2-i5-Xny"/>
+                        <outlet property="ratingLabel" destination="W1y-5k-5qB" id="eUT-KW-0mq"/>
                         <outlet property="theatreImage" destination="WFm-U7-RZ7" id="Pjk-c2-v2e"/>
                         <outlet property="theatreNameLabel" destination="JUN-fX-cPa" id="Rls-C9-fHp"/>
                     </connections>
