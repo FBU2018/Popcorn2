@@ -77,6 +77,7 @@
                                                 <constraint firstItem="ZfQ-bS-g3n" firstAttribute="leading" secondItem="WwS-SO-kSM" secondAttribute="trailing" constant="26" id="uJf-VA-nGz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="numberItemsLabel" destination="GIr-em-Pzg" id="b58-0O-D7Q"/>
                                             <outlet property="shelfImageView" destination="WwS-SO-kSM" id="0qq-au-2WF"/>
@@ -192,6 +193,7 @@
                                                 <constraint firstItem="MjC-UR-nrO" firstAttribute="trailing" secondItem="h1m-aN-8QH" secondAttribute="trailingMargin" id="wME-b9-Abr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="posterView" destination="Q7j-7x-A0T" id="mjt-eb-bWa"/>
                                             <outlet property="ratingLabel" destination="sNa-WQ-aOL" id="92d-iT-Nfb"/>
