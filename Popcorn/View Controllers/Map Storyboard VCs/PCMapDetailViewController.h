@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSArray *moviesPlaying;
 @property (strong, nonatomic) NSDictionary *theatreInfo;
 @property (nonatomic, copy) NSString *theatreTitle;
+@property (strong, nonatomic) NSString *rating;
 
 @end

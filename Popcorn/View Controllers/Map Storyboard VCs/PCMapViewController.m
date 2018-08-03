@@ -29,7 +29,7 @@
     
     //sf: 37.783333, -122.416667
     //mpk 20: 37.481009, -122.155085
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.481009, -122.155085), MKCoordinateSpanMake(0.1, 0.1));
+    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
     [self.myMapView setRegion:sfRegion animated:false];
     
     [self getLocations];
@@ -38,15 +38,16 @@
 }
 
 - (void)getLocations{
-    [[APIManagerMovieGlu shared] getTheaterswithLat:@"37.481009" withLong:@"-122.155085" completion:^(NSMutableDictionary *theatres, NSError *error) {
+    [[APIManagerMovieGlu shared] getTheaterswithLat:@"37.783333" withLong:@"-122.416667" completion:^(NSMutableDictionary *theatres, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
             NSArray *theatreNames = [theatres allKeys]; //array of names of all theatres
             
-            //get dictionary of info from theatreNames
+            //get dictionary of coordinates from theatreNames
             NSMutableDictionary *theatreInfo = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *ratings = [[NSMutableDictionary alloc] init];
             
             for(NSString *theatreName in theatreNames){
                 [[APIManagerMovieGlu shared] findPlaceFromText:theatreName completion:^(NSDictionary *dataDictionary, NSError *error) {
@@ -54,19 +55,20 @@
                         NSLog(@"Error: %@", error.localizedDescription);
                     }
                     else{
+                        //TODO: make sure candidates isn't 0 length
                         NSLog(@"Successfully got places from text");
                         NSDictionary *location = dataDictionary[@"candidates"][0][@"geometry"][@"location"];
-//                        NSLog(@"dataDictionary: %@", location);
                         
                         [theatreInfo setObject:[NSMutableArray new] forKey:theatreName];
                         [theatreInfo[theatreName] addObject:location];
+                        
+                        ratings[theatreName] = dataDictionary[@"candidates"][0][@"rating"];
                         
 //                        NSDictionary *candidate = dataDictionary[@"candidates"][0];
 //                        NSLog(@"candidate 1: %@", candidate);
                     }
                     
                     if(theatreInfo.count == theatreNames.count-1){ //all taken into account
-//                        NSLog(@"candidate: %@", theatres[theatreName]); //movies playing
                         
                         //Create annotations at each of the theatres
                         for(NSString *key in theatreInfo){
@@ -81,10 +83,11 @@
                             TheatreAnnotation *annotation = [TheatreAnnotation new]; //changed
                             annotation.coordinate = coord;
                             annotation.title = key;
-                            NSArray *moviesPlayingAtTheatre = theatres[theatreName];
+                            NSArray *moviesPlayingAtTheatre = theatres[key];
                             annotation.subtitle = [[NSString stringWithFormat:@"%@", @(moviesPlayingAtTheatre.count)] stringByAppendingString:@" movies playing"];
-                            annotation.moviesPlaying = theatres[theatreName];
+                            annotation.moviesPlaying = theatres[key];
                             annotation.theatreInfo = dataDictionary;
+                            annotation.rating = [ratings[key] stringValue];
                             [self.myMapView addAnnotation:annotation];
                         }
                     }
@@ -138,9 +141,10 @@
         receiver.moviesPlaying = annotation.moviesPlaying;
         receiver.theatreInfo = annotation.theatreInfo;
         receiver.theatreTitle = annotation.title;
+        receiver.rating = annotation.rating;
         
-        NSLog(@"theatreInfo: %@", annotation.theatreInfo);
-        NSLog(@"moviesPlaying: %@", annotation.moviesPlaying);
+//        NSLog(@"theatreInfo: %@", annotation.theatreInfo);
+//        NSLog(@"moviesPlaying: %@", annotation.moviesPlaying);
     }
 }
 
