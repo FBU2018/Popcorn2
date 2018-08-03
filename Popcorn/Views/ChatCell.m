@@ -25,6 +25,18 @@
     // Configure the view for the selected state
 }
 
+
+
+//- (void)prepareForReuse
+//{
+//    // custom code
+//    self.usernameLabel.text = nil;
+//    self.chatTextLabel.text = nil;
+//    self.userImageView.file = nil;
+//    // call through to parent class implementation, if you want
+////    [super prepareForReuse];
+//}
+
 -(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath andCurrentUsername:(NSString *)currentUsername{
     // Get user object from objectId
     PFQuery *query = [PFUser query];
@@ -71,6 +83,9 @@
             
             // Change the logged in user's chat color to grey
             if (user.username == currentUsername){
+                self.bubbleView.backgroundColor = [UIColor blueColor];
+            }
+            else{
                 self.bubbleView.backgroundColor = [UIColor grayColor];
             }
         }
