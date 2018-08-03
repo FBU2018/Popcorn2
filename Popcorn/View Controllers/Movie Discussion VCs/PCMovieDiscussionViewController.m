@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *chatMessageTextField;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (strong, nonatomic) NSArray *chatsArray;
+@property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @end
 
 @implementation PCMovieDiscussionViewController
@@ -49,8 +50,16 @@
     [self.discussionPosterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     // Set Movie Title
     self.movieTitleLabel.text = self.movie.title;
+    // Set Backdrop Image
+    [self.backdropImageView setImageWithURL:self.movie.backdropUrl];
+    
+    //adds a dark tint to the backdrop so text is readable
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
+    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+    [self.backdropImageView addSubview:overlay];
+    
     // refresh the chats every second
-    [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
 }
 
 -(void)dismissKeyboard {
@@ -116,6 +125,9 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
+//    cell.usernameLabel.text = nil;
+//    cell.chatTextLabel.text = nil;
+//    cell.userImageView.file = nil;
     Chat *currentChat = self.chatsArray[indexPath.row];
     NSString *currentUsername = PFUser.currentUser.username;
     NSLog(@"Logged in User is : %@", currentUsername);
