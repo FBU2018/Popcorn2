@@ -23,6 +23,10 @@
 }
 
 - (void)configureCell: (Movie *) movie{
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+    
     self.titleLabel.text = movie.title;
     self.releaseDateLabel.text = movie.releaseDateString;
     self.posterView.image = nil;

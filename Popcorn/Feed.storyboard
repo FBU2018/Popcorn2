@@ -127,6 +127,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="0zM-xi-Rvh" secondAttribute="trailing" constant="10" id="xcB-ji-d6X"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="movieImage" destination="fSW-ku-4X6" id="GJk-ac-7Xe"/>
                                             <outlet property="ratedLabel" destination="0zM-xi-Rvh" id="B2h-up-aCz"/>
@@ -232,6 +233,7 @@
                                                 <constraint firstItem="OL0-vG-Tqy" firstAttribute="top" secondItem="xPq-S1-Shm" secondAttribute="bottom" constant="44" id="sf8-l7-iMz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="addToShelvesButton" destination="8KD-cf-plT" id="rgY-5K-7NL"/>
                                             <outlet property="descriptionLabel" destination="xPq-S1-Shm" id="zSy-TS-kjG"/>

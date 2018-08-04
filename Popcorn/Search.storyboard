@@ -32,7 +32,6 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-p2-VVI">
                                                     <rect key="frame" x="10" y="16" width="120" height="180"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="IyF-dG-jcC"/>
                                                         <constraint firstAttribute="height" constant="180" id="xXI-2z-xbs"/>
@@ -80,6 +79,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="xIh-bG-8zS" secondAttribute="bottom" constant="59" id="zTt-M5-oUY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="posterView" destination="BhV-p2-VVI" id="d1u-h6-dGe"/>
                                             <outlet property="ratingLabel" destination="kOw-Es-5ki" id="ubN-jm-fhC"/>
@@ -91,7 +91,7 @@
                             </tableView>
                             <searchBar contentMode="redraw" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="fsm-fU-jye">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <color key="tintColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>

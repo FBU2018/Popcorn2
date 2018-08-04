@@ -108,8 +108,13 @@ static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM
     //get request to get all currently showing movies
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    //TODO: update date each time
-    NSString *urlString = [[[[[[[@"http://data.tmsapi.com/v1.1/movies/showings?startDate=" stringByAppendingString:@"2018-08-02"] stringByAppendingString:@"&lat="] stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace];
+    
+    //get today's date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSString *todayDate = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *urlString = [[[[[[[@"http://data.tmsapi.com/v1.1/movies/showings?startDate=" stringByAppendingString:todayDate] stringByAppendingString:@"&lat="] stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"GET"];
     

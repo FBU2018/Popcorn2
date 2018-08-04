@@ -53,7 +53,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShelfPickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ShelfPickerCell" forIndexPath:indexPath];
-    
+
     //set shelf text by checking corresponding name in shelves array
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
     cell.shelfLabel.text = selectedShelf[@"name"];
@@ -69,7 +69,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //If shelf is selected/unselected, updates checks and adds/removes from shelf
     ShelfPickerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
+
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
     if(cell.accessoryType == UITableViewCellAccessoryCheckmark){
         cell.accessoryType = UITableViewCellAccessoryNone;

@@ -26,6 +26,11 @@
 }
 
 - (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+    
     self.authorId = authorId;
     self.movieId = movieId;
     self.authorSessionId = sessionId;

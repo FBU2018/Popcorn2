@@ -24,6 +24,10 @@
 }
 
 - (void)configureCell:(NSDictionary *)shelfInfo{
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+    
     self.titleLabel.text = shelfInfo[@"name"];
     NSString *itemCount = [shelfInfo[@"item_count"] stringValue];
     self.numberItemsLabel.text = [itemCount stringByAppendingString:@" items"];
