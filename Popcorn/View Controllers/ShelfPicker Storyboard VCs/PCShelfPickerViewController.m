@@ -68,6 +68,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //If shelf is selected/unselected, updates checks and adds/removes from shelf
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ShelfPickerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
