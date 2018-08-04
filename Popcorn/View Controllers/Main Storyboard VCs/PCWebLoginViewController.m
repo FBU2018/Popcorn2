@@ -88,7 +88,7 @@
     
     if ([segue.identifier isEqualToString:@"loginToMain"]){   
         UITabBarController *tabVC = [segue destinationViewController];
-        UINavigationController *navVC = tabVC.viewControllers[0];
+        UINavigationController *navVC = tabVC.viewControllers[1];
         PCLibraryViewController *libraryVC = [navVC.viewControllers objectAtIndex:0];
         // Pass the current user's session id to the Library VC
         libraryVC.sessionId = self.sessionId;

@@ -20,7 +20,8 @@ static NSString * const targetURL = @"https://api-gate.movieglu.com/";
 static NSString * const apiKeyGrace = @"n6bj2rbdfwrwvzww59zzkdqk";
 
 //Google Places
-static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM";
+//static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM";
+static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0";
 
 
 
@@ -222,6 +223,34 @@ static NSString * const apiKeyGoogle = @"AIzaSyDaawUPba6kyVzy-FAZQ4hAP_E39HIkhCM
             NSLog(@"Request successful");
             NSData *imageData = data;
             completion(imageData, nil);
+        }
+    }];
+    [task resume];
+}
+
+- (void)getTheaterswithLocation:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSDictionary *theaters, NSError *error))completion{
+    //get request to find nearby theaters
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    //https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
+
+    
+    NSString *urlString = [[[[[[[[@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" stringByAppendingString:apiKeyGoogle] stringByAppendingString:@"&location="] stringByAppendingString:lat] stringByAppendingString:@","] stringByAppendingString:lng] stringByAppendingString:@"&radius="] stringByAppendingString:@"50000"] stringByAppendingString:@"&type=movie_theater"];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+        else{
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"Request successful");
+            completion(dataDictionary, nil);
         }
     }];
     [task resume];
