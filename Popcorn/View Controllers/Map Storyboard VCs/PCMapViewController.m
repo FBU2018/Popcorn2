@@ -15,6 +15,8 @@
 @interface PCMapViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *myMapView;
+@property (strong, nonatomic) NSString *lat;
+@property (strong, nonatomic) NSString *lng;
 
 @end
 
@@ -29,11 +31,59 @@
     
     //sf: 37.783333, -122.416667
     //mpk 20: 37.481009, -122.155085
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+    self.lat = @"37.783333";
+    self.lng = @"-122.416667";
+    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.lat doubleValue], [self.lng doubleValue]), MKCoordinateSpanMake(0.1, 0.1));
     [self.myMapView setRegion:sfRegion animated:false];
     
-    [self getLocations];
+//    [self getLocations];
+    [self findTheaters];
     
+    
+}
+
+- (void)findTheaters{
+    [[APIManagerMovieGlu shared] getTheaterswithLat:self.lat withLong:self.lng completion:^(NSMutableDictionary *theatres, NSError *error) {
+        if(error != nil){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Successfully got theaters with movies playing");
+            NSArray *theaterNames = [theatres allKeys];
+            [[APIManagerMovieGlu shared] getTheaterswithLocation:self.lat withLong:self.lng completion:^(NSDictionary *theaters, NSError *error) {
+                if(error != nil){
+                    NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else{
+                    NSDictionary *dataDictionary = theaters[@"results"];
+                    NSLog(@"dataDictionary: %@", dataDictionary);
+                    for(NSDictionary *theatre in dataDictionary){
+                        if([theaterNames containsObject:theatre[@"name"]]){
+                            //TODO: figure out what to do with the rest
+                            //set the annotation
+                            NSString *latString = theatre[@"geometry"][@"location"][@"lat"];
+                            NSString *lngString = theatre[@"geometry"][@"location"][@"lng"];
+                            double latitude = [latString doubleValue];
+                            double longitude = [lngString doubleValue];
+                            
+                            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(latitude, longitude);
+                            
+                            TheatreAnnotation *annotation = [TheatreAnnotation new]; //changed
+                            annotation.coordinate = coord;
+                            annotation.title = theatre[@"name"];
+                            NSArray *moviesPlayingAtTheatre = theatres[theatre[@"name"]];
+                            annotation.subtitle = [[NSString stringWithFormat:@"%@", @(moviesPlayingAtTheatre.count)] stringByAppendingString:@" movies playing"];
+                            annotation.moviesPlaying = theatres[theatre[@"name"]];
+                            annotation.theatreInfo = theatre;
+                            annotation.rating = [theatre[@"rating"] stringValue];
+                            [self.myMapView addAnnotation:annotation];
+                        }
+                    }
+                }
+            }];
+
+        }
+    }];
     
 }
 

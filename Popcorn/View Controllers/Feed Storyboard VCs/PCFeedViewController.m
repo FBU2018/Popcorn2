@@ -59,7 +59,9 @@
                 for(Post* post in [self.posts reverseObjectEnumerator]){
                     if(post.authorUsername != nil && [following containsObject:post.authorUsername] == NO){
                         //filtering out to only posts from users that that the user followers
-                        [self.posts removeObject:post];
+                        if([post.authorUsername isEqualToString:PFUser.currentUser.username] == NO){
+                            [self.posts removeObject:post];
+                        }
                     }
                 }
                 
