@@ -49,21 +49,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3a-nS-QNH">
-                                <rect key="frame" x="16" y="233" width="343" height="16"/>
+                                <rect key="frame" x="16" y="228" width="343" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="sYF-TG-V0r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies Currently Playing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN3-d3-tGq">
-                                <rect key="frame" x="16" y="281" width="174" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="jUQ-qP-r4u"/>
-                                    <constraint firstAttribute="width" constant="174" id="zE8-Gn-eWM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -84,9 +74,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gis-mz-TV8">
-                                <rect key="frame" x="0.0" y="315" width="375" height="352"/>
+                                <rect key="frame" x="0.0" y="296" width="375" height="371"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yyl-LF-hCM">
                                     <size key="itemSize" width="120" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -109,10 +99,21 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterImage" destination="KIo-BM-9Lg" id="sWg-nS-RXw"/>
+                                            <segue destination="v7u-aV-6Fx" kind="show" identifier="movieToDetail" id="iUB-UT-Hce"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies Currently Playing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN3-d3-tGq">
+                                <rect key="frame" x="16" y="264" width="343" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="jUQ-qP-r4u"/>
+                                    <constraint firstAttribute="width" constant="343" id="zE8-Gn-eWM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -120,8 +121,8 @@
                             <constraint firstItem="XN3-d3-tGq" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="GTK-X6-nT5"/>
                             <constraint firstItem="JUN-fX-cPa" firstAttribute="top" secondItem="tIK-dd-Oph" secondAttribute="top" constant="38" id="SFc-0c-Y86"/>
                             <constraint firstItem="N3a-nS-QNH" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="VnP-LA-5cJ"/>
-                            <constraint firstItem="N3a-nS-QNH" firstAttribute="top" secondItem="JUN-fX-cPa" secondAttribute="bottom" constant="99" id="ZR9-bZ-Wou"/>
-                            <constraint firstItem="XN3-d3-tGq" firstAttribute="top" secondItem="N3a-nS-QNH" secondAttribute="bottom" constant="32" id="uNx-T0-b5j"/>
+                            <constraint firstItem="N3a-nS-QNH" firstAttribute="top" secondItem="JUN-fX-cPa" secondAttribute="bottom" constant="94" id="ZR9-bZ-Wou"/>
+                            <constraint firstItem="XN3-d3-tGq" firstAttribute="top" secondItem="N3a-nS-QNH" secondAttribute="bottom" constant="20" id="uNx-T0-b5j"/>
                             <constraint firstItem="JUN-fX-cPa" firstAttribute="leading" secondItem="tIK-dd-Oph" secondAttribute="leading" constant="16" id="zdw-bQ-N7m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tIK-dd-Oph"/>
@@ -137,6 +138,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arc-YZ-ogM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2080.8000000000002" y="189.3553223388306"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="BQU-9N-AtM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="v7u-aV-6Fx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iR1-sJ-nEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2716" y="192"/>
         </scene>
         <!--Map-->
         <scene sceneID="p5p-pk-pod">

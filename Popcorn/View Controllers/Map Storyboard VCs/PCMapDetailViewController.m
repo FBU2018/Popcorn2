@@ -13,6 +13,8 @@
 #import "Movie.h"
 #import "TheatreMoviesCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "PCMovieDetailViewController.h"
+#import "Parse.h"
 
 @interface PCMapDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -24,6 +26,7 @@
 
 @property (strong, nonatomic) NSMutableArray *dictionaryMovies;
 @property (strong, nonatomic) NSArray *movies;
+@property (strong, nonatomic) NSArray *shelves;
 
 
 @end
@@ -49,14 +52,30 @@
     
     [self setViews];
     [self getMovies];
+    [self getLists];
+}
+
+- (void)getLists{
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+        if(error == nil){
+            self.shelves = shelves[@"results"];
+            NSLog(@"Successfully got all of user's shelves");
+        }
+        else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)setViews{
     self.theatreNameLabel.text = self.theatreTitle;
-    self.addressLabel.text = self.theatreInfo[@"candidates"][0][@"formatted_address"];
+    self.addressLabel.text = self.theatreInfo[@"vicinity"];
     self.ratingLabel.text = [@"Rating: " stringByAppendingString:self.rating];
-    NSString *photoReference = self.theatreInfo[@"candidates"][0][@"photos"][0][@"photo_reference"]; //use to get photo
     
+    NSLog(@"photos: %@",
+          self.theatreInfo[@"photos"]);
+    NSString *photoReference = self.theatreInfo[@"photos"][0][@"photo_reference"]; //use to get photo
+
     [[APIManagerMovieGlu shared] getPhotoFromReference:photoReference completion:^(NSData *imageData, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
@@ -65,7 +84,7 @@
             NSLog(@"Successfully got image");
             UIImage *image = [UIImage imageWithData:imageData];
             self.theatreImage.image = image;
-            
+
             //adds dark tint so text is readable
             UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.theatreImage.frame.size.width, self.theatreImage.frame.size.height)];
             [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
@@ -86,8 +105,9 @@
                 NSDictionary *oneMovie = results[0];
                 [self.dictionaryMovies addObject:oneMovie];
                 
-                if(self.dictionaryMovies.count == self.moviesPlaying.count){
+                if(self.dictionaryMovies.count == self.moviesPlaying.count || [movieName isEqualToString:self.moviesPlaying[self.moviesPlaying.count-1]]){
                     self.movies = [Movie moviesWithDictionaries:self.dictionaryMovies];
+                    
                     [self.collectionView reloadData];
                 }
             }
@@ -105,25 +125,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TheatreMoviesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TheatreMoviesCell" forIndexPath:indexPath];
     Movie *movie = self.movies[indexPath.item];
+    cell.movie = movie;
     [cell.posterImage setImageWithURL:movie.posterUrl];
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.movies.count;
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"movieToDetail"]){
+        TheatreMoviesCell *tappedCell = sender;
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        receiver.movie = tappedCell.movie;
+        receiver.shelves = self.shelves;
+    }
 }
 
 

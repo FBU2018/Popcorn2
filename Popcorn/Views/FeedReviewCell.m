@@ -27,6 +27,15 @@
 
 - (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId withDate:(NSDate*)date{
     
+    self.userImage.image = [UIImage imageNamed:@"person placeholder"];
+    self.usernameLabel.text = @"";
+    self.reviewTitleLabel.text = @"";
+    self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    self.titleLabel.text = @"";
+    self.ratedLabel.text = @"";
+    self.reviewTextLabel.text = @"";
+    self.timestampLabel.text = @"";
+    
     self.authorId = authorId;
     self.movieId = movieId;
 
@@ -74,12 +83,18 @@
                 }
                 else{
                     //set review and title
-                    self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
-                    self.titleLabel.text = dataDictionary[@"title"];
-                    
-                    //set image of movie
-                    [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
-                    self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
+                    NSNumber *statusCode = dataDictionary[@"status_code"];
+                    if([[statusCode stringValue] isEqualToString:@"25"]){
+                        NSLog(@"Too many requests");
+                    }
+                    else{
+                        self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
+                        self.titleLabel.text = dataDictionary[@"title"];
+                        
+                        //set image of movie
+                        [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
+                    }
                 }
             }];
             

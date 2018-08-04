@@ -26,6 +26,15 @@
 }
 
 - (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
+    
+    self.userImage.image = [UIImage imageNamed:@"person placeholder"];
+    self.usernameLabel.text = @"";
+//    self.descriptionLabel.text = @"";
+    self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    self.movieTitleLabel.text = @"";
+    self.timestampLabel.text = @"";
+    
+    
     self.authorId = authorId;
     self.movieId = movieId;
     self.authorSessionId = sessionId;
@@ -72,17 +81,23 @@
                     NSLog(@"Error: %@", error.localizedDescription);
                 }
                 else{
-                    //set image of movie
-                    [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
-                    
-                    //set title
-                    self.movieTitleLabel.text = dataDictionary[@"title"];
+                    NSNumber *statusCode = dataDictionary[@"status_code"];
+                    if([[statusCode stringValue] isEqualToString:@"25"]){
+                        NSLog(@"Too many requests");
+                    }
+                    else{
+                        //set image of movie
+                        [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        
+                        //set title
+                        self.movieTitleLabel.text = dataDictionary[@"title"];
+                    }
                 }
             }];
             
             //set description text
             int index = 0;
-            NSString *descriptionNonmutable = [[@"added " stringByAppendingString:self.movieTitleLabel.text] stringByAppendingString:@" as "];
+            NSString *descriptionNonmutable = [[@"added " stringByAppendingString:self.movieTitleLabel.text] stringByAppendingString:@"to "];
             NSMutableString *description = [descriptionNonmutable mutableCopy];
             
             for(NSString *shelf in shelves){
