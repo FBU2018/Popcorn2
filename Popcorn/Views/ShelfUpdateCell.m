@@ -27,13 +27,18 @@
 
 - (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
     
+
     self.userImage.image = [UIImage imageNamed:@"person placeholder"];
     self.usernameLabel.text = @"";
 //    self.descriptionLabel.text = @"";
     self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
     self.movieTitleLabel.text = @"";
     self.timestampLabel.text = @"";
-    
+
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+
     
     self.authorId = authorId;
     self.movieId = movieId;

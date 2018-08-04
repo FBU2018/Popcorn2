@@ -38,6 +38,10 @@
     
     self.authorId = authorId;
     self.movieId = movieId;
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
 
     //set date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
