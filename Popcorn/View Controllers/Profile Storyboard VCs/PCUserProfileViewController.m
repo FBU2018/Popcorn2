@@ -147,16 +147,17 @@
         // Was not following current user
         [loggedInUser follow:user withCompletionBlock:^(BOOL success) {
             [self alertWithString:@"Successfully followed!"];
-            [self getProfileLists];
+            [cell setButton];
         }];
     }
     else{
         // Was already following current user
         [loggedInUser unfollow:user withCompletionBlock:^(BOOL success) {
             [self alertWithString:@"Successfully unfollowed!"];
-            [self getProfileLists];
+            [cell setButton];
         }];
     }
+    [self.tableView reloadData];
 }
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapPicture:(PFUser *)user{

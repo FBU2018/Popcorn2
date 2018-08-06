@@ -159,6 +159,8 @@
         }
         else{
             cell.movie = [[Movie alloc] initWithDetails:dataDictionary];
+            NSNumber *rating = dataDictionary[@"vote_average"];
+            cell.voteAverage = [rating stringValue];
             [self performSegueWithIdentifier:@"shelfUpdateToDetail" sender:cell];
         }
     }];
@@ -176,6 +178,7 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.shelves = tappedCell.userShelves;
         receiver.movie = tappedCell.movie;
+        receiver.voteAverage = tappedCell.voteAverage;
     }
     else if([segue.identifier isEqualToString:@"feedToSingleReview"]){
         FeedReviewCell *tappedCell = sender;

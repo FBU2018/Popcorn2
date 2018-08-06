@@ -42,8 +42,6 @@
     PFQuery *query = [PFUser query];
     //most active users show up first
     [query orderByDescending:@"updatedAt"];
-//    self.numTimes++;
-//    query.limit = self.numTimes * 20;
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
@@ -116,8 +114,29 @@
 }
 
 - (void)userSearchCell:(UserSearchCell *)cell didTapFollow:(PFUser *)user{
-    //TODO: implement following
-    NSLog(@"User followed");
+    NSLog(@"Follow pressed");
+    PFUser *loggedInUser = PFUser.currentUser;
+    if(!cell.following){
+        // Was not following current user
+        [loggedInUser follow:cell.user withCompletionBlock:^(BOOL success) {
+            NSLog(@"Successfully followed!");
+            [cell setButton];
+//            [self.tableView reloadData];
+//            [self alertWithString:@"Successfully followed!"];
+//            [self getProfileLists];
+        }];
+    }
+    else{
+        // Was already following current user
+        [loggedInUser unfollow:cell.user withCompletionBlock:^(BOOL success) {
+            NSLog(@"Successfully unfollowed!");
+            [cell setButton];
+//            [self.tableView reloadData];
+//            [self alertWithString:@"Successfully unfollowed!"];
+//            [self getProfileLists];
+        }];
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -129,8 +148,6 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"userSearchToProfile"]){
         UserSearchCell *cell = sender;
-//        PCProfileViewController *receiver = [segue destinationViewController];
-//        receiver.currentUser = cell.user;
         PCUserProfileViewController *receiver = [segue destinationViewController];
         receiver.currentUser = cell.user;
     }

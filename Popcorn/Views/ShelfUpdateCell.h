@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) NSArray *userShelves;
 @property (strong, nonatomic) Movie* movie;
+@property (strong, nonatomic) NSString *voteAverage;
 
 - (void)configureCell: (NSString *) authorId withSession: (NSString *) sessionId withMovie: (NSString*) movieId withShelves: (NSMutableArray*) shelves withDate: (NSDate*) date;
 
