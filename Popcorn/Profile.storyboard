@@ -222,7 +222,13 @@
                         <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4yt-W6-Uqx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YvA-Bh-IZk"/>
+                    <navigationItem key="navigationItem" id="YvA-Bh-IZk">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="QJv-4Q-FeE">
+                            <connections>
+                                <action selector="didTapLogOut:" destination="YdS-18-Zry" id="cx6-sY-dXw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ogI-ov-QC0" id="VJr-yy-45u"/>
                         <segue destination="O6u-Ie-YWc" kind="show" identifier="profileToUserSearch" id="oJx-z6-7MC"/>

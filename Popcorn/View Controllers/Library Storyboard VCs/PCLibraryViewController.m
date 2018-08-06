@@ -65,33 +65,6 @@
 - (IBAction)didTapSafari:(id)sender {
     [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
 }
-- (IBAction)didTapLogout:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to log out?"
-                                                                   message:nil
-                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-    //cancel action
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //do nothing
-    }];
-    [alert addAction:cancelAction];
-    
-    //logout action
-    UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:@"Log Out" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //actually log out
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        PCLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"PCLoginViewController"];
-        appDelegate.window.rootViewController = loginViewController;
-        [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-            // PFUser.current() will now be nil
-        }];
-    }];
-    [logoutAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
-    [alert addAction:logoutAction];
-
-    [self presentViewController:alert animated:YES completion:^{
-    }];
-}
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
