@@ -269,16 +269,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="3Gv-Nf-DSm" customClass="PFImageView">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="3Gv-Nf-DSm" customClass="PFImageView">
                                 <rect key="frame" x="16" y="80" width="120" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3Os-9m-LaD" appends="YES" id="ec4-Sr-1Cq"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zP-rW-r6W">
                                 <rect key="frame" x="144" y="109" width="144" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gyi-FG-zPg" appends="YES" id="4Jd-L9-Pqd"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rated 6/10 by rucha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSF-Df-Nfw">
                                 <rect key="frame" x="144" y="151" width="154" height="21"/>
@@ -311,17 +319,38 @@
                         <viewLayoutGuide key="safeArea" id="W6p-rb-XGT"/>
                     </view>
                     <connections>
+                        <outlet property="movieImageGestureRecognizer" destination="3Os-9m-LaD" id="Bfo-JS-FKe"/>
                         <outlet property="moviePosterImage" destination="3Gv-Nf-DSm" id="Ncu-DS-ksn"/>
+                        <outlet property="movieTitleGestureRecognizer" destination="gyi-FG-zPg" id="3Xc-Sb-JDv"/>
                         <outlet property="movieTitleLabel" destination="7zP-rW-r6W" id="bVr-n5-mna"/>
                         <outlet property="ratingLabel" destination="gSF-Df-Nfw" id="lUo-rQ-nzk"/>
                         <outlet property="reviewTextView" destination="QXp-fp-7lv" id="BJ9-nL-4M7"/>
                         <outlet property="userImageView" destination="7Bd-ol-6Nn" id="X6D-Cj-lbe"/>
                         <outlet property="usernameLabel" destination="u4e-oI-7lA" id="rZE-oA-WH4"/>
+                        <segue destination="xGz-0C-b6z" kind="show" identifier="reviewToDetail" id="GAi-FG-9Xd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOa-MI-bHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gyi-FG-zPg">
+                    <connections>
+                        <action selector="didTapMovieTitle:" destination="38d-B5-6Do" id="zcO-4U-a9B"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3Os-9m-LaD">
+                    <connections>
+                        <action selector="didTapMovieImage:" destination="38d-B5-6Do" id="r8A-dx-604"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2188" y="174.96251874062969"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="AXW-ZK-4Ye">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="xGz-0C-b6z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKy-gU-UVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864" y="138"/>
         </scene>
         <!--Detail-->
         <scene sceneID="QIc-qN-HKx">
