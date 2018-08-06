@@ -86,7 +86,6 @@
 -(void) configureDetails{
     self.titleLabel.text = self.movie.title;
     self.summaryLabel.text = self.movie.overview;
-    
     if(self.movie.ratingString != nil){
         NSString *ratingString = [@"Average rating: " stringByAppendingString:[self.movie.ratingString stringByAppendingString:@"/10"]];
         self.ratingLabel.text = ratingString;
