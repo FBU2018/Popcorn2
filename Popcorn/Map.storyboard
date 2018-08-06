@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="iJi-Ue-dRm">
             <objects>
                 <viewController id="yrh-L1-N5q" customClass="PCMapViewController" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qvf-IJ-bBg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="diy-SJ-xO8"/>
+                    <navigationItem key="navigationItem" title="Map" id="diy-SJ-xO8"/>
                     <connections>
                         <outlet property="myMapView" destination="5Iv-uz-OFE" id="3xD-Wg-zwc"/>
                         <segue destination="i82-uj-cDv" kind="show" identifier="mapToMapDetail" id="vXz-HN-dD1"/>

@@ -27,6 +27,8 @@
 @property (nonatomic) BOOL following;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 -(void)alertWithString:(NSString *)message;
+- (IBAction)didTapSearch:(id)sender;
+
 
 @end
 
@@ -170,6 +172,11 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (IBAction)didTapSearch:(id)sender {
+     [self performSegueWithIdentifier:@"profileToUserSearch" sender:nil];
+}
+
 
 - (void)profileInfoCell:(ProfileInfoCell *)cell didTapFollow:(PFUser *)user {
     PFUser *loggedInUser = PFUser.currentUser;

@@ -104,19 +104,6 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yt-rz-a38">
-                                                    <rect key="frame" x="264" y="11" width="103" height="26"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="103" id="0yl-6o-sTT"/>
-                                                        <constraint firstAttribute="height" constant="26" id="YZg-aq-pf6"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <state key="normal" title="Search Other Users"/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="fwf-gi-0Pe" appends="YES" id="2qZ-uV-ZR0"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's Shelves" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tC-CK-odh">
                                                     <rect key="frame" x="15" y="183" width="352" height="21"/>
                                                     <constraints>
@@ -143,8 +130,6 @@
                                                 <constraint firstItem="0VF-Kt-MNb" firstAttribute="top" secondItem="jsO-iw-9kR" secondAttribute="bottom" constant="22" id="Ryg-VA-0Vv"/>
                                                 <constraint firstItem="WtD-DM-nog" firstAttribute="leading" secondItem="LRs-qU-pks" secondAttribute="leadingMargin" constant="9" id="b7R-3q-QEm"/>
                                                 <constraint firstItem="9tC-CK-odh" firstAttribute="top" secondItem="21s-XF-AqU" secondAttribute="bottom" constant="37" id="eC7-3H-iM3"/>
-                                                <constraint firstItem="5yt-rz-a38" firstAttribute="leading" secondItem="jsO-iw-9kR" secondAttribute="trailing" constant="176" id="ieS-Id-1Qr"/>
-                                                <constraint firstItem="5yt-rz-a38" firstAttribute="top" secondItem="LRs-qU-pks" secondAttribute="top" constant="11" id="nxl-5Q-pZw"/>
                                                 <constraint firstItem="cQf-0e-bVV" firstAttribute="top" secondItem="LRs-qU-pks" secondAttribute="topMargin" constant="23" id="rTk-2M-Tio"/>
                                                 <constraint firstItem="TFW-gD-ucc" firstAttribute="top" secondItem="LRs-qU-pks" secondAttribute="top" constant="36" id="vZV-Dr-col"/>
                                                 <constraint firstItem="WtD-DM-nog" firstAttribute="centerX" secondItem="0VF-Kt-MNb" secondAttribute="centerX" id="wDW-aP-jTj"/>
@@ -158,7 +143,6 @@
                                             <outlet property="followersLabel" destination="0VF-Kt-MNb" id="g9y-a6-ymN"/>
                                             <outlet property="followingLabel" destination="JAw-ex-Yev" id="8wX-b3-q4R"/>
                                             <outlet property="pictureGestureRecognizer" destination="4Hf-Uw-5Qm" id="qbM-3R-KFH"/>
-                                            <outlet property="searchUsersButton" destination="5yt-rz-a38" id="bHz-BN-dwk"/>
                                             <outlet property="searchUsersGestureRecognizer" destination="fwf-gi-0Pe" id="KQY-cC-QhT"/>
                                             <outlet property="userImage" destination="jsO-iw-9kR" id="VlL-xO-Txb"/>
                                             <outlet property="userShelvesLabel" destination="9tC-CK-odh" id="JmV-CQ-Puo"/>
@@ -228,6 +212,11 @@
                                 <action selector="didTapLogOut:" destination="YdS-18-Zry" id="cx6-sY-dXw"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="small-add-group" id="UcB-8g-ZOM">
+                            <connections>
+                                <action selector="didTapSearch:" destination="YdS-18-Zry" id="ANq-bB-Ggw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ogI-ov-QC0" id="VJr-yy-45u"/>
@@ -281,6 +270,7 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -296,5 +286,6 @@
         <image name="person placeholder" width="240" height="240"/>
         <image name="poster-placeholder" width="400" height="600"/>
         <image name="profile" width="32" height="32"/>
+        <image name="small-add-group" width="35" height="30"/>
     </resources>
 </document>

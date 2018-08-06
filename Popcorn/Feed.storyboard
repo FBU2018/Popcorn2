@@ -331,11 +331,11 @@
             </objects>
             <point key="canvasLocation" x="1622" y="302"/>
         </scene>
-        <!--Feed-->
+        <!--Home-->
         <scene sceneID="JWk-x9-xz9">
             <objects>
                 <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="K1V-ZV-fOw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="feed" id="OeU-6w-t7c"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="feed" id="OeU-6w-t7c"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Crd-Hx-tld">
