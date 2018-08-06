@@ -66,10 +66,10 @@
 
 // Define a method that gets a given user's lists
 -(void)getProfileLists{
-    [[APIManager shared] getShelvesWithSessionId:self.currentUser[@"sessionId"] andAccountId:self.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:self.currentUser[@"sessionId"] andAccountId:self.currentUser[@"accountId"] andCompletionBlock:^(NSArray *results, NSError *error) {
         
         if(error == nil){
-            self.shelves = shelves[@"results"];
+            self.shelves = results;
             NSLog(@"Successfully got all of profile user's shelves");
             [self.refreshControl endRefreshing];
             [self.tableView reloadData];
@@ -146,15 +146,23 @@
     if(!self.following){
         // Was not following current user
         [loggedInUser follow:user withCompletionBlock:^(BOOL success) {
-            [self alertWithString:@"Successfully followed!"];
-            [cell setButton];
+            if(success){
+                self.following = YES;
+                [self alertWithString:@"Successfully followed!"];
+                [cell setButton];
+                [self.tableView reloadData];
+            }
         }];
     }
     else{
         // Was already following current user
         [loggedInUser unfollow:user withCompletionBlock:^(BOOL success) {
-            [self alertWithString:@"Successfully unfollowed!"];
-            [cell setButton];
+            if(success){
+                self.following = NO;
+                [self alertWithString:@"Successfully unfollowed!"];
+                [cell setButton];
+                [self.tableView reloadData];
+            }
         }];
     }
     [self.tableView reloadData];

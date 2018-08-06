@@ -83,13 +83,11 @@
         }];
     }
     else{
-        //push review to parse
-        //dictionary = [key: movieId, value: review]
+        //push review to parse: dictionary = [key: movieId, value: review]
         NSDictionary *reviewDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:self.reviewTextView.text,[self.currentMovie.movieID stringValue], nil];
         [PFUser.currentUser addUniqueObject:reviewDictionary forKey:@"reviews"];
         [PFUser.currentUser saveInBackground];
         
-        //reset --> TODO: check if needed
         self.reviewTextView.text = self.placeholderText;
         self.reviewTextView.textColor = [UIColor lightGrayColor];
         

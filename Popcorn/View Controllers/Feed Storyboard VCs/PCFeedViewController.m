@@ -141,12 +141,12 @@
 }
 
 - (void)getShelvesWithSession: (NSString*) sessionId andAccountId: (NSString*) accountId ofCell: (ShelfUpdateCell*) cell {
-    [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSArray *results, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            cell.userShelves = shelves[@"results"];
+            cell.userShelves = results;
             [self getMovie:cell.movieId ofCell:cell];
         }
     }];

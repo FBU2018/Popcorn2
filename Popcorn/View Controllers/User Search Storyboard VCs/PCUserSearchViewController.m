@@ -20,6 +20,8 @@
 @property(strong, nonatomic) NSMutableArray *users;
 @property(strong, nonatomic) NSMutableArray *filteredUsers;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation PCUserSearchViewController
@@ -32,6 +34,15 @@
     self.searchBar.delegate = self;
     self.users = [NSMutableArray new];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getUserArray) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self getUserArray];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     [self getUserArray];
 }
 
@@ -53,7 +64,7 @@
                 }
             }
             self.filteredUsers = self.users;
-//            [self.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -119,21 +130,21 @@
     if(!cell.following){
         // Was not following current user
         [loggedInUser follow:cell.user withCompletionBlock:^(BOOL success) {
-            NSLog(@"Successfully followed!");
-            [cell setButton];
-//            [self.tableView reloadData];
-//            [self alertWithString:@"Successfully followed!"];
-//            [self getProfileLists];
+            if(success){
+                NSLog(@"Successfully followed!");
+                [cell setButton];
+                [self.tableView reloadData];
+            }
         }];
     }
     else{
         // Was already following current user
         [loggedInUser unfollow:cell.user withCompletionBlock:^(BOOL success) {
-            NSLog(@"Successfully unfollowed!");
-            [cell setButton];
-//            [self.tableView reloadData];
-//            [self alertWithString:@"Successfully unfollowed!"];
-//            [self getProfileLists];
+            if(success){
+                NSLog(@"Successfully unfollowed!");
+                [cell setButton];
+                [self.tableView reloadData];
+            }
         }];
     }
     [self.tableView reloadData];
