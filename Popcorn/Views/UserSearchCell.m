@@ -8,6 +8,7 @@
 
 #import "UserSearchCell.h"
 #import "Parse.h"
+#import "PFUser+ExtendedUser.h"
 
 @implementation UserSearchCell
 
@@ -20,6 +21,27 @@
     [self.followButton setUserInteractionEnabled:YES];
 }
 
+- (void)setButton{
+    self.followButton.layer.cornerRadius = 5;
+    PFUser *loggedInUser = PFUser.currentUser;
+    [self.user retrieveRelationsWithObjectID:self.user.relations.objectId andCompletion:^(Relations *userRelations) {
+        if([userRelations.myfollowers containsObject:loggedInUser.username]){
+            self.following = YES;
+            UIColor *lighterGray = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+            self.followButton.backgroundColor = lighterGray;
+            [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+            [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+        }
+        else{
+            self.following = NO;
+            UIColor *red = [UIColor colorWithRed:189.0f/255.0f green:36.0f/255.0f blue:34.0f/255.0f alpha:1.0f];
+            self.followButton.backgroundColor = red;
+            [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        }
+    }];
+}
+
 - (IBAction)didTapFollow:(id)sender {
     [self.delegate userSearchCell:self didTapFollow:self.user];
 }
@@ -27,17 +49,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)configureCell:(NSArray *)users withIndexPath:(NSIndexPath *)indexPath{
-    //Configure labels and image
     PFUser *userForCell = users[indexPath.row];
     self.user = userForCell;
     self.usernameLabel.text = userForCell.username;
     
-    //set image if file is not nil
     PFFile *imageFile = userForCell[@"userImage"];
     if(imageFile != nil){
         self.userImage.file = imageFile;
@@ -49,8 +67,7 @@
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 0;
     
-    //TODO: FOLLOW BUTTON - change style if following
-    self.followButton.layer.cornerRadius = 5;
+    [self setButton];
 }
 
 @end

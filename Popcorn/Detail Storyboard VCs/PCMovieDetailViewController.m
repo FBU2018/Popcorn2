@@ -90,6 +90,10 @@
         NSString *ratingString = [@"Average rating: " stringByAppendingString:[self.movie.ratingString stringByAppendingString:@"/10"]];
         self.ratingLabel.text = ratingString;
     }
+    else if(self.voteAverage != nil){
+        NSString *ratingString = [[@"Average rating: " stringByAppendingString:self.voteAverage] stringByAppendingString:@"/10"];
+        self.ratingLabel.text = ratingString;
+    }
     self.dateLabel.text = self.movie.releaseDateString;
     //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
@@ -204,7 +208,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
         else{
-            //            check if the object being returned from api call is a dictionary or a boolean
+            //check if the object being returned from api call is a dictionary or a boolean
             if([rating isKindOfClass:[NSDictionary class]]){
                 NSDictionary *ratingDict = (NSDictionary *)rating;
                 [self.ratingButton setTitle:[[ratingDict[@"value"] stringValue]stringByAppendingString:@"/10"] forState:UIControlStateNormal];

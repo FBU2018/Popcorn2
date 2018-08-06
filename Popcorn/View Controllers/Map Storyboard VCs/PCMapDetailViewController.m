@@ -56,9 +56,9 @@
 }
 
 - (void)getLists{
-    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSArray *results, NSError *error) {
         if(error == nil){
-            self.shelves = shelves[@"results"];
+            self.shelves = results;
             NSLog(@"Successfully got all of user's shelves");
         }
         else{

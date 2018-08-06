@@ -115,7 +115,7 @@ static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0
     formatter.dateFormat = @"yyyy-MM-dd";
     NSString *todayDate = [formatter stringFromDate:[NSDate date]];
     
-    NSString *urlString = [[[[[[[@"http://data.tmsapi.com/v1.1/movies/showings?startDate=" stringByAppendingString:todayDate] stringByAppendingString:@"&lat="] stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace];
+    NSString *urlString = [[[[[[[[@"http://data.tmsapi.com/v1.1/movies/showings?startDate=" stringByAppendingString:todayDate] stringByAppendingString:@"&lat="] stringByAppendingString:lat] stringByAppendingString:@"&lng="] stringByAppendingString:lng] stringByAppendingString:@"&api_key="] stringByAppendingString:apiKeyGrace] stringByAppendingString:@"&radius=32"];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"GET"];
     

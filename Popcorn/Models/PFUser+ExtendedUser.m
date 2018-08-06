@@ -57,7 +57,7 @@
         // Update passed in user's followersids array and save in background
         userRelations.myfollowers = [array copy];
         [userRelations saveInBackground];
-        
+        completion(YES);
     }];
     
     // Get relations object of self user

@@ -20,6 +20,8 @@
 @property(strong, nonatomic) NSMutableArray *users;
 @property(strong, nonatomic) NSMutableArray *filteredUsers;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation PCUserSearchViewController
@@ -32,6 +34,15 @@
     self.searchBar.delegate = self;
     self.users = [NSMutableArray new];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getUserArray) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self getUserArray];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     [self getUserArray];
 }
 
@@ -42,8 +53,6 @@
     PFQuery *query = [PFUser query];
     //most active users show up first
     [query orderByDescending:@"updatedAt"];
-//    self.numTimes++;
-//    query.limit = self.numTimes * 20;
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
@@ -55,7 +64,7 @@
                 }
             }
             self.filteredUsers = self.users;
-//            [self.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -116,8 +125,29 @@
 }
 
 - (void)userSearchCell:(UserSearchCell *)cell didTapFollow:(PFUser *)user{
-    //TODO: implement following
-    NSLog(@"User followed");
+    NSLog(@"Follow pressed");
+    PFUser *loggedInUser = PFUser.currentUser;
+    if(!cell.following){
+        // Was not following current user
+        [loggedInUser follow:cell.user withCompletionBlock:^(BOOL success) {
+            if(success){
+                NSLog(@"Successfully followed!");
+                [cell setButton];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    else{
+        // Was already following current user
+        [loggedInUser unfollow:cell.user withCompletionBlock:^(BOOL success) {
+            if(success){
+                NSLog(@"Successfully unfollowed!");
+                [cell setButton];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -129,8 +159,6 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"userSearchToProfile"]){
         UserSearchCell *cell = sender;
-//        PCProfileViewController *receiver = [segue destinationViewController];
-//        receiver.currentUser = cell.user;
         PCUserProfileViewController *receiver = [segue destinationViewController];
         receiver.currentUser = cell.user;
     }

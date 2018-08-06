@@ -50,17 +50,33 @@
     // Configure the view for the selected state
 }
 
+- (void)setButton{
+    self.followButton.layer.cornerRadius = 5;
+    PFUser *loggedInUser = PFUser.currentUser;
+    [self.user retrieveRelationsWithObjectID:self.user.relations.objectId andCompletion:^(Relations *userRelations) {
+        if([userRelations.myfollowers containsObject:loggedInUser.username]){
+            UIColor *lighterGray = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+            self.followButton.backgroundColor = lighterGray;
+            [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+            [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+        }
+        else{
+            UIColor *red = [UIColor colorWithRed:189.0f/255.0f green:36.0f/255.0f blue:34.0f/255.0f alpha:1.0f];
+            self.followButton.backgroundColor = red;
+            [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        }
+    }];
+}
+
 - (void)configureCell:(PFUser *)user withFollowing: (BOOL)following{
     self.user = user;
     if([user.username isEqualToString:PFUser.currentUser.username]){
-        // showing logged in user's profile
-        // Hide and disable the follow button
         self.followButton.hidden = YES;
         self.followButton.enabled = NO;
     }
     else{
-        // showing other user's profile
-        // show and enable follow button
+
         self.followButton.hidden = NO;
         self.followButton.enabled = YES;
     }
@@ -94,18 +110,8 @@
     self.userImage.layer.cornerRadius = self.userImage.frame.size.height /2;
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 0;
-
     
-    //FOLLOW BUTTON - change style if following
-    self.followButton.layer.cornerRadius = 5;
-    if(following){
-        UIColor *lighterGray = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
-        self.followButton.backgroundColor = lighterGray;
-        [self.followButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
-//        [self.followButton setSelected:YES];
-    }
-    
+    [self setButton];
 }
 
 @end

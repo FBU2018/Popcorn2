@@ -19,10 +19,12 @@
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followGestureRecognizer;
 @property (nonatomic, weak) id<UserSearchCellDelegate> delegate;
+@property (nonatomic) BOOL following;
 
 @property (strong, nonatomic) PFUser *user;
 
 - (void) configureCell:(NSArray *)users withIndexPath:(NSIndexPath *)indexPath;
+- (void)setButton;
 
 @end
 
