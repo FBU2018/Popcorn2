@@ -24,6 +24,7 @@
 		7178E8AB21010D4D00431364 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7178E8AA21010D4D00431364 /* ReviewCell.m */; };
 		718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */; };
 		7188D3372107E4690057E9AE /* PCActorBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7188D3362107E4690057E9AE /* PCActorBioViewController.m */; };
+		7196BE5E21191D7900C7A7A1 /* ShadowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7196BE5D21191D7900C7A7A1 /* ShadowButton.m */; };
 		71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */; };
 		71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F631C92102AD11001BAA77 /* PCActorDetailViewController.m */; };
 		72E3A4F7AC6317E958E370A2 /* libPods-Popcorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87164CDED101374CD543D693 /* libPods-Popcorn.a */; };
@@ -123,6 +124,8 @@
 		718341152108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActorCreditsCollectionViewCell.m; sourceTree = "<group>"; };
 		7188D3352107E4690057E9AE /* PCActorBioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCActorBioViewController.h; sourceTree = "<group>"; };
 		7188D3362107E4690057E9AE /* PCActorBioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCActorBioViewController.m; sourceTree = "<group>"; };
+		7196BE5C21191D7900C7A7A1 /* ShadowButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShadowButton.h; sourceTree = "<group>"; };
+		7196BE5D21191D7900C7A7A1 /* ShadowButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShadowButton.m; sourceTree = "<group>"; };
 		71A09CFD20FD11290047CB12 /* PCMovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDetailViewController.h; sourceTree = "<group>"; };
 		71A09CFE20FD11290047CB12 /* PCMovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDetailViewController.m; sourceTree = "<group>"; };
 		71F631C82102AD11001BAA77 /* PCActorDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCActorDetailViewController.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				26A04909210A6F4C00DF8496 /* Relations.m */,
 				953A1ACC210F839A008215B0 /* Post.h */,
 				953A1ACD210F839A008215B0 /* Post.m */,
+				7196BE5C21191D7900C7A7A1 /* ShadowButton.h */,
+				7196BE5D21191D7900C7A7A1 /* ShadowButton.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				95A313E321028A70006F1828 /* PCWebLoginViewController.m in Sources */,
 				718341162108EFA8003D9BDE /* ActorCreditsCollectionViewCell.m in Sources */,
 				95A313E6210290EB006F1828 /* PCLoginViewController.m in Sources */,
+				7196BE5E21191D7900C7A7A1 /* ShadowButton.m in Sources */,
 				71A09CFF20FD11290047CB12 /* PCMovieDetailViewController.m in Sources */,
 				951A794F20FD0E77003D3901 /* PCShelfViewController.m in Sources */,
 				7178E8A821010D2300431364 /* PCReviewViewController.m in Sources */,
@@ -977,14 +983,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CVY782JBJS;
+				DEVELOPMENT_TEAM = M5FMXKGD2G;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skembry.Popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -996,14 +1002,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CVY782JBJS;
+				DEVELOPMENT_TEAM = M5FMXKGD2G;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skembry.Popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
