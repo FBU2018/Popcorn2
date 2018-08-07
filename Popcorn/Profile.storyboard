@@ -264,7 +264,7 @@
         <scene sceneID="5qN-y9-CDL">
             <objects>
                 <navigationController storyboardIdentifier="PCProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yo8-9b-0vH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="v8F-Lh-Vp2"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile2" id="v8F-Lh-Vp2"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="0s0-mn-1aG">
@@ -286,7 +286,7 @@
     <resources>
         <image name="person placeholder" width="240" height="240"/>
         <image name="poster-placeholder" width="400" height="600"/>
-        <image name="profile" width="32" height="32"/>
+        <image name="profile2" width="30" height="30"/>
         <image name="small-add-group" width="35" height="30"/>
     </resources>
 </document>
