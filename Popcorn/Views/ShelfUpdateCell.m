@@ -101,6 +101,8 @@
                         NSLog(@"Too many requests");
                     }
                     else{
+                        self.summaryLabel.text = dataDictionary[@"overview"];
+                        
                         //set image of movie
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
                         
