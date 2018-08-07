@@ -56,11 +56,22 @@
     // refresh the chats every second
     //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
     [self refreshChats];
-    [self.tableView reloadData];
 }
 
 -(void)dismissKeyboard {
     [self.chatMessageTextField resignFirstResponder];
+}
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self.tableView reloadData];
+//    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0];
+//    [self.tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//}
+
+-(void)viewDidAppear:(BOOL)animated{
+    int lastRowNumber = (int)([self.tableView numberOfRowsInSection:0] - 1);
+    NSIndexPath* ip = [NSIndexPath indexPathForRow:lastRowNumber inSection:0];
+    [self.tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 -(void)refreshChats{
