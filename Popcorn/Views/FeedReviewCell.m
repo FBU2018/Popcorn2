@@ -95,8 +95,12 @@
                         self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
                         self.titleLabel.text = dataDictionary[@"title"];
                         
-                        //set image of movie
+                        //fade in images
+                        self.movieImage.alpha = 0.0;
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.movieImage.alpha = 1.0;
+                        }];
                         self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
                     }
                 }

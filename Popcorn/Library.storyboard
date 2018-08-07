@@ -122,7 +122,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
+                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="207" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -229,7 +229,7 @@
                 <viewControllerPlaceholder storyboardName="Trailer" id="eh7-ml-XVr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbc-TY-33t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2570" y="73"/>
+            <point key="canvasLocation" x="2188" y="96"/>
         </scene>
         <!--Detail-->
         <scene sceneID="6Xu-eJ-Bum">
@@ -237,7 +237,7 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="mxr-D3-NY0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9w-BD-0Wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2546" y="-202"/>
+            <point key="canvasLocation" x="2186" y="-82"/>
         </scene>
         <!--ShelfPicker-->
         <scene sceneID="Tji-fk-Z1u">
@@ -245,7 +245,7 @@
                 <viewControllerPlaceholder storyboardName="ShelfPicker" id="UMJ-ni-ejj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBK-Dw-LrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2570" y="119"/>
+            <point key="canvasLocation" x="2213" y="228"/>
         </scene>
         <!--Library-->
         <scene sceneID="ETa-38-fzx">

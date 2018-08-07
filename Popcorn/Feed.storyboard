@@ -321,21 +321,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-ol-6Nn" customClass="PFImageView">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-ol-6Nn" customClass="PFImageView">
                                 <rect key="frame" x="16" y="302" width="35" height="35"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="UbI-9p-aKn"/>
                                     <constraint firstAttribute="height" constant="35" id="VqB-ws-Gtm"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6Bt-uF-Wa6" appends="YES" id="q1E-ey-3W2"/>
+                                </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rucha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-oI-7lA">
-                                <rect key="frame" x="57" y="310" width="39" height="18"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rucha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-oI-7lA">
+                                <rect key="frame" x="57" y="310" width="41" height="18"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="bpE-BK-Ihi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jCk-3h-zDo" appends="YES" id="LCq-Jp-XLc"/>
+                                </connections>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -365,9 +373,12 @@
                         <outlet property="movieTitleLabel" destination="7zP-rW-r6W" id="bVr-n5-mna"/>
                         <outlet property="ratingLabel" destination="gSF-Df-Nfw" id="lUo-rQ-nzk"/>
                         <outlet property="reviewTextView" destination="QXp-fp-7lv" id="BJ9-nL-4M7"/>
+                        <outlet property="userImageGestureRecognizer" destination="6Bt-uF-Wa6" id="icQ-ia-zXC"/>
                         <outlet property="userImageView" destination="7Bd-ol-6Nn" id="X6D-Cj-lbe"/>
+                        <outlet property="usernameGestureRecognizer" destination="jCk-3h-zDo" id="TTZ-Nw-lx5"/>
                         <outlet property="usernameLabel" destination="u4e-oI-7lA" id="rZE-oA-WH4"/>
                         <segue destination="xGz-0C-b6z" kind="show" identifier="reviewToDetail" id="GAi-FG-9Xd"/>
+                        <segue destination="AMy-kH-MMa" kind="show" identifier="singleReviewToProfile" id="pKS-dD-yob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOa-MI-bHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,6 +392,16 @@
                         <action selector="didTapMovieImage:" destination="38d-B5-6Do" id="r8A-dx-604"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="6Bt-uF-Wa6">
+                    <connections>
+                        <action selector="didTapUserImage:" destination="38d-B5-6Do" id="Mj3-d8-hoE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jCk-3h-zDo">
+                    <connections>
+                        <action selector="didTapUsername:" destination="38d-B5-6Do" id="DJI-68-AVO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2188" y="174.96251874062969"/>
         </scene>
@@ -390,7 +411,15 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="xGz-0C-b6z" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKy-gU-UVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861" y="175"/>
+            <point key="canvasLocation" x="2726" y="58"/>
+        </scene>
+        <!--PCProfileViewController-->
+        <scene sceneID="drm-vd-jMR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="PCProfileViewController" id="AMy-kH-MMa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WaJ-4w-TIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2814" y="295"/>
         </scene>
         <!--ShelfPicker-->
         <scene sceneID="jd6-ON-BwU">
@@ -398,7 +427,7 @@
                 <viewControllerPlaceholder storyboardName="ShelfPicker" id="2bR-13-lQh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5t5-Ao-kjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621" y="27"/>
+            <point key="canvasLocation" x="1621" y="324"/>
         </scene>
         <!--Detail-->
         <scene sceneID="QIc-qN-HKx">
@@ -406,7 +435,7 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="PDe-0U-yvF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaI-R6-DOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="309"/>
+            <point key="canvasLocation" x="1594" y="17"/>
         </scene>
         <!--Home-->
         <scene sceneID="JWk-x9-xz9">

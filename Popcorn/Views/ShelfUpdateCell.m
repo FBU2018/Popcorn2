@@ -44,6 +44,7 @@
     self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
     self.movieTitleLabel.text = @"";
     self.timestampLabel.text = @"";
+    self.summaryLabel.text = @"";
 
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [UIColor blackColor];
@@ -103,8 +104,12 @@
                     else{
                         self.summaryLabel.text = dataDictionary[@"overview"];
                         
-                        //set image of movie
+                        //fade in images
+                        self.movieImage.alpha = 0.0;
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.movieImage.alpha = 1.0;
+                        }];
                         
                         //set title
                         self.movieTitleLabel.text = dataDictionary[@"title"];

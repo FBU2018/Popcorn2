@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 0 footer
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
