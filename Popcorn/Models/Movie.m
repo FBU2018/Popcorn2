@@ -33,7 +33,7 @@
     }
     
     self.overview = dictionary[@"overview"];
-    self.releaseDateString = dictionary[@"release_date"];
+    self.releaseDateString = [self formatDate:dictionary[@"release_date"]];
     self.movieID = dictionary[@"id"];
     
     // Hard coded to movie but should change once we implement multi-search instead
@@ -73,7 +73,7 @@
     }
     
     self.overview = dictionary[@"overview"];
-    self.releaseDateString = dictionary[@"release_date"];
+    self.releaseDateString = [self formatDate:dictionary[@"release_date"]];
     self.movieID = dictionary[@"id"];
     
     // Hard coded to movie but should change once we implement multi-search instead
@@ -100,6 +100,15 @@
     }
     
     return movies;
+}
+
+-(NSString *) formatDate: (NSString *)date{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *dateFromString = [dateFormatter dateFromString:date];
+    [dateFormatter setDateFormat:@"MMM dd, yyyy"];
+    NSString *newDate = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:dateFromString]];
+    return newDate;
 }
 
 

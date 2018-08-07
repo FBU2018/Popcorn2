@@ -13,6 +13,8 @@
 #import "APIManager.h"
 #import "PCMovieDetailViewController.h"
 #import "Movie.h"
+#import "JGProgressHUD.h"
+#import "ShadowButton.h"
 
 @interface PCActorDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSDictionary *actorDetails;
@@ -25,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *bioButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *creditsCollectionView;
 - (IBAction)didTapBio:(id)sender;
+@property (strong, nonatomic) JGProgressHUD *HUD;
+@property (weak, nonatomic) IBOutlet UILabel *bioHeaderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *filmographyHeaderLabel;
+//@property (weak, nonatomic) IBOutlet ShadowButton *bioButton;
 @end
 
 @implementation PCActorDetailViewController
@@ -35,13 +41,27 @@
     self.creditsCollectionView.delegate = self;
     self.creditsCollectionView.dataSource = self;
     
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
+    
     //format collection view to be horizontal
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.creditsCollectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumInteritemSpacing = 2;
     
+    self.nameLabel.text = @"";
+    self.knownForLabel.text = @"";
+    self.birthdayLabel.text = @"";
+    self.birthplaceLabel.text = @"";
+    self.bioLabel.text = @"";
+    self.bioHeaderLabel.text = @"";
+    self.filmographyHeaderLabel.text = @"";
+    self.bioButton.hidden = YES;
+    
     [self fetchActorDetails];
     [self fetchCredits];
+    [self.HUD dismissAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +94,9 @@
 
 -(void) configureDetails{
     [self.profileImageView setImage:[UIImage imageNamed:@"person placeholder.png"]];
+    self.bioHeaderLabel.text = @"Biography";
+    self.filmographyHeaderLabel.text = @"Filmography";
+    
     if(![self.actorDetails[@"profile_path"] isEqual:[NSNull null]]){
         NSString *urlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.actorDetails[@"profile_path"]];
         [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
@@ -89,7 +112,11 @@
     }
     
     if(![self.actorDetails[@"birthday"] isEqual: [NSNull null]]){
-        self.birthdayLabel.text = self.actorDetails[@"birthday"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dateFromString = [dateFormatter dateFromString:self.actorDetails[@"birthday"]];
+        [dateFormatter setDateFormat:@"MMM dd, yyyy"];
+        self.birthdayLabel.text = [@"Birthday: " stringByAppendingString: [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:dateFromString]]];
     }
     else{
         self.birthdayLabel.text = @"Unknown birthday";
@@ -104,6 +131,7 @@
     
     if(![self.actorDetails[@"biography"] isEqualToString:@""]){
         self.bioLabel.text = self.actorDetails[@"biography"];
+        self.bioButton.hidden = NO;
     }
     else{
         self.bioLabel.text = @"No biography information.";
@@ -152,6 +180,7 @@
             self.actorDetails = results;
          //   NSLog(@"%@", self.actorDetails);
             [self configureDetails];
+            
         }
     }];
     

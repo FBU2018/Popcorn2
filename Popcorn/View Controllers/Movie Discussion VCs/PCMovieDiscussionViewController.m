@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "Chat.h"
 #import "ChatCell.h"
+#import "myChatCell.h"
 
 @interface PCMovieDiscussionViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *discussionPosterImageView;
@@ -56,12 +57,23 @@
     // refresh the chats every second
     //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
     [self refreshChats];
-    [self.tableView reloadData];
 }
 
 -(void)dismissKeyboard {
     [self.chatMessageTextField resignFirstResponder];
 }
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self.tableView reloadData];
+//    NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0];
+//    [self.tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//}
+
+//-(void)viewDidAppear:(BOOL)animated{
+//    int lastRowNumber = (int)([self.tableView numberOfRowsInSection:0] - 1);
+//    NSIndexPath* ip = [NSIndexPath indexPathForRow:lastRowNumber inSection:0];
+//    [self.tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//}
 
 -(void)refreshChats{
     // Get chats
@@ -101,9 +113,21 @@
 // User taps send to send a chat message
 - (IBAction)didTapSend:(id)sender {
     // Create a chat object and store the message, the user's object id and the movie they are talking about
+    
+    if([self.chatMessageTextField.text isEqualToString:@""]){
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Chat Message Cannot Be Empty" message: nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
     Chat *chat = [Chat object];
     chat.message = self.chatMessageTextField.text;
     chat.userObjectId = PFUser.currentUser.objectId;
+    chat.username = PFUser.currentUser.username;
     chat.movieID = self.movie.movieID;
     
     // Store the time the chat was created
@@ -129,12 +153,29 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
-    Chat *currentChat = self.chatsArray[indexPath.row];
     NSString *currentUsername = PFUser.currentUser.username;
-    NSLog(@"Logged in User is : %@", currentUsername);
-    [cell configureCell:currentChat withUserObjectId:currentChat.userObjectId andIndexPath: indexPath andCurrentUsername:currentUsername];
-    return cell;
+    Chat *currentChat = self.chatsArray[indexPath.row];
+    if([currentChat.username isEqualToString:currentUsername]){
+        myChatCell *newCell = [tableView dequeueReusableCellWithIdentifier:@"myChatCell"];
+        [newCell configureCellWithChat:currentChat];
+        return newCell;
+    }
+    else{
+        ChatCell *newCell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
+        [newCell configureCell:currentChat withUserObjectId:currentChat.userObjectId andIndexPath: indexPath andCurrentUsername:currentUsername];
+        return newCell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Chat *currentChat = self.chatsArray[indexPath.row];
+    NSString *cellText = currentChat.message;
+    UIFont *cellFont = [UIFont systemFontOfSize:16.0];
+    CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
+    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    return labelSize.height + 70;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

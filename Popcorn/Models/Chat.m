@@ -9,7 +9,7 @@
 #import "Chat.h"
 
 @implementation Chat
-@dynamic message, movieID, userObjectId, createdAtString;
+@dynamic message, movieID, userObjectId, username, createdAtString;
 + (nonnull NSString *)parseClassName {
     return @"Chat";
 }

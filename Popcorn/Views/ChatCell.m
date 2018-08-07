@@ -26,9 +26,11 @@
 }
 
 -(void)configureCell:(Chat *)chat withUserObjectId:(NSString *)objectId andIndexPath:(NSIndexPath *)indexPath andCurrentUsername:(NSString *)currentUsername{
-    self.userImageView.file = nil;
-    self.usernameLabel.text = nil;
-    self.timeStampLabel.text = nil;
+    
+    self.userImageView.image = [UIImage imageNamed:@"person placeholder"];;
+    self.usernameLabel.text = @"";
+    self.timeStampLabel.text = @"";
+    
     // Get user object from objectId
     PFQuery *query = [PFUser query];
     __block PFUser *user =  nil;
@@ -38,11 +40,10 @@
         // Perform long running process
         [query getObjectInBackgroundWithId:objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
             if(error == nil){
-                
+                user = (PFUser *)object;
+
                 // Doing something on the main thread
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    // Update the UI
-                    user = (PFUser *)object;
                     // Set labels and image views
                     self.usernameLabel.text = user.username;
                     self.chatTextLabel.text = chat.message;
