@@ -151,7 +151,7 @@
         <scene sceneID="LTf-3e-vlq">
             <objects>
                 <navigationController storyboardIdentifier="PCSearchNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Fg6-nj-dg6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="4H8-5f-G6v"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search-1" id="4H8-5f-G6v"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="BB1-gU-X12">
@@ -172,6 +172,6 @@
     </scenes>
     <resources>
         <image name="poster-placeholder" width="400" height="600"/>
-        <image name="search" width="30" height="30"/>
+        <image name="search-1" width="30" height="30"/>
     </resources>
 </document>
