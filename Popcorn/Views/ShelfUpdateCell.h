@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addToShelvesButton;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addToGestureRecognizer;
 
