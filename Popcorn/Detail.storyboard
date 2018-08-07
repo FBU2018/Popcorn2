@@ -458,7 +458,7 @@
                                                 <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-gv-m0e">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-gv-m0e" customClass="ShadowButton">
                                                 <rect key="frame" x="348" y="249" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="HPH-Xj-5jL"/>
@@ -575,11 +575,13 @@
                         <viewLayoutGuide key="safeArea" id="Uza-gy-gI6"/>
                     </view>
                     <connections>
-                        <outlet property="bioButton" destination="ncK-gv-m0e" id="Yfs-oV-5W2"/>
+                        <outlet property="bioButton" destination="ncK-gv-m0e" id="evh-RY-QZh"/>
+                        <outlet property="bioHeaderLabel" destination="pSW-av-owS" id="15I-lu-6HW"/>
                         <outlet property="bioLabel" destination="VLR-dw-j1C" id="fxp-2h-tmv"/>
                         <outlet property="birthdayLabel" destination="qZi-tT-0Av" id="FpT-Nu-mCo"/>
                         <outlet property="birthplaceLabel" destination="mqx-pI-H2H" id="LJQ-1G-Kiy"/>
                         <outlet property="creditsCollectionView" destination="MMI-jn-J0o" id="BDm-SJ-nLM"/>
+                        <outlet property="filmographyHeaderLabel" destination="IWM-rD-l8l" id="G54-b5-VRv"/>
                         <outlet property="knownForLabel" destination="G6l-Da-hCe" id="8M6-AS-qHO"/>
                         <outlet property="nameLabel" destination="Mgz-M2-Tnk" id="EIg-WM-ksW"/>
                         <outlet property="profileImageView" destination="EOg-Ix-j4U" id="fvb-gb-qnU"/>
