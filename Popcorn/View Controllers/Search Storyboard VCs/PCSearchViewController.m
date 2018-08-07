@@ -134,6 +134,7 @@ bool isMoreDataLoading = false;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
+    cell.posterView.image = [UIImage imageNamed:@"poster-placeholder"];
     
     // change array of dictionaries to an array of movies
     self.filteredMovieObjects = [Movie moviesWithDictionaries:self.filteredData];
@@ -174,10 +175,10 @@ bool isMoreDataLoading = false;
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f]
+     [UIColor colorWithRed:0.3f green:0.0f blue:1.0f alpha:0.4f]
                                                 title:@"Trailer"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+     [UIColor colorWithRed:0.35f green:0.35f blue:0.35f alpha:1.0]
                                                 title:@"Add to"];
     
     return rightUtilityButtons;

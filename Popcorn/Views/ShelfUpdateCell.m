@@ -17,6 +17,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    UITapGestureRecognizer *addToGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAddTo:)];
+    [self.addToShelvesButton addGestureRecognizer:addToGestureRecognizer];
+    [self.addToShelvesButton setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,12 +29,18 @@
     // Configure the view for the selected state
 }
 
+
+- (IBAction)didTapAddTo:(id)sender {
+    [self.delegate shelfUpdateCell:self didTapAddTo:self.movie];
+}
+
+
 - (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
     
 
     self.userImage.image = [UIImage imageNamed:@"person placeholder"];
     self.usernameLabel.text = @"";
-//    self.descriptionLabel.text = @"";
+    self.descriptionLabel.text = @"";
     self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
     self.movieTitleLabel.text = @"";
     self.timestampLabel.text = @"";
@@ -91,31 +101,34 @@
                         NSLog(@"Too many requests");
                     }
                     else{
+                        self.summaryLabel.text = dataDictionary[@"overview"];
+                        
                         //set image of movie
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
                         
                         //set title
                         self.movieTitleLabel.text = dataDictionary[@"title"];
+                        
+                        //set description text
+                        int index = 0;
+                        NSString *descriptionNonmutable = [[@"added \"" stringByAppendingString:self.movieTitleLabel.text] stringByAppendingString:@"\" to "];
+                        NSMutableString *description = [descriptionNonmutable mutableCopy];
+                        
+                        for(NSString *shelf in shelves){
+                            if(index == 0){
+                                description = [[description stringByAppendingString:shelf] mutableCopy];
+                            }
+                            else{
+                                description = [[description stringByAppendingString:@" and "] mutableCopy];
+                                description = [[description stringByAppendingString:shelf] mutableCopy];
+                            }
+                            index++;
+                        }
+                        self.descriptionLabel.text = description;
                     }
                 }
             }];
             
-            //set description text
-            int index = 0;
-            NSString *descriptionNonmutable = [[@"added " stringByAppendingString:self.movieTitleLabel.text] stringByAppendingString:@"to "];
-            NSMutableString *description = [descriptionNonmutable mutableCopy];
-            
-            for(NSString *shelf in shelves){
-                if(index == 0){
-                    description = [[description stringByAppendingString:shelf] mutableCopy];
-                }
-                else{
-                    description = [[description stringByAppendingString:@" and "] mutableCopy];
-                    description = [[description stringByAppendingString:shelf] mutableCopy];
-                }
-                index++;
-            }
-            self.descriptionLabel.text = description;
         }
     }];
 }

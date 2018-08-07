@@ -201,12 +201,16 @@ static NSString * accountID = @"";
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSArray *myResult = dataDictionary[@"results"];
-            NSDictionary *movieInfo = myResult[0];
-            NSString *key = movieInfo[@"key"];
-            NSString *urlString = [baseURLString stringByAppendingString:key];
-            NSURL *url = [NSURL URLWithString:urlString];
-            
-            completion(url, nil);
+            if(myResult.count > 0){
+                NSDictionary *movieInfo = myResult[0];
+                NSString *key = movieInfo[@"key"];
+                NSString *urlString = [baseURLString stringByAppendingString:key];
+                NSURL *url = [NSURL URLWithString:urlString];
+                completion(url, nil);
+            }
+            else{
+                completion(nil,nil);
+            }
         }
     }];
     [task resume];

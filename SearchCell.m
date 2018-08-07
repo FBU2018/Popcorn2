@@ -30,7 +30,7 @@
     self.titleLabel.text = movie.title;
     self.releaseDateLabel.text = movie.releaseDateString;
     self.posterView.image = nil;
-    [self.posterView setImageWithURL:movie.posterUrl];
+    [self.posterView setImageWithURL:movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     self.ratingLabel.text = [@"Average rating: " stringByAppendingString:[movie.ratingString stringByAppendingString:@"/10"]];
 }
 

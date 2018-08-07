@@ -151,7 +151,7 @@
         <scene sceneID="p5p-pk-pod">
             <objects>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KeG-n5-Vaa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="small-map" id="boU-bY-usV"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="maps" id="boU-bY-usV"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="84M-me-2At">
@@ -171,6 +171,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="small-map" width="30" height="30"/>
+        <image name="maps" width="30" height="30"/>
     </resources>
 </document>

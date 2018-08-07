@@ -36,10 +36,24 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            NSLog(@"Successfully got URL");
-            //Use URL to make a request, show inside the webView
-            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-            [self.webView loadRequest:request];
+            if(url == nil){
+                NSLog(@"Movie does not have trailer URL");
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Trailer"
+                                                                               message:@"This movie has no trailer available"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:^{
+                }];
+            }
+            else{
+                NSLog(@"Successfully got URL");
+                //Use URL to make a request, show inside the webView
+                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+                [self.webView loadRequest:request];
+            }
         }
     }];
 }

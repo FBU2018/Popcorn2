@@ -128,8 +128,6 @@
                         //rating is 0/undefined
                         self.ratedLabel.text = [author.username stringByAppendingString:@" has not rated this movie yet."];
                     }
-                    
-
                 }
             }];
             
@@ -146,7 +144,8 @@
                             if([key isEqualToString:movieId]){
                                 //want the review for this movie
                                 NSString *reviewString = review[key];
-                                self.reviewTextLabel.text = [[@"\"" stringByAppendingString:reviewString] stringByAppendingString:@"\""];
+                                self.reviewTextLabel.text = reviewString;
+//                                self.reviewTextLabel.text = [[@"\"" stringByAppendingString:reviewString] stringByAppendingString:@"\""];
                             }
                         }
                     }

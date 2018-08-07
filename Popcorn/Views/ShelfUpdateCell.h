@@ -10,6 +10,8 @@
 #import "ParseUI.h"
 #import "Movie.h"
 
+@protocol ShelfUpdateCellDelegate;
+
 @interface ShelfUpdateCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *userImage;
@@ -19,7 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addToShelvesButton;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addToGestureRecognizer;
+
+
+@property (nonatomic, weak) id<ShelfUpdateCellDelegate> delegate;
 @property (strong, nonatomic) NSString *authorId;
 @property (strong, nonatomic) NSString *authorSessionId;
 @property (strong, nonatomic) NSString *movieId;
@@ -32,3 +39,11 @@
 
 
 @end
+
+
+
+@protocol ShelfUpdateCellDelegate
+
+- (void)shelfUpdateCell:(ShelfUpdateCell*) cell didTapAddTo: (Movie*) movie;
+
+@end;

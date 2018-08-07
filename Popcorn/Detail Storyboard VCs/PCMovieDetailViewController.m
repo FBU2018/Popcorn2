@@ -19,6 +19,8 @@
 #import "ActorCreditsCollectionViewCell.h"
 #import "PCWriteReviewViewController.h"
 #import "PCTrailerViewController.h"
+#import "JGProgressHUD.h"
+
 
 @interface PCMovieDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
@@ -31,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *ratingButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *similarToCollectionView;
 
-
 - (IBAction)didTapRating:(id)sender;
 
 @property (strong, nonatomic) NSArray *castList;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSArray *similarToList;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) JGProgressHUD *HUD;
 @end
 
 @implementation PCMovieDetailViewController
@@ -46,6 +48,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.titleLabel.text = @"";
+    self.dateLabel.text = @"";
+    self.ratingLabel.text = @"";
+    self.summaryLabel.text = @"";
+    
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
+    
     self.castCollectionView.delegate = self;
     self.castCollectionView.dataSource = self;
     
@@ -60,7 +71,7 @@
     
     [self configureDetails];
     
-   [self.similarToCollectionView layoutIfNeeded];
+    [self.similarToCollectionView layoutIfNeeded];
     
     //format the cast collection view
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.castCollectionView.collectionViewLayout;
@@ -91,15 +102,22 @@
         self.ratingLabel.text = ratingString;
     }
     else if(self.voteAverage != nil){
-        NSString *ratingString = [[@"Average rating: " stringByAppendingString:self.voteAverage] stringByAppendingString:@"/10"];
-        self.ratingLabel.text = ratingString;
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *voteAverageNumber = [f numberFromString:self.voteAverage];
+        
+        NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+        [fmt setPositiveFormat:@"0.##"];
+        NSString *ratingString = [fmt stringFromNumber:voteAverageNumber];
+        
+        NSString *ratingStringWhole = [[@"Average rating: " stringByAppendingString:ratingString] stringByAppendingString:@"/10"];
+        self.ratingLabel.text = ratingStringWhole;
     }
     self.dateLabel.text = self.movie.releaseDateString;
-    //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
+
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
- 
-    [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
     //adds a dark tint to the backdrop so text is readable
     UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
@@ -111,6 +129,7 @@
     [self fetchRating];
     [self fetchSimilar];
     [self.refreshControl endRefreshing];
+    [self.HUD dismissAnimated:YES];
 }
 
 
@@ -195,7 +214,6 @@
             }
             else{
                 self.castList = fullCastList;
-//            NSLog(@"%@", self.castList);
             }
         [self.castCollectionView reloadData];
      }];
