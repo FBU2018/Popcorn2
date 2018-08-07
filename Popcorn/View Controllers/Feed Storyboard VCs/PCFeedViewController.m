@@ -16,7 +16,7 @@
 #import "Movie.h"
 #import "PCSingleReviewViewController.h"
 
-@interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource, ShelfUpdateCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *posts;
@@ -39,6 +39,10 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getPostsArray) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void)shelfUpdateCell:(ShelfUpdateCell *)cell didTapAddTo:(Movie *)movie{
+    [self getShelvesWithSession:cell.authorSessionId andAccountId:cell.authorId ofCell:cell fromAddButton:YES];
 }
 
 - (void) getPostsArray{
@@ -99,6 +103,7 @@
 
     if([postType isEqualToString:@"shelfUpdate"]){
         ShelfUpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShelfUpdateCell" forIndexPath:indexPath];
+        cell.delegate = self;
         NSString *userId = self.posts[indexPath.row][@"authorId"];
         NSString *userSessionId = self.posts[indexPath.row][@"authorSessionId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
@@ -129,7 +134,7 @@
         NSLog(@"shelfUpdateCell");
         ShelfUpdateCell *tappedCell = (ShelfUpdateCell*)cell;
         //get shelves of user
-        [self getShelvesWithSession:tappedCell.authorSessionId andAccountId:tappedCell.authorId ofCell:tappedCell];
+        [self getShelvesWithSession:tappedCell.authorSessionId andAccountId:tappedCell.authorId ofCell:tappedCell fromAddButton:NO];
         //get movie inside get shelves
         //segue is called inside getMovie
     }
@@ -140,19 +145,19 @@
     }
 }
 
-- (void)getShelvesWithSession: (NSString*) sessionId andAccountId: (NSString*) accountId ofCell: (ShelfUpdateCell*) cell {
+- (void)getShelvesWithSession: (NSString*) sessionId andAccountId: (NSString*) accountId ofCell: (ShelfUpdateCell*) cell fromAddButton: (BOOL) add{
     [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSArray *results, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
             cell.userShelves = results;
-            [self getMovie:cell.movieId ofCell:cell];
+            [self getMovie:cell.movieId ofCell:cell fromAddButton:add];
         }
     }];
 }
 
-- (void)getMovie: (NSString*) movieId ofCell: (ShelfUpdateCell*) cell{
+- (void)getMovie: (NSString*) movieId ofCell: (ShelfUpdateCell*) cell fromAddButton: (BOOL) add{
     [[APIManager shared] getMovieDetails:movieId completion:^(NSDictionary *dataDictionary, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
@@ -161,7 +166,14 @@
             cell.movie = [[Movie alloc] initWithDetails:dataDictionary];
             NSNumber *rating = dataDictionary[@"vote_average"];
             cell.voteAverage = [rating stringValue];
-            [self performSegueWithIdentifier:@"shelfUpdateToDetail" sender:cell];
+            //segue to details if comes from touch gesture recognizer
+            if(add == NO){
+                [self performSegueWithIdentifier:@"shelfUpdateToDetail" sender:cell];
+            }
+            else{
+                //go to details
+                [self performSegueWithIdentifier:@"feedToShelfPicker" sender:cell];
+            }
         }
     }];
 }
@@ -189,6 +201,12 @@
         receiver.username = tappedCell.usernameLabel.text;
         receiver.userImage = tappedCell.userImageFile;
         receiver.review = tappedCell.reviewTextLabel.text;
+    }
+    else if([segue.identifier isEqualToString:@"feedToShelfPicker"]){
+        ShelfUpdateCell *tappedCell = sender;
+        PCMovieDetailViewController *receiver = [segue destinationViewController];
+        receiver.movie = tappedCell.movie;
+        receiver.shelves = tappedCell.userShelves;
     }
 }
 

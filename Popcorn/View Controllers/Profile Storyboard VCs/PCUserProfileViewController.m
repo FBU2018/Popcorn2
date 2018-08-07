@@ -26,6 +26,9 @@
 @property (strong, nonatomic) NSMutableArray *moviesInList; //helper
 @property (nonatomic) BOOL following;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+
+
 -(void)alertWithString:(NSString *)message;
 - (IBAction)didTapSearch:(id)sender;
 
@@ -43,6 +46,9 @@
     if(self.currentUser == nil){
         // showing logged in user's profile
         self.currentUser = [PFUser currentUser];
+    }
+    else{
+        self.navigationItem.leftBarButtonItem = nil;
     }
     // Determine if loggedin User is already following current User
     PFUser *loggedInUser = PFUser.currentUser;

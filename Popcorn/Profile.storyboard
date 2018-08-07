@@ -219,6 +219,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutButton" destination="QJv-4Q-FeE" id="F2R-e2-rIb"/>
                         <outlet property="tableView" destination="ogI-ov-QC0" id="VJr-yy-45u"/>
                         <segue destination="O6u-Ie-YWc" kind="show" identifier="profileToUserSearch" id="oJx-z6-7MC"/>
                     </connections>
