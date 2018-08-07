@@ -65,33 +65,6 @@
 - (IBAction)didTapSafari:(id)sender {
     [self performSegueWithIdentifier:@"libraryToSafari" sender:nil];
 }
-- (IBAction)didTapLogout:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to log out?"
-                                                                   message:nil
-                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-    //cancel action
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //do nothing
-    }];
-    [alert addAction:cancelAction];
-    
-    //logout action
-    UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:@"Log Out" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //actually log out
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        PCLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"PCLoginViewController"];
-        appDelegate.window.rootViewController = loginViewController;
-        [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-            // PFUser.current() will now be nil
-        }];
-    }];
-    [logoutAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
-    [alert addAction:logoutAction];
-
-    [self presentViewController:alert animated:YES completion:^{
-    }];
-}
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -145,7 +118,6 @@
     
     //fill cells in backwards order: newly created shelves will now appear at the bottom
     [cell configureCell:self.filteredData[count - 1 - indexPath.row]];
-//    [cell configureCell:self.filteredData[indexPath.row]];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -203,9 +175,9 @@
 
 - (void)getLists{
     //gets a dictionary of all of user's saved lists
-    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSArray *results, NSError *error) {
         if(error == nil){
-            self.shelves = shelves[@"results"];
+            self.shelves = results;
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
             [self.refreshControl endRefreshing];

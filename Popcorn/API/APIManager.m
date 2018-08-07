@@ -8,20 +8,9 @@
 
 #import "APIManager.h"
 
-//static NSString * const apiKey = @"15703e94357b9dc777959d930e92e7dc";
-//static NSString * const readAccessToken4 = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTcwM2U5NDM1N2I5ZGM3Nzc5NTlkOTMwZTkyZTdkYyIsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4BwAxs_-AWbqm-ckcyg8IH5bwrfNCjN8iHAV84xiLJc";
-//static NSString * requestToken3 = @"585512c8018c084ce18c5419769f5e161c870fe0";
-//static NSString * requestToken4 = @"";
-//static NSString * sessionID = @"241562b4ac28f52aa9c89e810b4046d6df4dc985";
-//static NSString * accessToken = @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1MzE3NzI4NTUsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsImp0aSI6Ijg5NTk3MSIsImF1ZCI6IjE1NzAzZTk0MzU3YjlkYzc3Nzk1OWQ5MzBlOTJlN2RjIiwic2NvcGVzIjpbImFwaV9yZWFkIiwiYXBpX3dyaXRlIl0sInZlcnNpb24iOjF9.abd9n5YDL2ToVRuaNw3CQhUAs95H2Gqhxwlf3sZusZw";
-//static NSString * accountID = @"7966256";
-
 static NSString * const apiKey = @"15703e94357b9dc777959d930e92e7dc";
-static NSString * const readAccessToken4 = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTcwM2U5NDM1N2I5ZGM3Nzc5NTlkOTMwZTkyZTdkYyIsInN1YiI6IjViNGNmYTVlYzNhMzY4MjNlNjA0YWJjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4BwAxs_-AWbqm-ckcyg8IH5bwrfNCjN8iHAV84xiLJc";
 static NSString * requestToken3 = @"";
-//static NSString * requestToken4 = @"";
 static NSString * sessionID = @"";
-//static NSString * accessToken = @"";
 static NSString * accountID = @"";
 
 
@@ -36,50 +25,6 @@ static NSString * accountID = @"";
     return sharedManager;
 }
 
-
-//- (void)createList:(NSString *)name completion:(void (^)(NSString *, NSError *))completion{
-//    //post request to create list VERSION 4
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:@"https://api.themoviedb.org/4/list"]];
-//    [request setHTTPMethod:@"POST"];
-//
-//    //headers
-//    NSString *bearer = @"Bearer ";
-//    NSString *accessing = [bearer stringByAppendingString:accessToken];
-//
-//    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//
-//    //request body + variables
-//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"name",@"en",@"iso_639_1", nil];
-//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-//            NSError* error;
-//            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-//        [request setHTTPBody:jsonData];
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            if(error != nil){
-//                NSLog(@"Error: %@", error.localizedDescription);
-//                completion(nil,error);
-//            }
-//            else{
-//                NSString *myData = [[NSString alloc] initWithData:data
-//                                      encoding:NSUTF8StringEncoding];
-//
-//
-//                NSData *data = [myData dataUsingEncoding:NSUTF8StringEncoding];
-//                id jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//
-//                NSLog(@"Request successful");
-//                completion(jsonResponse[@"id"], nil);
-//            }
-//        }];
-//        [task resume];
-//    }
-//}
 
 - (void)createList:(NSString *)name withSessionId: (NSString *) mySessionId completion:(void (^)(NSString *, NSError *))completion{
     //post request to create list VERSION 3
@@ -122,34 +67,6 @@ static NSString * accountID = @"";
     }
 }
 
-//- (void)deleteList:(NSString *)listId completion:(void (^)(NSError *error))completion{
-//    //delete request to delete list with given id
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *urlString = [@"https://api.themoviedb.org/4/list/" stringByAppendingString:listId];
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"DELETE"];
-//
-//    //headers
-//    NSString *bearer = @"Bearer ";
-//    NSString *accessing = [bearer stringByAppendingString:accessToken];
-//
-//    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        if (error != nil) {
-//            NSLog(@"Error: %@", [error localizedDescription]);
-//            completion(error);
-//        }
-//        else {
-//            NSLog(@"Successfully deleted shelf");
-//            completion(nil);
-//        }
-//    }];
-//    [task resume];
-//}
 
 - (void)deleteList:(NSString *)listId withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *error))completion{
     //delete request to delete list with given id VERSION 3
@@ -173,7 +90,7 @@ static NSString * accountID = @"";
     [task resume];
 }
 
--(void)getShelvesWithSessionId: (NSString *)sessionId andAccountId: (NSString *) accountId andCompletionBlock: (void (^)(NSDictionary *shelves, NSError *error))completion{
+-(void)getShelvesWithSessionId: (NSString *)sessionId andAccountId: (NSString *) accountId andCompletionBlock: (void (^)(NSArray *results, NSError *error))completion{
     // get request to get all of a particular user's created lists/shelves using their sessionId
     
     NSString *urlString = [[[[[[@"https://api.themoviedb.org/3/account/" stringByAppendingString:accountId] stringByAppendingString:@"/lists?api_key="] stringByAppendingString:apiKey] stringByAppendingString: @"&language=en-US&session_id="] stringByAppendingString:sessionId] stringByAppendingString:@"&page=1"];
@@ -188,38 +105,21 @@ static NSString * accountID = @"";
             completion(nil, error);
         }
         else {
+            //TODO: sort these shelves before completion!!
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Successfully got shelves");
-            completion(dataDictionary, nil);
+            NSArray *resultsArray = dataDictionary[@"results"];
+            
+            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+            NSArray *sortedArray = [resultsArray sortedArrayUsingDescriptors:sortDescriptors];
+            
+            completion(sortedArray, nil);
         }
     }];
     [task resume];
 }
 
-
-//- (void)getShelfMovies:(NSString *)listId completion:(void (^)(NSArray *, NSError *))completion{
-//    //get request to get array of all movies in a list
-//
-//    NSString *urlString = [[[@"https://api.themoviedb.org/4/list/" stringByAppendingString:listId] stringByAppendingString: @"?page=1&api_key="] stringByAppendingString: apiKey];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        //this part runs when network call is finished
-//        if (error != nil) {
-//            NSLog(@"Error: %@", [error localizedDescription]);
-//            completion(nil, error);
-//        }
-//        else {
-//            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//            NSLog(@"Successfully got movies in shelf");
-//
-//            completion(dataDictionary[@"results"], nil);
-//        }
-//    }];
-//    [task resume];
-//}
 
 - (void)getShelfMovies:(NSString *)listId completion:(void (^)(NSArray *, NSError *))completion{
     //get request to get array of all movies in a list VERSION 3
@@ -238,53 +138,17 @@ static NSString * accountID = @"";
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"Successfully got movies in shelf");
+            
+            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"release_date" ascending:NO];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+            NSArray *sortedArray = [dataDictionary[@"items"] sortedArrayUsingDescriptors:sortDescriptors];
 
-            completion(dataDictionary[@"items"], nil);
+            completion(sortedArray, nil);
         }
     }];
     [task resume];
 }
 
-//- (void)removeItem:(NSString *)shelfId forItem:(Movie *)item completion:(void (^)(NSError *error))completion{
-//    //delete request to delete item from list VERSION 4
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *urlString = [[@"https://api.themoviedb.org/4/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/items"];
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"DELETE"];
-//
-//    //headers
-//    NSString *bearer = @"Bearer ";
-//    NSString *accessing = [bearer stringByAppendingString:accessToken];
-//
-//    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//
-//    //request body + variables
-//    NSDictionary *itemDict = [[NSDictionary alloc] initWithObjectsAndKeys: item.mediaType,@"media_type",item.movieID, @"media_id", nil];
-//    NSArray *itemArr = [[NSArray alloc] initWithObjects:itemDict, nil];
-//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:itemArr, @"items", nil];
-//
-//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-//        NSError* error;
-//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-//        [request setHTTPBody:jsonData];
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            if(error != nil){
-//                NSLog(@"Error: %@", error.localizedDescription);
-//                completion(error);
-//            }
-//            else{
-//                NSLog(@"Request successful");
-//                completion(nil);
-//            }
-//        }];
-//        [task resume];
-//    }
-//}
 
 - (void)removeItem:(NSString *)shelfId forItem:(Movie *)item withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *error))completion{
     //post request to delete item from list VERSION 3
@@ -348,36 +212,6 @@ static NSString * accountID = @"";
     [task resume];
 }
 
-//- (void)getItemStatus:(NSString *)listId forMovie:(NSString *)movieId ofType: (NSString *) itemType completion:(void (^)(NSString *, NSError *))completion{
-//    //get request to see if item is in the list
-//
-//    NSString *urlString = [[[[[@"https://api.themoviedb.org/4/list/" stringByAppendingString:listId] stringByAppendingString:@"/item_status?media_id="] stringByAppendingString:movieId] stringByAppendingString:@"&media_type="] stringByAppendingString:itemType];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-//
-//    //headers
-//    NSString *bearer = @"Bearer ";
-//    NSString *accessing = [bearer stringByAppendingString:accessToken];
-//
-//    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        //this part runs when network call is finished
-//        if (error != nil) {
-//            NSLog(@"Error: %@", [error localizedDescription]);
-//        }
-//        else{
-//            NSLog(@"Successfully checked if movie was in list");
-//            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//            completion([dataDictionary[@"status_code"] stringValue], nil);
-//        }
-//    }];
-//    [task resume];
-//}
-
 
 - (void)getItemStatus:(NSString *)listId forMovie:(NSString *)movieId ofType: (NSString *) itemType completion:(void (^)(bool, NSError *))completion{
     //get request to see if item is in the list
@@ -403,12 +237,6 @@ static NSString * accountID = @"";
             else{
                 completion(YES, nil);
             }
-            
-//            completion(dataDictionary[@"item_present"], nil);
-//            NSLog(@"listId: %@", listId);
-//            NSLog(@"apiKey: %@", apiKey);
-//            NSLog(@"movieId: %@", movieId);
-//            NSLog(@"DATA DICTIONARY: %@", dataDictionary);
         }
     }];
     [task resume];
@@ -435,47 +263,6 @@ static NSString * accountID = @"";
     }];
     [task resume];
 }
-
-//- (void)addItem:(NSString *)shelfId forItem:(Movie *)item completion:(void (^)(NSError *))completion{
-//    //post request to add item to list VERSION 4
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *urlString = [[@"https://api.themoviedb.org/4/list/" stringByAppendingString:shelfId] stringByAppendingString:@"/items"];
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"POST"];
-//
-//    //headers
-//    NSString *bearer = @"Bearer ";
-//    NSString *accessing = [bearer stringByAppendingString:accessToken];
-//
-//    [request addValue:accessing forHTTPHeaderField: @"Authorization"];
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//
-//    //request body + variables
-//    NSDictionary *itemDict = [[NSDictionary alloc] initWithObjectsAndKeys: item.mediaType,@"media_type",item.movieID, @"media_id", nil];
-//    NSArray *itemArr = [[NSArray alloc] initWithObjects:itemDict, nil];
-//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:itemArr, @"items", nil];
-//
-//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-//        NSError* error;
-//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-//        [request setHTTPBody:jsonData];
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            if(error != nil){
-//                NSLog(@"Error: %@", error.localizedDescription);
-//                completion(error);
-//            }
-//            else{
-//                NSLog(@"Request successful");
-//                completion(nil);
-//            }
-//        }];
-//        [task resume];
-//    }
-//}
 
 - (void)addItem:(NSString *)shelfId forItem:(Movie *)item withSessionId: (NSString*) mySessionId completion:(void (^)(NSError *))completion{
     //post request to add item to list VERSION 3
@@ -648,47 +435,6 @@ static NSString * accountID = @"";
 }
 
 
-//- (void)postRequestToken4:(void (^)(NSString *, NSError *))completion{
-//    //post request to get request token V4
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *urlString = @"https://api.themoviedb.org/4/auth/request_token";
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"POST"];
-//
-//    //headers
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
-//    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
-//
-//    //request body + variables
-//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"https://www.themoviedb.org/", @"redirect_to", nil];
-//
-//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-//        NSError* error;
-//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-//        [request setHTTPBody:jsonData];
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            if(error != nil){
-//                NSLog(@"Error: %@", error.localizedDescription);
-//                completion(nil,error);
-//            }
-//            else{
-//                NSLog(@"Request successful");
-//                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//                NSString *returnedRequestToken = dataDictionary[@"request_token"];
-//                requestToken4 = returnedRequestToken;
-//                completion(requestToken4, nil);
-//            }
-//        }];
-//        [task resume];
-//    }
-//}
-
-
-
 - (void)getSession:(void (^)(NSString *, NSError *))completion{
     NSString *urlString = [[[@"https://api.themoviedb.org/3/authentication/session/new?api_key=" stringByAppendingString:apiKey] stringByAppendingString:@"&request_token="] stringByAppendingString:requestToken3];
     NSURL *url = [NSURL URLWithString: urlString];
@@ -733,52 +479,6 @@ static NSString * accountID = @"";
     [task resume];
 }
 
-
-
-//- (void)createAccessToken4:(void (^)(NSString *, NSString *, NSError *))completion{
-//    //post request to create access token
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *urlString = @"https://api.themoviedb.org/4/auth/access_token";
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"POST"];
-//
-//    //headers
-//    [request addValue:@"application/json;charset=utf-8" forHTTPHeaderField: @"Content-Type"];
-//    NSString *bearerVal = [@"Bearer " stringByAppendingString:readAccessToken4];
-//    [request addValue:bearerVal forHTTPHeaderField: @"Authorization"];
-//
-//
-//    //request body
-//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:requestToken4, @"request_token", nil];
-//
-//    if ([NSJSONSerialization isValidJSONObject:userDictionary]) {
-//        NSError* error;
-//        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
-//        [request setHTTPBody:jsonData];
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            if(error != nil){
-//                NSLog(@"Error: %@", error.localizedDescription);
-//                completion(nil,nil,error);
-//            }
-//            else{
-//                NSLog(@"Request successful");
-//                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//                NSLog(@"Data dictionary: %@", dataDictionary);
-//                NSString *returnedAccessToken = dataDictionary[@"access_token"];
-//                NSString *returnedAccountId = dataDictionary[@"account_id"];
-//                accessToken = returnedAccessToken;
-//                accountID = returnedAccountId;
-//                NSLog(@"ACCESS TOKEN: %@", accessToken);
-//                completion(accessToken, accountID, nil);
-//            }
-//        }];
-//        [task resume];
-//    }
-//}
 
 - (void)getActorDetails:(NSString *)actorID completion:(void (^)(NSDictionary *, NSError *))completion{
     NSString *urlString = [[[[@"https://api.themoviedb.org/3/person/" stringByAppendingString:actorID]stringByAppendingString:@"?api_key="] stringByAppendingString:apiKey] stringByAppendingString:@"&language=en-US"];
@@ -836,7 +536,6 @@ static NSString * accountID = @"";
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSArray *similarMovies = dataDictionary[@"results"];
-//            NSLog(@"%@", similarMovies);
             completion(similarMovies, nil);
         }
     }];

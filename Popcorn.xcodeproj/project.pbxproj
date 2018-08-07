@@ -16,7 +16,6 @@
 		26A0490A210A6F4C00DF8496 /* Relations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04909210A6F4C00DF8496 /* Relations.m */; };
 		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
-		26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6B67E21068289001BE727 /* PCProfileViewController.m */; };
 		26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */; };
 		26DBAEB3211126E00025438D /* MovieDiscussion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26DBAEB2211126E00025438D /* MovieDiscussion.storyboard */; };
 		26DBAEB9211136650025438D /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBAEB8211136650025438D /* ChatCell.m */; };
@@ -107,8 +106,6 @@
 		26A04909210A6F4C00DF8496 /* Relations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Relations.m; sourceTree = "<group>"; };
 		26B6B6792106511D001BE727 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		26B6B67B21068255001BE727 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		26B6B67D21068289001BE727 /* PCProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCProfileViewController.h; sourceTree = "<group>"; };
-		26B6B67E21068289001BE727 /* PCProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCProfileViewController.m; sourceTree = "<group>"; };
 		26DBAEAE211126910025438D /* PCMovieDiscussionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDiscussionViewController.h; sourceTree = "<group>"; };
 		26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCMovieDiscussionViewController.m; sourceTree = "<group>"; };
 		26DBAEB2211126E00025438D /* MovieDiscussion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieDiscussion.storyboard; sourceTree = "<group>"; };
@@ -264,8 +261,6 @@
 		2611EA9621091DCA006DC803 /* Profile Storyboard VCs */ = {
 			isa = PBXGroup;
 			children = (
-				26B6B67D21068289001BE727 /* PCProfileViewController.h */,
-				26B6B67E21068289001BE727 /* PCProfileViewController.m */,
 				953A1AC0210B89D4008215B0 /* PCUserProfileViewController.h */,
 				953A1AC1210B89D4008215B0 /* PCUserProfileViewController.m */,
 			);
@@ -795,7 +790,6 @@
 				953A1ACB210BD1E3008215B0 /* FeedReviewCell.m in Sources */,
 				951A791F20FD0A8B003D3901 /* main.m in Sources */,
 				71F631CA2102AD11001BAA77 /* PCActorDetailViewController.m in Sources */,
-				26B6B67F21068289001BE727 /* PCProfileViewController.m in Sources */,
 				953A1AE821139E8A008215B0 /* TheatreAnnotation.m in Sources */,
 				959B2AFE210003B0005D418E /* PCShelfPickerViewController.m in Sources */,
 				953A1AD72110F24D008215B0 /* PCSingleReviewViewController.m in Sources */,
@@ -983,13 +977,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 866ALQJ6LD;
+=======
+				DEVELOPMENT_TEAM = CVY782JBJS;
+>>>>>>> d72a4aaa1cb2bf28adf827f3b9ca6a36caded052
 				INFOPLIST_FILE = Popcorn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn56;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1001,13 +1000,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 866ALQJ6LD;
+				DEVELOPMENT_TEAM = CVY782JBJS;
 				INFOPLIST_FILE = Popcorn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn56;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

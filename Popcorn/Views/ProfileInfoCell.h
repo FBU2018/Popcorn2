@@ -33,6 +33,7 @@
 
 
 - (void)configureCell:(PFUser *)user withFollowing: (BOOL)following;
+- (void)setButton;
 
 @end
 

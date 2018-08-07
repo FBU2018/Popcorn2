@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSString *review;
 
 @property (strong, nonatomic) Movie* movie;
+@property (strong, nonatomic) NSArray* shelves;
 
 @end

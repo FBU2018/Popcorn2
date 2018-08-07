@@ -141,12 +141,12 @@
 }
 
 - (void)getShelvesWithSession: (NSString*) sessionId andAccountId: (NSString*) accountId ofCell: (ShelfUpdateCell*) cell {
-    [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSDictionary *shelves, NSError *error) {
+    [[APIManager shared] getShelvesWithSessionId:sessionId andAccountId:accountId andCompletionBlock:^(NSArray *results, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else{
-            cell.userShelves = shelves[@"results"];
+            cell.userShelves = results;
             [self getMovie:cell.movieId ofCell:cell];
         }
     }];
@@ -159,6 +159,8 @@
         }
         else{
             cell.movie = [[Movie alloc] initWithDetails:dataDictionary];
+            NSNumber *rating = dataDictionary[@"vote_average"];
+            cell.voteAverage = [rating stringValue];
             [self performSegueWithIdentifier:@"shelfUpdateToDetail" sender:cell];
         }
     }];
@@ -176,6 +178,7 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.shelves = tappedCell.userShelves;
         receiver.movie = tappedCell.movie;
+        receiver.voteAverage = tappedCell.voteAverage;
     }
     else if([segue.identifier isEqualToString:@"feedToSingleReview"]){
         FeedReviewCell *tappedCell = sender;

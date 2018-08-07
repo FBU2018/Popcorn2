@@ -33,7 +33,7 @@
     //mpk 20: 37.481009, -122.155085
     self.lat = @"37.783333";
     self.lng = @"-122.416667";
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.lat doubleValue], [self.lng doubleValue]), MKCoordinateSpanMake(0.1, 0.1));
+    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.lat doubleValue], [self.lng doubleValue]), MKCoordinateSpanMake(0.8, 0.8));
     [self.myMapView setRegion:sfRegion animated:false];
     
 //    [self getLocations];
@@ -55,11 +55,14 @@
                     NSLog(@"Error: %@", error.localizedDescription);
                 }
                 else{
-                    NSDictionary *dataDictionary = theaters[@"results"];
-                    NSLog(@"dataDictionary: %@", dataDictionary);
+//                    NSLog(@"theaterNames: %@", theaterNames);
+                    
+                    NSArray *dataDictionary = theaters[@"results"];
                     for(NSDictionary *theatre in dataDictionary){
+                        
+//                        NSLog(@"name: %@", theatre[@"name"]);
                         if([theaterNames containsObject:theatre[@"name"]]){
-                            //TODO: figure out what to do with the rest
+//                            NSLog(@"YES: %@", theatre[@"name"]);
                             //set the annotation
                             NSString *latString = theatre[@"geometry"][@"location"][@"lat"];
                             NSString *lngString = theatre[@"geometry"][@"location"][@"lng"];
@@ -113,9 +116,6 @@
                         [theatreInfo[theatreName] addObject:location];
                         
                         ratings[theatreName] = dataDictionary[@"candidates"][0][@"rating"];
-                        
-//                        NSDictionary *candidate = dataDictionary[@"candidates"][0];
-//                        NSLog(@"candidate 1: %@", candidate);
                     }
                     
                     if(theatreInfo.count == theatreNames.count-1){ //all taken into account
@@ -154,15 +154,10 @@
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
         annotationView.canShowCallout = true;
-//        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
         annotationView.rightCalloutAccessoryView = detailButton;
     }
-    
-//    UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
-//    imageView.image = [UIImage imageNamed:@"camera"];
-    
     return annotationView;
 }
 
@@ -192,9 +187,6 @@
         receiver.theatreInfo = annotation.theatreInfo;
         receiver.theatreTitle = annotation.title;
         receiver.rating = annotation.rating;
-        
-//        NSLog(@"theatreInfo: %@", annotation.theatreInfo);
-//        NSLog(@"moviesPlaying: %@", annotation.moviesPlaying);
     }
 }
 
