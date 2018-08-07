@@ -118,13 +118,13 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:0.8f]
                                                 title:@"Remove"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f]
+     [UIColor colorWithRed:0.3f green:0.0f blue:1.0f alpha:0.4f]
                                                 title:@"Trailer"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+     [UIColor colorWithRed:0.35f green:0.35f blue:0.35f alpha:1.0]
                                                 title:@"Add to"];
 
     return rightUtilityButtons;

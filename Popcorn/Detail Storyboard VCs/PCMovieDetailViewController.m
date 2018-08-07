@@ -91,14 +91,20 @@
         self.ratingLabel.text = ratingString;
     }
     else if(self.voteAverage != nil){
-        NSString *ratingString = [[@"Average rating: " stringByAppendingString:self.voteAverage] stringByAppendingString:@"/10"];
-        self.ratingLabel.text = ratingString;
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *voteAverageNumber = [f numberFromString:self.voteAverage];
+        
+        NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+        [fmt setPositiveFormat:@"0.##"];
+        NSString *ratingString = [fmt stringFromNumber:voteAverageNumber];
+        
+        NSString *ratingStringWhole = [[@"Average rating: " stringByAppendingString:ratingString] stringByAppendingString:@"/10"];
+        self.ratingLabel.text = ratingStringWhole;
     }
     self.dateLabel.text = self.movie.releaseDateString;
-    //TO DO: CHANGE THE PLACEHOLDER IMAGE FOR POSTERS & BACKDROP
+
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
-    
- 
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
     
     //adds a dark tint to the backdrop so text is readable
@@ -195,7 +201,6 @@
             }
             else{
                 self.castList = fullCastList;
-//            NSLog(@"%@", self.castList);
             }
         [self.castCollectionView reloadData];
      }];

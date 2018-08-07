@@ -19,9 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-hw-ImS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-hw-ImS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" id="A9X-M9-I4E">
@@ -89,6 +88,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ibw-hw-ImS" secondAttribute="bottom" id="4Ph-DB-tOc"/>
+                            <constraint firstItem="Ibw-hw-ImS" firstAttribute="top" secondItem="a33-AT-Gml" secondAttribute="top" id="EzS-BH-HtB"/>
+                            <constraint firstItem="Ibw-hw-ImS" firstAttribute="trailing" secondItem="pWS-aU-V9Z" secondAttribute="trailing" id="MvU-HC-ObB"/>
+                            <constraint firstItem="Ibw-hw-ImS" firstAttribute="leading" secondItem="pWS-aU-V9Z" secondAttribute="leading" id="tsU-hw-Fih"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Library" id="2iw-vI-whp">
@@ -117,9 +122,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
+                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" id="5iq-63-ccj">
@@ -200,6 +204,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qEF-vW-1Y8" firstAttribute="trailing" secondItem="ftg-1a-owk" secondAttribute="trailing" id="1Vr-v9-wRs"/>
+                            <constraint firstAttribute="bottom" secondItem="qEF-vW-1Y8" secondAttribute="bottom" id="2QJ-6C-2LT"/>
+                            <constraint firstItem="qEF-vW-1Y8" firstAttribute="leading" secondItem="ftg-1a-owk" secondAttribute="leading" id="4gc-fh-r5i"/>
+                            <constraint firstItem="qEF-vW-1Y8" firstAttribute="top" secondItem="qRn-Mh-uu4" secondAttribute="top" id="hi9-63-pen"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ftg-1a-owk"/>
                     </view>
                     <connections>
