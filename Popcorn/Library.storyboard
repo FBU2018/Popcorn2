@@ -97,7 +97,7 @@
                         <viewLayoutGuide key="safeArea" id="pWS-aU-V9Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Library" id="2iw-vI-whp">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="I0m-gU-WDV">
+                        <barButtonItem key="rightBarButtonItem" title="+" image="add" id="I0m-gU-WDV">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="didTapPlus:" destination="MkW-Uf-1rx" id="Tjt-Rv-LPT"/>
@@ -277,6 +277,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="24" height="24"/>
         <image name="poster-placeholder" width="400" height="600"/>
         <image name="shelves" width="30" height="30"/>
     </resources>

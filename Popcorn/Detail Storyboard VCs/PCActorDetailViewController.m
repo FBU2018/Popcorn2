@@ -85,7 +85,7 @@
         self.knownForLabel.text = [@"Department: " stringByAppendingString:self.actorDetails[@"known_for_department"]];
     }
     else{
-        self.knownForLabel.text = @"No department information";
+        self.knownForLabel.text = @"Unknown department";
     }
     
     if(![self.actorDetails[@"birthday"] isEqual: [NSNull null]]){
@@ -96,7 +96,7 @@
     }
     
     if(![self.actorDetails[@"place_of_birth"] isEqual: [NSNull null]]){
-        self.birthplaceLabel.text = self.actorDetails[@"place_of_birth"];
+        self.birthplaceLabel.text = [@"Birthplace: " stringByAppendingString: self.actorDetails[@"place_of_birth"]];
     }
     else{
         self.birthplaceLabel.text = @"Unknown birthplace";
