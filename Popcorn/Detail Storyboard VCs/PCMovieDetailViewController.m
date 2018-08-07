@@ -99,7 +99,7 @@
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
  
-    [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"person placeholder.png"]];
+    [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     
     //adds a dark tint to the backdrop so text is readable
     UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];

@@ -364,7 +364,7 @@
         <scene sceneID="JWk-x9-xz9">
             <objects>
                 <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="K1V-ZV-fOw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="feed" id="OeU-6w-t7c"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home2" id="OeU-6w-t7c"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Crd-Hx-tld">
@@ -387,7 +387,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed" width="30" height="30"/>
+        <image name="home2" width="30" height="30"/>
         <image name="person placeholder" width="240" height="240"/>
         <image name="poster-placeholder" width="400" height="600"/>
     </resources>

@@ -82,7 +82,10 @@
     self.nameLabel.text = self.actorDetails[@"name"];
     
     if(![self.actorDetails[@"known_for_department"] isEqual:[NSNull null]]){
-        self.knownForLabel.text = [@"Known for " stringByAppendingString:self.actorDetails[@"known_for_department"]];
+        self.knownForLabel.text = [@"Department: " stringByAppendingString:self.actorDetails[@"known_for_department"]];
+    }
+    else{
+        self.knownForLabel.text = @"No department information";
     }
     
     if(![self.actorDetails[@"birthday"] isEqual: [NSNull null]]){
