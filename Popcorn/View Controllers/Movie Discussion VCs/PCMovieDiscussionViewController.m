@@ -53,11 +53,6 @@
     // Set Backdrop Image
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl];
     
-    //adds a dark tint to the backdrop so text is readable
-//    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
-//    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
-//    [self.backdropImageView addSubview:overlay];
-    
     // refresh the chats every second
     //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
     [self refreshChats];
@@ -81,12 +76,17 @@
         if(error == nil){
             // Add returned chat objects that are not in the local array
             NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.chatsArray];
-            for (Chat *chat in chats){
-                if (![self.chatsArray containsObject:chat]){
-                    // Print out each message in the console
-                    NSLog(@"%@", chat.message);
-
-                    [array addObject:chat];
+            for(int i = 0; i < [chats count]; i++){
+                if(i < [array count] && [array count] != 0){
+                    Chat *chatElement = [chats objectAtIndex:i];
+                    Chat *arrayElement = [array objectAtIndex:i];
+                    if(![chatElement.message isEqualToString:arrayElement.message]){
+                        [array addObject:chatElement];
+                    }
+                }
+                else{
+                    Chat *object = [chats objectAtIndex:i];
+                    [array addObject:object];
                 }
             }
             self.chatsArray = [NSArray arrayWithArray:array];
@@ -100,7 +100,7 @@
 
 // User taps send to send a chat message
 - (IBAction)didTapSend:(id)sender {
-    // Create a chat object and store the message, the user's username and the movie they are talking about
+    // Create a chat object and store the message, the user's object id and the movie they are talking about
     Chat *chat = [Chat object];
     chat.message = self.chatMessageTextField.text;
     chat.userObjectId = PFUser.currentUser.objectId;
@@ -126,14 +126,10 @@
     
     // refresh table view and chats
     [self refreshChats];
-    [self.tableView reloadData];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
-//    cell.usernameLabel.text = nil;
-//    cell.chatTextLabel.text = nil;
-//    cell.userImageView.file = nil;
     Chat *currentChat = self.chatsArray[indexPath.row];
     NSString *currentUsername = PFUser.currentUser.username;
     NSLog(@"Logged in User is : %@", currentUsername);
