@@ -212,7 +212,7 @@
                                 <action selector="didTapLogOut:" destination="YdS-18-Zry" id="cx6-sY-dXw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="small-add-group" id="UcB-8g-ZOM">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="addGroup" id="UcB-8g-ZOM">
                             <connections>
                                 <action selector="didTapSearch:" destination="YdS-18-Zry" id="ANq-bB-Ggw"/>
                             </connections>
@@ -284,9 +284,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addGroup" width="30" height="24"/>
         <image name="person placeholder" width="240" height="240"/>
         <image name="poster-placeholder" width="400" height="600"/>
         <image name="profile2" width="30" height="30"/>
-        <image name="small-add-group" width="35" height="30"/>
     </resources>
 </document>
