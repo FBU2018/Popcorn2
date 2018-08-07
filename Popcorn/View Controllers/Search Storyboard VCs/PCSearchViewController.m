@@ -134,6 +134,7 @@ bool isMoreDataLoading = false;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // dequeue a reusable Search cell
     SearchCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
+    cell.posterView.image = [UIImage imageNamed:@"poster-placeholder"];
     
     // change array of dictionaries to an array of movies
     self.filteredMovieObjects = [Movie moviesWithDictionaries:self.filteredData];
