@@ -30,7 +30,6 @@
     self.userImageView.image = [UIImage imageNamed:@"person placeholder"];;
     self.usernameLabel.text = @"";
     self.timeStampLabel.text = @"";
-    self.chatTextLabel.text = @"";
     
     // Get user object from objectId
     PFQuery *query = [PFUser query];

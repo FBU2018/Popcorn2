@@ -15,4 +15,5 @@
 @property (strong, nonatomic) NSNumber *movieID;
 @property (strong, nonatomic) NSString *userObjectId;
 @property (strong, nonatomic) NSString *createdAtString;
+@property (strong, nonatomic) NSString *username;
 @end

@@ -14,6 +14,7 @@
 		26A04901210A6C6000DF8496 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04900210A6C6000DF8496 /* Movie.m */; };
 		26A04904210A6DD100DF8496 /* PFUser+ExtendedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */; };
 		26A0490A210A6F4C00DF8496 /* Relations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A04909210A6F4C00DF8496 /* Relations.m */; };
+		26AF5796211A56B10046A658 /* myChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF5795211A56B10046A658 /* myChatCell.m */; };
 		26B6B67A2106511D001BE727 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B6B6792106511D001BE727 /* SafariServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		26B6B67C21068255001BE727 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B6B67B21068255001BE727 /* Profile.storyboard */; };
 		26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBAEAF211126910025438D /* PCMovieDiscussionViewController.m */; };
@@ -105,6 +106,8 @@
 		26A04903210A6DD100DF8496 /* PFUser+ExtendedUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PFUser+ExtendedUser.m"; sourceTree = "<group>"; };
 		26A04908210A6F4C00DF8496 /* Relations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Relations.h; sourceTree = "<group>"; };
 		26A04909210A6F4C00DF8496 /* Relations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Relations.m; sourceTree = "<group>"; };
+		26AF5794211A56B10046A658 /* myChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myChatCell.h; sourceTree = "<group>"; };
+		26AF5795211A56B10046A658 /* myChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myChatCell.m; sourceTree = "<group>"; };
 		26B6B6792106511D001BE727 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		26B6B67B21068255001BE727 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		26DBAEAE211126910025438D /* PCMovieDiscussionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCMovieDiscussionViewController.h; sourceTree = "<group>"; };
@@ -456,6 +459,8 @@
 		951A794220FD0B9A003D3901 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26AF5794211A56B10046A658 /* myChatCell.h */,
+				26AF5795211A56B10046A658 /* myChatCell.m */,
 				2684D0BD20FD159000FBB985 /* SearchCell.h */,
 				2684D0BE20FD159000FBB985 /* SearchCell.m */,
 				71658FBB20FD37C1002190B3 /* CastCollectionViewCell.h */,
@@ -808,6 +813,7 @@
 				71658FBD20FD37C1002190B3 /* CastCollectionViewCell.m in Sources */,
 				953A1AE021121E41008215B0 /* APIManagerMovieGlu.m in Sources */,
 				26DBAEB0211126910025438D /* PCMovieDiscussionViewController.m in Sources */,
+				26AF5796211A56B10046A658 /* myChatCell.m in Sources */,
 				953A1AD4210FD0E8008215B0 /* ShelfUpdateCell.m in Sources */,
 				953A1AEB2114CCB5008215B0 /* TheatreMoviesCell.m in Sources */,
 				26A04901210A6C6000DF8496 /* Movie.m in Sources */,
