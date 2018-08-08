@@ -18,7 +18,12 @@
     if(![profileURLString isEqual:[NSNull null]]){
         NSString *fullProfileURLString = [baseURLString stringByAppendingString:profileURLString];
         NSURL *profileURL = [NSURL URLWithString:fullProfileURLString];
-        [self.castImageView setImageWithURL:profileURL];
+        self.castImageView.alpha = 0.0;
+        [self.castImageView setImageWithURL:
+         profileURL];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.castImageView.alpha = 1.0;
+        }];
     }
    
     [self.castImageView.layer setCornerRadius:self.castImageView.frame.size.width / 2];

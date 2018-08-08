@@ -13,6 +13,7 @@
 #import "APIManager.h"
 #import "Movie.h"
 #import "PCUserProfileViewController.h"
+#import "HCSStarRatingView.h"
 
 @interface PCSingleReviewViewController ()
 
@@ -28,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *starRatingView;
 
 @end
 
@@ -118,8 +120,11 @@
     //set labels
     self.movieTitleLabel.text = self.movieName;
     if(self.ratingString != nil){
-            self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
-    }
+         //   self.ratingLabel.text = [[[@"Rated " stringByAppendingString:self.ratingString] stringByAppendingString:@" by "] stringByAppendingString:self.username];
+        self.ratingLabel.text = [@" by " stringByAppendingString:self.username];
+        
+        [self.starRatingView setValue:[self.ratingString floatValue]/2];
+    } 
     else{
         self.ratingLabel.text = [self.username stringByAppendingString:@" has not rated this movie yet"];
     }

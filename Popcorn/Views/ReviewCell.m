@@ -26,8 +26,6 @@
     NSDictionary *review = reviews[indexPath.row];
     self.reviewerName.text = review[@"author"];
     self.reviewContent.text = review[@"content"];
-//    NSArray *reviewContent = [review allValues];
-//    self.reviewContent.text = reviewContent[0];
 }
 
 @end
