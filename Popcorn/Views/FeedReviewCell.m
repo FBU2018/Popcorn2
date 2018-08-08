@@ -138,8 +138,10 @@
                         [fmt setPositiveFormat:@"0.##"];
                         NSString *ratingString = [[fmt stringFromNumber:ratingVal] stringByAppendingString:@"/10"];
                         self.ratingString = ratingString;
+                        [self.starRatingView setValue:[self.ratingString floatValue]/2];
+                         self.ratedLabel.text = [@"by " stringByAppendingString:author.username];
                         
-                        self.ratedLabel.text = [[[@"Rated " stringByAppendingString:ratingString] stringByAppendingString:@" by "] stringByAppendingString:author.username];
+//                        self.ratedLabel.text = [[[@"Rated " stringByAppendingString:ratingString] stringByAppendingString:@" by "] stringByAppendingString:author.username];
                         
                     }
                     else{
