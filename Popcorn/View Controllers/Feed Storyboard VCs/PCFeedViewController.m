@@ -17,6 +17,8 @@
 #import "PCSingleReviewViewController.h"
 #import "JGProgressHUD.h"
 #import "PCUserProfileViewController.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource, ShelfUpdateCellDelegate, FeedReviewCellDelegate>
 
@@ -24,6 +26,7 @@
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) JGProgressHUD *HUD;
+@property NSMutableArray *images;
 
 
 @end
@@ -36,6 +39,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.posts = [NSMutableArray new];
+    self.images = [NSMutableArray new];
     
     [self getPostsArray];
     
@@ -126,7 +130,30 @@
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         NSMutableArray *shelves = self.posts[indexPath.row][@"shelves"];
         
-        [cell configureCell:userId withSession:userSessionId withMovie:movieId withShelves:shelves withDate:postDate];
+        //cache
+        NSInteger index = indexPath.row;
+        NSString *indexString = [NSString stringWithFormat:@"%ld", (long)index];
+        bool contains = NO;
+        
+        for(NSDictionary *dict in self.images){
+            if([dict[@"index"] isEqualToString:indexString]){
+                contains = YES;
+                cell.movieImage.image = dict[@"img"];
+            }
+        }
+        
+        [cell configureCell:userId withSession:userSessionId withMovie:movieId withShelves:shelves withDate:postDate contains:contains completion:^(NSString *imageURL) {
+            
+            NSURL *url = [NSURL URLWithString:imageURL];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+
+            if(contains == NO){
+                NSDictionary *imageDict = [[NSDictionary alloc] initWithObjectsAndKeys:indexString, @"index", img, @"img", nil];
+                [self.images addObject:imageDict];
+            }
+        }];
+        
         return cell;
     }
     else{ // if([postType isEqualToString:@"review"])
@@ -135,7 +162,28 @@
         NSString *userId = self.posts[indexPath.row][@"authorId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         
-        [cell configureCell:userId withMovie:movieId withDate: postDate];
+        //cache
+        NSInteger index = indexPath.row;
+        NSString *indexString = [NSString stringWithFormat:@"%ld", (long)index];
+        bool contains = NO;
+        
+        for(NSDictionary *dict in self.images){
+            if([dict[@"index"] isEqualToString:indexString]){
+                contains = YES;
+                cell.movieImage.image = dict[@"img"];
+            }
+        }
+        
+        [cell configureCell:userId withMovie:movieId withDate:postDate contains:contains completion:^(NSString *imageURL) {
+            NSURL *url = [NSURL URLWithString:imageURL];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+            
+            if(contains == NO){
+                NSDictionary *imageDict = [[NSDictionary alloc] initWithObjectsAndKeys:indexString, @"index", img, @"img", nil];
+                [self.images addObject:imageDict];
+            }
+        }];
         return cell;
     }
 

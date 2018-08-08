@@ -46,13 +46,14 @@
 }
 
 
-- (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date{
-    
+- (void)configureCell:(NSString *)authorId withSession: (NSString *) sessionId withMovie:(NSString *)movieId withShelves:(NSMutableArray *)shelves withDate: (NSDate*) date contains:(BOOL)contains completion:(void (^)(NSString *))completion{
 
     self.userImage.image = [UIImage imageNamed:@"person placeholder"];
     self.usernameLabel.text = @"";
     self.descriptionLabel.text = @"";
-    self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    if(contains == NO){
+        self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    }
     self.movieTitleLabel.text = @"";
     self.timestampLabel.text = @"";
     self.summaryLabel.text = @"";
@@ -116,13 +117,6 @@
                     else{
                         self.summaryLabel.text = dataDictionary[@"overview"];
                         
-                        //fade in images
-                        self.movieImage.alpha = 0.0;
-                        [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
-                        [UIView animateWithDuration:0.3 animations:^{
-                            self.movieImage.alpha = 1.0;
-                        }];
-                        
                         //set title
                         self.movieTitleLabel.text = dataDictionary[@"title"];
                         
@@ -142,6 +136,17 @@
                             index++;
                         }
                         self.descriptionLabel.text = description;
+                        
+                        if(contains == NO){
+                            //fade in images
+                            self.movieImage.alpha = 0.0;
+                            [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                            [UIView animateWithDuration:0.3 animations:^{
+                                self.movieImage.alpha = 1.0;
+                            }];
+                        }
+                        NSString *urlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]];
+                        completion(urlString);
                     }
                 }
             }];

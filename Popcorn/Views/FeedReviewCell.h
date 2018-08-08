@@ -40,7 +40,8 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *starRatingView;
 
-- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date;
+
+- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date contains: (BOOL) contains completion: (void (^)(NSString* imageURL)) completion;
 
 
 @end

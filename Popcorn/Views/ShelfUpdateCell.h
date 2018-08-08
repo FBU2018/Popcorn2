@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSString *voteAverage;
 @property (strong, nonatomic) PFUser *author;
 
-- (void)configureCell: (NSString *) authorId withSession: (NSString *) sessionId withMovie: (NSString*) movieId withShelves: (NSMutableArray*) shelves withDate: (NSDate*) date;
+- (void)configureCell: (NSString *) authorId withSession: (NSString *) sessionId withMovie: (NSString*) movieId withShelves: (NSMutableArray*) shelves withDate: (NSDate*) date contains: (BOOL) contains completion: (void (^)(NSString* imageURL)) completion;
 
 
 @end
