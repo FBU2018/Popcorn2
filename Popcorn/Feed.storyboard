@@ -349,14 +349,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="&quot;This movie...&quot;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QXp-fp-7lv">
-                                <rect key="frame" x="16" y="342" width="343" height="263"/>
+                                <rect key="frame" x="16" y="325" width="343" height="280"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-ol-6Nn" customClass="PFImageView">
-                                <rect key="frame" x="16" y="302" width="35" height="35"/>
+                                <rect key="frame" x="16" y="283" width="35" height="35"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="UbI-9p-aKn"/>
@@ -367,7 +367,7 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rucha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-oI-7lA">
-                                <rect key="frame" x="57" y="310" width="41" height="18"/>
+                                <rect key="frame" x="57" y="291" width="41" height="18"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="bpE-BK-Ihi"/>
@@ -399,13 +399,13 @@
                             <constraint firstItem="7Bd-ol-6Nn" firstAttribute="leading" secondItem="W6p-rb-XGT" secondAttribute="leading" constant="16" id="Hbe-Nl-p23"/>
                             <constraint firstItem="gSF-Df-Nfw" firstAttribute="top" secondItem="7zP-rW-r6W" secondAttribute="bottom" constant="10" id="KKC-kQ-7q4"/>
                             <constraint firstItem="3Gv-Nf-DSm" firstAttribute="leading" secondItem="W6p-rb-XGT" secondAttribute="leading" constant="16" id="Mky-bE-qen"/>
-                            <constraint firstItem="QXp-fp-7lv" firstAttribute="top" secondItem="7Bd-ol-6Nn" secondAttribute="bottom" constant="5" id="NDf-pg-fdS"/>
+                            <constraint firstItem="QXp-fp-7lv" firstAttribute="top" secondItem="7Bd-ol-6Nn" secondAttribute="bottom" constant="7" id="NDf-pg-fdS"/>
                             <constraint firstItem="gSF-Df-Nfw" firstAttribute="leading" secondItem="3Gv-Nf-DSm" secondAttribute="trailing" constant="8" id="UG8-Xz-ntA"/>
                             <constraint firstItem="7zP-rW-r6W" firstAttribute="top" secondItem="W6p-rb-XGT" secondAttribute="top" constant="45" id="Xr1-6G-Sf3"/>
-                            <constraint firstItem="7Bd-ol-6Nn" firstAttribute="top" secondItem="3Gv-Nf-DSm" secondAttribute="bottom" constant="42" id="ezy-kS-dDi"/>
+                            <constraint firstItem="7Bd-ol-6Nn" firstAttribute="top" secondItem="3Gv-Nf-DSm" secondAttribute="bottom" constant="23" id="ezy-kS-dDi"/>
                             <constraint firstItem="W6p-rb-XGT" firstAttribute="bottom" secondItem="QXp-fp-7lv" secondAttribute="bottom" constant="13" id="k9C-Hu-hrI"/>
                             <constraint firstItem="W6p-rb-XGT" firstAttribute="trailing" secondItem="7zP-rW-r6W" secondAttribute="trailing" constant="16" id="rMp-oZ-Ntp"/>
-                            <constraint firstItem="u4e-oI-7lA" firstAttribute="top" secondItem="3Gv-Nf-DSm" secondAttribute="bottom" constant="50" id="tbt-zx-rQt"/>
+                            <constraint firstItem="u4e-oI-7lA" firstAttribute="top" secondItem="3Gv-Nf-DSm" secondAttribute="bottom" constant="31" id="tbt-zx-rQt"/>
                             <constraint firstItem="QXp-fp-7lv" firstAttribute="leading" secondItem="W6p-rb-XGT" secondAttribute="leading" constant="16" id="vfl-3D-DFQ"/>
                             <constraint firstItem="5Fx-Sd-BqJ" firstAttribute="leading" secondItem="3Gv-Nf-DSm" secondAttribute="trailing" constant="8" id="yPZ-ub-Yu9"/>
                             <constraint firstItem="W6p-rb-XGT" firstAttribute="trailing" secondItem="5Fx-Sd-BqJ" secondAttribute="trailing" constant="77" id="zKv-9b-ewo"/>
