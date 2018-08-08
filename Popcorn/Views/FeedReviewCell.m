@@ -160,7 +160,7 @@
                         NSLog(@"Too many requests");
                     }
                     else{
-                        self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
+                        self.reviewTitleLabel.text = [[@"reviewed \"" stringByAppendingString:dataDictionary[@"title"]] stringByAppendingString:@"\""];
                         self.titleLabel.text = dataDictionary[@"title"];
                         
                         if(contains == NO){
