@@ -13,6 +13,7 @@
 #import "APIManager.h"
 #import "Movie.h"
 #import "PCUserProfileViewController.h"
+#import "HCSStarRatingView.h"
 
 @interface PCSingleReviewViewController ()
 
@@ -28,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *starRatingView;
 
 @end
 

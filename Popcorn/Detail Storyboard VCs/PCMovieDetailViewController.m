@@ -115,7 +115,11 @@
     }
     self.dateLabel.text = self.movie.releaseDateString;
 
+    self.posterImageView.alpha = 0.0;
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.posterImageView.alpha = 1.0;
+    }];
     
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
     

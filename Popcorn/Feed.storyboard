@@ -379,11 +379,21 @@
                                     <outletCollection property="gestureRecognizers" destination="jCk-3h-zDo" appends="YES" id="LCq-Jp-XLc"/>
                                 </connections>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fx-Sd-BqJ" customClass="HCSStarRatingView">
+                                <rect key="frame" x="144" y="181" width="154" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="7AO-Nl-fPg"/>
+                                    <constraint firstAttribute="height" constant="22" id="jtF-NL-nTp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5Fx-Sd-BqJ" firstAttribute="top" secondItem="gSF-Df-Nfw" secondAttribute="bottom" constant="7.5" id="18e-2r-Txe"/>
                             <constraint firstItem="W6p-rb-XGT" firstAttribute="trailing" secondItem="QXp-fp-7lv" secondAttribute="trailing" constant="16" id="2sA-6f-o8P"/>
                             <constraint firstItem="7zP-rW-r6W" firstAttribute="leading" secondItem="3Gv-Nf-DSm" secondAttribute="trailing" constant="8" id="3DY-Gn-IrU"/>
+                            <constraint firstItem="QXp-fp-7lv" firstAttribute="top" secondItem="5Fx-Sd-BqJ" secondAttribute="bottom" constant="139" id="7zl-If-Mo9"/>
                             <constraint firstItem="u4e-oI-7lA" firstAttribute="leading" secondItem="7Bd-ol-6Nn" secondAttribute="trailing" constant="6" id="9YP-0c-suA"/>
                             <constraint firstItem="3Gv-Nf-DSm" firstAttribute="top" secondItem="W6p-rb-XGT" secondAttribute="top" constant="16" id="ELv-oF-MVH"/>
                             <constraint firstItem="7Bd-ol-6Nn" firstAttribute="leading" secondItem="W6p-rb-XGT" secondAttribute="leading" constant="16" id="Hbe-Nl-p23"/>
@@ -397,6 +407,8 @@
                             <constraint firstItem="W6p-rb-XGT" firstAttribute="trailing" secondItem="7zP-rW-r6W" secondAttribute="trailing" constant="16" id="rMp-oZ-Ntp"/>
                             <constraint firstItem="u4e-oI-7lA" firstAttribute="top" secondItem="3Gv-Nf-DSm" secondAttribute="bottom" constant="50" id="tbt-zx-rQt"/>
                             <constraint firstItem="QXp-fp-7lv" firstAttribute="leading" secondItem="W6p-rb-XGT" secondAttribute="leading" constant="16" id="vfl-3D-DFQ"/>
+                            <constraint firstItem="5Fx-Sd-BqJ" firstAttribute="leading" secondItem="3Gv-Nf-DSm" secondAttribute="trailing" constant="8" id="yPZ-ub-Yu9"/>
+                            <constraint firstItem="W6p-rb-XGT" firstAttribute="trailing" secondItem="5Fx-Sd-BqJ" secondAttribute="trailing" constant="77" id="zKv-9b-ewo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W6p-rb-XGT"/>
                     </view>
@@ -407,6 +419,7 @@
                         <outlet property="movieTitleLabel" destination="7zP-rW-r6W" id="bVr-n5-mna"/>
                         <outlet property="ratingLabel" destination="gSF-Df-Nfw" id="lUo-rQ-nzk"/>
                         <outlet property="reviewTextView" destination="QXp-fp-7lv" id="BJ9-nL-4M7"/>
+                        <outlet property="starRatingView" destination="5Fx-Sd-BqJ" id="aw9-di-K1t"/>
                         <outlet property="userImageGestureRecognizer" destination="6Bt-uF-Wa6" id="icQ-ia-zXC"/>
                         <outlet property="userImageView" destination="7Bd-ol-6Nn" id="X6D-Cj-lbe"/>
                         <outlet property="usernameGestureRecognizer" destination="jCk-3h-zDo" id="TTZ-Nw-lx5"/>

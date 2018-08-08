@@ -17,7 +17,11 @@
     if(![credits[indexPath.item][@"poster_path"] isEqual:[NSNull null]]){
         NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:credits[indexPath.item][@"poster_path"]];
         NSURL *posterURL = [NSURL URLWithString:posterURLString];
+        self.posterView.alpha = 0.0;
         [self.posterView setImageWithURL:posterURL];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.posterView.alpha = 1.0;
+        }];
     }
     self.titleLabel.text = credits[indexPath.item][@"title"];
 }
