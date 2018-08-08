@@ -989,22 +989,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = 866ALQJ6LD;
-=======
 				DEVELOPMENT_TEAM = CVY782JBJS;
->>>>>>> b987c221c1a58d386953f9ab9f4ebc6a00e31d11
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD
-				PRODUCT_BUNDLE_IDENTIFIER = com.eomondi.Popcorn.awesome;
-=======
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruchapatki.Popcorn;
->>>>>>> b987c221c1a58d386953f9ab9f4ebc6a00e31d11
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
