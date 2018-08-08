@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import "PCLoginViewController.h"
+#import "JGProgressHUD.h"
 
 
 @interface PCLibraryViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
@@ -31,6 +32,7 @@
 
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBarButton;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) JGProgressHUD *HUD;
 
 @end
 
@@ -38,6 +40,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
 
     //instantiate all arrays
     self.shelves = [NSArray new];
@@ -181,6 +187,7 @@
             self.filteredData = self.shelves;
             NSLog(@"Successfully got all of user's shelves");
             [self.refreshControl endRefreshing];
+            [self.HUD dismissAnimated:YES];
             [self.tableView reloadData];
         }
         else{

@@ -12,6 +12,7 @@
 #import "PCMovieDetailViewController.h"
 #import "APIManager.h"
 #import "Movie.h"
+#import "PCUserProfileViewController.h"
 
 @interface PCSingleReviewViewController ()
 
@@ -25,7 +26,8 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *movieTitleGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *movieImageGestureRecognizer;
 
-
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
 
 @end
 
@@ -38,8 +40,22 @@
     self.shelves = [NSArray new];
     [self getLists];
     [self getMovieObject];
+    [self getCurrentUser];
     [self.movieTitleLabel setUserInteractionEnabled:YES];
     
+}
+
+- (void)getCurrentUser{
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil){
+            for(PFUser *user in users){
+                if(user.username == self.username){
+                    self.currUser = user;
+                }
+            }
+        }
+    }];
 }
 
 - (void)getMovieObject{
@@ -74,6 +90,16 @@
 - (IBAction)didTapMovieImage:(id)sender {
     [self performSegueWithIdentifier:@"reviewToDetail" sender:nil];
 }
+
+- (IBAction)didTapUserImage:(id)sender {
+    [self performSegueWithIdentifier:@"singleReviewToProfile" sender:nil];
+}
+
+- (IBAction)didTapUsername:(id)sender {
+    [self performSegueWithIdentifier:@"singleReviewToProfile" sender:nil];
+}
+
+
 
 
 
@@ -119,6 +145,10 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.movie = self.movie;
         receiver.shelves = self.shelves;
+    }
+    else if([segue.identifier isEqualToString:@"singleReviewToProfile"]){
+        PCUserProfileViewController *receiver = [segue destinationViewController];
+        receiver.currentUser = self.currUser;
     }
 }
 

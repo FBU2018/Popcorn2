@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) PFFile *userImage;
 @property (strong, nonatomic) NSString *review;
+@property (strong, nonatomic) PFUser *currUser;
 
 @property (strong, nonatomic) Movie* movie;
 @property (strong, nonatomic) NSArray* shelves;

@@ -17,7 +17,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    UITapGestureRecognizer *userImageGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.userImage addGestureRecognizer:userImageGestureRecognizer];
+    [self.userImage setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *usernameGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.usernameLabel addGestureRecognizer:usernameGestureRecognizer];
+    [self.usernameLabel setUserInteractionEnabled:YES];
 }
+
+- (IBAction)didTapUser:(id)sender {
+    [self.delegate feedReviewCell:self didTapUser:self.author];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -58,6 +71,7 @@
         }
         else{
             PFUser *author = (PFUser*)user;
+            self.author = author;
             
             //set profile image if file is not nil
             PFFile *imageFile = author[@"userImage"];
@@ -95,8 +109,12 @@
                         self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
                         self.titleLabel.text = dataDictionary[@"title"];
                         
-                        //set image of movie
+                        //fade in images
+                        self.movieImage.alpha = 0.0;
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.movieImage.alpha = 1.0;
+                        }];
                         self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
                     }
                 }

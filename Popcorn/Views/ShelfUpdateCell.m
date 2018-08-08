@@ -21,6 +21,14 @@
     UITapGestureRecognizer *addToGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAddTo:)];
     [self.addToShelvesButton addGestureRecognizer:addToGestureRecognizer];
     [self.addToShelvesButton setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *userImageGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.userImage addGestureRecognizer:userImageGestureRecognizer];
+    [self.userImage setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *usernameGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.usernameLabel addGestureRecognizer:usernameGestureRecognizer];
+    [self.usernameLabel setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,6 +37,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)didTapUser:(id)sender {
+    [self.delegate shelfUpdateCell:self didTapUser:self.author];
+}
 
 - (IBAction)didTapAddTo:(id)sender {
     [self.delegate shelfUpdateCell:self didTapAddTo:self.movie];
@@ -44,6 +55,7 @@
     self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
     self.movieTitleLabel.text = @"";
     self.timestampLabel.text = @"";
+    self.summaryLabel.text = @"";
 
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [UIColor blackColor];
@@ -69,6 +81,7 @@
         }
         else{
             PFUser *author = (PFUser*)user;
+            self.author = author;
             
             //set profile image if file is not nil
             PFFile *imageFile = author[@"userImage"];
@@ -103,8 +116,12 @@
                     else{
                         self.summaryLabel.text = dataDictionary[@"overview"];
                         
-                        //set image of movie
+                        //fade in images
+                        self.movieImage.alpha = 0.0;
                         [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.movieImage.alpha = 1.0;
+                        }];
                         
                         //set title
                         self.movieTitleLabel.text = dataDictionary[@"title"];

@@ -16,6 +16,7 @@
 #import "PCTrailerViewController.h"
 #import "PCShelfPickerViewController.h"
 #import "Parse.h"
+#import "JGProgressHUD.h"
 
 @interface PCShelfViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SWTableViewCellDelegate>
 
@@ -26,6 +27,8 @@
 @property (strong, nonatomic) NSArray *movieArray; //all movies in the shelf
 @property (strong, nonatomic) NSArray *filteredData; //for search
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) JGProgressHUD *HUD;
+
 
 @end
 
@@ -33,6 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 0 footer
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -48,6 +53,10 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(performGetMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
 }
 
 - (void)performGetMovies{
@@ -186,6 +195,8 @@
             self.filteredData = moviesArray;
             self.movieArray = moviesArray;
             [self.refreshControl endRefreshing];
+            [self.HUD dismissAnimated:YES];
+
             [self.tableView reloadData];
             
             if(self.movieArray.count == 0){
