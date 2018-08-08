@@ -46,6 +46,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // Set labels and image views
                     self.usernameLabel.text = user.username;
+                    self.chatTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
                     self.chatTextLabel.text = chat.message;
         
                     // Set timestamp
