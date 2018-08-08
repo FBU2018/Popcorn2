@@ -11,6 +11,8 @@
 #import "Movie.h"
 #import "PFUser+ExtendedUser.h"
 
+@protocol FeedReviewCellDelegate;
+
 @interface FeedReviewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *userImage;
@@ -30,8 +32,20 @@
 @property (strong, nonatomic) NSString* authorId;
 @property (strong, nonatomic) NSString* movieId;
 @property (strong, nonatomic) Movie* movie;
+@property (strong, nonatomic) PFUser* author;
+
+@property (nonatomic, weak) id<FeedReviewCellDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
 
 - (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date;
 
 
 @end
+
+
+@protocol FeedReviewCellDelegate
+
+- (void)feedReviewCell:(FeedReviewCell*) cell didTapUser: (PFUser*) author;
+
+@end;

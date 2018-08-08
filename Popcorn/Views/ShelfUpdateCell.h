@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addToGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
 
 
 @property (nonatomic, weak) id<ShelfUpdateCellDelegate> delegate;
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) NSArray *userShelves;
 @property (strong, nonatomic) Movie* movie;
 @property (strong, nonatomic) NSString *voteAverage;
+@property (strong, nonatomic) PFUser *author;
 
 - (void)configureCell: (NSString *) authorId withSession: (NSString *) sessionId withMovie: (NSString*) movieId withShelves: (NSMutableArray*) shelves withDate: (NSDate*) date;
 
@@ -45,5 +48,6 @@
 @protocol ShelfUpdateCellDelegate
 
 - (void)shelfUpdateCell:(ShelfUpdateCell*) cell didTapAddTo: (Movie*) movie;
+- (void)shelfUpdateCell:(ShelfUpdateCell*) cell didTapUser: (PFUser*) author;
 
 @end;

@@ -15,12 +15,16 @@
 #import "PCMovieDetailViewController.h"
 #import "Movie.h"
 #import "PCSingleReviewViewController.h"
+#import "JGProgressHUD.h"
+#import "PCUserProfileViewController.h"
 
-@interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource, ShelfUpdateCellDelegate>
+@interface PCFeedViewController () <UITableViewDelegate, UITableViewDataSource, ShelfUpdateCellDelegate, FeedReviewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) JGProgressHUD *HUD;
+
 
 @end
 
@@ -39,10 +43,22 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getPostsArray) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
 }
 
 - (void)shelfUpdateCell:(ShelfUpdateCell *)cell didTapAddTo:(Movie *)movie{
     [self getShelvesWithSession:cell.authorSessionId andAccountId:cell.authorId ofCell:cell fromAddButton:YES];
+}
+
+- (void)shelfUpdateCell:(ShelfUpdateCell *)cell didTapUser:(PFUser *)author{
+    [self performSegueWithIdentifier:@"feedToProfile" sender:cell];
+}
+
+- (void)feedReviewCell:(FeedReviewCell *)cell didTapUser:(PFUser *)author{
+    [self performSegueWithIdentifier:@"feedToProfile" sender:cell];
 }
 
 - (void) getPostsArray{
@@ -83,6 +99,7 @@
                 }
                 
                 [self.refreshControl endRefreshing];
+                [self.HUD dismissAnimated:YES];
                 [self.tableView reloadData];
             }];
 
@@ -114,6 +131,7 @@
     }
     else{ // if([postType isEqualToString:@"review"])
         FeedReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedReviewCell" forIndexPath:indexPath];
+        cell.delegate = self;
         NSString *userId = self.posts[indexPath.row][@"authorId"];
         NSString *movieId = self.posts[indexPath.row][@"movieId"];
         
@@ -207,6 +225,19 @@
         PCMovieDetailViewController *receiver = [segue destinationViewController];
         receiver.movie = tappedCell.movie;
         receiver.shelves = tappedCell.userShelves;
+    }
+    else if([segue.identifier isEqualToString:@"feedToProfile"]){
+        UITableView *cell = sender;
+        if([cell isKindOfClass:[ShelfUpdateCell class]]){
+            ShelfUpdateCell *tappedCell = sender;
+            PCUserProfileViewController *receiver = [segue destinationViewController];
+            receiver.currentUser = tappedCell.author;
+        }
+        else{
+            FeedReviewCell *tappedCell = sender;
+            PCUserProfileViewController *receiver = [segue destinationViewController];
+            receiver.currentUser = tappedCell.author;
+        }
     }
 }
 

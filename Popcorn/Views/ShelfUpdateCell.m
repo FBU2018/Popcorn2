@@ -21,6 +21,14 @@
     UITapGestureRecognizer *addToGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAddTo:)];
     [self.addToShelvesButton addGestureRecognizer:addToGestureRecognizer];
     [self.addToShelvesButton setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *userImageGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.userImage addGestureRecognizer:userImageGestureRecognizer];
+    [self.userImage setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *usernameGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUser:)];
+    [self.usernameLabel addGestureRecognizer:usernameGestureRecognizer];
+    [self.usernameLabel setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,6 +37,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)didTapUser:(id)sender {
+    [self.delegate shelfUpdateCell:self didTapUser:self.author];
+}
 
 - (IBAction)didTapAddTo:(id)sender {
     [self.delegate shelfUpdateCell:self didTapAddTo:self.movie];
@@ -70,6 +81,7 @@
         }
         else{
             PFUser *author = (PFUser*)user;
+            self.author = author;
             
             //set profile image if file is not nil
             PFFile *imageFile = author[@"userImage"];

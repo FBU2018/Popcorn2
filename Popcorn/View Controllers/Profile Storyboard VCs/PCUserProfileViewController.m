@@ -16,11 +16,13 @@
 #import "PFUser+ExtendedUser.h"
 #import "AppDelegate.h"
 #import "PCLoginViewController.h"
+#import "JGProgressHUD.h"
 
 @interface PCUserProfileViewController () <UITableViewDelegate, UITableViewDataSource, ProfileInfoCellDelegate>
 
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) JGProgressHUD *HUD;
 @property (strong, nonatomic) NSArray *shelves; // array of dictionaries about each shelf
 @property (strong, nonatomic) NSMutableArray *allMovies; //contains all Movie objects in all of user's lists
 @property (strong, nonatomic) NSMutableArray *moviesInList; //helper
@@ -70,6 +72,10 @@
     [self.refreshControl addTarget:self action:@selector(getProfileLists) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
+    
     // Call method to get user's list given their session id
     [self getProfileLists];
 }
@@ -82,6 +88,7 @@
             self.shelves = results;
             NSLog(@"Successfully got all of profile user's shelves");
             [self.refreshControl endRefreshing];
+            [self.HUD dismissAnimated:YES];
             [self.tableView reloadData];
         }
         else{
