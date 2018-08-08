@@ -116,9 +116,6 @@
                         self.ratingString = ratingString;
                         [self.starRatingView setValue:[self.ratingString floatValue]/2];
                          self.ratedLabel.text = [@"by " stringByAppendingString:author.username];
-                        
-//                        self.ratedLabel.text = [[[@"Rated " stringByAppendingString:ratingString] stringByAppendingString:@" by "] stringByAppendingString:author.username];
-                        
                     }
                     else{
                         //rating is 0/undefined
