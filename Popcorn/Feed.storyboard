@@ -103,7 +103,7 @@
                                                     <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0F-rH-m9j" customClass="HCSStarRatingView">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0F-rH-m9j" customClass="HCSStarRatingView">
                                                     <rect key="frame" x="141" y="135" width="135" height="18"/>
                                                     <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.74152213570000003" green="0.14117647059999999" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -512,7 +512,7 @@
                 <viewControllerPlaceholder storyboardName="ShelfPicker" id="2bR-13-lQh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5t5-Ao-kjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621" y="324"/>
+            <point key="canvasLocation" x="1621" y="271"/>
         </scene>
         <!--PCProfileViewController-->
         <scene sceneID="qqm-n1-YNy">
@@ -520,7 +520,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="PCProfileViewController" id="HWV-Od-Yh9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjx-Yz-iQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682" y="418"/>
+            <point key="canvasLocation" x="1673" y="376"/>
         </scene>
         <!--Detail-->
         <scene sceneID="QIc-qN-HKx">
@@ -528,7 +528,7 @@
                 <viewControllerPlaceholder storyboardName="Detail" id="PDe-0U-yvF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaI-R6-DOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="17"/>
+            <point key="canvasLocation" x="1584" y="33"/>
         </scene>
         <!--Home-->
         <scene sceneID="JWk-x9-xz9">

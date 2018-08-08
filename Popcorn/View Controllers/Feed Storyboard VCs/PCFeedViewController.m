@@ -66,6 +66,7 @@
 }
 
 - (void) getPostsArray{
+    [self.images removeAllObjects];
     PFQuery *query = [Post query];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"createdAt"];

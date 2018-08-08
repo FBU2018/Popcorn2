@@ -44,6 +44,7 @@
     [self setUpView];
 }
 
+
 -(void)setUpView{
     if(self.currentUser == nil){
         // showing logged in user's profile
@@ -199,7 +200,6 @@
         [loggedInUser follow:user withCompletionBlock:^(BOOL success) {
             if(success){
                 self.following = YES;
-                [self alertWithString:@"Successfully followed!"];
                 [cell setButton];
                 [self.tableView reloadData];
             }
@@ -210,7 +210,6 @@
         [loggedInUser unfollow:user withCompletionBlock:^(BOOL success) {
             if(success){
                 self.following = NO;
-                [self alertWithString:@"Successfully unfollowed!"];
                 [cell setButton];
                 [self.tableView reloadData];
             }
