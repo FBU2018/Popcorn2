@@ -38,7 +38,8 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
 
-- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date;
+
+- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date contains: (BOOL) contains completion: (void (^)(NSString* imageURL)) completion;
 
 
 @end

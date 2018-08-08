@@ -38,12 +38,15 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId withDate:(NSDate*)date{
+
+- (void)configureCell:(NSString *)authorId withMovie:(NSString *)movieId withDate:(NSDate *)date contains:(BOOL)contains completion:(void (^)(NSString *))completion{
     
     self.userImage.image = [UIImage imageNamed:@"person placeholder"];
     self.usernameLabel.text = @"";
     self.reviewTitleLabel.text = @"";
-    self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    if(contains == NO){
+        self.movieImage.image = [UIImage imageNamed:@"poster-placeholder"];
+    }
     self.titleLabel.text = @"";
     self.ratedLabel.text = @"";
     self.reviewTextLabel.text = @"";
@@ -94,33 +97,6 @@
             
             self.usernameLabel.text = author.username;
             
-            //everything that needs movie details:
-            [[APIManager shared] getMovieDetails:movieId completion:^(NSDictionary *dataDictionary, NSError *error) {
-                if(error != nil){
-                    NSLog(@"Error: %@", error.localizedDescription);
-                }
-                else{
-                    //set review and title
-                    NSNumber *statusCode = dataDictionary[@"status_code"];
-                    if([[statusCode stringValue] isEqualToString:@"25"]){
-                        NSLog(@"Too many requests");
-                    }
-                    else{
-                        self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
-                        self.titleLabel.text = dataDictionary[@"title"];
-                        
-                        //fade in images
-                        self.movieImage.alpha = 0.0;
-                        [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
-                        [UIView animateWithDuration:0.3 animations:^{
-                            self.movieImage.alpha = 1.0;
-                        }];
-                        self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
-                    }
-                }
-            }];
-            
-            
             //rating related labels
             [[APIManager shared] getRating:movieId withSessionId:author[@"sessionId"] completion:^(NSObject *rating, NSError *error) {
                 if(error != nil){
@@ -169,6 +145,37 @@
                     }
                 }
             }];
+            
+            //everything that needs movie details:
+            [[APIManager shared] getMovieDetails:movieId completion:^(NSDictionary *dataDictionary, NSError *error) {
+                if(error != nil){
+                    NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else{
+                    //set review and title
+                    NSNumber *statusCode = dataDictionary[@"status_code"];
+                    if([[statusCode stringValue] isEqualToString:@"25"]){
+                        NSLog(@"Too many requests");
+                    }
+                    else{
+                        self.reviewTitleLabel.text = [@"reviewed " stringByAppendingString:dataDictionary[@"title"]];
+                        self.titleLabel.text = dataDictionary[@"title"];
+                        
+                        if(contains == NO){
+                            //fade in images
+                            self.movieImage.alpha = 0.0;
+                            [self.movieImage setImageWithURL:[NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]]];
+                            [UIView animateWithDuration:0.3 animations:^{
+                                self.movieImage.alpha = 1.0;
+                            }];
+                        }
+
+                        self.movieImageURL = [NSURL URLWithString:[@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]];
+                        completion([@"https://image.tmdb.org/t/p/w500" stringByAppendingString:dataDictionary[@"poster_path"]]);
+                    }
+                }
+            }];
+            
         }
     }];
 }
