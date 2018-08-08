@@ -133,7 +133,7 @@
                                                     <rect key="frame" x="63" y="8" width="304" height="52"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Sample chat text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcx-RX-hsZ">
-                                                            <rect key="frame" x="8" y="8" width="288" height="36"/>
+                                                            <rect key="frame" x="8" y="0.0" width="288" height="52"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -143,8 +143,8 @@
                                                     <constraints>
                                                         <constraint firstItem="Lcx-RX-hsZ" firstAttribute="leading" secondItem="gJc-Ln-v46" secondAttribute="leading" constant="8" id="BCh-Rc-zE7"/>
                                                         <constraint firstAttribute="trailing" secondItem="Lcx-RX-hsZ" secondAttribute="trailing" constant="8" id="Bmm-ur-ydz"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Lcx-RX-hsZ" secondAttribute="bottom" constant="8" id="RRO-CN-7IX"/>
-                                                        <constraint firstItem="Lcx-RX-hsZ" firstAttribute="top" secondItem="gJc-Ln-v46" secondAttribute="top" constant="8" id="bmO-5Z-Uw6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Lcx-RX-hsZ" secondAttribute="bottom" id="RRO-CN-7IX"/>
+                                                        <constraint firstItem="Lcx-RX-hsZ" firstAttribute="top" secondItem="gJc-Ln-v46" secondAttribute="top" id="bmO-5Z-Uw6"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-TH-M5F">
