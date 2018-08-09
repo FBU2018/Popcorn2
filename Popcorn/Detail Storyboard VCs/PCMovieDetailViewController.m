@@ -82,7 +82,10 @@
     similarLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     similarLayout.minimumInteritemSpacing = 2;
     
-
+    //adds a dark tint to the backdrop so text is readable
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
+    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+    [self.backdropImageView addSubview:overlay];
 }
 
 -(void) didPullToRefresh{
@@ -127,10 +130,7 @@
         self.backdropImageView.alpha = 1.0;
     }];
   
-    //adds a dark tint to the backdrop so text is readable
-    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
-    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-    [self.backdropImageView addSubview:overlay];
+
     
     
     [self fetchCast];
