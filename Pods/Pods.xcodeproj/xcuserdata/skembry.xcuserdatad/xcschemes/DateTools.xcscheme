@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E352BF9BA65499AB3ED73B5E4DC3C38"
-               BlueprintName = "SVPullToRefresh"
+               BlueprintIdentifier = "302F670D2A305364E5AA664F446431C8"
+               BlueprintName = "DateTools"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libSVPullToRefresh.a">
+               BuildableName = "libDateTools.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
