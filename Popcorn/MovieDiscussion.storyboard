@@ -114,6 +114,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="bubbleView" destination="63c-q2-EqE" id="OTV-hX-rFq"/>
                                             <outlet property="chatTextLabel" destination="Kdd-6B-9Sw" id="TSZ-JF-hDN"/>
@@ -169,6 +172,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="bubbleView" destination="gJc-Ln-v46" id="Xp2-jn-IHF"/>
                                             <outlet property="myChatTextLabel" destination="Lcx-RX-hsZ" id="O6a-uY-fWd"/>

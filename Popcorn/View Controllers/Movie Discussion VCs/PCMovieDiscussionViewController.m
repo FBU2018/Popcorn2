@@ -163,11 +163,13 @@
     Chat *currentChat = self.chatsArray[indexPath.row];
     if([currentChat.username isEqualToString:currentUsername]){
         myChatCell *newCell = [tableView dequeueReusableCellWithIdentifier:@"myChatCell"];
+        [newCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [newCell configureCellWithChat:currentChat];
         return newCell;
     }
     else{
         ChatCell *newCell = [tableView dequeueReusableCellWithIdentifier:@"chatCell"];
+        [newCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [newCell configureCell:currentChat withUserObjectId:currentChat.userObjectId andIndexPath: indexPath andCurrentUsername:currentUsername];
         return newCell;
     }
