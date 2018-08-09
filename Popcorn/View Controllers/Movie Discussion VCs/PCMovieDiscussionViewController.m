@@ -170,19 +170,58 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Chat *currentChat = self.chatsArray[indexPath.row];
-    NSString *cellText = currentChat.message;
-    UIFont *cellFont = [UIFont systemFontOfSize:16.0];
-    CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
-    CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    if([currentChat.username isEqualToString:PFUser.currentUser.username]){
+        // My Chats
+        NSString *cellText = currentChat.message;
+        UIFont *cellFont = [UIFont systemFontOfSize:16.0];
+        CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
+        UIColor *color = [UIColor colorWithRed:48.0f/255.0f
+                                         green:48.0f/255.0f
+                                          blue:48.0f/255.0f
+                                         alpha:1.0f];
+        NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              cellFont, NSFontAttributeName,
+                                              color, NSForegroundColorAttributeName,
+                                              nil];
+        CGSize labelSize2 = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+        CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDictionary context:nil];
+        
+        
+        return labelSize2.height + 30;
+    }
+    else{
+        // Other Chats
+        NSString *cellText = currentChat.message;
+        UIFont *cellFont = [UIFont systemFontOfSize:16.0];
+        CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
+        UIColor *color = [UIColor colorWithRed:48.0f/255.0f
+                                         green:48.0f/255.0f
+                                          blue:48.0f/255.0f
+                                         alpha:1.0f];
+        NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              cellFont, NSFontAttributeName,
+                                              color, NSForegroundColorAttributeName,
+                                              nil];
+        CGSize labelSize2 = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
+        CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDictionary context:nil];
+        
+        if([cellText length] <= 90){
+            return labelSize2.height + 50;
+        }
+        else{
+            return labelSize2.height + 80;
+        }
+    }
     
-    return labelSize.height + 30;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.chatsArray.count;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (void)dealloc
 {
