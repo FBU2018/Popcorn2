@@ -27,6 +27,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.shelves = [NSArray new];
     
     self.addedShelves = [NSMutableArray new];
     
@@ -37,7 +38,12 @@
     //gets a dictionary of all of user's saved lists
     [[APIManager shared] getShelvesWithSessionId:PFUser.currentUser[@"sessionId"] andAccountId: PFUser.currentUser[@"accountId"] andCompletionBlock:^(NSArray *results, NSError *error){
         if(error == nil){
-            self.shelves = results;
+            
+            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+            NSArray *sortedArray = [results sortedArrayUsingDescriptors:sortDescriptors];
+            
+            self.shelves = sortedArray;
             [self.tableView reloadData];
         }
         else{
@@ -53,6 +59,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShelfPickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ShelfPickerCell" forIndexPath:indexPath];
+    cell.shelfLabel.text = @"";
 
     //set shelf text by checking corresponding name in shelves array
     NSDictionary *selectedShelf = self.shelves[indexPath.row];

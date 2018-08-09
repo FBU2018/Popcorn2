@@ -13,8 +13,7 @@ target 'Popcorn' do
   pod 'Parse'
   pod 'ParseUI'
   pod 'DateTools'
-
-pod 'HCSStarRatingView', '~> 1.5'
+  pod 'HCSStarRatingView', '~> 1.5'
 
   target 'PopcornTests' do
     inherit! :search_paths

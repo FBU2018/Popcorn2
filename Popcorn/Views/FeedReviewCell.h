@@ -10,6 +10,7 @@
 #import "ParseUI.h"
 #import "Movie.h"
 #import "PFUser+ExtendedUser.h"
+#import "HCSStarRatingView.h"
 
 @protocol FeedReviewCellDelegate;
 
@@ -37,8 +38,10 @@
 @property (nonatomic, weak) id<FeedReviewCellDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userImageGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *usernameGestureRecognizer;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *starRatingView;
 
-- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date;
+
+- (void)configureCell:(NSString*) authorId withMovie:(NSString*) movieId withDate: (NSDate*) date contains: (BOOL) contains completion: (void (^)(NSString* imageURL)) completion;
 
 
 @end

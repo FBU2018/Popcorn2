@@ -82,7 +82,10 @@
     similarLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     similarLayout.minimumInteritemSpacing = 2;
     
-
+    //adds a dark tint to the backdrop so text is readable
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
+    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+    [self.backdropImageView addSubview:overlay];
 }
 
 -(void) didPullToRefresh{
@@ -115,14 +118,19 @@
     }
     self.dateLabel.text = self.movie.releaseDateString;
 
+    self.posterImageView.alpha = 0.0;
     [self.posterImageView setImageWithURL:self.movie.posterUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.posterImageView.alpha = 1.0;
+    }];
     
+    self.backdropImageView.alpha = 0.0;
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl placeholderImage:[UIImage imageNamed:@"poster-placeholder.png"]];
-    
-    //adds a dark tint to the backdrop so text is readable
-    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.backdropImageView.frame.size.width, self.backdropImageView.frame.size.height)];
-    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-    [self.backdropImageView addSubview:overlay];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backdropImageView.alpha = 1.0;
+    }];
+  
+
     
     
     [self fetchCast];

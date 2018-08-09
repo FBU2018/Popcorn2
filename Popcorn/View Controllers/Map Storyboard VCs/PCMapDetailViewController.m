@@ -15,13 +15,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "PCMovieDetailViewController.h"
 #import "Parse.h"
+#import "TheaterHeader.h"
 
 @interface PCMapDetailViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *theatreNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *theatreImage;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray *dictionaryMovies;
@@ -50,9 +47,10 @@
     self.dictionaryMovies = [NSMutableArray new];
     self.movies = [NSArray new];
     
-    [self setViews];
     [self getMovies];
     [self getLists];
+    
+    layout.headerReferenceSize = CGSizeMake(0, 240);
 }
 
 - (void)getLists{
@@ -67,31 +65,6 @@
     }];
 }
 
-- (void)setViews{
-    self.theatreNameLabel.text = self.theatreTitle;
-    self.addressLabel.text = self.theatreInfo[@"vicinity"];
-    self.ratingLabel.text = [@"Rating: " stringByAppendingString:self.rating];
-    
-    NSLog(@"photos: %@",
-          self.theatreInfo[@"photos"]);
-    NSString *photoReference = self.theatreInfo[@"photos"][0][@"photo_reference"]; //use to get photo
-
-    [[APIManagerMovieGlu shared] getPhotoFromReference:photoReference completion:^(NSData *imageData, NSError *error) {
-        if(error != nil){
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-        else{
-            NSLog(@"Successfully got image");
-            UIImage *image = [UIImage imageWithData:imageData];
-            self.theatreImage.image = image;
-
-            //adds dark tint so text is readable
-            UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.theatreImage.frame.size.width, self.theatreImage.frame.size.height)];
-            [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
-            [self.theatreImage addSubview:overlay];
-        }
-    }];
-}
 
 - (void)getMovies{
     for(NSString *movieName in self.moviesPlaying){
@@ -118,6 +91,33 @@
             }
         }];
     }
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    TheaterHeader *header;
+    if(kind == UICollectionElementKindSectionHeader){
+        header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TheaterHeader" forIndexPath:indexPath];
+        header.theaterNameLabel.text = self.theatreTitle;
+        header.addressLabel.text = self.theatreInfo[@"vicinity"];
+        header.ratingLabel.text = [@"Rating: " stringByAppendingString:self.rating];
+        
+        NSLog(@"photos: %@",
+              self.theatreInfo[@"photos"]);
+        NSString *photoReference = self.theatreInfo[@"photos"][0][@"photo_reference"]; //use to get photo
+        
+        [[APIManagerMovieGlu shared] getPhotoFromReference:photoReference completion:^(NSData *imageData, NSError *error) {
+            if(error != nil){
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully got image");
+                UIImage *image = [UIImage imageWithData:imageData];
+                header.theaterImage.image = image;
+                
+            }
+        }];
+    }
+    return header;
 }
 
 - (void)didReceiveMemoryWarning {
