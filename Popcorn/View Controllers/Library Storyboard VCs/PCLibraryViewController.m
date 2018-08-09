@@ -39,7 +39,7 @@
 @implementation PCLibraryViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad]; 
     
     self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     self.HUD.textLabel.text = @"Loading";
@@ -61,6 +61,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getLists) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -139,6 +140,32 @@
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
                                                 title:@"Delete"];
     return rightUtilityButtons;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    double sizeView = self.view.frame.size.height;
+    double yOffset = scrollView.frame.size.height;
+    if(sizeView+yOffset >= scrollView.frame.size.height){
+//        scrollView.scrollEnabled = NO;
+        
+        NSLog(@"reached");
+//        [scrollView setContentSize:CGSizeMake(375, sizeView + yOffset)];
+        
+//        CGPoint offset = scrollView.contentOffset;
+//        [scrollView setContentOffset:offset];
+        
+//        scrollView.scrollEnabled = NO;
+//        scrollView.scrollEnabled = YES;
+        
+//        CGPoint offset = scrollView.contentOffset;
+//        offset.x -= 1.0;
+//        offset.y -= 1.0;
+//        [scrollView setContentOffset:offset animated:NO];
+//        offset.x += 1.0;
+//        offset.y += 1.0;
+//        [scrollView setContentOffset:offset animated:NO];
+    }
+
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {

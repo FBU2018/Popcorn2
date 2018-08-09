@@ -226,7 +226,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="KgL-NG-32r"/>
                                                         <constraint firstAttribute="height" constant="27" id="nX8-jA-sh8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
                                                     <state key="normal" title="Add to">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
