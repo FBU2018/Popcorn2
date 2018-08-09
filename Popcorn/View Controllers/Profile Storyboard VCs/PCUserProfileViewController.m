@@ -44,6 +44,11 @@
     [self setUpView];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self getProfileLists];
+}
+
 
 -(void)setUpView{
     if(self.currentUser == nil){
