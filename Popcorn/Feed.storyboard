@@ -38,15 +38,15 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="MYn-yI-mK8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="hfN-hN-C3w" appends="YES" id="GOz-Oq-cnl"/>
                                                     </connections>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-ku-4X6" customClass="PFImageView">
-                                                    <rect key="frame" x="15" y="79" width="120" height="180"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-ku-4X6" customClass="PFImageView">
+                                                    <rect key="frame" x="15" y="82" width="120" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="het-8N-FXr"/>
                                                         <constraint firstAttribute="width" constant="120" id="xVu-Z3-1Eg"/>
@@ -66,8 +66,8 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="reviewed The Martian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-fr-dne">
                                                     <rect key="frame" x="113" y="32" width="247" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmB-GP-Pmg">
@@ -75,7 +75,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="5Do-2j-TVG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="21"/>
                                                     <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -84,13 +84,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="JhI-u1-0qt"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;This movie...." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVm-40-iDg">
-                                                    <rect key="frame" x="143" y="165" width="217" height="88"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -99,7 +93,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Lqn-Xd-tNW"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="14"/>
                                                     <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -124,6 +118,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;This movie...." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVm-40-iDg">
+                                                    <rect key="frame" x="143" y="165" width="217" height="88"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
@@ -142,7 +142,7 @@
                                                 <constraint firstItem="8j3-p7-ufi" firstAttribute="top" secondItem="uoF-XY-JPn" secondAttribute="topMargin" constant="21" id="UZ7-tL-qkk"/>
                                                 <constraint firstItem="k0F-rH-m9j" firstAttribute="top" secondItem="BmB-GP-Pmg" secondAttribute="bottom" constant="6" id="XCY-aj-1qB"/>
                                                 <constraint firstItem="DVm-40-iDg" firstAttribute="leading" secondItem="fSW-ku-4X6" secondAttribute="trailing" constant="8" id="ZXn-rF-IJm"/>
-                                                <constraint firstItem="g50-fr-dne" firstAttribute="top" secondItem="uoF-XY-JPn" secondAttribute="topMargin" constant="21" id="eG9-lV-uyw"/>
+                                                <constraint firstItem="g50-fr-dne" firstAttribute="top" secondItem="uoF-XY-JPn" secondAttribute="topMargin" constant="20" id="eG9-lV-uyw"/>
                                                 <constraint firstItem="fSW-ku-4X6" firstAttribute="top" secondItem="pUu-4g-DqM" secondAttribute="bottom" constant="19" id="jSo-I0-1CE"/>
                                                 <constraint firstItem="BmB-GP-Pmg" firstAttribute="top" secondItem="uoF-XY-JPn" secondAttribute="top" constant="102" id="kbT-Yt-vlw"/>
                                                 <constraint firstItem="e0u-gj-uuD" firstAttribute="bottom" secondItem="uoF-XY-JPn" secondAttribute="bottomMargin" id="l1G-Is-c9o"/>
@@ -195,7 +195,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="aaz-Ed-Mgg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
@@ -209,12 +209,12 @@
                                                         <constraint firstAttribute="height" constant="180" id="v3x-Cy-S8B"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-2J-mFw">
-                                                    <rect key="frame" x="143" y="103" width="217" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-2J-mFw">
+                                                    <rect key="frame" x="143" y="105" width="217" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="VlI-AZ-pCM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="22"/>
                                                     <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -239,14 +239,14 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="5CG-Xp-I7p"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="14"/>
                                                     <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="added The Martian as Watched" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPq-S1-Shm">
-                                                    <rect key="frame" x="113" y="38" width="240" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.94893375970000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <rect key="frame" x="113" y="35.5" width="240" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw7-Gx-dTh">
@@ -255,7 +255,7 @@
                                                         <constraint firstAttribute="width" constant="218" id="JGM-8X-hms"/>
                                                         <constraint firstAttribute="height" constant="138" id="fni-5b-R74"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -263,11 +263,13 @@
                                             <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="OL0-vG-Tqy" firstAttribute="leading" secondItem="AhC-of-hYF" secondAttribute="leadingMargin" id="2UK-uk-ldy"/>
+                                                <constraint firstItem="X8m-2J-mFw" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="115" id="I72-1A-IM3"/>
                                                 <constraint firstItem="46f-9t-BgC" firstAttribute="leading" secondItem="gGB-dK-bcB" secondAttribute="trailing" constant="8" id="M9H-X8-3se"/>
                                                 <constraint firstAttribute="bottom" secondItem="o9o-8S-Qta" secondAttribute="bottom" constant="14.5" id="MXN-S3-dug"/>
                                                 <constraint firstItem="gGB-dK-bcB" firstAttribute="leading" secondItem="AhC-of-hYF" secondAttribute="leadingMargin" id="OBm-Ce-Q2m"/>
                                                 <constraint firstItem="8KD-cf-plT" firstAttribute="top" secondItem="OL0-vG-Tqy" secondAttribute="bottom" constant="11" id="QK7-4x-HCM"/>
-                                                <constraint firstItem="xPq-S1-Shm" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="27" id="RhS-Je-vEM"/>
+                                                <constraint firstItem="OL0-vG-Tqy" firstAttribute="top" relation="lessThanOrEqual" secondItem="xPq-S1-Shm" secondAttribute="bottom" constant="44.5" id="Qu9-Op-F4a"/>
+                                                <constraint firstItem="xPq-S1-Shm" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="26" id="RhS-Je-vEM"/>
                                                 <constraint firstItem="46f-9t-BgC" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="27" id="RhU-LM-Kmy"/>
                                                 <constraint firstItem="8KD-cf-plT" firstAttribute="leading" secondItem="AhC-of-hYF" secondAttribute="leadingMargin" id="SMh-zg-J0a"/>
                                                 <constraint firstItem="X8m-2J-mFw" firstAttribute="leading" secondItem="OL0-vG-Tqy" secondAttribute="trailing" constant="8" id="T5i-0A-JRv"/>
@@ -277,7 +279,6 @@
                                                 <constraint firstItem="gGB-dK-bcB" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="18" id="fGp-RH-ML1"/>
                                                 <constraint firstItem="X8m-2J-mFw" firstAttribute="trailing" secondItem="AhC-of-hYF" secondAttribute="trailingMargin" id="hR2-Td-0AT"/>
                                                 <constraint firstItem="Rw7-Gx-dTh" firstAttribute="top" secondItem="X8m-2J-mFw" secondAttribute="bottom" constant="8" id="kx7-us-taK"/>
-                                                <constraint firstItem="X8m-2J-mFw" firstAttribute="top" secondItem="xPq-S1-Shm" secondAttribute="bottom" constant="44.5" id="l5L-iB-Yxm"/>
                                                 <constraint firstItem="OL0-vG-Tqy" firstAttribute="top" secondItem="AhC-of-hYF" secondAttribute="topMargin" constant="92" id="oor-vt-WW7"/>
                                                 <constraint firstItem="Rw7-Gx-dTh" firstAttribute="leading" secondItem="OL0-vG-Tqy" secondAttribute="trailing" constant="8" id="srM-ZX-VLL"/>
                                                 <constraint firstAttribute="trailing" secondItem="Rw7-Gx-dTh" secondAttribute="trailing" constant="14" id="vhc-Tk-nof"/>
