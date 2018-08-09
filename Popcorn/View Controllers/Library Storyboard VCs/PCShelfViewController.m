@@ -37,7 +37,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 0 footer
+//    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // 0 footer
+//    self.tableView.tableFooterView.hidden = YES;
+//
+//    [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 200, 0)]; // adjust scrollview insets unchecked, 108, 0, 0, 0 example
+
+    
+    
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
