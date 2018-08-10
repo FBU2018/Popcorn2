@@ -10,11 +10,13 @@
 #import "ReviewCell.h"
 #import "APIManager.h"
 #import "Parse/Parse.h"
+#import "JGProgressHUD.h"
 
 @interface PCReviewViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *reviews;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)didTapDone:(id)sender;
+@property (strong, nonatomic) JGProgressHUD *HUD;
 
 @end
 
@@ -24,6 +26,11 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
+    
     [self fetchReviews];
 }
 - (IBAction)didTapDone:(id)sender {
@@ -115,6 +122,7 @@
     
             [self.tableView reloadData];
         }
+        [self.HUD dismissAnimated:YES];
     }];
 }
 
