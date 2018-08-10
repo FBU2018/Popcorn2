@@ -22,18 +22,23 @@
 
 @implementation PCMapViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.myMapView.delegate = self;
-    
-    self.locationManager.delegate = self;
+
     self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
+        [self.locationManager requestAlwaysAuthorization];
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     [self.locationManager startUpdatingLocation];
-    NSLog(@"lat: %f", self.locationManager.location.coordinate.latitude);
-    NSLog(@"lng: %f", self.locationManager.location.coordinate.longitude);
     
     
     self.lat = [[NSNumber numberWithDouble:self.locationManager.location.coordinate.latitude] stringValue];
@@ -44,6 +49,10 @@
     [self findTheaters];
     
     
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"Error: %@", error.localizedDescription);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
