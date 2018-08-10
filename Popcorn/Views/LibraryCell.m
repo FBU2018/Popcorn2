@@ -44,8 +44,10 @@
             self.shelfImageView.image = nil;
             if(moviesArray.count > 0){
                 self.movieForImage = moviesArray[0];
-//                self.movieForImage = moviesArray[moviesArray.count-1];
                 [self.shelfImageView setImageWithURL:self.movieForImage.posterUrl];
+            }
+            else{
+                self.shelfImageView.image = [UIImage imageNamed:@"poster-placeholder"];
             }
         }
         else{

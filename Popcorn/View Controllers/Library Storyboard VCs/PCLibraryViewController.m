@@ -142,31 +142,31 @@
     return rightUtilityButtons;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    double sizeView = self.view.frame.size.height;
-    double yOffset = scrollView.frame.size.height;
-    if(sizeView+yOffset >= scrollView.frame.size.height){
-//        scrollView.scrollEnabled = NO;
-        
-        NSLog(@"reached");
-//        [scrollView setContentSize:CGSizeMake(375, sizeView + yOffset)];
-        
-//        CGPoint offset = scrollView.contentOffset;
-//        [scrollView setContentOffset:offset];
-        
-//        scrollView.scrollEnabled = NO;
-//        scrollView.scrollEnabled = YES;
-        
-//        CGPoint offset = scrollView.contentOffset;
-//        offset.x -= 1.0;
-//        offset.y -= 1.0;
-//        [scrollView setContentOffset:offset animated:NO];
-//        offset.x += 1.0;
-//        offset.y += 1.0;
-//        [scrollView setContentOffset:offset animated:NO];
-    }
-
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    double sizeView = self.view.frame.size.height;
+//    double yOffset = scrollView.frame.size.height;
+//    if(sizeView+yOffset >= scrollView.frame.size.height){
+////        scrollView.scrollEnabled = NO;
+//        
+//        NSLog(@"reached");
+////        [scrollView setContentSize:CGSizeMake(375, sizeView + yOffset)];
+//        
+////        CGPoint offset = scrollView.contentOffset;
+////        [scrollView setContentOffset:offset];
+//        
+////        scrollView.scrollEnabled = NO;
+////        scrollView.scrollEnabled = YES;
+//        
+////        CGPoint offset = scrollView.contentOffset;
+////        offset.x -= 1.0;
+////        offset.y -= 1.0;
+////        [scrollView setContentOffset:offset animated:NO];
+////        offset.x += 1.0;
+////        offset.y += 1.0;
+////        [scrollView setContentOffset:offset animated:NO];
+//    }
+//
+//}
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
