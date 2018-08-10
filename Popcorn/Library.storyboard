@@ -122,7 +122,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="207" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
+                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="192" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="qEF-vW-1Y8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -134,62 +134,61 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="207" id="cFt-ab-8u9" customClass="SearchCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="207"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="192" id="cFt-ab-8u9" customClass="SearchCell">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cFt-ab-8u9" id="h1m-aN-8QH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="206.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="191.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Q7j-7x-A0T">
-                                                    <rect key="frame" x="10" y="16" width="120" height="180"/>
+                                                    <rect key="frame" x="10" y="10" width="112" height="170"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="180" id="49C-ia-ZLJ"/>
-                                                        <constraint firstAttribute="width" constant="120" id="xUh-le-NoL"/>
+                                                        <constraint firstAttribute="height" constant="170" id="49C-ia-ZLJ"/>
+                                                        <constraint firstAttribute="width" constant="112" id="xUh-le-NoL"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-WQ-aOL">
-                                                    <rect key="frame" x="138" y="98" width="51" height="21"/>
+                                                    <rect key="frame" x="138" y="90" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Vb3-KR-xJX"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsO-1n-dGp">
-                                                    <rect key="frame" x="138" y="127" width="105" height="20"/>
+                                                    <rect key="frame" x="138" y="117" width="92.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="DeO-Ta-j1Q"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                                    <color key="textColor" white="0.82098278290000004" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-UR-nrO">
-                                                    <rect key="frame" x="138" y="61" width="222" height="29"/>
+                                                    <rect key="frame" x="138" y="55" width="222" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="1Wu-w5-YXM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="28"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                                     <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="8" id="KeV-aK-EVp"/>
-                                                <constraint firstItem="ZsO-1n-dGp" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="8" id="Kys-MN-Wup"/>
-                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="8" id="Log-Mh-LKl"/>
-                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="topMargin" constant="50" id="Mxk-ut-WaE"/>
-                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="top" secondItem="MjC-UR-nrO" secondAttribute="bottom" constant="8" id="OXn-gx-uAs"/>
-                                                <constraint firstItem="ZsO-1n-dGp" firstAttribute="top" secondItem="sNa-WQ-aOL" secondAttribute="bottom" constant="8" id="Wjj-Ba-sOL"/>
-                                                <constraint firstItem="Q7j-7x-A0T" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="top" constant="16" id="bAe-hL-Ys8"/>
-                                                <constraint firstAttribute="bottom" secondItem="Q7j-7x-A0T" secondAttribute="bottom" constant="10.5" id="d93-Be-Kug"/>
+                                                <constraint firstItem="Q7j-7x-A0T" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="top" constant="10" id="6Up-ym-XWe"/>
+                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="KeV-aK-EVp"/>
+                                                <constraint firstItem="ZsO-1n-dGp" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="Kys-MN-Wup"/>
+                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="Log-Mh-LKl"/>
+                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="topMargin" constant="44" id="Mxk-ut-WaE"/>
+                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="top" secondItem="MjC-UR-nrO" secondAttribute="bottom" constant="6" id="OXn-gx-uAs"/>
+                                                <constraint firstItem="ZsO-1n-dGp" firstAttribute="top" secondItem="sNa-WQ-aOL" secondAttribute="bottom" constant="6" id="Wjj-Ba-sOL"/>
                                                 <constraint firstItem="Q7j-7x-A0T" firstAttribute="leading" secondItem="h1m-aN-8QH" secondAttribute="leading" constant="10" id="ota-3G-gEg"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ZsO-1n-dGp" secondAttribute="bottom" constant="49" id="qh0-OA-JIO"/>
                                                 <constraint firstItem="MjC-UR-nrO" firstAttribute="trailing" secondItem="h1m-aN-8QH" secondAttribute="trailingMargin" id="wME-b9-Abr"/>
+                                                <constraint firstAttribute="bottom" secondItem="Q7j-7x-A0T" secondAttribute="bottom" constant="11.5" id="zEH-um-R0w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
