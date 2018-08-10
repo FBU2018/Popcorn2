@@ -191,17 +191,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-YB-fyn">
-                                <rect key="frame" x="133" y="79" width="235" height="35"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
+                                <rect key="frame" x="133" y="79" width="235" height="36.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
                                 <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S8-zg-Wl7">
-                                <rect key="frame" x="133" y="128" width="230" height="27.5"/>
+                                <rect key="frame" x="133" y="123.5" width="230" height="29.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="FwP-j3-wJg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -221,7 +221,7 @@
                             <constraint firstItem="EV6-gj-wOz" firstAttribute="leading" secondItem="SlT-jv-AXb" secondAttribute="leading" id="49L-Cj-ahj"/>
                             <constraint firstItem="kox-Qt-iLv" firstAttribute="leading" secondItem="SlT-jv-AXb" secondAttribute="leading" id="4sL-qZ-0EP"/>
                             <constraint firstItem="Elb-YB-fyn" firstAttribute="leading" secondItem="DPb-DT-a2k" secondAttribute="trailing" constant="8" id="C7s-uy-t52"/>
-                            <constraint firstItem="2S8-zg-Wl7" firstAttribute="top" secondItem="Elb-YB-fyn" secondAttribute="bottom" constant="14" id="MZN-tQ-7dU"/>
+                            <constraint firstItem="2S8-zg-Wl7" firstAttribute="top" secondItem="Elb-YB-fyn" secondAttribute="bottom" constant="8" id="MZN-tQ-7dU"/>
                             <constraint firstItem="kox-Qt-iLv" firstAttribute="trailing" secondItem="SlT-jv-AXb" secondAttribute="trailing" id="PjH-cB-Hdv"/>
                             <constraint firstItem="B4H-K9-adI" firstAttribute="leading" secondItem="SlT-jv-AXb" secondAttribute="leading" constant="5" id="QyE-vu-0c3"/>
                             <constraint firstItem="EV6-gj-wOz" firstAttribute="top" secondItem="Fkx-f6-xPo" secondAttribute="bottom" constant="-3" id="SYq-fo-4ib"/>

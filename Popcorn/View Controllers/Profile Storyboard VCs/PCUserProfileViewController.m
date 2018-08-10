@@ -169,7 +169,7 @@
     else{
         //top profile info part
         ProfileInfoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
 }
 
