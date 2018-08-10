@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface PCMapViewController : UIViewController
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @end
