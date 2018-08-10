@@ -39,6 +39,10 @@ bool isMoreDataLoading = false;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     // Set up activity indicator for infinite scrolling
     self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     self.HUD.textLabel.text = @"Loading";
@@ -53,6 +57,14 @@ bool isMoreDataLoading = false;
     self.filteredData = [[NSMutableArray alloc] init];
     self.data = [[NSMutableArray alloc] init];
     [self getLists];
+}
+
+-(void)dismissKeyboard{
+    [self.view endEditing:YES];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)getLists{

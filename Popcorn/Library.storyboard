@@ -150,7 +150,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-WQ-aOL">
-                                                    <rect key="frame" x="138" y="90" width="45" height="21"/>
+                                                    <rect key="frame" x="138" y="89" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Vb3-KR-xJX"/>
                                                     </constraints>
@@ -159,7 +159,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsO-1n-dGp">
-                                                    <rect key="frame" x="138" y="117" width="92.5" height="20"/>
+                                                    <rect key="frame" x="138" y="116" width="92.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="DeO-Ta-j1Q"/>
                                                     </constraints>
@@ -167,11 +167,8 @@
                                                     <color key="textColor" white="0.82098278290000004" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-UR-nrO">
-                                                    <rect key="frame" x="138" y="55" width="222" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="1Wu-w5-YXM"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-UR-nrO">
+                                                    <rect key="frame" x="138" y="53" width="222" height="28"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                                     <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -180,14 +177,14 @@
                                             <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Q7j-7x-A0T" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="top" constant="10" id="6Up-ym-XWe"/>
+                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="trailing" secondItem="h1m-aN-8QH" secondAttribute="trailingMargin" id="IKs-BQ-eXN"/>
                                                 <constraint firstItem="MjC-UR-nrO" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="KeV-aK-EVp"/>
                                                 <constraint firstItem="ZsO-1n-dGp" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="Kys-MN-Wup"/>
                                                 <constraint firstItem="sNa-WQ-aOL" firstAttribute="leading" secondItem="Q7j-7x-A0T" secondAttribute="trailing" constant="16" id="Log-Mh-LKl"/>
-                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="topMargin" constant="44" id="Mxk-ut-WaE"/>
-                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="top" secondItem="MjC-UR-nrO" secondAttribute="bottom" constant="6" id="OXn-gx-uAs"/>
+                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="top" secondItem="h1m-aN-8QH" secondAttribute="topMargin" constant="42" id="Mxk-ut-WaE"/>
                                                 <constraint firstItem="ZsO-1n-dGp" firstAttribute="top" secondItem="sNa-WQ-aOL" secondAttribute="bottom" constant="6" id="Wjj-Ba-sOL"/>
                                                 <constraint firstItem="Q7j-7x-A0T" firstAttribute="leading" secondItem="h1m-aN-8QH" secondAttribute="leading" constant="10" id="ota-3G-gEg"/>
-                                                <constraint firstItem="MjC-UR-nrO" firstAttribute="trailing" secondItem="h1m-aN-8QH" secondAttribute="trailingMargin" id="wME-b9-Abr"/>
+                                                <constraint firstItem="sNa-WQ-aOL" firstAttribute="top" secondItem="MjC-UR-nrO" secondAttribute="bottom" constant="8" id="xce-1n-M6o"/>
                                                 <constraint firstAttribute="bottom" secondItem="Q7j-7x-A0T" secondAttribute="bottom" constant="11.5" id="zEH-um-R0w"/>
                                             </constraints>
                                         </tableViewCellContentView>
