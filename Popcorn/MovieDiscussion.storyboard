@@ -132,8 +132,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-TH-M5F">
-                                                    <rect key="frame" x="0.0" y="42" width="55" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-TH-M5F">
+                                                    <rect key="frame" x="8" y="42" width="55" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="aTV-7a-hCX"/>
                                                         <constraint firstAttribute="height" constant="18" id="oHt-m8-lJn"/>
@@ -167,8 +167,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="gJc-Ln-v46" secondAttribute="trailing" constant="4" id="laT-bq-Fcu"/>
                                                 <constraint firstAttribute="bottom" secondItem="Wg6-TH-M5F" secondAttribute="bottom" constant="2.5" id="lcA-e5-h19"/>
                                                 <constraint firstItem="gJc-Ln-v46" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wg6-TH-M5F" secondAttribute="trailing" constant="8" id="nV9-WU-9Cd"/>
-                                                <constraint firstItem="Wg6-TH-M5F" firstAttribute="leading" secondItem="9qK-sX-Ggx" secondAttribute="leading" id="orR-nI-lyz"/>
-                                                <constraint firstItem="gJc-Ln-v46" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Wg6-TH-M5F" secondAttribute="trailing" constant="260" id="vQ5-Wy-qQs"/>
+                                                <constraint firstItem="Wg6-TH-M5F" firstAttribute="leading" secondItem="9qK-sX-Ggx" secondAttribute="leading" constant="8" id="orR-nI-lyz"/>
+                                                <constraint firstItem="gJc-Ln-v46" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Wg6-TH-M5F" secondAttribute="trailing" constant="280" id="vQ5-Wy-qQs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
