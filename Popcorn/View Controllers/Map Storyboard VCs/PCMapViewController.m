@@ -12,7 +12,7 @@
 #import "TheatreAnnotation.h"
 #import "PCMapDetailViewController.h"
 
-@interface PCMapViewController () <MKMapViewDelegate>
+@interface PCMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *myMapView;
 @property (strong, nonatomic) NSString *lat;
@@ -27,20 +27,29 @@
 
     self.myMapView.delegate = self;
     
-    //TODO: change region to be user's, MPK 20 region for now
+    self.locationManager.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [self.locationManager startUpdatingLocation];
+    NSLog(@"lat: %f", self.locationManager.location.coordinate.latitude);
+    NSLog(@"lng: %f", self.locationManager.location.coordinate.longitude);
     
-    //sf: 37.783333, -122.416667
-    //mpk 20: 37.481009, -122.155085
-    self.lat = @"37.783333";
-    self.lng = @"-122.416667";
+    
+    self.lat = [[NSNumber numberWithDouble:self.locationManager.location.coordinate.latitude] stringValue];
+    self.lng = [[NSNumber numberWithDouble:self.locationManager.location.coordinate.longitude] stringValue];
     MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.lat doubleValue], [self.lng doubleValue]), MKCoordinateSpanMake(0.8, 0.8));
     [self.myMapView setRegion:sfRegion animated:false];
     
-//    [self getLocations];
     [self findTheaters];
     
     
 }
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+}
+
+
 
 - (void)findTheaters{
     [[APIManagerMovieGlu shared] getTheaterswithLat:self.lat withLong:self.lng completion:^(NSMutableDictionary *theatres, NSError *error) {
@@ -55,14 +64,10 @@
                     NSLog(@"Error: %@", error.localizedDescription);
                 }
                 else{
-//                    NSLog(@"theaterNames: %@", theaterNames);
-                    
                     NSArray *dataDictionary = theaters[@"results"];
                     for(NSDictionary *theatre in dataDictionary){
                         
-//                        NSLog(@"name: %@", theatre[@"name"]);
                         if([theaterNames containsObject:theatre[@"name"]]){
-//                            NSLog(@"YES: %@", theatre[@"name"]);
                             //set the annotation
                             NSString *latString = theatre[@"geometry"][@"location"][@"lat"];
                             NSString *lngString = theatre[@"geometry"][@"location"][@"lng"];
