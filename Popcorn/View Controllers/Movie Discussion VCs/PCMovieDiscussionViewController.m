@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (strong, nonatomic) NSArray *chatsArray;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
+@property (assign) BOOL newChat;
 @end
 
 @implementation PCMovieDiscussionViewController
@@ -48,8 +49,8 @@
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl];
     
     // refresh the chats every second
-    //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
-    [self refreshChats];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
+//    [self refreshChats];
 }
 
 -(void)dismissKeyboard {
@@ -99,15 +100,19 @@
                     Chat *arrayElement = [array objectAtIndex:i];
                     if(![chatElement.message isEqualToString:arrayElement.message]){
                         [array addObject:chatElement];
+                        self.newChat = NO;
                     }
                 }
                 else{
+                    self.newChat = YES;
                     Chat *object = [chats objectAtIndex:i];
                     [array addObject:object];
                 }
             }
-            self.chatsArray = [NSArray arrayWithArray:array];
-            [self.tableView reloadData];
+            if(self.newChat){
+                self.chatsArray = [NSArray arrayWithArray:array];
+                [self.tableView reloadData];
+            }
         }
         else {
             NSLog(@"Error querying chats: %@", error.localizedDescription);
@@ -213,7 +218,7 @@
         CGSize labelSize2 = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
         CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDictionary context:nil];
         
-        if([cellText length] <= 90){
+        if([cellText length] <= 70){
             return labelSize2.height + 50;
         }
         else{
