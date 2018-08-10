@@ -53,14 +53,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-2X-e7g" customClass="PFImageView">
-                                                    <rect key="frame" x="4" y="8" width="37" height="40"/>
-                                                    <color key="backgroundColor" red="0.61020344680000005" green="0.11489217559999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="2ME-mb-dCg"/>
-                                                        <constraint firstAttribute="width" constant="37" id="4Zd-TD-rjW"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjC-h3-wOm">
                                                     <rect key="frame" x="45" y="8" width="325" height="16"/>
                                                     <constraints>
@@ -99,6 +91,14 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-2X-e7g" customClass="PFImageView">
+                                                    <rect key="frame" x="4" y="32" width="37" height="40"/>
+                                                    <color key="backgroundColor" red="0.61020344680000005" green="0.11489217559999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="2ME-mb-dCg"/>
+                                                        <constraint firstAttribute="width" constant="37" id="4Zd-TD-rjW"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="63c-q2-EqE" firstAttribute="leading" secondItem="A0B-2X-e7g" secondAttribute="trailing" constant="8" id="FSi-My-NZs"/>
@@ -108,7 +108,7 @@
                                                 <constraint firstItem="ISK-xo-W5i" firstAttribute="leading" secondItem="63c-q2-EqE" secondAttribute="trailing" constant="8" id="Tgw-3J-Uhu"/>
                                                 <constraint firstItem="LjC-h3-wOm" firstAttribute="leading" secondItem="A0B-2X-e7g" secondAttribute="trailing" constant="4" id="jD7-HV-Y16"/>
                                                 <constraint firstAttribute="bottom" secondItem="63c-q2-EqE" secondAttribute="bottom" constant="2.5" id="jJe-Cw-Fpv"/>
-                                                <constraint firstItem="A0B-2X-e7g" firstAttribute="top" secondItem="cB0-4F-CnS" secondAttribute="top" constant="8" id="shx-tD-C30"/>
+                                                <constraint firstItem="A0B-2X-e7g" firstAttribute="top" secondItem="cB0-4F-CnS" secondAttribute="top" constant="32" id="shx-tD-C30"/>
                                                 <constraint firstAttribute="bottom" secondItem="ISK-xo-W5i" secondAttribute="bottom" id="uhv-xO-83X"/>
                                                 <constraint firstItem="LjC-h3-wOm" firstAttribute="top" secondItem="cB0-4F-CnS" secondAttribute="top" constant="8" id="up6-Rz-Baz"/>
                                             </constraints>
