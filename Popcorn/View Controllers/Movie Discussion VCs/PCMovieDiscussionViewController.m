@@ -50,8 +50,6 @@
     // Set Backdrop Image
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl];
     
-    // refresh the chats every second
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
     [self refreshChats];
 }
 
@@ -64,6 +62,10 @@
         _shouldScrollToLastRow = NO;
         [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
     }
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self dismissKeyboard];
 }
 
 
