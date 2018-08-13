@@ -38,71 +38,6 @@ static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0
 }
 
 
-//MovieGlu
-- (void)getFilmsNowShowing:(void (^)(NSDictionary *, NSError *))completion{
-    //get request to get all currently showing movies
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [targetURL stringByAppendingString:@"filmsNowShowing/?n=10"];
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"GET"];
-    
-    //headers
-    [request addValue:username forHTTPHeaderField: @"client"];
-    [request addValue:apiKey forHTTPHeaderField: @"x-api-key"];
-    [request addValue:basicAuth forHTTPHeaderField: @"Authorization"];
-    [request addValue:@"v102" forHTTPHeaderField: @"api-version"];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if(error != nil){
-            NSLog(@"Error: %@", error.localizedDescription);
-            completion(nil, error);
-        }
-        else{
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"Request successful");
-            NSLog(@"dataDictionary: %@", dataDictionary);
-            completion(dataDictionary, nil);
-        }
-    }];
-    [task resume];
-}
-
-
-- (void)getCinemasNearby:(NSString *)latLong completion:(void (^)(NSDictionary *, NSError *))completion{
-    //get request to get all currently showing movies
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *urlString = [targetURL stringByAppendingString:@"cinemasNearby/?n=5"];
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"GET"];
-    
-    //headers
-    [request addValue:username forHTTPHeaderField: @"client"];
-    [request addValue:apiKey forHTTPHeaderField: @"x-api-key"];
-    [request addValue:basicAuth forHTTPHeaderField: @"Authorization"];
-    [request addValue:@"v102" forHTTPHeaderField: @"api-version"];
-    [request addValue:latLong forHTTPHeaderField:@"geolocation"];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if(error != nil){
-            NSLog(@"Error: %@", error.localizedDescription);
-            completion(nil, error);
-        }
-        else{
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"Request successful");
-            NSLog(@"dataDictionary: %@", dataDictionary);
-            completion(dataDictionary, nil);
-        }
-    }];
-    [task resume];
-}
-
 //GraceNote
 
 - (void)getTheaterswithLat:(NSString *)lat withLong:(NSString *)lng completion:(void (^)(NSMutableDictionary *, NSError *))completion{
@@ -170,7 +105,6 @@ static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0
     //get request to get all currently showing movies
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    
     NSMutableString *placeNameURL = [@"" mutableCopy];
     for(NSInteger charIndex = 0; charIndex < placeName.length; charIndex++){
         if([placeName characterAtIndex:charIndex] == ' '){
@@ -204,9 +138,7 @@ static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0
 
 - (void)getPhotoFromReference:(NSString *)photoReference completion:(void (^)(NSData *imageData, NSError *error))completion{
     //get request to get photo of theater from reference
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-
     NSString *urlString = [[[@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" stringByAppendingString:photoReference] stringByAppendingString:@"&key="] stringByAppendingString:apiKeyGoogle];
     NSLog(@"REQUEST URL STRING: %@", urlString);
     [request setURL:[NSURL URLWithString:urlString]];
@@ -232,10 +164,6 @@ static NSString * const apiKeyGoogle = @"AIzaSyCEy4zoPJnXwC_5MKDfc66m_Kq-MWvd5Y0
     //get request to find nearby theaters
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    //https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
-    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
-
-    
     NSString *urlString = [[[[[[[[@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" stringByAppendingString:apiKeyGoogle] stringByAppendingString:@"&location="] stringByAppendingString:lat] stringByAppendingString:@","] stringByAppendingString:lng] stringByAppendingString:@"&radius="] stringByAppendingString:@"50000"] stringByAppendingString:@"&type=movie_theater"];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:@"GET"];

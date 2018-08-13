@@ -70,7 +70,6 @@
     for(NSString *movieName in self.moviesPlaying){
         NSString *movieNameInput = [movieName stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
         [[APIManager shared] searchMoviesWithString:movieNameInput andPageNumber:@"1" andResultsCompletionHandler:^(NSArray *results) {
-            //TO DO: what happens if no results????
             if(results.count <= 0){
                 NSLog(@"movieInputName: %@", movieNameInput);
             }
@@ -101,8 +100,6 @@
         header.addressLabel.text = self.theatreInfo[@"vicinity"];
         header.ratingLabel.text = [@"Rating: " stringByAppendingString:self.rating];
         
-        NSLog(@"photos: %@",
-              self.theatreInfo[@"photos"]);
         NSString *photoReference = self.theatreInfo[@"photos"][0][@"photo_reference"]; //use to get photo
         
         [[APIManagerMovieGlu shared] getPhotoFromReference:photoReference completion:^(NSData *imageData, NSError *error) {

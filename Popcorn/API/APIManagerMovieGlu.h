@@ -13,10 +13,6 @@
 + (instancetype)shared;
 
 
-//movieGlu
-- (void)getFilmsNowShowing: (void (^) (NSDictionary *dataDictionary, NSError *error))completion;
-- (void)getCinemasNearby: (NSString*) latLong completion:(void (^) (NSDictionary *dataDictionary, NSError *error))completion;
-
 //graceNote
 - (void)getTheaterswithLat:(NSString*) lat withLong: (NSString*) lng completion:(void (^) (NSMutableDictionary *theatres, NSError *error))completion;
 

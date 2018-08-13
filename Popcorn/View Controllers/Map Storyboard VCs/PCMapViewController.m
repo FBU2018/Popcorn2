@@ -89,6 +89,7 @@
                             annotation.coordinate = coord;
                             annotation.title = theatre[@"name"];
                             NSArray *moviesPlayingAtTheatre = theatres[theatre[@"name"]];
+                            
                             annotation.subtitle = [[NSString stringWithFormat:@"%@", @(moviesPlayingAtTheatre.count)] stringByAppendingString:@" movies playing"];
                             annotation.moviesPlaying = theatres[theatre[@"name"]];
                             annotation.theatreInfo = theatre;
@@ -122,14 +123,16 @@
                         NSLog(@"Error: %@", error.localizedDescription);
                     }
                     else{
-                        //TODO: make sure candidates isn't 0 length
-                        NSLog(@"Successfully got places from text");
-                        NSDictionary *location = dataDictionary[@"candidates"][0][@"geometry"][@"location"];
-                        
-                        [theatreInfo setObject:[NSMutableArray new] forKey:theatreName];
-                        [theatreInfo[theatreName] addObject:location];
-                        
-                        ratings[theatreName] = dataDictionary[@"candidates"][0][@"rating"];
+                        NSArray *candidates = dataDictionary[@"candidates"];
+                        if(candidates.count != 0){
+                            NSLog(@"Successfully got places from text");
+                            NSDictionary *location = dataDictionary[@"candidates"][0][@"geometry"][@"location"];
+                            
+                            [theatreInfo setObject:[NSMutableArray new] forKey:theatreName];
+                            [theatreInfo[theatreName] addObject:location];
+                            
+                            ratings[theatreName] = dataDictionary[@"candidates"][0][@"rating"];
+                        }
                     }
                     
                     if(theatreInfo.count == theatreNames.count-1){ //all taken into account
