@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSArray *chatsArray;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (assign) BOOL newChat;
+@property (nonatomic, assign) BOOL shouldScrollToLastRow;
 @end
 
 @implementation PCMovieDiscussionViewController
@@ -28,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _shouldScrollToLastRow = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
     
@@ -48,10 +50,24 @@
     // Set Backdrop Image
     [self.backdropImageView setImageWithURL:self.movie.backdropUrl];
     
-    // refresh the chats every second
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshChats) userInfo:nil repeats:true];
-//    [self refreshChats];
+    [self refreshChats];
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    // Scroll table view to the last row
+    if (_shouldScrollToLastRow)
+    {
+        _shouldScrollToLastRow = NO;
+        [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+    }
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self dismissKeyboard];
+}
+
 
 -(void)dismissKeyboard {
     [self.chatMessageTextField resignFirstResponder];
@@ -112,6 +128,7 @@
             if(self.newChat){
                 self.chatsArray = [NSArray arrayWithArray:array];
                 [self.tableView reloadData];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.chatsArray count] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             }
         }
         else {
@@ -123,7 +140,6 @@
 // User taps send to send a chat message
 - (IBAction)didTapSend:(id)sender {
     // Create a chat object and store the message, the user's object id and the movie they are talking about
-    
     if([self.chatMessageTextField.text isEqualToString:@""]){
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Chat Message Cannot Be Empty" message: nil preferredStyle:UIAlertControllerStyleAlert];
         
@@ -188,41 +204,24 @@
         NSString *cellText = currentChat.message;
         UIFont *cellFont = [UIFont systemFontOfSize:16.0];
         CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
-        UIColor *color = [UIColor colorWithRed:48.0f/255.0f
-                                         green:48.0f/255.0f
-                                          blue:48.0f/255.0f
-                                         alpha:1.0f];
-        NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              cellFont, NSFontAttributeName,
-                                              color, NSForegroundColorAttributeName,
-                                              nil];
-        CGSize labelSize2 = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
-        CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDictionary context:nil];
         
+        CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
         
-        return labelSize2.height + 30;
+        return labelSize.height + 30;
     }
     else{
         // Other Chats
         NSString *cellText = currentChat.message;
         UIFont *cellFont = [UIFont systemFontOfSize:16.0];
         CGSize constraintSize = CGSizeMake(263, MAXFLOAT);
-        UIColor *color = [UIColor colorWithRed:48.0f/255.0f
-                                         green:48.0f/255.0f
-                                          blue:48.0f/255.0f
-                                         alpha:1.0f];
-        NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              cellFont, NSFontAttributeName,
-                                              color, NSForegroundColorAttributeName,
-                                              nil];
-        CGSize labelSize2 = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
-        CGRect labelSize = [cellText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDictionary context:nil];
+
+        CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
         
         if([cellText length] <= 70){
-            return labelSize2.height + 50;
+            return labelSize.height + 50;
         }
         else{
-            return labelSize2.height + 80;
+            return labelSize.height + 80;
         }
     }
     
