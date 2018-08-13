@@ -67,6 +67,11 @@
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 0;
     
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+    
     [self setButton];
 }
 
