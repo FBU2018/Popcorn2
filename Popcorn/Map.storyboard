@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,23 +88,27 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMH-yi-udj">
-                                            <rect key="frame" x="16" y="115" width="343" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMH-yi-udj">
+                                            <rect key="frame" x="16" y="115" width="343" height="24"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating: 4.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUW-5b-ITk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: 4.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUW-5b-ITk">
                                             <rect key="frame" x="16" y="90" width="343" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="bOg-BY-wOr"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Theater" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idI-CQ-nvw">
-                                            <rect key="frame" x="16" y="50" width="343" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theater" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idI-CQ-nvw">
+                                            <rect key="frame" x="16" y="50" width="343" height="41"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="41" id="N20-55-Fot"/>
+                                                <constraint firstAttribute="width" constant="343" id="c4z-dX-dWp"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="29"/>
                                             <color key="textColor" red="1" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -116,6 +121,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aUW-5b-ITk" firstAttribute="leading" secondItem="uwJ-Kt-Ajc" secondAttribute="leadingMargin" constant="8" id="3cw-81-aC6"/>
+                                        <constraint firstItem="aUW-5b-ITk" firstAttribute="top" secondItem="uwJ-Kt-Ajc" secondAttribute="topMargin" constant="82" id="7we-c4-phG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aUW-5b-ITk" secondAttribute="trailing" constant="8" id="9ES-bi-R48"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VMH-yi-udj" secondAttribute="trailing" constant="8" id="KyV-yb-GyO"/>
+                                        <constraint firstItem="VMH-yi-udj" firstAttribute="leading" secondItem="uwJ-Kt-Ajc" secondAttribute="leadingMargin" constant="8" id="Zmd-AD-to5"/>
+                                        <constraint firstItem="VMH-yi-udj" firstAttribute="top" secondItem="aUW-5b-ITk" secondAttribute="bottom" constant="3" id="a0T-fH-qMy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="idI-CQ-nvw" secondAttribute="trailing" constant="8" id="e7Y-yX-f3C"/>
+                                        <constraint firstItem="idI-CQ-nvw" firstAttribute="leading" secondItem="uwJ-Kt-Ajc" secondAttribute="leadingMargin" constant="8" id="oc2-ud-cuy"/>
+                                        <constraint firstItem="idI-CQ-nvw" firstAttribute="top" secondItem="uwJ-Kt-Ajc" secondAttribute="topMargin" constant="42" id="skX-MG-AdZ"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="addressLabel" destination="VMH-yi-udj" id="t0c-9H-yga"/>
                                         <outlet property="moviesCurrentlyPlayingLabel" destination="YTe-jG-WQg" id="ixl-eV-o8l"/>

@@ -64,7 +64,6 @@
 
     //set shelf text by checking corresponding name in shelves array
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
-//    cell.shelfLabel.text = selectedShelf[@"name"];
     [cell configureCell:selectedShelf];
     [self updateChecks:[selectedShelf[@"id"] stringValue] forCell:cell];
     
@@ -85,6 +84,9 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         //remove from list
         [self removeFromList:selectedShelf[@"id"]];
+        if([self.addedShelves containsObject:selectedShelf[@"name"]]){
+            [self.addedShelves removeObject:selectedShelf[@"name"]];
+        }
     }
     else{
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -92,7 +94,9 @@
         [self addToList:selectedShelf[@"id"]];
         NSString *shelfName = selectedShelf[@"name"];
         if([shelfName isEqualToString:@"Watched"] || [shelfName isEqualToString:@"Want to Watch"] || [shelfName isEqualToString:@"Favorites"]){
-            [self.addedShelves addObject:shelfName];
+            if([self.addedShelves containsObject:shelfName] == NO){
+                [self.addedShelves addObject:shelfName];
+            }
         }
     }
 }

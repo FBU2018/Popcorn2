@@ -198,6 +198,7 @@ bool isMoreDataLoading = false;
 
 // Manual segue to go to Details VC from tapped cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SearchCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"cellToDetailSegue" sender:cell];
 }

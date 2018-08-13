@@ -76,12 +76,9 @@
             else{
                 NSDictionary *oneMovie = results[0];
                 [self.dictionaryMovies addObject:oneMovie];
+                self.movies = [Movie moviesWithDictionaries:self.dictionaryMovies];
                 
-                if(self.dictionaryMovies.count == self.moviesPlaying.count || [movieName isEqualToString:self.moviesPlaying[self.moviesPlaying.count-1]]){
-                    self.movies = [Movie moviesWithDictionaries:self.dictionaryMovies];
-                    
-                    [self.collectionView reloadData];
-                }
+                [self.collectionView reloadData];
             }
 
         } andErrorCompletionHandler:^(NSError *error) {

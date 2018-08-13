@@ -65,7 +65,7 @@
                                                     </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="reviewed The Martian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-fr-dne">
-                                                    <rect key="frame" x="113" y="32" width="247" height="20.5"/>
+                                                    <rect key="frame" x="113" y="31" width="247" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1d" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-gj-uuD">
-                                                    <rect key="frame" x="345" y="261" width="15" height="17"/>
+                                                    <rect key="frame" x="346" y="261" width="14" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Lqn-Xd-tNW"/>
                                                     </constraints>
@@ -235,7 +235,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1d" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9o-8S-Qta">
-                                                    <rect key="frame" x="346" y="309" width="15" height="17"/>
+                                                    <rect key="frame" x="347" y="309" width="14" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="5CG-Xp-I7p"/>
                                                     </constraints>
@@ -244,13 +244,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="added The Martian as Watched" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPq-S1-Shm">
-                                                    <rect key="frame" x="113" y="35.5" width="240" height="20.5"/>
+                                                    <rect key="frame" x="113" y="37" width="240" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw7-Gx-dTh">
-                                                    <rect key="frame" x="143" y="139" width="218" height="138"/>
+                                                    <rect key="frame" x="143" y="162" width="218" height="138"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="218" id="JGM-8X-hms"/>
                                                         <constraint firstAttribute="height" constant="138" id="fni-5b-R74"/>
