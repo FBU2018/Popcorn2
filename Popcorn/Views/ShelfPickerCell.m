@@ -20,4 +20,11 @@
     // Configure the view for the selected state
 }
 
+-(void) configureCell:(NSDictionary *)selectedShelf{
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor blackColor];
+    self.selectedBackgroundView = backgroundView;
+    
+    self.shelfLabel.text = selectedShelf[@"name"];
+}
 @end

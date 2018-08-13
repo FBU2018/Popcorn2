@@ -11,5 +11,6 @@
 @interface ShelfPickerCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *shelfLabel;
+-(void) configureCell: (NSDictionary *)selectedShelf;
 
 @end
