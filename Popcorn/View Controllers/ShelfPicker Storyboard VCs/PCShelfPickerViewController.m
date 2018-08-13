@@ -27,6 +27,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+ //'   self.tableView 
     self.shelves = [NSArray new];
     
     self.addedShelves = [NSMutableArray new];
@@ -63,7 +64,8 @@
 
     //set shelf text by checking corresponding name in shelves array
     NSDictionary *selectedShelf = self.shelves[indexPath.row];
-    cell.shelfLabel.text = selectedShelf[@"name"];
+//    cell.shelfLabel.text = selectedShelf[@"name"];
+    [cell configureCell:selectedShelf];
     [self updateChecks:[selectedShelf[@"id"] stringValue] forCell:cell];
     
     return cell;
