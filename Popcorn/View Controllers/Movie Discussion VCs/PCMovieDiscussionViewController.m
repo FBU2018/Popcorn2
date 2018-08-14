@@ -217,7 +217,7 @@
 
         CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
         
-        if([cellText length] <= 70){
+        if([cellText length] <= 30){
             return labelSize.height + 50;
         }
         else{
