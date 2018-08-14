@@ -45,6 +45,7 @@
     self.lng = [[NSNumber numberWithDouble:self.locationManager.location.coordinate.longitude] stringValue];
     MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.lat doubleValue], [self.lng doubleValue]), MKCoordinateSpanMake(0.8, 0.8));
     [self.myMapView setRegion:sfRegion animated:false];
+    [self.myMapView setShowsUserLocation:YES];
     
     [self findTheaters];
     
@@ -167,6 +168,9 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
+    if([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }
     MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
