@@ -70,6 +70,7 @@
 -(void) fetchReviews{
     NSMutableArray *communityReviews = [NSMutableArray new];
     PFQuery *query = [PFUser query];
+    [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if(users != nil){
             //loop through users in parse

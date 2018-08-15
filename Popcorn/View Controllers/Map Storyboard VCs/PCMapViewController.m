@@ -107,7 +107,7 @@
 }
 
 - (void)getLocations{
-    [[APIManagerMovieGlu shared] getTheaterswithLat:@"37.783333" withLong:@"-122.416667" completion:^(NSMutableDictionary *theatres, NSError *error) {
+    [[APIManagerMovieGlu shared] getTheaterswithLat:self.lat withLong:self.lng completion:^(NSMutableDictionary *theatres, NSError *error) {
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
         }
